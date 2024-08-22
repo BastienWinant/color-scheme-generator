@@ -39,6 +39,8 @@ img {
 }
 
 .header {
+  height: 5em;
+  padding: 0 1.25em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,7 +67,6 @@ img {
 
   /* styling */
   background-color: rgba(120, 120, 120, .25);
-  text-align: left;
 }
 
 .expanded {
@@ -78,9 +79,139 @@ img {
   margin-left: auto;
 
   /* sizing */
-  width: 90%;
+  width: 20em;
   height: 100%;
+
+  /* content layout */
+  display: flex;
+  flex-direction: column;
 
   /* styling */
   background-color: white;
+}
+
+.nav-btn {
+  height: 2.625em;
+  padding: .625em 0;
+
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.nav-saved-btns {
+  display: flex;
+  flex-direction: column;
+  gap: .625em;
+  padding-top: 1.25em;
+}
+
+.auth-expand-btn {
+  display: none;
+}
+
+.nav-saved-btn {
+  text-align: left;
+  padding-left: 1.25em;
+}
+
+/* .nav-saved-btn:hover {
+  background-color: lightgray;
+  color: white;
+} */
+
+.nav-auth-btns {
+  margin-top: auto;
+
+  display: flex;
+  gap: .625em;
+  padding: 1.25em;
+}
+
+.nav-auth-btn {
+  flex: 1 0 auto;
+  
+  background-color: black;
+  border: 1px solid black;
+  border-radius: .375em;
+  color: white;
+}
+
+.nav-login-btn {
+  background-color: white;
+  color: black;
+}
+
+@media only screen and (min-width: 576px) {
+  .nav-expand-btn {
+    display: none;
+  }
+
+  .nav-container {
+    display: block;
+
+    /* positioning */
+    position: static;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+  }
+
+  .nav {
+    /* sizing */
+    width: auto;
+    height: auto;
+
+    /* content layout */
+    flex-direction: row;
+    gap: 4em;
+  }
+
+  .nav-saved-btns {
+    padding: 0;
+    flex-direction: row;
+    gap: 1.25em;
+  }
+
+  .nav-saved-btn {
+    border-radius: .375em;
+  }
+
+  .auth-expand-btn {
+    display: block;
+  }
+
+  .nav-auth-btns {
+    /* positioning */
+    position: absolute;
+    top: 5em;
+    right: 0;
+
+    /* sizing */
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .auth-expand-btn {
+    display: none;
+  }
+
+  .nav-auth-btns {
+    /* positioning */
+    position: static;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+
+    /* content layout */
+    display: flex;
+    padding: 0;
+    gap: 1.25em;
+  }
+
+  .nav-auth-btn {
+    width: 8em;
+  }
 }
