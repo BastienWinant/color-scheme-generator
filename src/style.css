@@ -70,7 +70,7 @@ img {
 }
 
 .expanded {
-  display: flex;
+  display: flex !important;
   right: 0;
 }
 
@@ -113,11 +113,6 @@ img {
   text-align: left;
   padding-left: 1.25em;
 }
-
-/* .nav-saved-btn:hover {
-  background-color: lightgray;
-  color: white;
-} */
 
 .nav-auth-btns {
   margin-top: auto;
@@ -182,9 +177,11 @@ img {
   }
 
   .nav-auth-btns {
+    display: none;
+    
     /* positioning */
     position: absolute;
-    top: 5em;
+    top: 4em;
     right: 0;
 
     /* sizing */
