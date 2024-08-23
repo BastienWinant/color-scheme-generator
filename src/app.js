@@ -15,8 +15,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-const firebaseAuth = getAuth(firebaseApp)
-const firebaseDB = getDatabase(firebaseApp)
+export const firebaseAuth = getAuth(firebaseApp)
+export const firebaseDB = getDatabase(firebaseApp)
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');

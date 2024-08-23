@@ -6,6 +6,38 @@
   <title>Color Scheme Generator</title>
 </head>
 <body>
-  hello world
+  <button type="button" id="nav-login-btn">log in</button>
+  <button type="button" id="nav-signup-btn">sign up</button>
+  <button type="button" id="nav-logout-btn">log out</button>
+  <dialog id="login-dialog">
+    <h2>log in</h2>
+    <form method="post" id="login-form">
+      <label for="login-email">
+        <h3>email</h3>
+        <input type="email" name="email" id="login-email" />
+      </label>
+      <label for="login-password">
+        <h3>password</h3>
+        <input type="password" name="password" id="login-password">
+      </label>
+      <button type="submit" id="form-login-btn">log in</button>
+      <button type="button" id="cancel-login-btn">cancel</button>
+    </form>
+  </dialog>
+  <dialog id="signup-dialog">
+    <h2>log in</h2>
+    <form method="post" id="signup-form">
+      <label for="signup-email">
+        <h3>email</h3>
+        <input type="email" name="email" id="signup-email" />
+      </label>
+      <label for="signup-password">
+        <h3>password</h3>
+        <input type="password" name="password" id="signup-password">
+      </label>
+      <button type="submit" id="form-signup-btn">log in</button>
+      <button type="button" id="cancel-signup-btn">cancel</button>
+    </form>
+  </dialog>
 </body>
 </html>
