@@ -1,7 +1,7 @@
 import './style.css'
 
-import { openLoginModal, logOut } from '../userAuth/login'
-import { openSignupModal } from '../userAuth/signup'
+import { openLoginModal, logOut } from '../user-auth/login'
+import { openSignupModal } from '../user-auth/signup'
 
 const nav = document.querySelector('#nav')
 

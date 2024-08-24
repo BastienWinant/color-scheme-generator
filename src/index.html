@@ -7,6 +7,27 @@
 </head>
 <body>
   <nav id="nav"></nav>
+  <form method="post">
+    <label for="color">
+      <input type="color" name="color" id="color" />
+    </label>
+    <label for="mode">
+      <select name="mode" id="mode">
+        <option value="monochrome">Monochrome</option>
+        <option value="monochrome-dark">Monochrome-dark</option>
+        <option value="monochrome-light">Monochrome-light</option>
+        <option value="analogic">Analogic</option>
+        <option value="complement">Complement</option>
+        <option value="analogic-complement">Analogic-complement</option>
+        <option value="triad">Triad</option>
+        <option value="quad">Quad</option>
+      </select>
+    </label>
+    <label for="count">
+      <input type="number" name="count" id="count" min="1" max="5" value="5" />
+    </label>
+    <button type="submit" id="submit">Get color scheme</button>
+  </form>
   <dialog id="login-modal">
     <h2>log in</h2>
     <form method="post" id="login-form">

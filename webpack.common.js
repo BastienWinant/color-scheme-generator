@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: ['./src/components/header/index.js', './src/index.js'],
+  entry: [
+    './src/components/header/index.js',
+    './src/components/color-scheme-generator/form/index.js',
+    './src/index.js'],
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
