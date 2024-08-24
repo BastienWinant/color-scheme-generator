@@ -28,6 +28,8 @@ function loginEmailPassword() {
     .then(userCredential => {
       closeLoginModal()
       console.log(userCredential)
+
+      // TODO: update header login state
     })
     .catch(error => {
       console.log(error.message)
