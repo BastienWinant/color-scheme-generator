@@ -25,12 +25,7 @@ function signupEmailPassword() {
   const password = signupPasswordInput.value
 
   createUserWithEmailAndPassword(firebaseAuth, email, password)
-    .then(userCredential => {
-      closeSignupModal()
-      console.log(userCredential)
-
-      // TODO: update header login state
-    })
+    .then(closeSignupModal)
     .catch(error => {
       console.log(error.message)
     })

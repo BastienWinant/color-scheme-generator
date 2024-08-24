@@ -5,7 +5,6 @@ import { openSignupModal } from '../userAuth/signup'
 
 const nav = document.querySelector('#nav')
 
-// navLogoutBtn.addEventListener('click', logOut)
 nav.addEventListener('click', e => {
   if (e.target.id == 'nav-login-btn') {
     openLoginModal()
