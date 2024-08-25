@@ -1,6 +1,6 @@
 import './style.css'
 
-import { colorInput, modeInput, modeOptions, countInput, submitBtn } from '../form'
+import { colorInput, modeDropdownBtn, modeOptions, countInput, submitBtn } from '../form'
 
 const colorsUl = document.querySelector('#generator-colors')
 
@@ -40,7 +40,8 @@ submitBtn.addEventListener('click', e => {
   const color = colorInput.value.slice(1,)
   localStorage.setItem('gcs-color-hex', color)
   
-  const mode = modeInput.value
+  // const mode = modeInput.value
+  const mode = modeDropdownBtn.value
   localStorage.setItem('gcs-color-mode', mode)
 
   const count = countInput.value
@@ -55,7 +56,9 @@ function initializeDisplay() {
   localStorage.setItem('gcs-color-hex', randomHex)
 
   const randomMode = modeOptions[Math.floor(Math.random() * modeOptions.length)].value
-  modeInput.value = randomMode
+  console.log(randomMode)
+  modeDropdownBtn.innerText = randomMode
+  modeDropdownBtn.value = randomMode
   localStorage.setItem('gcs-color-mode', randomMode)
 }
 

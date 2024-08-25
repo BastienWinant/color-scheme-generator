@@ -1,0 +1,28 @@
+
+/* COLOR MODE DROPDOWN */
+.mode {
+  position: relative;
+}
+
+.mode-dropdown {
+  position: absolute;
+  top: 1em;
+  left: 0;
+
+  height: 0;
+  overflow-y: hidden;
+
+  background-color: white;
+}
+
+.dropdown-expanded {
+  height: auto;
+}
+
+input[name="mode"] {
+  display: none;
+}
+
+input[name="mode"]:checked + p {
+  background-color: lightcoral;
+}
