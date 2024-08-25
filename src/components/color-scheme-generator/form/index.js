@@ -1,3 +1,7 @@
+import './style.css'
+
+import { updateDisplay } from '../display'
+
 const colorInput = document.querySelector('#color')
 const modeInput = document.querySelector('#mode')
 const countInput = document.querySelector('#count')
@@ -6,17 +10,14 @@ const submitBtn = document.querySelector('#submit')
 submitBtn.addEventListener('click', e => {
   e.preventDefault()
 
-  const color = colorInput.value
+  const color = colorInput.value.slice(1,)
+  localStorage.setItem('gcs-color-hex', color)
+  
   const mode = colorInput.value
+  localStorage.setItem('gcs-color-mode', mode)
+
   const count = colorInput.value
+  localStorage.setItem('gcs-color-count', count)
 
-  const baseURL = "https://www.thecolorapi.com"
-  const endpoint = "scheme"
-  const requestURL = `${baseURL}/${endpoint}?hex=${color}&mode=${mode}&count=${count}`
-
-  fetch(requestURL)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
+  updateDisplay()
 })
