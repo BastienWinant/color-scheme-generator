@@ -1,9 +1,8 @@
 import './style.css'
 
-import { colorInput, modeDropdownBtn, modeOptions, countInput, submitBtn } from '../form'
-
 const colorsUl = document.querySelector('#generator-colors')
 
+// creates one li element per color in the array
 function createColorElements(colorsArr) {
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
@@ -15,16 +14,18 @@ function createColorElements(colorsArr) {
   })
 }
 
-
-function updateDisplay() {
+export function updateDisplay() {
+  // reqeust param values were previously set through from submission
   const colorHex = localStorage.getItem('gcs-color-hex')
   const colorMode = localStorage.getItem('gcs-color-mode')
   const colorCount = localStorage.getItem('gcs-color-count')
   
+  // build the full request url
   const baseURL = "https://www.thecolorapi.com"
   const endpoint = "scheme"
   const requestURL = `${baseURL}/${endpoint}?hex=${colorHex}&mode=${colorMode}&count=${colorCount}`
 
+  // use the api data to fill the ul colors container
   fetch(requestURL)
     .then(response => response.json())
     .then(data => {
@@ -33,33 +34,3 @@ function updateDisplay() {
       colorsUl.append(...colorLis)
     })
 }
-
-submitBtn.addEventListener('click', e => {
-  e.preventDefault()
-
-  const color = colorInput.value.slice(1,)
-  localStorage.setItem('gcs-color-hex', color)
-  
-  // const mode = modeInput.value
-  const mode = modeDropdownBtn.value
-  localStorage.setItem('gcs-color-mode', mode)
-
-  const count = countInput.value
-  localStorage.setItem('gcs-color-count', count)
-
-  updateDisplay()
-})
-
-function initializeDisplay() {
-  const randomHex = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
-  colorInput.value = `#${randomHex}`
-  localStorage.setItem('gcs-color-hex', randomHex)
-
-  const randomMode = modeOptions[Math.floor(Math.random() * modeOptions.length)].value
-  console.log(randomMode)
-  modeDropdownBtn.innerText = randomMode
-  modeDropdownBtn.value = randomMode
-  localStorage.setItem('gcs-color-mode', randomMode)
-}
-
-initializeDisplay()

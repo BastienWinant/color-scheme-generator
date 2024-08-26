@@ -3,10 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: [
-    './src/components/header/index.js',
-    './src/components/color-scheme-generator/display/index.js',
-    './src/index.js'],
+  entry: './src/index.js',
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
@@ -33,8 +30,5 @@ module.exports = {
         type: 'asset/resource',
       },
     ],
-  },
-  optimization: {
-    runtimeChunk: 'single',
   },
 }
