@@ -1,5 +1,38 @@
+
+.black-border {
+  /* border: 1px solid black; */
+}
+
 @font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Matemasie';
+  src: url('../fonts/Matemasie/Matemasie-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+
+/* DEFAULT PAGE BEHAVIOR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* CSS SELECTORS */
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
 }

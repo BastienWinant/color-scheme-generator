@@ -4,9 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Color Scheme Generator</title>
+
+  <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav id="nav"></nav>
+  <header class="header black-border">
+    <h1 class="title">csg</h1>
+    <button type="button" id="nav-expand-btn">
+      <i class="fa-solid fa-bars fa-xl"></i>
+    </button>
+    <div id="nav-container" class="nav-container">
+      <nav id="nav" class="nav">
+        <div id="header-auth-btns" class="header-auth-btns"></div>
+      </nav>
+    </div>
+  </header>
   <form method="post">
     <label for="color">
       <input type="color" name="color" id="color" />
@@ -70,7 +82,7 @@
     </form>
   </dialog>
   <dialog id="signup-modal">
-    <h2>log in</h2>
+    <h2>sign up</h2>
     <form method="post" id="signup-form">
       <label for="signup-email">
         <h3>email</h3>

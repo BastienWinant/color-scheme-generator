@@ -1,0 +1,75 @@
+.header {
+  /* sizing */
+  height: 4em;
+
+  /* content layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  text-transform: uppercase;
+  font-family: 'Matemasie', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  line-height: 1;
+}
+
+.nav-container {
+  display: none;
+
+  /* positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* sizing */
+  height: 100vh;
+  width: 100vw;
+}
+
+.nav-expanded {
+  display: block;
+}
+
+.nav {
+  /* positioning */
+  position: absolute;
+  top: 2.75em;
+  right: 0;
+  z-index: 2;
+
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25em;
+  padding: 1.25em 1em;
+
+  /* styling */
+  background-color: white;
+  border-radius: .75em;
+  box-shadow: 0 0 8px 2px rgba(180, 180, 180, .2);
+}
+
+.nav-btn {
+  text-transform: capitalize;
+}
+
+.nav-auth-btns {
+  display: flex;
+  gap: .3125em;
+}
+
+.nav-auth-btn {
+  height: 2.625em;
+  width: 6em;
+  border-radius: .375em;
+
+  text-transform: capitalize;
+  border: 1px solid black;
+}
+
+.nav-signup-btn {
+  background-color: black;
+  color: white;
+}
