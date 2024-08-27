@@ -23,6 +23,7 @@
 }
 
 .auth-form input {
+  font-size: 1rem;
   height: 2.625em;
   border-radius: .375em;
   border: 1px solid lightgray;
@@ -35,6 +36,7 @@
 }
 
 .auth-form-submit-btn {
+  font-size: 1rem;
   height: 2.625em;
   border-radius: .375em;
 
@@ -46,6 +48,7 @@
 }
 
 .auth-form-cancel-btn {
+  margin-top: 1.25em;
   font-weight: 200;
   color: darkgray;
   text-decoration: underline;

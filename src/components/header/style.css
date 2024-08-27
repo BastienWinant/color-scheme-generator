@@ -46,7 +46,7 @@
   /* styling */
   background-color: white;
   border-radius: .5em;
-  box-shadow: 0 0 4px 4px rgba(180, 180, 180, .2);
+  box-shadow: 0 0 4px rgba(120, 120, 120, .25);
 }
 
 .nav-btn {
@@ -54,7 +54,7 @@
 
   /* sizing */
   height: 2.625em;
-  width: 7em;
+  width: 8em;
 
   text-transform: capitalize;
 }
