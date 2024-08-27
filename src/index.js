@@ -9,6 +9,8 @@ import { headerNav, showLoginState } from './components/header'
 import { colorInput, modeDropdownBtn, modeOptions, countInput, submitBtn } from './components/color-scheme-generator/form'
 import { updateDisplay } from './components/color-scheme-generator/display'
 
+const modals = document.querySelectorAll('dialog')
+
 // HEADER
 headerNav.addEventListener('click', e => {
   if (e.target.id == 'nav-login-btn') {
@@ -57,6 +59,14 @@ async function monitorAuthStatus() {
     showLoginState(user)
   })
 }
+
+modals.forEach(modal => {
+  modal.addEventListener('click', e => {
+    if (!e.target.closest('.modal-inner')) {
+      modal.close()
+    }
+  })
+})
 
 monitorAuthStatus()
 initializeDisplay()

@@ -74,34 +74,38 @@
     </main>
   </div>
   <dialog id="login-modal">
-    <h2 class="auth-form-title">log in</h2>
-    <form method="post" id="login-form" class="auth-form">
-      <label for="login-email" class="auth-form-label">
-        <h3 class="auth-form-label-text">email</h3>
-        <input type="email" name="email" id="login-email" class="auth-form-input" />
-      </label>
-      <label for="login-password" class="auth-form-label">
-        <h3 class="auth-form-label-text">password</h3>
-        <input type="password" name="password" id="login-password" class="auth-form-input" />
-      </label>
-      <button type="submit" id="form-login-btn" class="auth-form-submit-btn">log in</button>
-      <button type="button" id="cancel-login-btn" class="auth-form-cancel-btn">cancel</button>
-    </form>
+    <div class="modal-inner">
+      <h2 class="auth-form-title">log in</h2>
+      <form method="post" id="login-form" class="auth-form">
+        <label for="login-email" class="auth-form-label">
+          <h3 class="auth-form-label-text">email</h3>
+          <input type="email" name="email" id="login-email" class="auth-form-input" />
+        </label>
+        <label for="login-password" class="auth-form-label">
+          <h3 class="auth-form-label-text">password</h3>
+          <input type="password" name="password" id="login-password" class="auth-form-input" />
+        </label>
+        <button type="submit" id="form-login-btn" class="auth-form-submit-btn">log in</button>
+        <button type="button" id="cancel-login-btn" class="auth-form-cancel-btn">cancel</button>
+      </form>
+    </div>
   </dialog>
   <dialog id="signup-modal">
-    <h2 class="auth-form-title">sign up</h2>
-    <form method="post" id="signup-form" class="auth-form">
-      <label for="signup-email" class="auth-form-label">
-        <h3 class="auth-form-label-text">email</h3>
-        <input type="email" name="email" id="signup-email" class="auth-form-input" />
-      </label>
-      <label for="signup-password" class="auth-form-label">
-        <h3 class="auth-form-label-text">password</h3>
-        <input type="password" name="password" id="signup-password" class="auth-form-input" />
-      </label>
-      <button type="submit" id="form-signup-btn" class="auth-form-submit-btn">sign up</button>
-      <button type="button" id="cancel-signup-btn" class="auth-form-cancel-btn">cancel</button>
-    </form>
+    <div class="modal-inner">
+      <h2 class="auth-form-title">sign up</h2>
+      <form method="post" id="signup-form" class="auth-form">
+        <label for="signup-email" class="auth-form-label">
+          <h3 class="auth-form-label-text">email</h3>
+          <input type="email" name="email" id="signup-email" class="auth-form-input" />
+        </label>
+        <label for="signup-password" class="auth-form-label">
+          <h3 class="auth-form-label-text">password</h3>
+          <input type="password" name="password" id="signup-password" class="auth-form-input" />
+        </label>
+        <button type="submit" id="form-signup-btn" class="auth-form-submit-btn">sign up</button>
+        <button type="button" id="cancel-signup-btn" class="auth-form-cancel-btn">cancel</button>
+      </form>
+    </div>
   </dialog>
 </body>
 </html>

@@ -41,8 +41,11 @@ dialog {
   margin: auto;
   width: 90vw;
   max-width: 360px;
-
   border: none;
   border-radius: .75em;
-  padding: 2em;
+}
+
+.modal-inner {
+  background-color: lightblue;
+  padding: 2.5em 1.25em;
 }
