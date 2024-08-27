@@ -8,12 +8,6 @@
   justify-content: space-between;
 }
 
-.title {
-  text-transform: uppercase;
-  font-family: 'Matemasie', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  line-height: 1;
-}
-
 .nav-container {
   display: none;
 
@@ -21,10 +15,11 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 
   /* sizing */
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 }
 
 .nav-expanded {
@@ -36,40 +31,38 @@
   position: absolute;
   top: 2.75em;
   right: 0;
-  z-index: 2;
 
   /* content layout */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.25em;
-  padding: 1.25em 1em;
+  gap: .625em;
+  padding: 1.25em;
 
   /* styling */
   background-color: white;
-  border-radius: .75em;
-  box-shadow: 0 0 8px 2px rgba(180, 180, 180, .2);
+  border-radius: .5em;
+  box-shadow: 0 0 4px 4px rgba(180, 180, 180, .2);
 }
 
 .nav-btn {
-  text-transform: capitalize;
-}
+  /* sizing */
+  height: 3.5em;
+  width: 8em;
 
-.nav-auth-btns {
-  display: flex;
-  gap: .3125em;
+  text-transform: capitalize;
 }
 
 .nav-auth-btn {
-  height: 2.625em;
-  width: 6em;
-  border-radius: .375em;
-
-  text-transform: capitalize;
+  /* styling */
+  font-weight: 600;
   border: 1px solid black;
-}
-
-.nav-signup-btn {
   background-color: black;
   color: white;
+  border-radius: .25em;
+}
+
+.nav-login-btn {
+  background-color: white;
+  color: black;
 }
