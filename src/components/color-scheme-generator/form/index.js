@@ -14,5 +14,6 @@ modeDropdownBtn.addEventListener('click', e => {
 modeOptions.forEach(optionEl => {
   optionEl.addEventListener('click', e => {
     modeDropdownBtn.innerText = e.target.value
+    modeDropdown.classList.remove('dropdown-expanded')
   })
 })

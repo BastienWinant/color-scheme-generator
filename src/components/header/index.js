@@ -9,7 +9,7 @@ export const headerNav = document.querySelector('#nav')
 export function showLoginState(user) {
   if (user) {
     headerNav.innerHTML = `
-        <button type="button" id="nav-schemes-btn" class="nav-btn">my schemes</button>
+        <button type="button" id="nav-schemes-btn" class="nav-btn nav-schemes-btn">my schemes</button>
         <button type="button" id="nav-logout-btn" class="nav-btn nav-auth-btn">log out</button>`
   } else {
     headerNav.innerHTML = `

@@ -8,63 +8,72 @@
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="header black-border">
-    <!-- <h1 class="title">csg</h1> -->
-    <img id="header-logo" alt="Color Scheme Generator logo" />
-    <button type="button" id="nav-expand-btn">
-      <i class="fa-solid fa-bars fa-xl"></i>
-    </button>
-    <div id="nav-container" class="nav-container">
-      <nav id="nav" class="nav"></nav>
-    </div>
-  </header>
-  <form method="post">
-    <label for="color">
-      <input type="color" name="color" id="color" />
-    </label>
-    <div class="mode">
-      <button type="button" id="mode-dropdown-btn"></button>
-      <div id="mode-dropdown" class="mode-dropdown">
-        <label for="monochrome">
-          <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
-          <p>Monochrome</p>
-        </label>
-        <label for="monochrome-dark">
-          <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
-          <p>Monochrome-dark</p>
-        </label>
-        <label for="monochrome-light">
-          <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
-          <p>Monochrome-light</p>
-        </label>
-        <label for="analogic">
-          <input type="radio" name="mode" id="analogic" value="analogic">
-          <p>Analogic</p>
-        </label>
-        <label for="complement">
-          <input type="radio" name="mode" id="complement" value="complement">
-          <p>Complement</p>
-        </label>
-        <label for="analogic-complement">
-          <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
-          <p>Analogic-complement</p>
-        </label>
-        <label for="triad">
-          <input type="radio" name="mode" id="triad" value="triad">
-          <p>Triad</p>
-        </label>
-        <label for="quad">
-          <input type="radio" name="mode" id="quad" value="quad">
-          <p>Quad</p>
-        </label>
+  <div class="app-container">
+    <header class="header">
+      <!-- <h1 class="title">csg</h1> -->
+      <img id="header-logo" alt="Color Scheme Generator logo" />
+      <button type="button" id="nav-expand-btn" class="nav-expand-btn">
+        <i class="fa-solid fa-bars fa-xl"></i>
+      </button>
+      <div id="nav-container" class="nav-container">
+        <nav id="nav" class="nav"></nav>
       </div>
-    </div>
-    <label for="count">
-      <input type="number" name="count" id="count" min="1" max="5" value="5" />
-    </label>
-    <button type="submit" id="submit">Get color scheme</button>
-  </form>
-  <ul id="generator-colors"></ul>
+    </header>
+    <main>
+      <section class="hero">
+        <h1 class="title">Color Scheme Generator</h1>
+      </section>
+      <section class="generator">
+        <form method="post">
+          <label for="color">
+            <input type="color" name="color" id="color" />
+          </label>
+          <div class="mode">
+            <button type="button" id="mode-dropdown-btn"></button>
+            <div id="mode-dropdown" class="mode-dropdown">
+              <label for="monochrome">
+                <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
+                <p>Monochrome</p>
+              </label>
+              <label for="monochrome-dark">
+                <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
+                <p>Monochrome-dark</p>
+              </label>
+              <label for="monochrome-light">
+                <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
+                <p>Monochrome-light</p>
+              </label>
+              <label for="analogic">
+                <input type="radio" name="mode" id="analogic" value="analogic">
+                <p>Analogic</p>
+              </label>
+              <label for="complement">
+                <input type="radio" name="mode" id="complement" value="complement">
+                <p>Complement</p>
+              </label>
+              <label for="analogic-complement">
+                <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
+                <p>Analogic-complement</p>
+              </label>
+              <label for="triad">
+                <input type="radio" name="mode" id="triad" value="triad">
+                <p>Triad</p>
+              </label>
+              <label for="quad">
+                <input type="radio" name="mode" id="quad" value="quad">
+                <p>Quad</p>
+              </label>
+            </div>
+          </div>
+          <label for="count">
+            <input type="number" name="count" id="count" min="1" max="5" value="5" />
+          </label>
+          <button type="submit" id="submit">Get color scheme</button>
+        </form>
+        <ul id="generator-colors"></ul>
+      </section>
+    </main>
+  </div>
   <dialog id="login-modal">
     <h2>log in</h2>
     <form method="post" id="login-form">
