@@ -1,10 +1,11 @@
-import './style.css'
+import '../style.css'
 
 import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 
 import { firebaseAuth } from "../../../app"
 
 const loginModal = document.querySelector('#login-modal')
+const loginForm = document.querySelector('#login-form')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#form-login-btn')
@@ -15,6 +16,7 @@ export function openLoginModal() {
 }
 
 function closeLoginModal() {
+  loginForm.reset()
   loginModal.close()
 }
 cancelLoginBtn.addEventListener('click', closeLoginModal)

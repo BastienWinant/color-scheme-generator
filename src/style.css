@@ -36,3 +36,13 @@ img {
   display: block;
   object-fit: cover;
 }
+
+dialog {
+  margin: auto;
+  width: 90vw;
+  max-width: 360px;
+
+  border: none;
+  border-radius: .75em;
+  padding: 2em;
+}

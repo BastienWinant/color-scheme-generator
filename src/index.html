@@ -10,7 +10,6 @@
 <body>
   <div class="app-container">
     <header class="header">
-      <!-- <h1 class="title">csg</h1> -->
       <img id="header-logo" alt="Color Scheme Generator logo" />
       <button type="button" id="nav-expand-btn" class="nav-expand-btn">
         <i class="fa-solid fa-bars fa-xl"></i>
@@ -75,33 +74,33 @@
     </main>
   </div>
   <dialog id="login-modal">
-    <h2>log in</h2>
-    <form method="post" id="login-form">
-      <label for="login-email">
-        <h3>email</h3>
-        <input type="email" name="email" id="login-email" />
+    <h2 class="auth-form-title">log in</h2>
+    <form method="post" id="login-form" class="auth-form">
+      <label for="login-email" class="auth-form-label">
+        <h3 class="auth-form-label-text">email</h3>
+        <input type="email" name="email" id="login-email" class="auth-form-input" />
       </label>
-      <label for="login-password">
-        <h3>password</h3>
-        <input type="password" name="password" id="login-password">
+      <label for="login-password" class="auth-form-label">
+        <h3 class="auth-form-label-text">password</h3>
+        <input type="password" name="password" id="login-password" class="auth-form-input" />
       </label>
-      <button type="submit" id="form-login-btn">log in</button>
-      <button type="button" id="cancel-login-btn">cancel</button>
+      <button type="submit" id="form-login-btn" class="auth-form-submit-btn">log in</button>
+      <button type="button" id="cancel-login-btn" class="auth-form-cancel-btn">cancel</button>
     </form>
   </dialog>
   <dialog id="signup-modal">
-    <h2>sign up</h2>
-    <form method="post" id="signup-form">
-      <label for="signup-email">
-        <h3>email</h3>
-        <input type="email" name="email" id="signup-email" />
+    <h2 class="auth-form-title">sign up</h2>
+    <form method="post" id="signup-form" class="auth-form">
+      <label for="signup-email" class="auth-form-label">
+        <h3 class="auth-form-label-text">email</h3>
+        <input type="email" name="email" id="signup-email" class="auth-form-input" />
       </label>
-      <label for="signup-password">
-        <h3>password</h3>
-        <input type="password" name="password" id="signup-password">
+      <label for="signup-password" class="auth-form-label">
+        <h3 class="auth-form-label-text">password</h3>
+        <input type="password" name="password" id="signup-password" class="auth-form-input" />
       </label>
-      <button type="submit" id="form-signup-btn">sign up</button>
-      <button type="button" id="cancel-signup-btn">cancel</button>
+      <button type="submit" id="form-signup-btn" class="auth-form-submit-btn">sign up</button>
+      <button type="button" id="cancel-signup-btn" class="auth-form-cancel-btn">cancel</button>
     </form>
   </dialog>
 </body>

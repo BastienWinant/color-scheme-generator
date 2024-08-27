@@ -1,10 +1,11 @@
-import './style.css'
+import '../style.css'
 
 import { createUserWithEmailAndPassword } from "firebase/auth"
 
 import { firebaseAuth } from "../../../app"
 
 const signupModal = document.querySelector('#signup-modal')
+const signupForm = document.querySelector('#signup-form')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#form-signup-btn')
@@ -15,6 +16,7 @@ export function openSignupModal() {
 }
 
 function closeSignupModal() {
+  signupForm.reset()
   signupModal.close()
 }
 cancelSignupBtn.addEventListener('click', closeSignupModal)
