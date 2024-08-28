@@ -6,7 +6,7 @@ import { firebaseAuth } from './app'
 import { openLoginModal, logOut } from './components/user-auth/login'
 import { openSignupModal } from './components/user-auth/signup'
 import { headerNav, showLoginState } from './components/header'
-import { colorInput, modeInput, modeInputText, modeOptions, submitBtn, collapseModeDropdown } from './components/color-scheme-generator/form'
+import { colorInput, modeInput, modeInputText, modeOptions, submitBtn } from './components/color-scheme-generator/form'
 import { updateDisplay } from './components/color-scheme-generator/display'
 
 const modals = document.querySelectorAll('dialog')
@@ -63,15 +63,6 @@ modals.forEach(modal => {
       modal.close()
     }
   })
-})
-
-// HANDLE PAGE-WIDE CLICK EVENTS
-document.addEventListener('click', e => {
-  console.log(e.target)
-
-  if (!e.target.closest('.generator-form-mode')) {
-    collapseModeDropdown()
-  }
 })
 
 monitorAuthStatus()

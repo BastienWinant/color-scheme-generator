@@ -11,7 +11,7 @@ modeInput.addEventListener('click', e => {
   modeDropdown.classList.toggle('dropdown-expanded')
 })
 
-export function collapseModeDropdown() {
+function collapseModeDropdown() {
   modeDropdown.classList.remove('dropdown-expanded')
 }
 
@@ -21,3 +21,12 @@ modeOptions.forEach(radioInput => {
     collapseModeDropdown()
   })
 })
+
+// HANDLE PAGE-WIDE CLICK EVENTS
+document.addEventListener('click', e => {
+  if (!e.target.closest('.generator-form-mode')) {
+    collapseModeDropdown()
+  }
+})
+
+window.addEventListener('resize', collapseModeDropdown)

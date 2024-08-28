@@ -47,7 +47,6 @@ dialog {
 }
 
 .modal-inner {
-  background-color: lightblue;
   padding: 2.5em 1.25em;
 }
 
@@ -61,7 +60,7 @@ dialog {
 
 main {
   flex-grow: 1;
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
 }
 
 .container {

@@ -46,7 +46,7 @@
   /* styling */
   background-color: white;
   border-radius: .5em;
-  box-shadow: 0 0 4px rgba(120, 120, 120, .25);
+  box-shadow: 0 0 16px rgba(80, 80, 80, .25);
 }
 
 .nav-btn {
