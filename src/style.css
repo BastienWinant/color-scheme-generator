@@ -37,6 +37,7 @@ img {
   object-fit: cover;
 }
 
+/* MODALS */
 dialog {
   margin: auto;
   width: 90vw;
@@ -48,4 +49,21 @@ dialog {
 .modal-inner {
   background-color: lightblue;
   padding: 2.5em 1.25em;
+}
+
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+}
+
+main {
+  flex-grow: 1;
+  background-color: lightcoral;
+}
+
+.container {
+  padding: 0 1.25em;
 }

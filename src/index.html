@@ -19,55 +19,26 @@
       </div>
     </header>
     <main>
-      <section class="hero">
-        <h1 class="title">Color Scheme Generator</h1>
-      </section>
       <section class="generator">
-        <form method="post">
-          <label for="color">
-            <input type="color" name="color" id="color" />
+        <form method="post" id="generator-form" class="generator-form">
+          <label for="generator-form-color" class="generator-form-label generator-form-color-label">
+            <h2 class="generator-form-label-text">color</h2>
+            <input type="color" name="color" id="generator-form-color" class="generator-form-input generator-form-color" />
           </label>
-          <div class="mode">
-            <button type="button" id="mode-dropdown-btn"></button>
-            <div id="mode-dropdown" class="mode-dropdown">
-              <label for="monochrome">
-                <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
-                <p>Monochrome</p>
-              </label>
-              <label for="monochrome-dark">
-                <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
-                <p>Monochrome-dark</p>
-              </label>
-              <label for="monochrome-light">
-                <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
-                <p>Monochrome-light</p>
-              </label>
-              <label for="analogic">
-                <input type="radio" name="mode" id="analogic" value="analogic">
-                <p>Analogic</p>
-              </label>
-              <label for="complement">
-                <input type="radio" name="mode" id="complement" value="complement">
-                <p>Complement</p>
-              </label>
-              <label for="analogic-complement">
-                <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
-                <p>Analogic-complement</p>
-              </label>
-              <label for="triad">
-                <input type="radio" name="mode" id="triad" value="triad">
-                <p>Triad</p>
-              </label>
-              <label for="quad">
-                <input type="radio" name="mode" id="quad" value="quad">
-                <p>Quad</p>
-              </label>
-            </div>
-          </div>
-          <label for="count">
-            <input type="number" name="count" id="count" min="1" max="5" value="5" />
+          <label for="generator-form-mode" class="generator-form-label generator-form-mode-label">
+            <h2 class="generator-form-label-text">mode</h2>
+            <select name="mode" id="generator-form-mode" class="generator-form-input generator-form-mode">
+              <option value="monochrome">Monochrome</option>
+              <option value="monochrome-dark">Monochrome-dark</option>
+              <option value="monochrome-light">Monochrome-light</option>
+              <option value="analogic">Analogic</option>
+              <option value="complement">Complement</option>
+              <option value="analogic-complement">Analogic-complement</option>
+              <option value="triad">Triad</option>
+              <option value="quad">Quad</option>
+            </select>
           </label>
-          <button type="submit" id="submit">Get color scheme</button>
+          <button type="submit" id="generator-form-submit-btn" class="generator-form-input generator-form-submit-btn">Get color scheme</button>
         </form>
         <ul id="generator-colors"></ul>
       </section>

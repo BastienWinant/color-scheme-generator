@@ -1,29 +1,65 @@
+.generator-form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: .75em;
 
-/* COLOR MODE DROPDOWN */
-.mode {
-  position: relative;
+  /* background-color: lightskyblue; */
 }
 
-.mode-dropdown {
-  position: absolute;
-  top: 1em;
-  left: 0;
-  z-index: 1;
-
-  height: 0;
-  overflow-y: hidden;
-
-  background-color: white;
+.generator-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: .3125em;
 }
 
-.dropdown-expanded {
-  height: auto;
+.generator-form-label-text {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
-input[name="mode"] {
-  display: none;
+.generator-form-color-label {
+  flex: 0 0 5em;
 }
 
-input[name="mode"]:checked + p {
-  background-color: lightcoral;
+.generator-form-mode-label {
+  flex-grow: 1;
+}
+
+.generator-form-input {
+  /* sizing */
+  height: 3.5em;
+  width: 100%;
+
+  padding: 0 .625em;
+
+  /* styling */
+  border-radius: .375em;
+}
+
+.generator-form-input:focus {
+  outline: none;
+}
+
+.generator-form-color {
+  padding: .0625em .125em;
+  border: none;
+}
+
+.generator-form-mode {
+  border: 1px solid lightgray;
+}
+
+.generator-form-submit-btn {
+  /* styling */
+  background-color: lightseagreen;
+  color: white;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 576px) {
+  .generator-form-submit-btn {
+    flex-basis: 10em;
+  }
 }
