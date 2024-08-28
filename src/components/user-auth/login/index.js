@@ -40,7 +40,3 @@ loginBtn.addEventListener('click', e => {
 export function logOut() {
   signOut(firebaseAuth)
 }
-
-loginModal.addEventListener('click', () => {
-  console.log("test")
-})

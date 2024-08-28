@@ -6,7 +6,7 @@ import { firebaseAuth } from './app'
 import { openLoginModal, logOut } from './components/user-auth/login'
 import { openSignupModal } from './components/user-auth/signup'
 import { headerNav, showLoginState } from './components/header'
-import { colorInput, modeInput, modeOptions, submitBtn } from './components/color-scheme-generator/form'
+import { colorInput, modeInput, modeInputText, modeOptions, submitBtn } from './components/color-scheme-generator/form'
 import { updateDisplay } from './components/color-scheme-generator/display'
 
 const modals = document.querySelectorAll('dialog')
@@ -32,9 +32,6 @@ submitBtn.addEventListener('click', e => {
   const mode = modeInput.value
   localStorage.setItem('gcs-color-mode', mode)
 
-  const count = countInput.value
-  localStorage.setItem('gcs-color-count', count)
-
   updateDisplay()
 })
 
@@ -47,6 +44,7 @@ function initializeDisplay() {
 
   const randomMode = modeOptions[Math.floor(Math.random() * modeOptions.length)].value
   modeInput.value = randomMode
+  modeInputText.innerText = randomMode
   localStorage.setItem('gcs-color-mode', randomMode)
 
   updateDisplay()

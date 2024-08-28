@@ -18,12 +18,11 @@ export function updateDisplay() {
   // reqeust param values were previously set through from submission
   const colorHex = localStorage.getItem('gcs-color-hex')
   const colorMode = localStorage.getItem('gcs-color-mode')
-  const colorCount = localStorage.getItem('gcs-color-count')
   
   // build the full request url
   const baseURL = "https://www.thecolorapi.com"
   const endpoint = "scheme"
-  const requestURL = `${baseURL}/${endpoint}?hex=${colorHex}&mode=${colorMode}&count=${colorCount}`
+  const requestURL = `${baseURL}/${endpoint}?hex=${colorHex}&mode=${colorMode}`
 
   // use the api data to fill the ul colors container
   fetch(requestURL)

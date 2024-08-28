@@ -1,10 +1,10 @@
 .generator-form {
   display: flex;
-  align-items: flex-end;
   flex-wrap: wrap;
-  gap: .75em;
+  align-items: flex-end;
+  gap: .625em;
 
-  /* background-color: lightskyblue; */
+  background-color: white;
 }
 
 .generator-form-label {
@@ -13,46 +13,103 @@
   gap: .3125em;
 }
 
+.color-label {
+  flex: 0 0 5em;
+}
+
+.mode-label {
+  flex: 1 0 auto;
+}
+
 .generator-form-label-text {
   font-size: 1rem;
   font-weight: 600;
   text-transform: capitalize;
 }
 
-.generator-form-color-label {
-  flex: 0 0 5em;
-}
-
-.generator-form-mode-label {
-  flex-grow: 1;
-}
-
 .generator-form-input {
   /* sizing */
+  font-size: .75rem;
   height: 3.5em;
   width: 100%;
-
-  padding: 0 .625em;
-
-  /* styling */
   border-radius: .375em;
 }
 
-.generator-form-input:focus {
-  outline: none;
-}
-
 .generator-form-color {
-  padding: .0625em .125em;
   border: none;
+  padding: .0625em .125em;
 }
 
 .generator-form-mode {
+  position: relative;
+}
+
+.dropdown-btn {
+  /* sizing */
+  width: 100%;
+  height: 100%;
+
+  /* content layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 .625em;
+
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: .375em;
+
+  text-transform: capitalize;
+}
+
+.dropdown-options {
+  /* positioning */
+  position: absolute;
+  top: 3.625em;
+  left: 0;
+
+  width: 100%;
+  
+  /* content layout */
+  display: none;
+  flex-direction: column;
+
+  background-color: white;
   border: 1px solid lightgray;
+  border-radius: .375em;
+}
+
+.dropdown-expanded {
+  display: flex;
+}
+
+.dropdown-option {
+  display: flex;
+}
+
+input[name="mode"] {
+  display: none;
+}
+
+input[name="mode"] + span {
+  width: 100%;
+  padding: .625em;
+
+  cursor: pointer;
+  border-radius: .185em;
+}
+
+input[name="mode"]:hover + span {
+  background-color: lightgray;
+}
+
+input[name="mode"]:checked + span {
+  background-color: darkgray;
+  color: white;
 }
 
 .generator-form-submit-btn {
-  /* styling */
   background-color: lightseagreen;
   color: white;
   font-weight: 600;
@@ -60,6 +117,6 @@
 
 @media only screen and (min-width: 576px) {
   .generator-form-submit-btn {
-    flex-basis: 10em;
-  }
+    flex: 0 0 10em;
+  } 
 }
