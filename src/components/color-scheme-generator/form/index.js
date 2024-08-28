@@ -11,9 +11,13 @@ modeInput.addEventListener('click', e => {
   modeDropdown.classList.toggle('dropdown-expanded')
 })
 
+export function collapseModeDropdown() {
+  modeDropdown.classList.remove('dropdown-expanded')
+}
+
 modeOptions.forEach(radioInput => {
   radioInput.addEventListener('click', e => {
     modeInputText.innerText = e.target.value
-    modeDropdown.classList.remove('dropdown-expanded')
+    collapseModeDropdown()
   })
 })
