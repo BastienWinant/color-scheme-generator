@@ -17,6 +17,7 @@ function collapseModeDropdown() {
 
 modeOptions.forEach(radioInput => {
   radioInput.addEventListener('click', e => {
+    modeInput.value = e.target.value
     modeInputText.innerText = e.target.value
     collapseModeDropdown()
   })

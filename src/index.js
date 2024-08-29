@@ -26,6 +26,8 @@ headerNav.addEventListener('click', e => {
 submitBtn.addEventListener('click', e => {
   e.preventDefault()
 
+  console.log('testing')
+
   const color = colorInput.value.slice(1,)
   localStorage.setItem('gcs-color-hex', color)
   
