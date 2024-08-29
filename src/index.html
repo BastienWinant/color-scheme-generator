@@ -10,66 +10,70 @@
 <body>
   <div class="app-container">
     <header class="header">
-      <img id="header-logo" alt="Color Scheme Generator logo" />
-      <button type="button" id="nav-expand-btn" class="nav-expand-btn">
-        <i class="fa-solid fa-bars fa-xl"></i>
-      </button>
-      <div id="nav-container" class="nav-container">
-        <nav id="nav" class="nav"></nav>
+      <div class="container header-container">
+        <img id="header-logo" alt="Color Scheme Generator logo" />
+        <button type="button" id="nav-expand-btn" class="nav-expand-btn">
+          <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+        <div id="nav-container" class="nav-container">
+          <nav id="nav" class="nav"></nav>
+        </div>
       </div>
     </header>
     <main>
       <section class="generator">
-        <form method="post" id="generator-form" class="generator-form">
-          <label for="color" class="generator-form-label color-label">
-            <h2 class="generator-form-label-text">color</h2>
-            <input type="color" name="color" id="color" class="generator-form-input generator-form-color" />
-          </label>
-          <div class="generator-form-label mode-label">
-            <h2 class="generator-form-label-text">mode</h2>
-            <div class="generator-form-input generator-form-mode">
-              <button type="button" id="mode" class="dropdown-btn">
-                <p id="dropdown-btn-text"></p>
-                <i class="fa-solid fa-angle-down"></i>
-              </button>
-              <div id="dropdown-options" class="dropdown-options">
-                <label for="monochrome" class="dropdown-option">
-                  <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
-                  <span>Monochrome</span>
-                </label>
-                <label for="monochrome-dark" class="dropdown-option">
-                  <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
-                  <span>Monochrome-dark</span>
-                </label>
-                <label for="monochrome-light" class="dropdown-option">
-                  <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
-                  <span>Monochrome-light</span>
-                </label>
-                <label for="analogic" class="dropdown-option">
-                  <input type="radio" name="mode" id="analogic" value="analogic">
-                  <span>Analogic</span>
-                </label>
-                <label for="complement" class="dropdown-option">
-                  <input type="radio" name="mode" id="complement" value="complement">
-                  <span>Complement</span>
-                </label>
-                <label for="analogic-complement" class="dropdown-option">
-                  <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
-                  <span>Analogic-complement</span>
-                </label>
-                <label for="triad" class="dropdown-option">
-                  <input type="radio" name="mode" id="triad" value="triad">
-                  <span>Triad</span>
-                </label>
-                <label for="quad" class="dropdown-option">
-                  <input type="radio" name="mode" id="quad" value="quad">
-                  <span>Quad</span>
-                </label>
+        <div class="container">
+          <form method="post" id="generator-form" class="generator-form">
+            <label for="color" class="generator-form-label color-label">
+              <h2 class="generator-form-label-text">color</h2>
+              <input type="color" name="color" id="color" class="generator-form-input generator-form-color" />
+            </label>
+            <div class="generator-form-label mode-label">
+              <h2 class="generator-form-label-text">mode</h2>
+              <div class="generator-form-input generator-form-mode">
+                <button type="button" id="mode" class="dropdown-btn">
+                  <p id="dropdown-btn-text"></p>
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <div id="dropdown-options" class="dropdown-options">
+                  <label for="monochrome" class="dropdown-option">
+                    <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
+                    <span>Monochrome</span>
+                  </label>
+                  <label for="monochrome-dark" class="dropdown-option">
+                    <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
+                    <span>Monochrome-dark</span>
+                  </label>
+                  <label for="monochrome-light" class="dropdown-option">
+                    <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
+                    <span>Monochrome-light</span>
+                  </label>
+                  <label for="analogic" class="dropdown-option">
+                    <input type="radio" name="mode" id="analogic" value="analogic">
+                    <span>Analogic</span>
+                  </label>
+                  <label for="complement" class="dropdown-option">
+                    <input type="radio" name="mode" id="complement" value="complement">
+                    <span>Complement</span>
+                  </label>
+                  <label for="analogic-complement" class="dropdown-option">
+                    <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
+                    <span>Analogic-complement</span>
+                  </label>
+                  <label for="triad" class="dropdown-option">
+                    <input type="radio" name="mode" id="triad" value="triad">
+                    <span>Triad</span>
+                  </label>
+                  <label for="quad" class="dropdown-option">
+                    <input type="radio" name="mode" id="quad" value="quad">
+                    <span>Quad</span>
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-          <button type="submit" id="generator-form-submit-btn" class="generator-form-input generator-form-submit-btn">Get color scheme</button>
-        </form>
+            <button type="submit" id="generator-form-submit-btn" class="generator-form-input generator-form-submit-btn">Get color scheme</button>
+          </form>
+        </div>
         <ul id="generator-colors" class="generator-colors"></ul>
       </section>
     </main>

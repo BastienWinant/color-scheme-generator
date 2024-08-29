@@ -1,15 +1,17 @@
 .header {
+  /* styling */
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+
+.header-container {
   /* sizing */
   height: 4em;
-
+  
   /* content layout */
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* styling */
-  background-color: white;
-  border-bottom: 1px solid lightgray;
 }
 
 .nav-container {

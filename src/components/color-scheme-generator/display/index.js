@@ -9,7 +9,7 @@ function createColorElements(colorsArr) {
     liEl.classList.add('generator-color')
     liEl.style.backgroundColor = colorObj.hex.value
 
-    liEl.innerHTML = `${colorObj.hex.value}`
+    // liEl.innerHTML = `${colorObj.hex.value}`
 
     return liEl
   })

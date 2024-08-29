@@ -4,9 +4,7 @@
   flex-direction: column;
 
   display: flex;
-  flex-direction: column;
-  
-  background-color: yellow;
+  flex-direction: column;  
 }
 
 .generator-colors {

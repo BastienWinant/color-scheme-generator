@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   align-items: flex-end;
   gap: .625em;
+  padding: 1.25em 0;
 
   background-color: white;
 }
