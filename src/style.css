@@ -55,14 +55,10 @@ dialog {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
+  /* background-color: lightblue; */
 }
 
 main {
   flex-grow: 1;
-  /* background-color: lightcoral; */
-}
-
-.container {
-  padding: 0 1.25em;
+  background-color: lightcoral;
 }

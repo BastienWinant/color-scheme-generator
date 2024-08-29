@@ -6,7 +6,8 @@ const colorsUl = document.querySelector('#generator-colors')
 function createColorElements(colorsArr) {
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
-    liEl.classList.add('generator-form-color')
+    liEl.classList.add('generator-color')
+    liEl.style.backgroundColor = colorObj.hex.value
 
     liEl.innerHTML = `${colorObj.hex.value}`
 
