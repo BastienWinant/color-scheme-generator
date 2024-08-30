@@ -53,3 +53,20 @@ export function updateDisplay() {
       colorsUl.append(...colorLis)
     })
 }
+
+// console.log(colorBtns)
+// colorBtns.forEach(btnsDiv => {
+//   console.log('testing')
+//   btnsDiv.addEventListener('click', e => {
+//     if (e.target.closest('.remove-color-btn')) {
+//       console.log(e.target.closest('generator-color'))
+//     }
+//   })
+// })
+
+colorsUl.addEventListener('click', e => {
+  if (e.target.closest('.remove-color-btn')) {
+    const colorLi = e.target.closest('.generator-color')
+    colorLi.remove()
+  }
+})
