@@ -29,7 +29,6 @@ function createColorElements(colorsArr) {
         <h2 class="generator-color-name">${colorObj.name.value}</h2>
         <p class="generator-color-code">${colorObj.hex.value}</p>
       </div>
-      <div class="message-overlay"></div>
     `
 
     return liEl
@@ -56,13 +55,17 @@ export function updateDisplay() {
     })
 }
 
-function displayOverlayMessage(overlayEl, messageText) {
-  overlayEl.innerHTML = `
-      <p class="overlay-message-text">${messageText}!</p>`
-      overlayEl.classList.add('overlay-displayed')
-    setTimeout(() => {
-      overlayEl.classList.remove('overlay-displayed')
-    }, 750)
+function displayOverlayMessage(messageContainer, messageText) {
+  messageContainer.insertAdjacentHTML(
+    'beforeend',
+    `<div class="message-overlay">
+      <p class="overlay-message-text">${messageText}!</p>
+    </div>`
+  )
+
+  setTimeout(() => {
+    messageContainer.querySelector('.message-overlay').remove()
+  }, 750)
 }
 
 colorsUl.addEventListener('click', e => {
@@ -74,10 +77,8 @@ colorsUl.addEventListener('click', e => {
     const colorCode = colorLi.dataset.code
     navigator.clipboard.writeText(colorCode)
 
-    const overlayDiv = colorLi.querySelector('.message-overlay')
-    displayOverlayMessage(overlayDiv, 'copied')
+    displayOverlayMessage(colorLi, 'copied')
   } else if (e.target.closest('.save-color-btn')) {
-    const overlayDiv = colorLi.querySelector('.message-overlay')
-    displayOverlayMessage(overlayDiv, 'saved')
+    displayOverlayMessage(colorLi, 'saved')
   }
 })
