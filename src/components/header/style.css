@@ -1,0 +1,114 @@
+.header {
+  /* styling */
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+
+.header-container {
+  /* sizing */
+  height: 4em;
+  
+  /* content layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-container {
+  display: none;
+
+  /* positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  /* sizing */
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-expanded {
+  display: block;
+}
+
+.nav {
+  /* positioning */
+  position: absolute;
+  top: 3em;
+  right: 0;
+
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .625em;
+  padding: 1.25em;
+
+  /* styling */
+  background-color: white;
+  border-radius: .5em;
+  box-shadow: 0 0 16px rgba(80, 80, 80, .25);
+}
+
+.nav-btn {
+  font-size: 1rem;
+
+  /* sizing */
+  height: 2.625em;
+  width: 8em;
+
+  text-transform: capitalize;
+}
+
+.nav-auth-btn {
+  /* styling */
+  font-weight: 600;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  border-radius: .25em;
+}
+
+.nav-login-btn {
+  background-color: white;
+  color: black;
+}
+
+@media only screen and (min-width: 576px) {
+  .header {
+    height: 5;
+  }
+
+  .nav-expand-btn {
+    display: none;
+  }
+
+  .nav-container {
+    display: block;
+
+    /* positioning */
+    position: static;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+  }
+
+  .nav {
+    /* positioning */
+    position: static;
+
+    /* content layout */
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+
+    /* styling */
+    box-shadow: none;
+  }
+
+  .nav-schemes-btn {
+    margin-right: 1.25em;
+  }
+}

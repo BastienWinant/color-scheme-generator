@@ -1,0 +1,55 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  margin-top: 1.75em;
+}
+
+.auth-form-title {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.auth-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: .3125em;
+}
+
+.auth-form-label-text {
+  text-transform: capitalize;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.auth-form input {
+  font-size: 1rem;
+  height: 2.625em;
+  border-radius: .375em;
+  border: 1px solid lightgray;
+  padding: 0 .625em;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: darkgray;
+}
+
+.auth-form-submit-btn {
+  font-size: 1rem;
+  height: 2.625em;
+  border-radius: .375em;
+
+  background-color: lightseagreen;
+  color: white;
+
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.auth-form-cancel-btn {
+  margin-top: 1.25em;
+  font-weight: 200;
+  color: darkgray;
+  text-decoration: underline;
+}

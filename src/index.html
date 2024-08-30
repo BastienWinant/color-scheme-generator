@@ -4,85 +4,113 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Color Scheme Generator</title>
+
+  <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav id="nav"></nav>
-  <form method="post">
-    <label for="color">
-      <input type="color" name="color" id="color" />
-    </label>
-    <div class="mode">
-      <button type="button" id="mode-dropdown-btn"></button>
-      <div id="mode-dropdown" class="mode-dropdown">
-        <label for="monochrome">
-          <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
-          <p>Monochrome</p>
-        </label>
-        <label for="monochrome-dark">
-          <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
-          <p>Monochrome-dark</p>
-        </label>
-        <label for="monochrome-light">
-          <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
-          <p>Monochrome-light</p>
-        </label>
-        <label for="analogic">
-          <input type="radio" name="mode" id="analogic" value="analogic">
-          <p>Analogic</p>
-        </label>
-        <label for="complement">
-          <input type="radio" name="mode" id="complement" value="complement">
-          <p>Complement</p>
-        </label>
-        <label for="analogic-complement">
-          <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
-          <p>Analogic-complement</p>
-        </label>
-        <label for="triad">
-          <input type="radio" name="mode" id="triad" value="triad">
-          <p>Triad</p>
-        </label>
-        <label for="quad">
-          <input type="radio" name="mode" id="quad" value="quad">
-          <p>Quad</p>
-        </label>
+  <div class="app-container">
+    <header class="header">
+      <div class="container header-container">
+        <img id="header-logo" alt="Color Scheme Generator logo" />
+        <button type="button" id="nav-expand-btn" class="nav-expand-btn">
+          <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+        <div id="nav-container" class="nav-container">
+          <nav id="nav" class="nav"></nav>
+        </div>
       </div>
-    </div>
-    <label for="count">
-      <input type="number" name="count" id="count" min="1" max="5" value="5" />
-    </label>
-    <button type="submit" id="submit">Get color scheme</button>
-  </form>
-  <ul id="generator-colors"></ul>
+    </header>
+    <main>
+      <section class="generator">
+        <div class="container">
+          <form method="post" id="generator-form" class="generator-form">
+            <label for="color" class="generator-form-label color-label">
+              <h2 class="generator-form-label-text">color</h2>
+              <input type="color" name="color" id="color" class="generator-form-input generator-form-color" />
+            </label>
+            <div class="generator-form-label mode-label">
+              <h2 class="generator-form-label-text">mode</h2>
+              <div class="generator-form-input generator-form-mode">
+                <button type="button" id="mode" class="dropdown-btn">
+                  <p id="dropdown-btn-text"></p>
+                  <i class="fa-solid fa-angle-down"></i>
+                </button>
+                <div id="dropdown-options" class="dropdown-options">
+                  <label for="monochrome" class="dropdown-option">
+                    <input type="radio" name="mode" id="monochrome" value="monochrome" checked>
+                    <span>Monochrome</span>
+                  </label>
+                  <label for="monochrome-dark" class="dropdown-option">
+                    <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark">
+                    <span>Monochrome-dark</span>
+                  </label>
+                  <label for="monochrome-light" class="dropdown-option">
+                    <input type="radio" name="mode" id="monochrome-light" value="monochrome-light">
+                    <span>Monochrome-light</span>
+                  </label>
+                  <label for="analogic" class="dropdown-option">
+                    <input type="radio" name="mode" id="analogic" value="analogic">
+                    <span>Analogic</span>
+                  </label>
+                  <label for="complement" class="dropdown-option">
+                    <input type="radio" name="mode" id="complement" value="complement">
+                    <span>Complement</span>
+                  </label>
+                  <label for="analogic-complement" class="dropdown-option">
+                    <input type="radio" name="mode" id="analogic-complement" value="analogic-complement">
+                    <span>Analogic-complement</span>
+                  </label>
+                  <label for="triad" class="dropdown-option">
+                    <input type="radio" name="mode" id="triad" value="triad">
+                    <span>Triad</span>
+                  </label>
+                  <label for="quad" class="dropdown-option">
+                    <input type="radio" name="mode" id="quad" value="quad">
+                    <span>Quad</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <button type="submit" id="generator-form-submit-btn" class="generator-form-input generator-form-submit-btn">Get color scheme</button>
+          </form>
+        </div>
+        <ul id="generator-colors" class="generator-colors"></ul>
+      </section>
+    </main>
+  </div>
   <dialog id="login-modal">
-    <h2>log in</h2>
-    <form method="post" id="login-form">
-      <label for="login-email">
-        <h3>email</h3>
-        <input type="email" name="email" id="login-email" />
-      </label>
-      <label for="login-password">
-        <h3>password</h3>
-        <input type="password" name="password" id="login-password">
-      </label>
-      <button type="submit" id="form-login-btn">log in</button>
-      <button type="button" id="cancel-login-btn">cancel</button>
-    </form>
+    <div class="modal-inner">
+      <h2 class="auth-form-title">log in</h2>
+      <form method="post" id="login-form" class="auth-form">
+        <label for="login-email" class="auth-form-label">
+          <h3 class="auth-form-label-text">email</h3>
+          <input type="email" name="email" id="login-email" class="auth-form-input" />
+        </label>
+        <label for="login-password" class="auth-form-label">
+          <h3 class="auth-form-label-text">password</h3>
+          <input type="password" name="password" id="login-password" class="auth-form-input" />
+        </label>
+        <button type="submit" id="form-login-btn" class="auth-form-submit-btn">log in</button>
+        <button type="button" id="cancel-login-btn" class="auth-form-cancel-btn">cancel</button>
+      </form>
+    </div>
   </dialog>
   <dialog id="signup-modal">
-    <h2>log in</h2>
-    <form method="post" id="signup-form">
-      <label for="signup-email">
-        <h3>email</h3>
-        <input type="email" name="email" id="signup-email" />
-      </label>
-      <label for="signup-password">
-        <h3>password</h3>
-        <input type="password" name="password" id="signup-password">
-      </label>
-      <button type="submit" id="form-signup-btn">sign up</button>
-      <button type="button" id="cancel-signup-btn">cancel</button>
-    </form>
+    <div class="modal-inner">
+      <h2 class="auth-form-title">sign up</h2>
+      <form method="post" id="signup-form" class="auth-form">
+        <label for="signup-email" class="auth-form-label">
+          <h3 class="auth-form-label-text">email</h3>
+          <input type="email" name="email" id="signup-email" class="auth-form-input" />
+        </label>
+        <label for="signup-password" class="auth-form-label">
+          <h3 class="auth-form-label-text">password</h3>
+          <input type="password" name="password" id="signup-password" class="auth-form-input" />
+        </label>
+        <button type="submit" id="form-signup-btn" class="auth-form-submit-btn">sign up</button>
+        <button type="button" id="cancel-signup-btn" class="auth-form-cancel-btn">cancel</button>
+      </form>
+    </div>
   </dialog>
 </body>
 </html>
