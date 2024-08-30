@@ -64,3 +64,11 @@ main {
 .container {
   padding: 0 1.25em;
 }
+
+.dark-text {
+  color: black;
+}
+
+.light-text {
+  color: white;
+}
