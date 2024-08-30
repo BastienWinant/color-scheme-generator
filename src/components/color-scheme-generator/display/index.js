@@ -55,6 +55,14 @@ export function updateDisplay() {
     })
 }
 
+function deactivateColorRemoveBtns() {
+  const removeBtns = document.querySelectorAll('.remove-color-btn')
+
+  removeBtns.forEach(btn => {
+    btn.disabled = true;
+  })
+}
+
 function displayOverlayMessage(messageContainer, messageText) {
   messageContainer.insertAdjacentHTML(
     'beforeend',
@@ -73,6 +81,12 @@ colorsUl.addEventListener('click', e => {
 
   if (e.target.closest('.remove-color-btn')) {
     colorLi.remove()
+
+    const displayedColors = document.querySelectorAll('.generator-color')
+    
+    if (displayedColors.length === 1) {
+      deactivateColorRemoveBtns()
+    }
   } else if (e.target.closest('.copy-color-btn')) {
     const colorCode = colorLi.dataset.code
     navigator.clipboard.writeText(colorCode)
