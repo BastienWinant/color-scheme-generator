@@ -7,6 +7,7 @@ function createColorElements(colorsArr) {
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
+    liEl.dataset.code = colorObj.hex.value
     liEl.style.backgroundColor = colorObj.hex.value
     liEl.style.color = colorObj.contrast.value
 
@@ -54,19 +55,13 @@ export function updateDisplay() {
     })
 }
 
-// console.log(colorBtns)
-// colorBtns.forEach(btnsDiv => {
-//   console.log('testing')
-//   btnsDiv.addEventListener('click', e => {
-//     if (e.target.closest('.remove-color-btn')) {
-//       console.log(e.target.closest('generator-color'))
-//     }
-//   })
-// })
-
 colorsUl.addEventListener('click', e => {
+  const colorLi = e.target.closest('.generator-color')
+
   if (e.target.closest('.remove-color-btn')) {
-    const colorLi = e.target.closest('.generator-color')
     colorLi.remove()
+  } else if (e.target.closest('.copy-color-btn')) {
+    const colorCode = colorLi.dataset.code
+    navigator.clipboard.writeText(colorCode);
   }
 })
