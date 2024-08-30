@@ -1,0 +1,22 @@
+.generator-format-options {
+  display: flex;
+  align-items: center;
+}
+
+input[name="format"] {
+  display: none;
+}
+
+input[name="format"] + span {
+  display: block;
+  width: 3.5em;
+  padding: .625em 0;
+  border-radius: .375em;
+  text-align: center;
+  cursor: pointer;
+}
+
+input[name="format"]:checked + span {
+  background-color: lightblue;
+  color: white;
+}

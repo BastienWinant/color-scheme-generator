@@ -7,6 +7,7 @@ import { openLoginModal, logOut } from './components/user-auth/login'
 import { openSignupModal } from './components/user-auth/signup'
 import { headerNav, showLoginState } from './components/header'
 import { colorInput, modeInput, modeInputText, modeOptions, submitBtn } from './components/color-scheme-generator/form'
+import { formatOptions } from './components/color-scheme-generator/dashboard'
 import { updateDisplay } from './components/color-scheme-generator/display'
 
 const modals = document.querySelectorAll('dialog')
@@ -33,6 +34,15 @@ submitBtn.addEventListener('click', e => {
   localStorage.setItem('gcs-color-mode', mode)
 
   updateDisplay()
+})
+
+// COLOR SCHEME GENERATOR DASHBOARD
+formatOptions.forEach(radioInput => {
+  radioInput.addEventListener('click', e => {
+    localStorage.setItem('gcs-color-format', e.target.value)
+    
+    updateDisplay()
+  })
 })
 
 // COLOR SCHEME GENERATOR DISPLAY

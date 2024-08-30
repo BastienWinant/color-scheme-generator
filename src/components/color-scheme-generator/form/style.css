@@ -1,7 +1,8 @@
-.generator-form-wrapper {
+.generator-wrapper {
   box-shadow: 0 16px 8px -8px rgba(0, 0, 0, .2);
   z-index: 1;
 }
+
 .generator-form {
   display: flex;
   flex-wrap: wrap;

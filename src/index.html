@@ -22,7 +22,7 @@
     </header>
     <main>
       <section class="generator">
-        <div class="container generator-form-wrapper">
+        <div class="container generator-wrapper">
           <form method="post" id="generator-form" class="generator-form">
             <label for="color" class="generator-form-label color-label">
               <h2 class="generator-form-label-text">color</h2>
@@ -73,6 +73,22 @@
             </div>
             <button type="submit" id="generator-form-submit-btn" class="generator-form-input generator-form-submit-btn">Get color scheme</button>
           </form>
+          <section class="generator-dashboard">
+            <div class="generator-format-options">
+              <label for="hex">
+                <input type="radio" name="format" id="hex" value="hex" checked>
+                <span>hex</span>
+              </label>
+              <label for="rgb">
+                <input type="radio" name="format" id="rgb" value="rgb">
+                <span>rgb</span>
+              </label>
+              <label for="hsl">
+                <input type="radio" name="format" id="hsl" value="hsl">
+                <span>hsl</span>
+              </label>
+            </div>
+          </section>
         </div>
         <ul id="generator-colors" class="generator-colors"></ul>
       </section>

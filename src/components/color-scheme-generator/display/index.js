@@ -37,8 +37,9 @@ function createColorElements(colorsArr) {
 
 export function updateDisplay() {
   // request param values were previously set through from submission
-  const colorHex = localStorage.getItem('gcs-color-hex')
-  const colorMode = localStorage.getItem('gcs-color-mode')
+  const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
+  const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
+  const colorFormat = localStorage.getItem('gcs-color-format') || 'hex'
   
   // build the full request url
   const baseURL = "https://www.thecolorapi.com"
