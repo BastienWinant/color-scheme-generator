@@ -42,10 +42,11 @@ function initializeDisplay() {
   colorInput.value = `#${randomHex}`
   localStorage.setItem('gcs-color-hex', randomHex)
 
-  const randomMode = modeOptions[Math.floor(Math.random() * modeOptions.length)].value
-  modeInput.value = randomMode
-  modeInputText.innerText = randomMode
-  localStorage.setItem('gcs-color-mode', randomMode)
+  const randomMode = modeOptions[Math.floor(Math.random() * modeOptions.length)]
+  randomMode.checked = true
+  modeInput.value = randomMode.value
+  modeInputText.innerText = randomMode.value
+  localStorage.setItem('gcs-color-mode', randomMode.value)
 
   updateDisplay()
 }

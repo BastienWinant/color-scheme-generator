@@ -73,7 +73,7 @@ function displayOverlayMessage(messageContainer, messageText) {
 
   setTimeout(() => {
     messageContainer.querySelector('.message-overlay').remove()
-  }, 750)
+  }, 1000)
 }
 
 colorsUl.addEventListener('click', e => {
