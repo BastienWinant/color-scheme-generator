@@ -5,9 +5,12 @@ const colorsUl = document.querySelector('#generator-colors')
 // creates one li element per color in the array
 function createColorElements(colorsArr) {
   return colorsArr.map(colorObj => {
+    const colorFormat = localStorage.getItem('gcs-color-format') || 'hex'
+    
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
-    liEl.dataset.code = colorObj.hex.value
+    liEl.dataset.name = colorObj.name.value
+    liEl.dataset.value = colorObj[colorFormat].value
     liEl.style.backgroundColor = colorObj.hex.value
     liEl.style.color = colorObj.contrast.value
 
@@ -27,7 +30,7 @@ function createColorElements(colorsArr) {
           </button>
         </div>
         <h2 class="generator-color-name">${colorObj.name.value}</h2>
-        <p class="generator-color-code">${colorObj.hex.value}</p>
+        <p class="generator-color-code">${colorObj[colorFormat].value}</p>
       </div>
     `
 
@@ -39,7 +42,6 @@ export function updateDisplay() {
   // request param values were previously set through from submission
   const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
   const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
-  const colorFormat = localStorage.getItem('gcs-color-format') || 'hex'
   
   // build the full request url
   const baseURL = "https://www.thecolorapi.com"
@@ -89,7 +91,7 @@ colorsUl.addEventListener('click', e => {
       deactivateColorRemoveBtns()
     }
   } else if (e.target.closest('.copy-color-btn')) {
-    const colorCode = colorLi.dataset.code
+    const colorCode = colorLi.dataset.value
     navigator.clipboard.writeText(colorCode)
 
     displayOverlayMessage(colorLi, 'copied')

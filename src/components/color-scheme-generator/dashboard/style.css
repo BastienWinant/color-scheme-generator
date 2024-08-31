@@ -1,6 +1,7 @@
 .generator-format-options {
   display: flex;
   align-items: center;
+  gap: .3125em;
 }
 
 input[name="format"] {
@@ -14,9 +15,11 @@ input[name="format"] + span {
   border-radius: .375em;
   text-align: center;
   cursor: pointer;
+  border: 2px solid rgba(220, 220, 220, .8);
 }
 
 input[name="format"]:checked + span {
   background-color: lightblue;
   color: white;
+  border: 2px solid lightblue;
 }
