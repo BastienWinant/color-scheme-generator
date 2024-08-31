@@ -52,6 +52,7 @@ export function updateDisplay() {
   fetch(requestURL)
     .then(response => response.json())
     .then(data => {
+      localStorage.setItem('gcs-scheme', JSON.stringify(data.colors))
       colorsUl.innerHTML = ''
       const colorLis = createColorElements(data.colors)
       colorsUl.append(...colorLis)
