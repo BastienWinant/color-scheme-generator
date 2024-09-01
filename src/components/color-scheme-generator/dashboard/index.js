@@ -2,7 +2,7 @@ import './style.css'
 
 export const formatOptions = document.querySelectorAll('input[name="format"]')
 export const saveSchemeBtn = document.querySelector('#save-scheme-btn')
-const generateCssBtn = document.querySelector('#generate-scheme-btn')
+const generateCssBtn = document.querySelector('#generate-css-btn')
 
 function generateSchemeCSS() {
   const schemeData = JSON.parse(localStorage.getItem('gcs-scheme'))

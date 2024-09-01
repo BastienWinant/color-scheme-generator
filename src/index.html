@@ -77,23 +77,25 @@
             <div class="generator-format-options">
               <label for="hex">
                 <input type="radio" name="format" id="hex" value="hex" checked>
-                <span>hex</span>
+                <span class="dashboard-btn">hex</span>
               </label>
               <label for="rgb">
                 <input type="radio" name="format" id="rgb" value="rgb">
-                <span>rgb</span>
+                <span class="dashboard-btn">rgb</span>
               </label>
               <label for="hsl">
                 <input type="radio" name="format" id="hsl" value="hsl">
-                <span>hsl</span>
+                <span class="dashboard-btn">hsl</span>
               </label>
             </div>
-            <button type="button" id="save-scheme-btn">
-              <i class="fa-regular fa-bookmark fa-xl"></i>
-            </button>
-            <button type="button" id="generate-scheme-btn">
-              <i class="fa-solid fa-code fa-xl"></i>
-            </button>
+            <div>
+              <button type="button" id="save-scheme-btn" class="dashboard-btn save-scheme-btn">
+                <i class="fa-regular fa-bookmark fa-lg"></i>
+              </button>
+              <button type="button" id="generate-css-btn" class="dashboard-btn generate-css-btn">
+                <i class="fa-solid fa-code fa-lg"></i>
+              </button>
+            </div>
           </section>
         </div>
         <ul id="generator-colors" class="generator-colors"></ul>
