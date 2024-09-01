@@ -5,6 +5,14 @@ export const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 const generateCssBtn = document.querySelector('#generate-scheme-btn')
 
 function generateSchemeCSS() {
-  console.log('generating CSS...')
+  const schemeData = JSON.parse(localStorage.getItem('gcs-scheme'))
+  const schemeColors = schemeData.colors
+
+  console.log(schemeColors.map(colorObj => {
+    const varName = colorObj.name.value.toLowerCase().replace(' ', '-')
+    const varValue = colorObj.hex.value
+
+    return `--${varName}: ${varValue};`
+  }).join('\n'))
 }
 generateCssBtn.addEventListener('click', generateSchemeCSS)

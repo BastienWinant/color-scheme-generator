@@ -73,7 +73,7 @@ function saveScheme() {
     // Get a key for a new scheme
     const newSchemeKey = push(child(ref(firebaseDB), 'schemes')).key
 
-    // Write the new post's data simultaneously in the schemes list and the user's scheme list.
+    // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
     const updates = {};
     updates['/schemes/' + newSchemeKey] = schemeData
     updates['/user-schemes/' + userId + '/' + newSchemeKey] = schemeData
