@@ -1,5 +1,9 @@
 import './style.css'
 
+import { ref, child, push, update } from "firebase/database"
+
+import { firebaseAuth, firebaseDB } from "../../../app"
+
 const colorsUl = document.querySelector('#generator-colors')
 
 // creates one li element per color in the array
@@ -98,6 +102,26 @@ colorsUl.addEventListener('click', e => {
 
     displayOverlayMessage(colorLi, 'copied')
   } else if (e.target.closest('.save-color-btn')) {
+
+    if (firebaseAuth.currentUser) {
+      const colorCode = colorLi.dataset.value
+      
+      // retrieve the logged user ID
+      const userId = firebaseAuth.currentUser.uid
+  
+      // Get a key for a new color
+      const newColorKey = push(child(ref(firebaseDB), 'colors')).key
+  
+      // Write the new color's value simultaneously in the colors list and the user's color list.
+      const updates = {};
+      updates['/colors/' + newColorKey] = colorCode
+      updates['/user-colors/' + userId + '/' + newColorKey] = colorCode
+  
+      update(ref(firebaseDB), updates);
+    } else {
+      // openLoginModal()
+    }
+
     displayOverlayMessage(colorLi, 'saved')
   }
 })

@@ -80,7 +80,6 @@ function saveScheme() {
 
     update(ref(firebaseDB), updates);
   } else {
-    // TODO: open the login modal
     openLoginModal()
   }
 }
