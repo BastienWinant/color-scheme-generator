@@ -1,13 +1,14 @@
 import './style.css'
 
 import { onAuthStateChanged } from "firebase/auth"
+import { ref, child, push, update } from "firebase/database"
 
-import { firebaseAuth } from './app'
+import { firebaseAuth, firebaseDB } from './app'
 import { openLoginModal, logOut } from './components/user-auth/login'
 import { openSignupModal } from './components/user-auth/signup'
 import { headerNav, showLoginState } from './components/header'
 import { colorInput, modeInput, modeInputText, modeOptions, submitBtn } from './components/color-scheme-generator/form'
-import { formatOptions } from './components/color-scheme-generator/dashboard'
+import { formatOptions, saveSchemeBtn } from './components/color-scheme-generator/dashboard'
 import { updateDisplay } from './components/color-scheme-generator/display'
 
 const modals = document.querySelectorAll('dialog')
@@ -60,6 +61,30 @@ function initializeDisplay() {
 
   updateDisplay()
 }
+
+// SAVE COLOR SCHEME FUNCTIONALITY
+function saveScheme() {
+  const schemeData = JSON.parse(localStorage.getItem('gcs-scheme'))
+
+  if (firebaseAuth.currentUser) {
+    // retrieve the logged user ID
+    const userId = firebaseAuth.currentUser.uid
+
+    // Get a key for a new scheme
+    const newSchemeKey = push(child(ref(firebaseDB), 'schemes')).key
+
+    // Write the new post's data simultaneously in the schemes list and the user's scheme list.
+    const updates = {};
+    updates['/schemes/' + newSchemeKey] = schemeData
+    updates['/user-schemes/' + userId + '/' + newSchemeKey] = schemeData
+
+    update(ref(firebaseDB), updates);
+  } else {
+    // TODO: open the login modal
+    openLoginModal()
+  }
+}
+saveSchemeBtn.addEventListener('click', saveScheme)
 
 // USER AUTHENTICATION STATUS
 async function monitorAuthStatus() {
