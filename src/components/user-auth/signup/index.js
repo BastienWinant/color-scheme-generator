@@ -34,9 +34,7 @@ function signupEmailPassword() {
   const password = signupPasswordInput.value
 
   createUserWithEmailAndPassword(firebaseAuth, email, password)
-    // .then(closeSignupModal)
     .then(userCredential => {
-      console.log(userCredential)
       const userId = userCredential.user.uid
       const userEmail = userCredential.user.email
       writeUserData(userId, userEmail)
