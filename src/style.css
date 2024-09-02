@@ -1,17 +1,6 @@
-
-.black-border {
-  border: 1px solid black;
-}
-
 @font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Matemasie';
-  src: url('../fonts/Matemasie/Matemasie-Regular.ttf') format('truetype');
   font-style: normal;
 }
 
@@ -47,14 +36,15 @@ dialog {
 }
 
 .modal-inner {
-  padding: 2.5em 1.25em;
+  padding: 2.5em;
 }
 
 
 .app-container {
-  height: 95vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  gap: 1.25em;
 }
 
 main {

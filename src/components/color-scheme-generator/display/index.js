@@ -7,10 +7,8 @@ import { firebaseAuth, firebaseDB } from "../../../app"
 export const colorsUl = document.querySelector('#generator-colors')
 
 // creates one li element per color in the array
-export function createColorElements(colorsArr) {
-  return colorsArr.map(colorObj => {
-    const colorFormat = localStorage.getItem('gcs-color-format') || 'hex'
-    
+export function createColorElements(colorsArr, colorFormat) {
+  return colorsArr.map(colorObj => {    
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
     liEl.dataset.name = colorObj.name.value

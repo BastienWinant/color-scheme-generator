@@ -2,12 +2,14 @@ import './style.css'
 
 import { colorInput, modeInput, modeInputText, modeOptions } from './form'
 import { colorsUl, createColorElements } from './display'
-import { saveSchemeBtn } from './dashboard'
+import { getSelectedFormat, saveSchemeBtn } from './dashboard'
 
 export function updateDisplay() {
   // request param values were previously set through from submission
   const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
   const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
+  const colorFormat = getSelectedFormat()
+  console.log(colorFormat)
   
   // build the full request url
   const baseURL = "https://www.thecolorapi.com"
@@ -20,7 +22,7 @@ export function updateDisplay() {
     .then(data => {
       localStorage.setItem('gcs-scheme', JSON.stringify(data))
       colorsUl.innerHTML = ''
-      const colorLis = createColorElements(data.colors)
+      const colorLis = createColorElements(data.colors, colorFormat)
       colorsUl.append(...colorLis)
     })
 

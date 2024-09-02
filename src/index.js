@@ -39,9 +39,7 @@ submitBtn.addEventListener('click', e => {
 
 // COLOR SCHEME GENERATOR DASHBOARD
 formatOptions.forEach(radioInput => {
-  radioInput.addEventListener('click', e => {
-    localStorage.setItem('gcs-color-format', e.target.value)
-    
+  radioInput.addEventListener('click', e => {    
     updateDisplay()
   })
 })

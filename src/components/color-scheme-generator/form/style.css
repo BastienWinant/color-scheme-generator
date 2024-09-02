@@ -1,10 +1,16 @@
+.generator-form-wrapper {
+  padding: 1.25em;
+  
+  background-color: white;
+  box-shadow: 0 8px 4px -4px rgba(0, 0, 0, .2);
+  z-index: 1;
+}
+
 .generator-form {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   gap: .625em;
-
-  background-color: white;
 }
 
 .generator-form-label {
