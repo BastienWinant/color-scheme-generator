@@ -1,8 +1,9 @@
 import '../style.css'
 
 import { createUserWithEmailAndPassword } from "firebase/auth"
+import { ref, set } from "firebase/database"
 
-import { firebaseAuth } from "../../../app"
+import { firebaseAuth, firebaseDB } from "../../../app"
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
@@ -22,12 +23,23 @@ function closeSignupModal() {
 cancelSignupBtn.addEventListener('click', closeSignupModal)
 
 // signup functionality
+function writeUserData(userId, email) {
+  set(ref(firebaseDB, 'users/' + userId), {
+    email: email
+  });
+}
+
 function signupEmailPassword() {
   const email = signupEmailInput.value
   const password = signupPasswordInput.value
 
   createUserWithEmailAndPassword(firebaseAuth, email, password)
-    .then(closeSignupModal)
+    .then(userCredential => {
+      const userId = userCredential.user.uid
+      const userEmail = userCredential.user.email
+      writeUserData(userId, userEmail)
+      closeSignupModal()
+    })
     .catch(error => {
       console.log(error.message)
     })

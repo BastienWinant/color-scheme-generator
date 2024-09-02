@@ -21,5 +21,5 @@ export const firebaseDB = getDatabase(firebaseApp)
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
   connectAuthEmulator(firebaseAuth, "http://localhost:9099")
-  connectDatabaseEmulator(firebaseDB, "http://localhost:9000")
+  connectDatabaseEmulator(firebaseDB, "127.0.0.1", 9000)
 }

@@ -73,12 +73,60 @@
             </div>
             <button type="submit" id="generator-form-submit-btn" class="generator-form-input generator-form-submit-btn">Get color scheme</button>
           </form>
+          <!-- <section class="generator-dashboard">
+            <div class="generator-format-options">
+              <label for="hex">
+                <input type="radio" name="format" id="hex" value="hex" checked>
+                <span class="dashboard-btn">hex</span>
+              </label>
+              <label for="rgb">
+                <input type="radio" name="format" id="rgb" value="rgb">
+                <span class="dashboard-btn">rgb</span>
+              </label>
+              <label for="hsl">
+                <input type="radio" name="format" id="hsl" value="hsl">
+                <span class="dashboard-btn">hsl</span>
+              </label>
+            </div>
+            <div>
+              <button type="button" id="save-scheme-btn" class="dashboard-btn save-scheme-btn">
+                <i class="fa-regular fa-bookmark fa-lg"></i>
+              </button>
+              <button type="button" id="generate-css-btn" class="dashboard-btn generate-css-btn">
+                <i class="fa-solid fa-code fa-lg"></i>
+              </button>
+            </div>
+          </section> -->
         </div>
         <ul id="generator-colors" class="generator-colors"></ul>
+        <section class="container generator-dashboard">
+          <div class="generator-format-options">
+            <label for="hex">
+              <input type="radio" name="format" id="hex" value="hex" checked>
+              <span class="dashboard-btn">hex</span>
+            </label>
+            <label for="rgb">
+              <input type="radio" name="format" id="rgb" value="rgb">
+              <span class="dashboard-btn">rgb</span>
+            </label>
+            <label for="hsl">
+              <input type="radio" name="format" id="hsl" value="hsl">
+              <span class="dashboard-btn">hsl</span>
+            </label>
+          </div>
+          <div>
+            <button type="button" id="save-scheme-btn" class="dashboard-btn save-scheme-btn">
+              <i class="fa-regular fa-bookmark fa-lg"></i>
+            </button>
+            <button type="button" id="generate-css-btn" class="dashboard-btn generate-css-btn">
+              <i class="fa-solid fa-code fa-lg"></i>
+            </button>
+          </div>
+        </section>
       </section>
     </main>
   </div>
-  <dialog id="login-modal">
+  <dialog id="login-modal" class="auth-modal">
     <div class="modal-inner">
       <h2 class="auth-form-title">log in</h2>
       <form method="post" id="login-form" class="auth-form">
@@ -95,7 +143,7 @@
       </form>
     </div>
   </dialog>
-  <dialog id="signup-modal">
+  <dialog id="signup-modal" class="auth-modal">
     <div class="modal-inner">
       <h2 class="auth-form-title">sign up</h2>
       <form method="post" id="signup-form" class="auth-form">

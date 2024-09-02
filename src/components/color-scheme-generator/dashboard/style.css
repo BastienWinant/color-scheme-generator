@@ -1,0 +1,52 @@
+.generator-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .625em;
+}
+
+.dashboard-btn {
+  font-size: .85rem;
+
+  width: 3em;
+  height: 2.5em;
+
+  border-radius: .375em;
+  color: white;
+}
+
+.generator-format-options {
+  display: flex;
+  align-items: center;
+  gap: .3125em;
+}
+
+input[name="format"] {
+  display: none;
+}
+
+input[name="format"] + span {
+  display: block;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid darkgray;
+  color: darkgrey;
+}
+
+input[name="format"]:checked + span {
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  color: white;
+}
+
+.save-scheme-btn {
+  background-color: lightcoral;
+}
+
+.generate-css-btn {
+  background-color: black;
+}
