@@ -7,9 +7,9 @@ import { firebaseAuth, firebaseDB } from './app'
 import { openLoginModal, logOut } from './components/user-auth/login'
 import { openSignupModal } from './components/user-auth/signup'
 import { headerNav, showLoginState } from './components/header'
-import { colorInput, modeInput, submitBtn } from './components/color-scheme-generator/form'
-import { formatOptions, saveSchemeBtn } from './components/color-scheme-generator/dashboard'
 import { updateDisplay, initializeDisplay } from './components/color-scheme-generator/index'
+import { colorInput, modeInput, submitBtn } from './components/color-scheme-generator/form'
+import { formatOptions, getSelectedFormat, saveSchemeBtn } from './components/color-scheme-generator/dashboard'
 
 const modals = document.querySelectorAll('dialog')
 
@@ -34,12 +34,16 @@ submitBtn.addEventListener('click', e => {
   const mode = modeInput.value
   localStorage.setItem('gcs-color-mode', mode)
 
+  const format = getSelectedFormat()
+  localStorage.setItem('gcs-color-format', format)
+
   updateDisplay()
 })
 
 // COLOR SCHEME GENERATOR DASHBOARD
 formatOptions.forEach(radioInput => {
-  radioInput.addEventListener('click', e => {    
+  radioInput.addEventListener('click', e => {
+    localStorage.setItem('gcs-color-format', e.target.value)
     updateDisplay()
   })
 })

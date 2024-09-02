@@ -29,8 +29,6 @@ img {
 /* MODALS */
 dialog {
   margin: auto;
-  width: 90vw;
-  max-width: 360px;
   border: none;
   border-radius: .75em;
 }

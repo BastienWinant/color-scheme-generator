@@ -12,7 +12,7 @@ export function createColorElements(colorsArr, colorFormat) {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
     liEl.dataset.name = colorObj.name.value
-    liEl.dataset.value = colorObj.hex.value
+    liEl.dataset.value = colorObj[colorFormat].value
     liEl.style.backgroundColor = colorObj.hex.value
     liEl.style.color = colorObj.contrast.value
 
@@ -87,7 +87,6 @@ colorsUl.addEventListener('click', e => {
 
     displayOverlayMessage(colorLi, 'copied')
   } else if (e.target.closest('.save-color-btn')) {
-
     if (firebaseAuth.currentUser) {
       const colorCode = colorLi.dataset.value
       

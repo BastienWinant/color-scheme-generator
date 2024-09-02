@@ -8,8 +8,7 @@ export function updateDisplay() {
   // request param values were previously set through from submission
   const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
   const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
-  const colorFormat = getSelectedFormat()
-  console.log(colorFormat)
+  const colorFormat = localStorage.getItem('gcs-color-format') || 'hex'
   
   // build the full request url
   const baseURL = "https://www.thecolorapi.com"
@@ -40,6 +39,9 @@ export function initializeDisplay() {
   modeInput.value = randomMode.value
   modeInputText.innerText = randomMode.value
   localStorage.setItem('gcs-color-mode', randomMode.value)
+
+  const format = getSelectedFormat()
+  localStorage.setItem('gcs-color-format', format)
 
   updateDisplay()
 }

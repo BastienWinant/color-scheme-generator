@@ -7,6 +7,7 @@ const generateCssBtn = document.querySelector('#generate-css-btn')
 export function getSelectedFormat() {
   return document.querySelector('input[name="format"]:checked').value
 }
+
 function generateSchemeCSS() {
   const schemeData = JSON.parse(localStorage.getItem('gcs-scheme'))
   const schemeColors = schemeData.colors
