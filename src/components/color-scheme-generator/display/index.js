@@ -4,10 +4,10 @@ import { ref, child, push, update } from "firebase/database"
 
 import { firebaseAuth, firebaseDB } from "../../../app"
 
-const colorsUl = document.querySelector('#generator-colors')
+export const colorsUl = document.querySelector('#generator-colors')
 
 // creates one li element per color in the array
-function createColorElements(colorsArr) {
+export function createColorElements(colorsArr) {
   return colorsArr.map(colorObj => {
     const colorFormat = localStorage.getItem('gcs-color-format') || 'hex'
     
@@ -42,26 +42,26 @@ function createColorElements(colorsArr) {
   })
 }
 
-export function updateDisplay() {
-  // request param values were previously set through from submission
-  const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
-  const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
+// export function updateDisplay() {
+//   // request param values were previously set through from submission
+//   const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
+//   const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
   
-  // build the full request url
-  const baseURL = "https://www.thecolorapi.com"
-  const endpoint = "scheme"
-  const requestURL = `${baseURL}/${endpoint}?hex=${colorHex}&mode=${colorMode}`
+//   // build the full request url
+//   const baseURL = "https://www.thecolorapi.com"
+//   const endpoint = "scheme"
+//   const requestURL = `${baseURL}/${endpoint}?hex=${colorHex}&mode=${colorMode}`
 
-  // use the api data to fill the ul colors container
-  fetch(requestURL)
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem('gcs-scheme', JSON.stringify(data))
-      colorsUl.innerHTML = ''
-      const colorLis = createColorElements(data.colors)
-      colorsUl.append(...colorLis)
-    })
-}
+//   // use the api data to fill the ul colors container
+//   fetch(requestURL)
+//     .then(response => response.json())
+//     .then(data => {
+//       localStorage.setItem('gcs-scheme', JSON.stringify(data))
+//       colorsUl.innerHTML = ''
+//       const colorLis = createColorElements(data.colors)
+//       colorsUl.append(...colorLis)
+//     })
+// }
 
 function deactivateColorRemoveBtns() {
   const removeBtns = document.querySelectorAll('.remove-color-btn')

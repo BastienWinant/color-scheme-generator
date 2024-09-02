@@ -7,9 +7,9 @@ import { firebaseAuth, firebaseDB } from './app'
 import { openLoginModal, logOut } from './components/user-auth/login'
 import { openSignupModal } from './components/user-auth/signup'
 import { headerNav, showLoginState } from './components/header'
-import { colorInput, modeInput, modeInputText, modeOptions, submitBtn } from './components/color-scheme-generator/form'
+import { colorInput, modeInput, submitBtn } from './components/color-scheme-generator/form'
 import { formatOptions, saveSchemeBtn } from './components/color-scheme-generator/dashboard'
-import { updateDisplay } from './components/color-scheme-generator/display'
+import { updateDisplay, initializeDisplay } from './components/color-scheme-generator/index'
 
 const modals = document.querySelectorAll('dialog')
 
@@ -46,22 +46,6 @@ formatOptions.forEach(radioInput => {
   })
 })
 
-// COLOR SCHEME GENERATOR DISPLAY
-// assign random values the form inputs
-function initializeDisplay() {
-  const randomHex = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
-  colorInput.value = `#${randomHex}`
-  localStorage.setItem('gcs-color-hex', randomHex)
-
-  const randomMode = modeOptions[Math.floor(Math.random() * modeOptions.length)]
-  randomMode.checked = true
-  modeInput.value = randomMode.value
-  modeInputText.innerText = randomMode.value
-  localStorage.setItem('gcs-color-mode', randomMode.value)
-
-  updateDisplay()
-}
-
 // SAVE COLOR SCHEME FUNCTIONALITY
 function saveScheme() {
   const schemeData = JSON.parse(localStorage.getItem('gcs-scheme'))
@@ -74,11 +58,13 @@ function saveScheme() {
     const newSchemeKey = push(child(ref(firebaseDB), 'schemes')).key
 
     // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
-    const updates = {};
+    const updates = {}
     updates['/schemes/' + newSchemeKey] = schemeData
     updates['/user-schemes/' + userId + '/' + newSchemeKey] = schemeData
 
-    update(ref(firebaseDB), updates);
+    update(ref(firebaseDB), updates)
+
+    saveSchemeBtn.innerHTML = '<i class="fa-solid fa-bookmark fa-lg"></i>'
   } else {
     openLoginModal()
   }
