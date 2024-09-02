@@ -14,7 +14,7 @@ export function createColorElements(colorsArr) {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
     liEl.dataset.name = colorObj.name.value
-    liEl.dataset.value = colorObj[colorFormat].value
+    liEl.dataset.value = colorObj.hex.value
     liEl.style.backgroundColor = colorObj.hex.value
     liEl.style.color = colorObj.contrast.value
 
@@ -42,27 +42,6 @@ export function createColorElements(colorsArr) {
   })
 }
 
-// export function updateDisplay() {
-//   // request param values were previously set through from submission
-//   const colorHex = localStorage.getItem('gcs-color-hex') || '808080'
-//   const colorMode = localStorage.getItem('gcs-color-mode') || 'monochrome'
-  
-//   // build the full request url
-//   const baseURL = "https://www.thecolorapi.com"
-//   const endpoint = "scheme"
-//   const requestURL = `${baseURL}/${endpoint}?hex=${colorHex}&mode=${colorMode}`
-
-//   // use the api data to fill the ul colors container
-//   fetch(requestURL)
-//     .then(response => response.json())
-//     .then(data => {
-//       localStorage.setItem('gcs-scheme', JSON.stringify(data))
-//       colorsUl.innerHTML = ''
-//       const colorLis = createColorElements(data.colors)
-//       colorsUl.append(...colorLis)
-//     })
-// }
-
 function deactivateColorRemoveBtns() {
   const removeBtns = document.querySelectorAll('.remove-color-btn')
 
@@ -84,17 +63,26 @@ function displayOverlayMessage(messageContainer, messageText) {
   }, 1000)
 }
 
+function removeSchemeColor(colorEl) {
+  // update the scheme object in localstorage
+  const schemeData = JSON.parse(localStorage.getItem('gcs-scheme'))
+  schemeData.colors = schemeData.colors.filter(colorObj => colorObj.hex.value != colorEl.dataset.value)
+  schemeData.count--
+  localStorage.setItem('gcs-scheme', JSON.stringify(schemeData))
+  
+  // remove the corresponding DOM element
+  colorEl.remove()
+
+  if (schemeData.count === 1) {
+    deactivateColorRemoveBtns()
+  }
+}
+
 colorsUl.addEventListener('click', e => {
   const colorLi = e.target.closest('.generator-color')
 
   if (e.target.closest('.remove-color-btn')) {
-    colorLi.remove()
-
-    const displayedColors = document.querySelectorAll('.generator-color')
-    
-    if (displayedColors.length === 1) {
-      deactivateColorRemoveBtns()
-    }
+    removeSchemeColor(colorLi)
   } else if (e.target.closest('.copy-color-btn')) {
     const colorCode = colorLi.dataset.value
     navigator.clipboard.writeText(colorCode)

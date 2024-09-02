@@ -1,3 +1,5 @@
+import './style.css'
+
 import { colorInput, modeInput, modeInputText, modeOptions } from './form'
 import { colorsUl, createColorElements } from './display'
 import { saveSchemeBtn } from './dashboard'
