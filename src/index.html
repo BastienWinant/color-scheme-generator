@@ -12,14 +12,58 @@
     <header class="header">
       <div class="container header-container">
         <i class="fa-solid fa-paint-roller fa-xl"></i>
-        <button type="button" id="nav-expand-btn">
+        <button type="button" id="nav-expand-btn" class="nav-expand-btn">
           <i class="fa-solid fa-bars fa-xl"></i>
         </button>
-        <nav id="nav" class="nav">test</nav>
+        <div id="nav-container" class="nav-container">
+          <nav id="nav" class="nav">
+            <button type="button" class="nav-btn">my colors</button>
+            <button type="button" class="nav-btn">my schemes</button>
+            <hr class="nav-btn-separator">
+            <button type="button" id="nav-auth-expand-btn" class="nav-auth-expand-btn">
+              <i class="fa-solid fa-user fa-xl"></i>
+            </button>
+            <div id="nav-auth-btns-container" class="nav-auth-btns-container">
+              <section class="nav-auth-btns">
+                <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+                <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
+                <!-- <button type="button" class="nav-btn nav-logout-btn">log out</button> -->
+              </section>
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
     <main class="main"></main>
     <footer class="footer"></footer>
   </div>
+  <dialog id="login-modal" class="auth-modal">
+    <form class="auth-form" id="login-form">
+      <label for="login-email">
+        <h2>email</h2>
+        <input type="email" name="email" id="login-email" autofocus />
+      </label>
+      <label for="login-password">
+        <h2>password</h2>
+        <input type="password" name="password" id="login-password" />
+      </label>
+      <button type="submit" id="login-btn" class="auth-form-submit-btn">log in</button>
+      <button type="button" id="cancel-login-btn" class="cancel-auth-btn">cancel</button>
+    </form>
+  </dialog>
+  <dialog id="signup-modal" class="auth-modal">
+    <form class="auth-form" id="signup-form">
+      <label for="signup-email">
+        <h2>email</h2>
+        <input type="email" name="email" id="signup-email" autofocus />
+      </label>
+      <label for="signup-password">
+        <h2>password</h2>
+        <input type="password" name="password" id="signup-password" />
+      </label>
+      <button type="submit" id="signup-btn" class="auth-form-submit-btn">sign up</button>
+      <button type="button" id="cancel-signup-btn" class="cancel-auth-btn">cancel</button>
+    </form>
+  </dialog>
 </body>
 </html>

@@ -24,6 +24,17 @@ button {
   display: block;
   cursor: pointer;
   border: none;
+  background-color: transparent;
+}
+
+image {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+dialog {
+  margin: auto;
 }
 
 .app-container {
@@ -45,28 +56,187 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 1.25em;
 
   position: relative;
+}
+
+.nav-container {
+  /* positioning */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* sizing */
+  width: 100vw;
+  height: 100vh;
+
+  /* styling */
+  background-color: transparent;
+}
+
+.nav-expanded {
+  display: block;
 }
 
 .nav {
   /* positioning */
   position: absolute;
-  top: 4em;
+  top: 3.25em;
   right: 0;
+  padding: 1em;
 
   /* content layout */
-  /* display: none; */
   display: flex;
-  opacity: 0;
+  flex-direction: column;
+  gap: .625em;
 
-  height: 200px;
-  width: 200px;
-  background-color: blue;
+  /* styling */
+  background-color: white;
+  border-radius: .375em;
+  box-shadow: 0 15px 10px -3px rgba(0, 0, 0, .1),
+              0 0 6px -2px rgba(0, 0, 0, .05),
+              0 0 0 1px rgba(0, 0, 0, .05);
 }
 
-.nav-expanded {
+.nav-auth-expand-btn {
+  display: none;
+}
+
+.nav-auth-btns {
   display: flex;
-  height: 200px;
-  opacity: 1;
+  flex-direction: column;
+  gap: .625em;
+
+  background-color: white;
+}
+
+.nav-btn {
+  padding: .625em 1.25em;
+  border-radius: .375em;
+
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.nav-signup-btn,
+.nav-logout-btn {
+  background-color: black;
+  color: white;
+}
+
+.nav-btn-separator {
+  border: none;
+  border-left: 1px solid rgba(120, 120, 120, .3);
+  border-top: 1px solid rgba(120, 120, 120, .3);
+
+  margin: .3125em;
+}
+
+@media only screen and (min-width: 576px) {
+  .nav-expand-btn {
+    display: none;
+  }
+
+  .nav-container {
+    /* positioning */
+    position: static;
+    display: block;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+  }
+
+  .nav {
+    /* positioning */
+    position: static;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+
+    /* content layout */
+    flex-direction: row;
+
+    /* styling */
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .nav-auth-expand-btn {
+    display: block;
+  }
+
+  .nav-auth-btns-container {
+    /* positioning */
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    /* sizing */
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .nav-auth-expanded {
+    display: block;
+  }
+
+  .nav-auth-btns {
+    /* positioning */
+    position: absolute;
+    top: 3.25em;
+    right: 0;
+    padding: 1em;
+
+    /* content layout */
+    display: flex;
+    flex-direction: column;
+
+    /* styling */
+    background-color: white;
+    border-radius: .375em;
+    box-shadow: 0 15px 10px -3px rgba(0, 0, 0, .1),
+                0 0 6px -2px rgba(0, 0, 0, .05),
+                0 0 0 1px rgba(0, 0, 0, .05);
+  }
+
+  .nav-btn-separator {  
+    margin: .625em;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .nav-auth-expand-btn {
+    display: none;
+  }
+
+  .nav-auth-btns-container {
+    /* positioning */
+    position: static;
+    display: block;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+  }
+
+  .nav-auth-btns {
+    /* positioning */
+    position: static;
+
+    /* sizing */
+    width: auto;
+    height: auto;
+
+    /* content layout */
+    flex-direction: row;
+
+    /* styling */
+    padding: 0;
+    box-shadow: none;
+  }
 }
