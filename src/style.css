@@ -1,3 +1,4 @@
+/* FONT IMPORTS */
 @font-face {
   font-family: 'Inter';
   src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
@@ -8,4 +9,64 @@
   font-family: 'Patua';
   src: url('../fonts/Patua_One/PatuaOne-Regular.ttf') format('truetype');
   font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Inter';
+}
+
+/* CSS SELECTORS */
+button {
+  display: block;
+  cursor: pointer;
+  border: none;
+}
+
+.app-container {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
+  background-color: lightcoral;
+}
+
+/* HEADER */
+.header-container {
+  height: 4em;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+.nav {
+  /* positioning */
+  position: absolute;
+  top: 4em;
+  right: 0;
+
+  /* content layout */
+  /* display: none; */
+  display: flex;
+  opacity: 0;
+
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+}
+
+.nav-expanded {
+  display: flex;
+  height: 200px;
+  opacity: 1;
 }

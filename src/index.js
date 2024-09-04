@@ -27,3 +27,13 @@ if (process.env.NODE_ENV !== 'production') {
   connectAuthEmulator(auth, "http://127.0.0.1:9099")
   connectDatabaseEmulator(db, "127.0.0.1", 9000)
 }
+
+// HEADER
+const navExpandBtn = document.querySelector('#nav-expand-btn')
+const nav = document.querySelector('#nav')
+
+function toggleNav() {
+  nav.classList.toggle('nav-expanded')
+}
+
+navExpandBtn.addEventListener('click', toggleNav)
