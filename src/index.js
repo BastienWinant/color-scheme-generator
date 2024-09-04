@@ -1,11 +1,10 @@
 import './style.css'
 
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, connectAuthEmulator } from "firebase/auth"
 import { getDatabase, connectDatabaseEmulator } from "firebase/database"
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
   authDomain: process.env.AUTH_DOMAIN,
@@ -34,8 +33,9 @@ const navContainer = document.querySelector('#nav-container')
 const navAuthExpandBtn = document.querySelector('#nav-auth-expand-btn')
 const navAuthContainer = document.querySelector('#nav-auth-btns-container')
 const navLoginBtn = document.querySelector('#nav-login-btn')
-const cancelLoginBtn = document.querySelector('#cancel-login-btn')
 const navSignupBtn = document.querySelector('#nav-signup-btn')
+
+const cancelLoginBtn = document.querySelector('#cancel-login-btn')
 const cancelSignupBtn = document.querySelector('#cancel-signup-btn')
 
 // EXPAND/COLLAPSE NAV
