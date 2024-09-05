@@ -7,7 +7,12 @@ import { getDatabase, connectDatabaseEmulator } from "firebase/database"
 import { openLoginModal } from './components/auth-forms/login'
 import { openSignupModal } from './components/auth-forms/signup'
 
-import { header, expandNav, collapseNav, expandNavAuth, collapseNavAuth } from './components/header';
+import {
+  header,
+  expandNav, collapseNav,
+  expandNavAuth, collapseNavAuth,
+  navLoginBtn, navSignupBtn
+ } from './components/header';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -32,38 +37,29 @@ if (process.env.NODE_ENV !== 'production') {
   connectDatabaseEmulator(db, "127.0.0.1", 9000)
 }
 
-// // open the authentication modals
-// navLoginBtn.addEventListener('click', () => {
-//   collapseNav()
-//   collapseNavAuth()
-//   openLoginModal()
-// })
-
-// navSignupBtn.addEventListener('click', () => {
-//   collapseNav()
-//   collapseNavAuth()
-//   openSignupModal()
-// })
-
 header.addEventListener('click', e => {
   console.log(e.target)
   if (e.target.closest("#nav-expand-btn")) {
     expandNav()
   } else if (e.target.closest("#nav-auth-expand-btn")) {
     expandNavAuth()
-  } else if (e.target.id === "nav-login-btn") {
+  } else if (e.target === navLoginBtn) {
     collapseNav()
     collapseNavAuth()
     openLoginModal()
-  } else if (e.target.id === "nav-signup-btn") {
+  } else if (e.target === navSignupBtn) {
     collapseNav()
     collapseNavAuth()
     openSignupModal()
   } else if (e.target.id === "nav-logout-btn") {
-
   } else if (!e.target.closest('.nav')) {
     collapseNav()
   } else if (!e.target.closest('.nav-auth-btns')) {
     collapseNavAuth()
   }
+})
+
+window.addEventListener('resize', () => {
+  collapseNav()
+  collapseNavAuth()
 })
