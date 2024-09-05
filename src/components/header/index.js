@@ -1,3 +1,5 @@
+import './style.css'
+
 export const header = document.querySelector('#header')
 const navContainer = document.querySelector('#nav-container')
 const navAuthContainer = document.querySelector('#nav-auth-btns-container')
