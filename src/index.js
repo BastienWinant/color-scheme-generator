@@ -4,6 +4,11 @@ import { initializeApp } from "firebase/app";
 import { getAuth, connectAuthEmulator } from "firebase/auth"
 import { getDatabase, connectDatabaseEmulator } from "firebase/database"
 
+import { openLoginModal } from './components/auth-forms/login'
+import { openSignupModal } from './components/auth-forms/signup'
+
+import { header, expandNav, collapseNav, expandNavAuth, collapseNavAuth } from './components/header';
+
 // Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -27,69 +32,38 @@ if (process.env.NODE_ENV !== 'production') {
   connectDatabaseEmulator(db, "127.0.0.1", 9000)
 }
 
-// HEADER
-const navExpandBtn = document.querySelector('#nav-expand-btn')
-const navContainer = document.querySelector('#nav-container')
-const navAuthExpandBtn = document.querySelector('#nav-auth-expand-btn')
-const navAuthContainer = document.querySelector('#nav-auth-btns-container')
-const navLoginBtn = document.querySelector('#nav-login-btn')
-const navSignupBtn = document.querySelector('#nav-signup-btn')
+// // open the authentication modals
+// navLoginBtn.addEventListener('click', () => {
+//   collapseNav()
+//   collapseNavAuth()
+//   openLoginModal()
+// })
 
-const cancelLoginBtn = document.querySelector('#cancel-login-btn')
-const cancelSignupBtn = document.querySelector('#cancel-signup-btn')
+// navSignupBtn.addEventListener('click', () => {
+//   collapseNav()
+//   collapseNavAuth()
+//   openSignupModal()
+// })
 
-// EXPAND/COLLAPSE NAV
-function expandNav() {
-  navContainer.classList.add('nav-expanded')
-}
-navExpandBtn.addEventListener('click', expandNav)
-
-function collapseNav() {
-  navContainer.classList.remove('nav-expanded')
-}
-navContainer.addEventListener('click', e => {
-  if (!e.target.closest('.nav')) {
+header.addEventListener('click', e => {
+  console.log(e.target)
+  if (e.target.closest("#nav-expand-btn")) {
+    expandNav()
+  } else if (e.target.closest("#nav-auth-expand-btn")) {
+    expandNavAuth()
+  } else if (e.target.id === "nav-login-btn") {
     collapseNav()
-  }
-})
+    collapseNavAuth()
+    openLoginModal()
+  } else if (e.target.id === "nav-signup-btn") {
+    collapseNav()
+    collapseNavAuth()
+    openSignupModal()
+  } else if (e.target.id === "nav-logout-btn") {
 
-// EXPAND/COLLAPSE NAV AUTH
-function expandNavAuth() {
-  navAuthContainer.classList.add('nav-auth-expanded')
-}
-navAuthExpandBtn.addEventListener('click', expandNavAuth)
-
-function collapseNavAuth() {
-  navAuthContainer.classList.remove('nav-auth-expanded')
-}
-navAuthContainer.addEventListener('click', e => {
-  if (!e.target.closest('.nav-auth-btns')) {
+  } else if (!e.target.closest('.nav')) {
+    collapseNav()
+  } else if (!e.target.closest('.nav-auth-btns')) {
     collapseNavAuth()
   }
 })
-
-window.addEventListener('resize', () => {
-  collapseNav()
-  collapseNavAuth()
-})
-
-// AUTHENTICATION BUTTONS
-function openLoginModal() {
-  document.querySelector('#login-modal').showModal()
-}
-navLoginBtn.addEventListener('click', openLoginModal)
-
-function closeLoginModal() {
-  document.querySelector('#login-modal').close()
-}
-cancelLoginBtn.addEventListener('click', closeLoginModal)
-
-function openSignupModal() {
-  document.querySelector('#signup-modal').showModal()
-}
-navSignupBtn.addEventListener('click', openSignupModal)
-
-function closeSignupModal() {
-  document.querySelector('#signup-modal').close()
-}
-cancelSignupBtn.addEventListener('click', closeSignupModal)
