@@ -24,10 +24,9 @@
               <i class="fa-solid fa-user fa-xl"></i>
             </button>
             <div id="nav-auth-btns-container" class="nav-auth-btns-container">
-              <section class="nav-auth-btns">
+              <section id="nav-auth-btns" class="nav-auth-btns">
                 <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
                 <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
-                <!-- <button type="button" class="nav-btn nav-logout-btn">log out</button> -->
               </section>
             </div>
           </nav>
@@ -38,7 +37,7 @@
     <footer class="footer"></footer>
   </div>
   <dialog id="login-modal" class="auth-modal">
-    <form class="auth-form" id="login-form">
+    <form method="post" class="auth-form" id="login-form">
       <label for="login-email">
         <h2>email</h2>
         <input type="email" name="email" id="login-email" autofocus />
@@ -52,7 +51,7 @@
     </form>
   </dialog>
   <dialog id="signup-modal" class="auth-modal">
-    <form class="auth-form" id="signup-form">
+    <form method="post" class="auth-form" id="signup-form">
       <label for="signup-email">
         <h2>email</h2>
         <input type="email" name="email" id="signup-email" autofocus />

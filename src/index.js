@@ -1,57 +1,42 @@
 import './style.css'
 
-import { initializeApp } from "firebase/app";
-import { getAuth, connectAuthEmulator } from "firebase/auth"
-import { getDatabase, connectDatabaseEmulator } from "firebase/database"
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from 'firebase/auth';
 
-import { openLoginModal } from './components/auth-forms/login'
-import { openSignupModal } from './components/auth-forms/signup'
+import { auth } from './app';
+
+import { loginEmailInput, loginPasswordInput, loginBtn, openLoginModal, closeLoginModal } from './components/auth-forms/login'
+import { signupEmailInput, signupPasswordInput, signupBtn, openSignupModal, closeSignupModal } from './components/auth-forms/signup'
 
 import {
   header,
   expandNav, collapseNav,
   expandNavAuth, collapseNavAuth,
-  navLoginBtn, navSignupBtn
+  navLoginBtn, navSignupBtn, navLogoutBtn,
+  showLoginState
  } from './components/header';
 
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  databaseURL: process.env.DB_URL,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID
-}
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const auth = getAuth(app)
-const db = getDatabase(app)
-
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!')
-
-  connectAuthEmulator(auth, "http://127.0.0.1:9099")
-  connectDatabaseEmulator(db, "127.0.0.1", 9000)
-}
-
 header.addEventListener('click', e => {
-  console.log(e.target)
-  if (e.target.closest("#nav-expand-btn")) {
+  if (e.target.closest('#nav-expand-btn')) {
     expandNav()
-  } else if (e.target.closest("#nav-auth-expand-btn")) {
+  } else if (e.target.closest('#nav-auth-expand-btn')) {
     expandNavAuth()
-  } else if (e.target === navLoginBtn) {
+  } else if (e.target.id === 'nav-login-btn') {
     collapseNav()
     collapseNavAuth()
     openLoginModal()
-  } else if (e.target === navSignupBtn) {
+  } else if (e.target.id === 'nav-signup-btn') {
     collapseNav()
     collapseNavAuth()
     openSignupModal()
-  } else if (e.target.id === "nav-logout-btn") {
+  } else if (e.target.id === 'nav-logout-btn') {
+    collapseNav()
+    collapseNavAuth()
+    logOut()
   } else if (!e.target.closest('.nav')) {
     collapseNav()
   } else if (!e.target.closest('.nav-auth-btns')) {
@@ -63,3 +48,45 @@ window.addEventListener('resize', () => {
   collapseNav()
   collapseNavAuth()
 })
+
+// LOGIN FUNCTIONALITY
+async function loginEmailPassword(e) {
+  e.preventDefault()
+
+  const loginEmail = loginEmailInput.value
+  const loginPassword = loginPasswordInput.value
+
+  signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    // .then(userCredential => console.log(userCredential.user))
+    .catch(error => console.log(error.message))
+}
+loginBtn.addEventListener('click', loginEmailPassword)
+
+// LOGOUT FUNCTIONALITY
+async function logOut() {
+  signOut(auth)
+}
+
+// SIGNUP FUNCTIONALITY
+async function signupEmailPassword(e) {
+  e.preventDefault()
+
+  const signupEmail = signupEmailInput.value
+  const signupPassword = signupPasswordInput.value
+
+  createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+    .then(userCredential => console.log(userCredential.user))
+    .catch(error => console.log(error))
+}
+signupBtn.addEventListener('click', signupEmailPassword)
+
+// AUTH STATUS MONITORING
+async function monitorAuthStatus() {
+  onAuthStateChanged(auth, user => {
+    closeLoginModal()
+    closeSignupModal()
+
+    showLoginState(user)
+  })
+}
+monitorAuthStatus()
