@@ -5,21 +5,14 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signOut
-} from 'firebase/auth';
+} from 'firebase/auth'
 
-import { auth } from './app';
+import { auth } from './app'
+import { loginModal, loginEmailInput, loginPasswordInput, loginBtn, openLoginModal, closeLoginModal } from './components/auth-forms/login'
+import { signupModal, signupEmailInput, signupPasswordInput, signupBtn, openSignupModal, closeSignupModal } from './components/auth-forms/signup'
+import { header, expandNav, collapseNav, expandNavAuth, collapseNavAuth, showLoginState } from './components/header'
 
-import { loginEmailInput, loginPasswordInput, loginBtn, openLoginModal, closeLoginModal } from './components/auth-forms/login'
-import { signupEmailInput, signupPasswordInput, signupBtn, openSignupModal, closeSignupModal } from './components/auth-forms/signup'
-
-import {
-  header,
-  expandNav, collapseNav,
-  expandNavAuth, collapseNavAuth,
-  navLoginBtn, navSignupBtn, navLogoutBtn,
-  showLoginState
- } from './components/header';
-
+// handle click events on the header area
 header.addEventListener('click', e => {
   if (e.target.closest('#nav-expand-btn')) {
     expandNav()
@@ -44,12 +37,25 @@ header.addEventListener('click', e => {
   }
 })
 
+// collapse nav on window resize
 window.addEventListener('resize', () => {
   collapseNav()
   collapseNavAuth()
 })
 
-// LOGIN FUNCTIONALITY
+loginModal.addEventListener('click', e => {
+  if (!e.target.closest('#login-form')) {
+    closeLoginModal()
+  }
+})
+
+signupModal.addEventListener('click', e => {
+  if (!e.target.closest('#signup-form')) {
+    closeSignupModal()
+  }
+})
+
+// login functionality
 async function loginEmailPassword(e) {
   e.preventDefault()
 
@@ -62,12 +68,12 @@ async function loginEmailPassword(e) {
 }
 loginBtn.addEventListener('click', loginEmailPassword)
 
-// LOGOUT FUNCTIONALITY
+// logout functionality
 async function logOut() {
   signOut(auth)
 }
 
-// SIGNUP FUNCTIONALITY
+// signup functionality
 async function signupEmailPassword(e) {
   e.preventDefault()
 
@@ -80,7 +86,7 @@ async function signupEmailPassword(e) {
 }
 signupBtn.addEventListener('click', signupEmailPassword)
 
-// AUTH STATUS MONITORING
+// auth status monitoring
 async function monitorAuthStatus() {
   onAuthStateChanged(auth, user => {
     closeLoginModal()

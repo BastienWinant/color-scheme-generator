@@ -38,29 +38,39 @@
   </div>
   <dialog id="login-modal" class="auth-modal">
     <form method="post" class="auth-form" id="login-form">
-      <label for="login-email">
-        <h2>email</h2>
-        <input type="email" name="email" id="login-email" autofocus />
-      </label>
-      <label for="login-password">
-        <h2>password</h2>
-        <input type="password" name="password" id="login-password" />
-      </label>
-      <button type="submit" id="login-btn" class="auth-form-submit-btn">log in</button>
+      <fieldset>
+        <legend>
+          <h2>log in</h2>
+        </legend>
+        <label for="login-email">
+          <h2>email</h2>
+          <input type="email" name="email" id="login-email" autofocus />
+        </label>
+        <label for="login-password">
+          <h2>password</h2>
+          <input type="password" name="password" id="login-password" />
+        </label>
+        <button type="submit" id="login-btn" class="auth-form-submit-btn">log in</button>
+      </fieldset>
       <button type="button" id="cancel-login-btn" class="cancel-auth-btn">cancel</button>
     </form>
   </dialog>
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" class="auth-form" id="signup-form">
-      <label for="signup-email">
-        <h2>email</h2>
-        <input type="email" name="email" id="signup-email" autofocus />
-      </label>
-      <label for="signup-password">
-        <h2>password</h2>
-        <input type="password" name="password" id="signup-password" />
-      </label>
-      <button type="submit" id="signup-btn" class="auth-form-submit-btn">sign up</button>
+      <fieldset>
+        <legend>
+          <h2>sign up</h2>
+        </legend>
+        <label for="signup-email">
+          <h2>email</h2>
+          <input type="email" name="email" id="signup-email" autofocus />
+        </label>
+        <label for="signup-password">
+          <h2>password</h2>
+          <input type="password" name="password" id="signup-password" />
+        </label>
+        <button type="submit" id="signup-btn" class="auth-form-submit-btn">sign up</button>
+      </fieldset>
       <button type="button" id="cancel-signup-btn" class="cancel-auth-btn">cancel</button>
     </form>
   </dialog>

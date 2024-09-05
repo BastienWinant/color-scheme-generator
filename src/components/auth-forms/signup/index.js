@@ -1,3 +1,4 @@
+export const signupModal = document.querySelector('#signup-modal')
 export const signupEmailInput = document.querySelector('#signup-email')
 export const signupPasswordInput = document.querySelector('#signup-password')
 export const signupBtn = document.querySelector('#signup-btn')
