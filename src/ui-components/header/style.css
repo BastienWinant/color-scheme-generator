@@ -88,6 +88,7 @@
   display: none;
 }
 
+.nav-logout-btn,
 .nav-signup-btn {
   background-color: black;
   color: white;

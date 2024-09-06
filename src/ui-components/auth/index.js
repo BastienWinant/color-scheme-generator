@@ -1,6 +1,6 @@
 import './style.css'
 
-import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 
 import { auth } from '../../app'
 
@@ -45,12 +45,13 @@ signupModal.addEventListener('click', e => {
 // login functionality
 async function loginEmailPassword(e) {
   e.preventDefault()
+
   const loginEmail = loginEmailInput.value
   const loginPassword = loginPasswordInput.value
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => console.log(userCredential.user))
-    .catch(error => console.log(error.message))
+    .catch(error => console.log(error.message)) // showLoginError
 }
 loginBtn.addEventListener('click', loginEmailPassword)
 
@@ -63,7 +64,20 @@ async function signupEmailPassword(e) {
 
   createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
     .then(userCredential => console.log(userCredential.user))
-    .catch(error => console.log(error.message))
+    .catch(error => console.log(error.message)) // showSignupError
 }
 signupBtn.addEventListener('click', signupEmailPassword)
 
+export async function logOut(e) {
+  e.preventDefault()
+
+  signOut(auth)
+}
+
+async function monitorAuthState() {
+  onAuthStateChanged(auth, () => {
+    closeLoginModal()
+    closeSignupModal()
+  })
+}
+monitorAuthState()
