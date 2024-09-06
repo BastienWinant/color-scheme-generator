@@ -16,15 +16,15 @@
   padding: 0;
   box-sizing: border-box;
 
-  font-family: 'Inter';
+  font-family: sans-serif;
 }
 
 /* CSS SELECTORS */
-button {
+a, button {
   display: block;
   cursor: pointer;
-  border: none;
   background-color: transparent;
+  border: none;
 }
 
 image {
@@ -35,6 +35,8 @@ image {
 
 dialog {
   margin: auto;
+  border: none;
+  background-color: transparent;
 }
 
 .app-container {
@@ -42,9 +44,6 @@ dialog {
 
   display: flex;
   flex-direction: column;
-}
 
-.main {
-  flex-grow: 1;
   background-color: lightcoral;
 }

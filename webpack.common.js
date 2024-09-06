@@ -1,17 +1,25 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    auth: './src/ui-components/auth/index.js',
+    header: {
+      dependOn: 'auth',
+      import: './src/ui-components/header/index.js'
+    },
+    generator: {
+      dependOn: 'header',
+      import: './src/generator.js',
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new Dotenv()
   ],
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
     clean: true,
   },
@@ -31,4 +39,7 @@ module.exports = {
       },
     ],
   },
-}
+  optimization: {
+    runtimeChunk: 'single',
+  },
+};
