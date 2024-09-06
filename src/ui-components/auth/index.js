@@ -5,11 +5,13 @@ import { signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, on
 import { auth } from '../../app'
 
 const loginModal = document.querySelector('#login-modal')
+const loginForm = document.querySelector('#login-form')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
 
 const signupModal = document.querySelector('#signup-modal')
+const signupForm = document.querySelector('#signup-form')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
@@ -20,6 +22,7 @@ export function openLoginModal() {
 }
 
 function closeLoginModal() {
+  loginForm.reset()
   loginModal.close()
 }
 loginModal.addEventListener('click', e => {
@@ -34,6 +37,7 @@ export function openSignupModal() {
 }
 
 function closeSignupModal() {
+  signupForm.reset()
   signupModal.close()
 }
 signupModal.addEventListener('click', e => {
@@ -68,6 +72,7 @@ async function signupEmailPassword(e) {
 }
 signupBtn.addEventListener('click', signupEmailPassword)
 
+// logout functionality
 export async function logOut(e) {
   e.preventDefault()
 
