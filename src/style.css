@@ -204,6 +204,10 @@ main {
   display: flex;
 }
 
+.dropdown-arrow {
+  color: var(--accent-dark);
+}
+
 .mode-option {
   background-color: transparent;
 }
@@ -233,7 +237,6 @@ input[name="mode"]:checked + span {
   font-weight: 600;
 }
 
-.arrow-img,
 .checkmark-img {
   height: .75em;
   width: auto;
