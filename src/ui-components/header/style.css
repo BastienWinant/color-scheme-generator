@@ -11,7 +11,8 @@
   justify-content: space-between;
 
   /* styling */
-  background-color: white;
+  background-color: var(--main);
+  z-index: 2;
 }
 
 .nav-container {
@@ -38,7 +39,7 @@
   padding: 1em;
 
   /* styling */
-  background-color: white;
+  background-color: var(--main);
   border-radius: .625em;
   box-shadow: 0 15px 10px -3px rgba(0, 0, 0, .1),
               0 0 6px -2px rgba(0, 0, 0, .05),
@@ -54,7 +55,7 @@
   align-items: center;
   gap: .3125em;
 
-  background-color: white;
+  background-color: var(--main);
 }
 
 .nav-link,
@@ -91,7 +92,7 @@
 .nav-logout-btn,
 .nav-signup-btn {
   background-color: black;
-  color: white;
+  color: var(--main);
 }
 
 .nav-expanded {
