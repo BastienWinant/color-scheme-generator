@@ -75,6 +75,9 @@ function generateDisplayColors(colorsArr) {
           <button type="button" class="generator-color-btn copy-color-btn ${colorClass}" aria-label="copy">
             <i class="fa-solid fa-copy fa-lg"></i>
           </button>
+          <button type="button" class="generator-color-btn save-color-btn ${colorClass}" aria-label="save">
+            <i class="fa-regular fa-bookmark fa-lg"></i>
+          </button>
           <button type="button" class="generator-color-btn remove-color-btn ${colorClass}" aria-label="delete">
             <i class="fa-regular fa-trash-can fa-lg"></i>
           </button>
