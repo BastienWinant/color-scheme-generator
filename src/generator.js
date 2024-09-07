@@ -1,6 +1,11 @@
 import './style.css'
 
+import { ref, child, push, update } from "firebase/database"
+
 import checkMark from './img/check-single.svg'
+
+import { auth, db } from './app'
+import { openSignupModal } from './ui-components/auth'
 
 const generatorForm = document.querySelector('#generator-form')
 const colorInput = document.querySelector('#color')
@@ -136,14 +141,15 @@ function initializeDisplay() {
   selectMode()
   updateDisplay(randomHex, randomMode.value, 5)
 }
+
 // give a visual clue that the color value has been copied to the clipboard
-function displayCopyMessage(colorEl) {
+function displayOverlayMessage(colorEl, messageContent) {
   navigator.clipboard.writeText(colorEl.dataset.hex)
 
   colorEl.insertAdjacentHTML(
     'beforeend',
     `<div class="generator-color-overlay">
-      <p class="generator-color-msg">Copied <i class="fa-solid fa-check"></i></p>
+      <p class="generator-color-msg">${ messageContent } <i class="fa-solid fa-check"></i></p>
     </div>`
   )
 
@@ -153,20 +159,53 @@ function displayCopyMessage(colorEl) {
   }, 1500)
 }
 
+// remove color from display
+function removeColor(colorEl) {
+  colorEl.remove()
+
+  // deactivate the color removal button if there is only one color left in the display
+  const removeBtns = document.querySelectorAll('.remove-color-btn')
+  if (removeBtns.length === 1) {
+    removeBtns[0].disabled = true
+  }
+}
+
+// save color to database
+function saveColor(colorEl) {
+  if (auth.currentUser) {
+    const uid = auth.currentUser.uid
+    
+    // A color entry.
+    const colorData = {
+      hex: colorEl.dataset.hex
+    }
+
+    // Get a key for a new color.
+    const newColorKey = push(child(ref(db), 'colors')).key;
+
+    // Write the new color's data simultaneously in the colors list and the user's color list.
+    const updates = {}
+    updates['/colors/' + newColorKey] = colorData
+    updates['/user-colors/' + uid + '/' + newColorKey] = colorData
+
+    update(ref(db), updates)
+
+    displayOverlayMessage(colorEl, 'Saved')
+  } else {
+    openSignupModal()
+  }
+}
+
 // listen for and dispatch click events on the display
 displayUl.addEventListener('click', e => {
   const colorLi = e.target.closest('.generator-color')
 
   if (e.target.closest('.copy-color-btn')) {
-    displayCopyMessage(colorLi)
+    displayOverlayMessage(colorLi, 'Copied')
   } else if (e.target.closest('.remove-color-btn')) {
-    colorLi.remove()
-
-    // deactivate the color removal button if there is only one color left in the display
-    const removeBtns = document.querySelectorAll('.remove-color-btn')
-    if (removeBtns.length === 1) {
-      removeBtns[0].disabled = true
-    }
+    removeColor(colorLi)
+  } else if (e.target.closest('.save-color-btn')) {
+    saveColor(colorLi)
   }
 })
 
