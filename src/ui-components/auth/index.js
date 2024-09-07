@@ -55,7 +55,6 @@ async function loginEmailPassword(e) {
   const loginPassword = loginPasswordInput.value
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    .then(userCredential => console.log(userCredential.user))
     .catch(error => console.log(error.message)) // showLoginError
 }
 loginBtn.addEventListener('click', loginEmailPassword)

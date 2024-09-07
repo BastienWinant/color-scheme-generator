@@ -63,9 +63,14 @@ function clearDisplay() {
 // create one li element per array entry
 function generateDisplayColors(colorsArr) {
   return colorsArr.map(colorObj => {
+    // create color as a new DOM li element
     const colorLi = document.createElement('li')
     colorLi.classList.add('generator-color')
+
+    // attach color data to the li
     colorLi.dataset.hex = colorObj.hex.value
+    colorLi.dataset.name = colorObj.name.value
+    
     colorLi.style.backgroundColor = colorObj.hex.value
 
     const colorClass = colorObj.contrast.value === '#000000'
@@ -177,7 +182,8 @@ function saveColor(colorEl) {
     
     // A color entry.
     const colorData = {
-      hex: colorEl.dataset.hex
+      hex: colorEl.dataset.hex,
+      name: colorEl.dataset.name
     }
 
     // Get a key for a new color.
@@ -188,9 +194,7 @@ function saveColor(colorEl) {
     updates['/colors/' + newColorKey] = colorData
     updates['/user-colors/' + uid + '/' + newColorKey] = colorData
 
-    update(ref(db), updates)
-
-    displayOverlayMessage(colorEl, 'Saved')
+    return update(ref(db), updates)
   } else {
     openSignupModal()
   }
@@ -205,7 +209,13 @@ displayUl.addEventListener('click', e => {
   } else if (e.target.closest('.remove-color-btn')) {
     removeColor(colorLi)
   } else if (e.target.closest('.save-color-btn')) {
-    saveColor(colorLi)
+    const colorSaved = saveColor(colorLi)
+
+    if (colorSaved) {
+      displayOverlayMessage(colorLi, 'Saved')
+    } else {
+      openSignupModal()
+    }
   }
 })
 
