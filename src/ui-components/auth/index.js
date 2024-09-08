@@ -10,12 +10,14 @@ const loginForm = document.querySelector('#login-form')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
+const cancelLoginBtn = document.querySelector('#cancel-login-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
+const cancelSignupBtn = document.querySelector('#cancel-signup-btn')
 
 // open/close login modal
 export function openLoginModal() {
@@ -86,6 +88,9 @@ export async function logOut(e) {
 
   signOut(auth)
 }
+
+cancelLoginBtn.addEventListener('click', closeLoginModal)
+cancelSignupBtn.addEventListener('click', closeSignupModal)
 
 async function monitorAuthState() {
   onAuthStateChanged(auth, () => {
