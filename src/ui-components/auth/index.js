@@ -7,6 +7,7 @@ import { auth, db } from '../../app'
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
+const loginFieldset = document.querySelector('#login-form fieldset')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
@@ -14,6 +15,7 @@ const cancelLoginBtn = document.querySelector('#cancel-login-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
+const signupFieldset = document.querySelector('#signup-form fieldset')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
@@ -25,6 +27,7 @@ export function openLoginModal() {
 }
 
 function closeLoginModal() {
+  clearLoginError()
   loginForm.reset()
   loginModal.close()
 }
@@ -40,6 +43,7 @@ export function openSignupModal() {
 }
 
 function closeSignupModal() {
+  clearSignupError()
   signupForm.reset()
   signupModal.close()
 }
@@ -50,18 +54,49 @@ signupModal.addEventListener('click', e => {
 })
 
 // login functionality
+function clearLoginError() {
+  try {
+    loginForm.querySelector('.auth-error-message').remove()
+  } catch {
+    return
+  }
+}
+
+function showLoginError(error) {
+  loginFieldset.insertAdjacentHTML(
+    'afterend',
+    `<p class="auth-error-message">${error.code}</p>`
+  )
+}
+
 async function loginEmailPassword(e) {
   e.preventDefault()
+  clearLoginError()
 
   const loginEmail = loginEmailInput.value
   const loginPassword = loginPasswordInput.value
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    .catch(error => console.log(error.message)) // showLoginError
+    .catch(showLoginError) // showLoginError
 }
 loginBtn.addEventListener('click', loginEmailPassword)
 
 // signup functionality
+function clearSignupError() {
+  try {
+    signupForm.querySelector('.auth-error-message').remove()
+  } catch {
+    return
+  }
+}
+
+function showSignupError(error) {
+  signupFieldset.insertAdjacentHTML(
+    'afterend',
+    `<p class="auth-error-message">${error.code}</p>`
+  )
+}
+
 function writeUserData(userCredential) {
   const userId = userCredential.user.uid
   const userEmail = userCredential.user.email
@@ -72,13 +107,14 @@ function writeUserData(userCredential) {
 }
 async function signupEmailPassword(e) {
   e.preventDefault()
+  clearSignupError()
 
   const signupEmail = signupEmailInput.value
   const signupPassword = signupPasswordInput.value
 
   createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
     .then(writeUserData)
-    .catch(error => console.log(error.message)) // showSignupError
+    .catch(showSignupError)
 }
 signupBtn.addEventListener('click', signupEmailPassword)
 

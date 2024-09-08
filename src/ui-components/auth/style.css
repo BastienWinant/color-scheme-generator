@@ -64,3 +64,11 @@
   text-decoration: underline;
   margin-top: 2.5em;
 }
+
+.auth-error-message {
+  font-size: .75rem;
+  margin-top: .75em;
+  color: red;
+  font-style: italic;
+  text-align: center;
+}
