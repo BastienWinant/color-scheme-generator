@@ -21,7 +21,6 @@ function generateDisplayColors(colorsArr) {
     // attach color data to the li
     colorLi.dataset.hex = colorObj.hex.value
     colorLi.dataset.name = colorObj.name.value
-    colorLi.dataset.index = index
     
     colorLi.style.backgroundColor = colorObj.hex.value
 
@@ -111,12 +110,11 @@ export function removeColor(colorEl) {
 export function saveColor(colorEl) {
   if (auth.currentUser) {
     const uid = auth.currentUser.uid
-    
+
     // A color entry.
-    const colorData = {
-      hex: colorEl.dataset.hex,
-      name: colorEl.dataset.name
-    }
+    const colorHex = colorEl.dataset.hex
+    const colorScheme = JSON.parse(localStorage.getItem('csg-color-scheme'))
+    const colorData = colorScheme.colors.find(colorObj => colorObj.hex.value === colorHex)
 
     // Get a key for a new color.
     const newColorKey = push(child(ref(db), 'colors')).key;
