@@ -48,10 +48,7 @@ dialog {
 }
 
 /* GENERIC CLASSES */
-.container {
-  margin: 0 auto;
-  width: 100vw;
-}
+.container {}
 
 .dark-text {
   color: #1B1C1E;
