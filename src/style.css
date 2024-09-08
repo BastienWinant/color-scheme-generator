@@ -51,7 +51,6 @@ dialog {
 .container {
   margin: 0 auto;
   width: 100vw;
-  padding: 2.5em 1.25em 1.25em;
 }
 
 .dark-text {
@@ -101,9 +100,6 @@ main {
   font-size: .85rem;
   line-height: 1.5;
 }
-
-/* GENERATOR */
-
 
 @media only screen and (min-width: 576px) {
   .title {
