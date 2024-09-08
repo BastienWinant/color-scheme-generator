@@ -13,7 +13,7 @@ function clearDisplay() {
 
 // create one li element per array entry
 function generateDisplayColors(colorsArr) {
-  return colorsArr.map(colorObj => {
+  return colorsArr.map((colorObj, index) => {
     // create color as a new DOM li element
     const colorLi = document.createElement('li')
     colorLi.classList.add('generator-color')
@@ -21,6 +21,7 @@ function generateDisplayColors(colorsArr) {
     // attach color data to the li
     colorLi.dataset.hex = colorObj.hex.value
     colorLi.dataset.name = colorObj.name.value
+    colorLi.dataset.index = index
     
     colorLi.style.backgroundColor = colorObj.hex.value
 
@@ -62,6 +63,7 @@ export function updateDisplay(hex, mode) {
       clearDisplay()
       const displayColors = generateDisplayColors(data.colors)
       displayUl.append(...displayColors)
+      localStorage.setItem('csg-color-scheme', JSON.stringify(data))
     })
 }
 
@@ -84,6 +86,18 @@ export function displayOverlayMessage(colorEl, messageContent) {
 
 // remove color from display
 export function removeColor(colorEl) {
+  // retrieve the color scheme object from local storage
+  const colorHex = colorEl.dataset.hex
+  let colorScheme = JSON.parse(localStorage.getItem('csg-color-scheme'))
+  
+  // delete the color entry from the object
+  colorScheme.colors = colorScheme.colors.filter(colorObj => colorObj.hex.value !== colorHex)
+  colorScheme.count--
+  
+  // save the updated object back to local storage
+  localStorage.setItem('csg-color-scheme', JSON.stringify(colorScheme))
+
+  // removing the corresponding element from the DOM
   colorEl.remove()
 
   // deactivate the color removal button if there is only one color left in the display
