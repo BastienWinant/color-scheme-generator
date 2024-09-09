@@ -69,4 +69,3 @@ node_modules/
 .dataconnect
 
 public/
-webpack.prod.js
