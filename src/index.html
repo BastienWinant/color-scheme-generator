@@ -8,24 +8,29 @@
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="header">
+  <header id="header" class="header">
     <div class="container header-container">
       <i class="fa-solid fa-paint-roller fa-2xl"></i>
-      <button type="button">
+      <button type="button" id="nav-expand-btn" class="nav-expand-btn">
         <i class="fa-solid fa-bars fa-2xl"></i>
       </button>
       <div id="nav-container" class="nav-container">
         <nav id="nav" class="nav">
           <ul class="nav-links">
-            <li><a href="#">generator</a></li>
-            <li><a href="#">my schemes</a></li>
-            <li><a href="#">my colors</a></li>
+            <li><a href="#" class="nav-link">generator</a></li>
+            <li><a href="#" class="nav-link">my schemes</a></li>
+            <li><a href="#" class="nav-link">my colors</a></li>
           </ul>
-          <hr>
-          <ul class="nav-btns">
-            <li><button type="button">log in</button></li>
-            <li><button type="button">sign up</button></li>
-          </ul>
+          <hr class="nav-separator">
+          <button type="button" id="nav-auth-expand-btn" class="nav-auth-expand-btn">
+            <i class="fa-solid fa-circle-user fa-2xl"></i>
+          </button>
+          <div id="nav-auth-container" class="nav-auth-container">
+            <ul id="nav-btns" class="nav-btns">
+              <li><button type="button" class="nav-btn">log in</button></li>
+              <li><button type="button" class="nav-btn nav-signup-btn">sign up</button></li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
