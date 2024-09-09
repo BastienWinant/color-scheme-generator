@@ -1,10 +1,14 @@
 import './style.css'
 
-import { openLoginModal, openSignupModal } from '../auth'
+import { onAuthStateChanged } from 'firebase/auth'
+
+import { auth } from '../../app'
+import { openLoginModal, openSignupModal, logOut } from '../auth'
 
 const header = document.querySelector('#header')
 const navContainer = document.querySelector('#nav-container')
 const navAuthContainer = document.querySelector('#nav-auth-container')
+const navBtns = document.querySelector('#nav-btns')
 
 function expandNav() {
   navContainer.classList.add('nav-expanded')
@@ -39,6 +43,10 @@ header.addEventListener('click', e => {
     collapseNav()
     collapseNavAuth()
     openSignupModal()
+  } else if (e.target.id === "nav-logout-btn") {
+    collapseNav()
+    collapseNavAuth()
+    logOut()
   }
 })
 
@@ -47,4 +55,18 @@ window.addEventListener('resize', () => {
   collapseNavAuth()
 })
 
-console.log("this is the header")
+function showLoginState(user) {
+  if (user) {
+    navBtns.innerHTML = `
+      <li><button type="button" id="nav-logout-btn" class="nav-btn nav-logout-btn">log out</button></li>`
+  } else {
+    navBtns.innerHTML = `
+      <li><button type="button" id="nav-login-btn" class="nav-btn">log in</button></li>
+      <li><button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button></li>`
+  }
+}
+
+async function monitorAuthState() {
+  onAuthStateChanged(auth, showLoginState)
+}
+monitorAuthState()

@@ -84,7 +84,8 @@
   font-weight: 500;
 }
 
-.nav-signup-btn {
+.nav-signup-btn,
+.nav-logout-btn {
   background-color: black;
   color: white;
 }
