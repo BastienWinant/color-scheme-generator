@@ -14,12 +14,14 @@ const loginForm = document.querySelector('#login-form')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
+const cancelLoginBtn = document.querySelector('#cancel-login-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
+const cancelSignupBtn = document.querySelector('#cancel-signup-btn')
 
 export function openLoginModal() {
   loginModal.showModal()
@@ -72,6 +74,9 @@ function signupEmailPassword(e) {
     .catch(error => console.log(error.code))
 }
 signupBtn.addEventListener('click', signupEmailPassword)
+
+cancelLoginBtn.addEventListener('click', closeLoginModal)
+cancelSignupBtn.addEventListener('click', closeSignupModal)
 
 // signout functionality
 export function logOut() {
