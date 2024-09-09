@@ -1,5 +1,7 @@
 import './style.css'
 
+import { openLoginModal, openSignupModal } from '../auth'
+
 const header = document.querySelector('#header')
 const navContainer = document.querySelector('#nav-container')
 const navAuthContainer = document.querySelector('#nav-auth-container')
@@ -30,9 +32,13 @@ header.addEventListener('click', e => {
   } else if (!e.target.closest('#nav-btns')) {
     collapseNavAuth()
   } else if (e.target.id === "nav-login-btn") {
-    console.log("open login modal...")
+    collapseNav()
+    collapseNavAuth()
+    openLoginModal()
   } else if (e.target.id === "nav-signup-btn") {
-    console.log("open signup modal...")
+    collapseNav()
+    collapseNavAuth()
+    openSignupModal()
   }
 })
 
@@ -40,3 +46,5 @@ window.addEventListener('resize', () => {
   collapseNav()
   collapseNavAuth()
 })
+
+console.log("this is the header")
