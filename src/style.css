@@ -19,3 +19,11 @@
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+/* CSS SELECTORS */
+button {
+  background-color: transparent;
+  border: none;
+  display: block;
+  cursor: pointer;
+}
