@@ -29,6 +29,10 @@ header.addEventListener('click', e => {
     expandNavAuth()
   } else if (!e.target.closest('#nav-btns')) {
     collapseNavAuth()
+  } else if (e.target.id === "nav-login-btn") {
+    console.log("open login modal...")
+  } else if (e.target.id === "nav-signup-btn") {
+    console.log("open signup modal...")
   }
 })
 
