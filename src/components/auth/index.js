@@ -11,6 +11,7 @@ import { auth } from '../../app'
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
+const loginFieldset = document.querySelector('#login-form fieldset')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
@@ -18,6 +19,7 @@ const cancelLoginBtn = document.querySelector('#cancel-login-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
+const signupFieldset = document.querySelector('#signup-form fieldset')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
@@ -28,6 +30,7 @@ export function openLoginModal() {
 }
 
 export function closeLoginModal() {
+  clearLoginForm()
   loginModal.close()
 }
 loginModal.addEventListener('click', e => {
@@ -41,6 +44,7 @@ export function openSignupModal() {
 }
 
 export function closeSignupModal() {
+  clearSignupForm()
   signupModal.close()
 }
 signupModal.addEventListener('click', e => {
@@ -50,28 +54,74 @@ signupModal.addEventListener('click', e => {
 })
 
 // login functionality
+function clearLoginForm() {
+  loginForm.reset()
+}
+
+function showLoginError(error) {
+  loginFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-form-error">Error: ${error.code}</p>`
+  )
+}
+
+function clearLoginError() {
+  try {
+    loginFieldset.querySelector('.auth-form-error').remove()
+  } catch {
+    return
+  }
+}
+
 function loginEmailPassword(e) {
   e.preventDefault()
+  clearLoginError()
 
   const loginEmail = loginEmailInput.value
   const loginPassword = loginPasswordInput.value
 
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
     .then(userCredential => console.log(userCredential))
-    .catch(error => console.log(error.code))
+    .catch(showLoginError)
+
+  
+  clearLoginForm()
 }
 loginBtn.addEventListener('click', loginEmailPassword)
 
 // signup functionality
+function clearSignupForm() {
+  signupForm.reset()
+}
+
+function showSignupError(error) {
+  signupFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-form-error">Error: ${error.code}</p>`
+  )
+}
+
+function clearSignupError() {
+  try {
+    signupFieldset.querySelector('.auth-form-error').remove()
+  } catch {
+    return
+  }
+}
+
 function signupEmailPassword(e) {
   e.preventDefault()
+  clearSignupError()
 
   const signupEmail = signupEmailInput.value
   const signupPassword = signupPasswordInput.value
 
   createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
     .then(userCredential => console.log(userCredential))
-    .catch(error => console.log(error.code))
+    .catch(showSignupError)
+  
+  
+  clearSignupForm()
 }
 signupBtn.addEventListener('click', signupEmailPassword)
 
