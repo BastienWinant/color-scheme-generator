@@ -1,0 +1,84 @@
+.auth-modal {
+  margin: auto;
+  border: none;
+  background-color: transparent;
+}
+
+.auth-form {
+  width: 80vw;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5em;
+  padding: 1.875em;
+
+  background-color: white;
+  border-radius: .5em;
+}
+
+.auth-form-legend {
+  font-size: 1.125rem;
+  margin-bottom: 1em;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.auth-form-fieldset {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+
+  border: none;
+  position: relative;
+}
+
+.auth-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: .3125em;
+}
+
+.auth-form-label h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.auth-form-input {
+  height: 2.625em;
+  padding: 0 .625em;
+  border-radius: .25em;
+  border: 1px solid darkgray;
+}
+
+.auth-form-input:focus {
+  outline: none;
+}
+
+.auth-submit-btn {
+  background-color: darkseagreen;
+  border: none;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: white;
+}
+
+.cancel-auth-btn {
+  color: darkgray;
+  text-decoration: underline;
+}
+
+.auth-form-error {
+  position: absolute;
+  bottom: -2em;
+
+  width: 100%;
+  text-align: center;
+
+  font-size: .75rem;
+  color: red;
+}

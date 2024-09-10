@@ -3,9 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    generator: ['./src/index', './src/app', './src/components/header/index'],
-    schemes: ['./src/index', './src/app', './src/components/header/index'],
-    colors: ['./src/index', './src/app', './src/components/header/index']
+    generator: ['./src/app', './src/components/auth/index', './src/components/header/index'],
+    schemes: ['./src/app', './src/components/header/index'],
+    colors: ['./src/app', './src/components/header/index']
   },
   plugins: [
     new HtmlWebpackPlugin({

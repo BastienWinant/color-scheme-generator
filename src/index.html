@@ -8,32 +8,74 @@
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header id="header" class="header">
-    <div class="container header-container">
-      <i class="fa-solid fa-paint-roller fa-2xl"></i>
-      <button type="button" id="nav-expand-btn" class="nav-expand-btn">
-        <i class="fa-solid fa-bars fa-2xl"></i>
-      </button>
-      <div id="nav-container" class="nav-container">
-        <nav id="nav" class="nav">
-          <ul class="nav-links">
-            <li><a href="#" class="nav-link">generator</a></li>
-            <li><a href="#" class="nav-link">my schemes</a></li>
-            <li><a href="#" class="nav-link">my colors</a></li>
-          </ul>
-          <hr class="nav-separator">
-          <button type="button" id="nav-auth-expand-btn" class="nav-auth-expand-btn">
-            <i class="fa-solid fa-circle-user fa-2xl"></i>
-          </button>
-          <div id="nav-auth-container" class="nav-auth-container">
-            <ul id="nav-btns" class="nav-btns">
-              <li><button type="button" id="nav-login-btn" class="nav-btn">log in</button></li>
-              <li><button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button></li>
+  <div class="app-container">
+    <header id="header" class="header">
+      <div class="container header-container">
+        <i class="fa-solid fa-paint-roller fa-2xl"></i>
+        <button type="button" id="nav-expand-btn" class="nav-expand-btn">
+          <i class="fa-solid fa-bars fa-2xl"></i>
+        </button>
+        <div id="nav-container" class="nav-container">
+          <nav id="nav" class="nav">
+            <ul class="nav-links">
+              <li><a href="#" class="nav-link">generator</a></li>
+              <li><a href="#" class="nav-link">my schemes</a></li>
+              <li><a href="#" class="nav-link">my colors</a></li>
             </ul>
-          </div>
-        </nav>
+            <hr class="nav-separator">
+            <button type="button" id="nav-auth-expand-btn" class="nav-auth-expand-btn">
+              <i class="fa-solid fa-circle-user fa-2xl"></i>
+            </button>
+            <div id="nav-auth-container" class="nav-auth-container">
+              <ul id="nav-btns" class="nav-btns">
+                <li><button type="button" id="nav-login-btn" class="nav-btn">log in</button></li>
+                <li><button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </div>
+  <dialog id="login-modal" class="auth-modal">
+    <form method="post" id="login-form" class="auth-form">
+      <fieldset class="auth-form-fieldset">
+        <legend class="auth-form-legend"><h2>log in</h2></legend>
+
+        <label for="login-email" class="auth-form-label">
+          <h3>email</h3>
+          <input type="email" name="email" id="login-email" class="auth-form-input" />
+        </label>
+
+        <label for="login-password" class="auth-form-label">
+          <h3>password</h3>
+          <input type="password" name="password" id="login-password" class="auth-form-input" />
+        </label>
+
+        <button type="submit" id="login-btn" class="auth-form-input auth-submit-btn">log in</button>
+      </fieldset>
+      <button type="button" id="cancel-login-btn" class="cancel-auth-btn">cancel</button>
+    </form>
+  </dialog>
+  <dialog id="signup-modal" class="auth-modal">
+    <form method="post" id="signup-form" class="auth-form">
+      <fieldset class="auth-form-fieldset">
+        <legend class="auth-form-legend"><h2>sign up</h2></legend>
+
+        <label for="signup-email" class="auth-form-label">
+          <h3>email</h3>
+          <input type="email" name="email" id="signup-email" class="auth-form-input" />
+        </label>
+
+        <label for="signup-password" class="auth-form-label">
+          <h3>password</h3>
+          <input type="password" name="password" id="signup-password" class="auth-form-input" />
+        </label>
+
+        <button type="submit" id="signup-btn" class="auth-form-input auth-submit-btn">sign up</button>
+      </fieldset>
+      <button type="button" id="cancel-signup-btn" class="cancel-auth-btn">cancel</button>
+    </form>
+  </dialog>
 </body>
 </html>
