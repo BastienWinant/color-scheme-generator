@@ -36,6 +36,30 @@
         </div>
       </div>
     </header>
+    <main>
+      <section class="generator-container">
+        <form method="post" id="generator-form" class="generator-form">
+          <fieldset id="generator-inputs" class="generator-fieldset generator-inputs generator-fieldset-expanded">
+            <button type="button" class="generator-collapse-btn">
+              <i class="fa-solid fa-circle-xmark fa-xl"></i>
+            </button>
+            <label for="color" class="input-group">
+              <span class="input-label">color</span>
+              <input type="color" name="color" id="color" class="form-control" />
+            </label>
+            <label for="mode" class="input-group">
+              <span class="input-label">mode</span>
+              <input list="modes" name="mode" id="mode" class="form-control" />
+            </label>
+            <button type="submit" class="form-control">get color scheme</button>
+          </fieldset>
+          <fieldset id="scheme-ctrl-btns" class="generator-fieldset scheme-ctrl-btns">
+            <button type="button" class="form-control scheme-ctrl-btn">new color scheme</button>
+            <button type="button" class="form-control scheme-ctrl-btn">save color scheme</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
   </div>
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="auth-form">
