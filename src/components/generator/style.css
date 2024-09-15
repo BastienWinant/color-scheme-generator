@@ -15,8 +15,8 @@
 .generator-fieldset {
   position: absolute;
   width: 100%;
-  /* display: none; */
-  transition: bottom 3s ease-in;
+  display: none;
+  /* transition: bottom .2s ease-in; */
 }
 
 .generator-fieldset-expanded {

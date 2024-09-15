@@ -39,8 +39,8 @@
     <main>
       <section class="generator-container">
         <form method="post" id="generator-form" class="generator-form">
-          <fieldset id="generator-inputs" class="generator-fieldset generator-inputs generator-fieldset-expanded">
-            <button type="button" class="generator-collapse-btn">
+          <fieldset id="generator-inputs" class="generator-fieldset generator-inputs">
+            <button type="button" id="generator-collapse-btn" class="generator-collapse-btn">
               <i class="fa-solid fa-circle-xmark fa-xl"></i>
             </button>
             <label for="color" class="input-group">
@@ -51,11 +51,11 @@
               <span class="input-label">mode</span>
               <input list="modes" name="mode" id="mode" class="form-control" />
             </label>
-            <button type="submit" class="form-control">get color scheme</button>
+            <button type="submit" id="generator-submit-btn" class="form-control">get color scheme</button>
           </fieldset>
-          <fieldset id="scheme-ctrl-btns" class="generator-fieldset scheme-ctrl-btns">
-            <button type="button" class="form-control scheme-ctrl-btn">new color scheme</button>
-            <button type="button" class="form-control scheme-ctrl-btn">save color scheme</button>
+          <fieldset id="scheme-ctrl-btns" class="generator-fieldset scheme-ctrl-btns generator-fieldset-expanded">
+            <button type="button" id="generator-expand-btn" class="form-control scheme-ctrl-btn">new color scheme</button>
+            <button type="button" id="generator-save-btn" class="form-control scheme-ctrl-btn">save color scheme</button>
           </fieldset>
         </form>
       </section>
