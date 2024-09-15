@@ -28,7 +28,7 @@
 button {
   display: block;
   cursor: pointer;
-  background-color: none;
+  background-color: transparent;
   border: none;
 }
 
@@ -37,8 +37,6 @@ button {
 
   display: flex;
   flex-direction: column;
-
-  background-color: ghostwhite;
 }
 
 main {
