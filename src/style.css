@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../font/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-style: normal;
+}
+
+/* DEFAULT PAGE STYLING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+
+  font-family: 'Inter';
+}
+
+/* CSS SELECTORS */
+button {
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* PAGE LAYOUT */
+.app-container {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: lightcoral;
+}
+
+main {
+  flex-grow: 1;
+
+  background-color: lightblue;
+}
