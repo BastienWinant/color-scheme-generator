@@ -1,9 +1,25 @@
 import './style.css'
 
-import { onAuthStateChanged } from 'firebase/auth'
+import {
+  signOut,
+  onAuthStateChanged
+} from 'firebase/auth'
 
 import(/* webpackPrefetch: true */ 'Components/auth/index')
 
 import { auth, db } from 'Src/app'
 
-// TODO: add an onAuthStateChanged listener
+const logOut = async () => {
+  signOut(auth)
+}
+
+const monitorAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      // TODO: show logout btn
+    } else {
+      // TODO: show auth btns
+    }
+  })
+}
+monitorAuthState()
