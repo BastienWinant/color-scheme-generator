@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    generator: './src/index',
+    generator: './src/components/header/index',
   },
   plugins: [
     new HtmlWebpackPlugin({
