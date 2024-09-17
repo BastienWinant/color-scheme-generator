@@ -29,17 +29,3 @@ img {
 }
 
 /* PAGE LAYOUT */
-.app-container {
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-
-  background-color: lightcoral;
-}
-
-main {
-  flex-grow: 1;
-
-  background-color: lightblue;
-}

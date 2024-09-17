@@ -6,9 +6,34 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <div class="app-container">
-    <header></header>
-    <main></main>
-  </div>
+  <!-- login modal -->
+  <dialog id="login-modal" class="auth-modal">
+    <form method="post" id="login-form" class="auth-form">
+      <label for="login-email">
+        <span>email</span>
+        <input type="email" name="email" id="login-email" />
+      </label>
+      <label for="login-password">
+        <span>password</span>
+        <input type="password" name="password" id="login-password" />
+      </label>
+      <button type="submit" id="login-btn" class="auth-btn">log in</button>
+    </form>
+  </dialog>
+
+  <!-- signup modal -->
+  <dialog id="signup-modal" class="auth-modal">
+    <form method="post" id="signup-form" class="auth-form">
+      <label for="signup-email">
+        <span>email</span>
+        <input type="email" name="email" id="signup-email" />
+      </label>
+      <label for="signup-password">
+        <span>password</span>
+        <input type="password" name="password" id="signup-password" />
+      </label>
+      <button type="submit" id="signup-btn" class="auth-btn">sign up</button>
+    </form>
+  </dialog>
 </body>
 </html>
