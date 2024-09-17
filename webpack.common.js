@@ -18,6 +18,12 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
     clean: true,
   },
+  resolve: {
+    alias: {
+      Src: path.resolve(__dirname, 'src/'),
+      Components: path.resolve(__dirname, 'src/components/')
+    },
+  },
   module: {
     rules: [
       {
@@ -34,4 +40,4 @@ module.exports = {
       },
     ],
   },
-};
+}
