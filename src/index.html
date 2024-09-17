@@ -8,29 +8,28 @@
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header id="header" class="black-border">
+  <header id="header" class="header black-border">
     <i class="fa-solid fa-palette fa-xl"></i>
-
     <button type="button" id="nav-toggler" class="nav-toggler">
-      <i class="fa-solid fa-bars-staggered fa-xl"></i>
+      <i class="fa-solid fa-bars-staggered fa-2xl"></i>
     </button>
-
     <nav id="nav" class="nav black-border">
-      <section id="nav-links" class="nav-links">
-        <a href="#" class="nav-link">my schemes</a>
+      <section class="nav-links black-border">
         <a href="#" class="nav-link">my colors</a>
+        <a href="#" class="nav-link">my schemes</a>
       </section>
-      <hr class="nav-separator" />
-      <button type="button" id="nav-auth-expand-btn">
-        <i class="fa-solid fa-circle-user fa-xl"></i>
+      <hr class="nav-separator">
+      <button type="button" id="nav-auth-toggler" class="nav-auth-toggler">
+        <i class="fa-solid fa-circle-user fa-2xl"></i>
       </button>
-      <section id="nav-btns" class="nav-btns">
-        <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
-        <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button>
+      <section id="nav-btns" class="nav-btns black-border">
+        <button type="button" class="nav-btn">log in</button>
+        <button type="button" class="nav-btn nav-signup-btn">sign up</button>
       </section>
     </nav>
   </header>
 
+  <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="auth-form">
       <label for="login-email">
@@ -45,6 +44,7 @@
     </form>
   </dialog>
 
+  <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="auth-form">
       <label for="signup-email">
