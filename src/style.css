@@ -32,6 +32,10 @@ img {
   object-fit: cover;
 }
 
+dialog {
+  margin: auto;
+}
+
 /* PAGE LAYOUT */
 .app-container {}
 

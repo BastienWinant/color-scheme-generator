@@ -67,7 +67,8 @@
   border: 2px solid black;
 }
 
-.nav-signup-btn {
+.nav-signup-btn,
+.nav-logout-btn {
   background-color: black;
   color: white;
 }
@@ -138,6 +139,10 @@
 }
 
 @media only screen and (min-width: 992px) {
+  .header {
+    height: 5em;
+  }
+  
   .nav-btns {
     /* positioning */
     position: static;

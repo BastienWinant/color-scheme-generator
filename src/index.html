@@ -23,8 +23,8 @@
         <i class="fa-solid fa-circle-user fa-2xl"></i>
       </button>
       <section id="nav-btns" class="nav-btns black-border">
-        <button type="button" class="nav-btn">log in</button>
-        <button type="button" class="nav-btn nav-signup-btn">sign up</button>
+        <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+        <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
       </section>
     </nav>
   </header>
@@ -32,30 +32,34 @@
   <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="auth-form">
-      <label for="login-email">
-        <span>email</span>
-        <input type="email" name="email" id="login-email" />
-      </label>
-      <label for="login-password">
-        <span>password</span>
-        <input type="password" name="password" id="login-password" />
-      </label>
-      <button type="submit" id="login-btn" class="auth-btn">log in</button>
+      <fieldset class="auth-fieldset">
+        <label for="login-email" class="auth-input-group">
+          <span>email</span>
+          <input type="email" name="email" id="login-email" />
+        </label>
+        <label for="login-password" class="auth-input-group">
+          <span>password</span>
+          <input type="password" name="password" id="login-password" />
+        </label>
+        <button type="submit" id="login-btn" class="auth-btn">log in</button>
+      </fieldset>
     </form>
   </dialog>
 
   <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="auth-form">
-      <label for="signup-email">
-        <span>email</span>
-        <input type="email" name="email" id="signup-email" />
-      </label>
-      <label for="signup-password">
-        <span>password</span>
-        <input type="password" name="password" id="signup-password" />
-      </label>
-      <button type="submit" id="signup-btn" class="auth-btn">sign up</button>
+      <fieldset class="auth-fieldset">
+        <label for="signup-email" class="auth-input-group">
+          <span>email</span>
+          <input type="email" name="email" id="signup-email" />
+        </label>
+        <label for="signup-password" class="auth-input-group">
+          <span>password</span>
+          <input type="password" name="password" id="signup-password" />
+        </label>
+        <button type="submit" id="signup-btn" class="auth-btn">sign up</button>
+      </fieldset>
     </form>
   </dialog>
 </body>

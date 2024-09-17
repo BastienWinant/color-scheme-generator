@@ -10,9 +10,27 @@ import(/* webpackPrefetch: true */ 'Components/auth/index')
 
 import { auth, db } from 'Src/app'
 
-const header = document.querySelector('#header')
 const nav = document.querySelector('#nav')
 const navBtns = document.querySelector('#nav-btns')
+
+const loginModal = document.querySelector('#login-modal')
+const signupModal = document.querySelector('#signup-modal')
+
+const openLoginModal = () => {
+  loginModal.showModal()
+}
+
+const openSignupModal = () => {
+  signupModal.showModal()
+}
+
+nav.addEventListener('click', e => {
+  if (e.target.id === 'nav-login-btn') {
+    openLoginModal()
+  } else if (e.target.id === 'nav-signup-btn') {
+    openSignupModal()
+  }
+})
 
 const toggleNav = () => {
   nav.classList.toggle('nav-expanded')

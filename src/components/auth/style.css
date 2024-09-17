@@ -1,0 +1,18 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-btn {
+  background-color: green;
+}
