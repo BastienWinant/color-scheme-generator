@@ -3,36 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-
-  <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
+  <title>Document</title>
 </head>
 <body>
-  <header id="header" class="header black-border">
-    <i class="fa-solid fa-palette fa-xl"></i>
-    <button type="button" id="nav-toggler" class="nav-toggler">
-      <i class="fa-solid fa-bars-staggered fa-2xl"></i>
-    </button>
-    <nav id="nav" class="nav black-border">
-      <section class="nav-links black-border">
-        <a href="#" class="nav-link">my colors</a>
-        <a href="#" class="nav-link">my schemes</a>
-      </section>
-      <hr class="nav-separator">
-      <button type="button" id="nav-auth-toggler" class="nav-auth-toggler">
-        <i class="fa-solid fa-circle-user fa-2xl"></i>
-      </button>
-      <section id="nav-btns" class="nav-btns black-border">
-        <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
-        <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
-      </section>
-    </nav>
-  </header>
-
-  <!-- login modal -->
+  <div class="app-container">
+    <header>
+      <nav class="nav" id="nav"></nav>
+    </header>
+    <main>
+      <div class="generator-container">
+        <form method="post" id="generator-form" class="generator-form">
+          <fieldset class="generator-fieldset">
+            <label for="color">
+              <input type="color" name="color" id="color" />
+            </label>
+            <label for="mode">
+              <input list="modes" name="mode" id="mode" />
+              <datalist id="modes">
+                <option value="monochrome"></option>
+                <option value="monochrome-dark"></option>
+                <option value="monochrome-light"></option>
+                <option value="analogic"></option>
+                <option value="complement"></option>
+                <option value="analogic-complement"></option>
+                <option value="triad"></option>
+                <option value="quad"></option>
+              </datalist>
+            </label>
+            <button type="submit" id="get-scheme-btn">get color scheme</button>
+          </fieldset>
+          <fieldset class="generator-fieldset">
+            <button type="button" id="new-scheme-btn">new color scheme</button>
+            <button type="button" id="save-scheme-btn">save color scheme</button>
+          </fieldset>
+        </form>
+      </div>
+    </main>
+  </div>
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="auth-form">
-      <fieldset class="auth-fieldset">
+      <fieldset id="login-fieldset" class="auth-fieldset">
+        <legend><h2>log in</h2></legend>
         <label for="login-email" class="auth-input-group">
           <span>email</span>
           <input type="email" name="email" id="login-email" />
@@ -42,14 +53,15 @@
           <input type="password" name="password" id="login-password" />
         </label>
         <button type="submit" id="login-btn" class="auth-btn">log in</button>
+        <button type="button" id="new-password-btn" class="new-password-btn">forgot password?</button>
       </fieldset>
     </form>
+    <button type="button" id="switch-signup-btn">sign up</button>
   </dialog>
-
-  <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="auth-form">
-      <fieldset class="auth-fieldset">
+      <fieldset id="signup-fieldset" class="auth-fieldset">
+        <legend><h2>sign up</h2></legend>
         <label for="signup-email" class="auth-input-group">
           <span>email</span>
           <input type="email" name="email" id="signup-email" />
@@ -60,6 +72,7 @@
         </label>
         <button type="submit" id="signup-btn" class="auth-btn">sign up</button>
       </fieldset>
+      <button type="button" id="switch-login-btn">log in</button>
     </form>
   </dialog>
 </body>

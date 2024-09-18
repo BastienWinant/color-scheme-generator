@@ -1,21 +1,18 @@
-.black-border {
-  /* border: 1px solid black; */
-}
-
 @font-face {
   font-family: 'Inter';
   src: url('../font/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-optical-sizing: auto;
   font-style: normal;
 }
 
-/* DEFAULT PAGE STYLING */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   user-select: none;
 
-  font-family: 'Inter';
+  font-family: "Inter", system-ui;
 }
 
 /* CSS SELECTORS */
@@ -23,7 +20,6 @@ button {
   display: block;
   cursor: pointer;
   background-color: transparent;
-  border: none;
 }
 
 img {
@@ -37,6 +33,17 @@ dialog {
 }
 
 /* PAGE LAYOUT */
-.app-container {}
+.app-container {
+  height: 90vh;
 
-main {}
+  display: flex;
+  flex-direction: column;
+
+  background: lightcoral;
+}
+
+main {
+  flex-grow: 1;
+
+  background-color: lightblue;
+}
