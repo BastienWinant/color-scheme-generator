@@ -38,8 +38,6 @@ dialog {
 
   display: flex;
   flex-direction: column;
-
-  background: lightcoral;
 }
 
 main {

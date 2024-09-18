@@ -23,6 +23,7 @@ const switchSignupBtn = document.querySelector('#switch-signup-btn')
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
 const signupFieldset = document.querySelector('#signup-fieldset')
+const signupUsernameInput = document.querySelector('#signup-username')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
@@ -125,20 +126,26 @@ loginBtn.addEventListener('click', loginEmailPassword)
 // SIGNUP FUNCTIONALITY
 function writeUserData(userCredential) {
   const userId = userCredential.user.uid
+  const userName = userCredential.user.displayName
   const userEmail = userCredential.user.email
 
-  set(ref(db, 'users/' + userId), { email: userEmail })
+  set(ref(db, 'users/' + userId), {
+    username: userName,
+    email: userEmail
+  })
 }
 
 const signupEmailPassword = (e) => {
   e.preventDefault()
 
+  const signupUsername = signupUsernameInput.value
   const signupEmail = signupEmailInput.value
   const signupPassword = signupPasswordInput.value
 
   createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
-    // .then(closeSignupModal)
     .then(userCredential => {
+      userCredential.user.displayName = signupUsername
+      
       closeSignupModal()
       writeUserData(userCredential)
     })
