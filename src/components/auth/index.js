@@ -1,12 +1,16 @@
 import 'Src/style.css'
 import './style.css'
 
-import { auth } from 'Src/app'
+import { auth, db } from 'Src/app'
 
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword
 } from 'firebase/auth'
+import {
+  ref,
+  set
+} from "firebase/database"
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
@@ -119,6 +123,13 @@ const loginEmailPassword = (e) => {
 loginBtn.addEventListener('click', loginEmailPassword)
 
 // SIGNUP FUNCTIONALITY
+function writeUserData(userCredential) {
+  const userId = userCredential.user.uid
+  const userEmail = userCredential.user.email
+
+  set(ref(db, 'users/' + userId), { email: userEmail })
+}
+
 const signupEmailPassword = (e) => {
   e.preventDefault()
 
@@ -126,7 +137,11 @@ const signupEmailPassword = (e) => {
   const signupPassword = signupPasswordInput.value
 
   createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
-    .then(closeSignupModal)
+    // .then(closeSignupModal)
+    .then(userCredential => {
+      closeSignupModal()
+      writeUserData(userCredential)
+    })
     .catch(showSignupError)
 }
 signupBtn.addEventListener('click', signupEmailPassword)
