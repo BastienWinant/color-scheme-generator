@@ -30,7 +30,7 @@ const openLoginModal = () => {
 }
 
 const closeLoginModal = () => {
-  // clearLoginError() // remove error message
+  clearLoginError() // remove error message
   loginForm.reset() // clear form inputs
   loginModal.close() // close modal
 }
@@ -46,7 +46,7 @@ const openSignupModal = () => {
 }
 
 const closeSignupModal = () => {
-  // clearSignupError() // remove error message
+  clearSignupError() // remove error message
   signupForm.reset() // clear form inputs
   signupModal.close() // close modal
 }
@@ -76,7 +76,13 @@ const clearLoginError = () => {
 }
 
 const showLoginError = (e) => {
-  console.log(e.code)
+  clearLoginError()
+
+  const errorMessage = e.code.replace("auth/", "error: ").replace("-", " ")
+  loginFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-error-msg">${errorMessage}</p>`
+  )
 }
 
 // SIGNUP ERROR HANDLING
@@ -89,7 +95,14 @@ const clearSignupError = () => {
 }
 
 const showSignupError = (e) => {
-  console.log(e.code)
+  clearSignupError()
+
+  const errorMessage = e.code.replace("auth/", "error: ").replace("-", " ")
+
+  signupFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-error-msg">${errorMessage}</p>`
+  )
 }
 
 // LOGIN FUNCTIONALITY
@@ -98,25 +111,22 @@ const loginEmailPassword = (e) => {
 
   const loginEmail = loginEmailInput.value
   const loginPassword = loginPasswordInput.value
-
+  
   signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    .then(userCredential => console.log(userCredential))
+    .then(closeLoginModal)
     .catch(showLoginError)
-    // .catch(showLoginError) // TODO: showLoginError => use AuthErrorCodes
 }
 loginBtn.addEventListener('click', loginEmailPassword)
 
 // SIGNUP FUNCTIONALITY
 const signupEmailPassword = (e) => {
-  console.log('testing...')
   e.preventDefault()
 
   const signupEmail = signupEmailInput.value
   const signupPassword = signupPasswordInput.value
 
   createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
-    .then(userCredential => console.log(userCredential))
+    .then(closeSignupModal)
     .catch(showSignupError)
-    // .catch(showSignupError) // TODO: showSignupError => use AuthErrorCodes
 }
 signupBtn.addEventListener('click', signupEmailPassword)

@@ -1,9 +1,22 @@
+.auth-fieldset {
+  position: relative;
+  margin-bottom: 3em;
+
+  display: flex;
+  flex-direction: column
+}
+
 .auth-input-group {
   display: flex;
   flex-direction: column;
 }
 
 .auth-error-msg {
+  position: absolute;
+  bottom: -2em;
+
+  width: 100%;
+
   font-size: .75rem;
   text-align: center;
   color: red;
