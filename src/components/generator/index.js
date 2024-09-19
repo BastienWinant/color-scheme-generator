@@ -1,6 +1,10 @@
 import 'Src/style.css'
 import './style.css'
 
+import { ref, child, push, update } from "firebase/database"
+
+import { auth, db } from 'Src/app'
+
 const generatorForm = document.querySelector('#generator-form')
 const colorInput = document.querySelector('#color')
 const modeInput = document.querySelector('#mode')
@@ -19,6 +23,8 @@ const generateSchemeHTML = (colorsArr) => {
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color', 'black-border')
+
+    liEl.style.backgroundColor = colorObj.hex.value
 
     liEl.innerHTML = `${colorObj.name.value}`
 
@@ -46,7 +52,7 @@ const updateColorScheme = async (hex, mode) => {
   const colorSchemeObj = await getColorScheme(hex, mode)
   
   if (colorSchemeObj) {
-    localStorage.setItem('gcs-scheme', colorSchemeObj)
+    localStorage.setItem('csg-scheme', JSON.stringify(colorSchemeObj))
     const generatorDisplayEls = generateSchemeHTML(colorSchemeObj.colors)
     renderSchemeHTML(generatorDisplayEls)
   }
@@ -64,13 +70,38 @@ getSchemeBtn.addEventListener('click', e => {
 const initializeDisplay = async () => {
   const randomHex = Math.floor(Math.random() * 16777216).toString(16)
   colorInput.value = `#${randomHex}`
-  console.log(randomHex)
 
   const modeOptions = document.querySelectorAll('.mode-option')
   const randomModeIndex = Math.floor(Math.random() * modeOptions.length)
   const randomMode = modeOptions[randomModeIndex].value
-  // modeInput.value = randomMode
 
   updateColorScheme(randomHex, randomMode)
 }
 initializeDisplay()
+
+function writeNewScheme(uid, schemeData) {
+  // Get a key for a new Scheme.
+  const newSchemeKey = push(child(ref(db), 'schemes')).key;
+
+  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
+  const updates = {};
+  updates['/schemes/' + newSchemeKey] = schemeData;
+  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData;
+
+  return update(ref(db), updates);
+}
+
+saveSchemeBtn.addEventListener('click', () => {
+  if (auth.currentUser) {
+    const schemeData = JSON.parse(localStorage.getItem('csg-scheme'))
+
+    if (schemeData) {
+      const userId = auth.currentUser.uid
+
+      writeNewScheme(userId, schemeData)
+    }
+
+  } else {
+    // TODO: open the login modal
+  }
+})

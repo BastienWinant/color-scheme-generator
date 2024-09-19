@@ -3,6 +3,14 @@
     "users": {
       ".read": false,
       ".write": true
+    },
+    "schemes": {
+      ".read": false,
+      ".write": true
+    },
+    "user-schemes": {
+      ".read": false,
+      ".write": true
     }
   }
 }
