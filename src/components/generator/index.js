@@ -6,7 +6,6 @@ import { ref, child, push, update } from "firebase/database"
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth/index'
 
-const generatorForm = document.querySelector('#generator-form')
 const colorInput = document.querySelector('#color')
 const modeInput = document.querySelector('#mode')
 const getSchemeBtn = document.querySelector('#get-scheme-btn')
