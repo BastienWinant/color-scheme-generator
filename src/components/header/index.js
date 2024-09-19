@@ -12,6 +12,7 @@ import { auth } from 'Src/app'
 import { openLoginModal, openSignupModal } from 'Components/auth/index'
 
 const nav = document.querySelector('#nav')
+const navBtns = document.querySelector('#nav-btns')
 
 const logOut = async () => {
   await signOut(auth)
@@ -39,7 +40,7 @@ const monitorAuthState = async () => {
         <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button>`
     }
 
-    nav.innerHTML = navHTML
+    navBtns.innerHTML = navHTML
   })
 }
 monitorAuthState()
