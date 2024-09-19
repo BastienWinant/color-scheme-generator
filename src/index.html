@@ -23,14 +23,14 @@
             <label for="mode">
               <input list="modes" name="mode" id="mode" />
               <datalist id="modes">
-                <option value="monochrome"></option>
-                <option value="monochrome-dark"></option>
-                <option value="monochrome-light"></option>
-                <option value="analogic"></option>
-                <option value="complement"></option>
-                <option value="analogic-complement"></option>
-                <option value="triad"></option>
-                <option value="quad"></option>
+                <option value="monochrome" class="mode-option"></option>
+                <option value="monochrome-dark" class="mode-option"></option>
+                <option value="monochrome-light" class="mode-option"></option>
+                <option value="analogic" class="mode-option"></option>
+                <option value="complement" class="mode-option"></option>
+                <option value="analogic-complement" class="mode-option"></option>
+                <option value="triad" class="mode-option"></option>
+                <option value="quad" class="mode-option"></option>
               </datalist>
             </label>
             <button type="submit" id="get-scheme-btn">get color scheme</button>
@@ -40,6 +40,7 @@
             <button type="button" id="save-scheme-btn">save color scheme</button>
           </fieldset>
         </form>
+        <ul id="generator-display" class="generator-display"></ul>
       </div>
     </main>
   </div>

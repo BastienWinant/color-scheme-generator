@@ -1,0 +1,15 @@
+.generator-container {
+  height: 100%;
+
+  position: relative;
+  background: goldenrod;
+}
+
+.generator-form {
+  /* positioning */
+  position: absolute;
+  bottom: 0;
+
+  /* sizing */
+  width: 100%;
+}

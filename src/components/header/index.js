@@ -8,7 +8,7 @@ import {
 
 import(/* webpackPrefetch: true */ 'Components/auth/index')
 
-import { auth, db } from 'Src/app'
+import { auth } from 'Src/app'
 
 const nav = document.querySelector('#nav')
 

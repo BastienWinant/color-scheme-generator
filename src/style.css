@@ -1,6 +1,17 @@
+.black-border {
+  border: 1px solid black;
+}
+
 @font-face {
   font-family: 'Inter';
   src: url('../font/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('../font/Raleway-VariableFont_wght.ttf') format('truetype');
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -13,6 +24,7 @@
   user-select: none;
 
   font-family: "Inter", system-ui;
+  font-weight: 500;
 }
 
 /* CSS SELECTORS */
