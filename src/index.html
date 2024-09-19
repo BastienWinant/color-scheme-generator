@@ -23,22 +23,62 @@
       <div class="generator-container">
         <form method="post" id="generator-form" class="generator-form">
           <fieldset class="generator-fieldset">
-            <label for="color">
-              <input type="color" name="color" id="color" />
+            <label for="color" class="generator-input-group">
+              <input type="color" name="color" id="color" class="generator-input-field" />
             </label>
-            <label for="mode">
-              <input list="modes" name="mode" id="mode" />
-              <datalist id="modes">
-                <option value="monochrome" class="mode-option"></option>
-                <option value="monochrome-dark" class="mode-option"></option>
-                <option value="monochrome-light" class="mode-option"></option>
-                <option value="analogic" class="mode-option"></option>
-                <option value="complement" class="mode-option"></option>
-                <option value="analogic-complement" class="mode-option"></option>
-                <option value="triad" class="mode-option"></option>
-                <option value="quad" class="mode-option"></option>
-              </datalist>
-            </label>
+            <div class="generator-input-group">
+              <button type="button" id="mode-btn" class="generator-input-field">analogic-complement</button>
+              <ul id="mode-options" class="mode-options">
+                <li>
+                  <label for="monochrome">
+                    <input type="radio" name="mode" value="monochrome" id="monochrome" class="mode-option" checked />
+                    <span>monochrome</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="monochrome-dark">
+                    <input type="radio" name="mode" value="monochrome-dark" id="monochrome-dark" class="mode-option" />
+                    <span>monochrome-dark</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="monochrome-light">
+                    <input type="radio" name="mode" value="monochrome-light" id="monochrome-light" class="mode-option" />
+                    <span>monochrome-light</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="analogic">
+                    <input type="radio" name="mode" value="analogic" id="analogic" class="mode-option" />
+                    <span>analogic</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="complement">
+                    <input type="radio" name="mode" value="complement" id="complement" class="mode-option" />
+                    <span>complement</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="analogic-complement">
+                    <input type="radio" name="mode" value="analogic-complement" id="analogic-complement" class="mode-option" />
+                    <span>analogic-complement</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="triad">
+                    <input type="radio" name="mode" value="triad" id="triad" class="mode-option" />
+                    <span>triad</span>
+                  </label>
+                </li>
+                <li>
+                  <label for="quad">
+                    <input type="radio" name="mode" value="quad" id="quad" class="mode-option" />
+                    <span>quad</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
             <button type="submit" id="get-scheme-btn">get color scheme</button>
           </fieldset>
           <fieldset class="generator-fieldset">

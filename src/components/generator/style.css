@@ -2,7 +2,6 @@
   height: 100%;
 
   position: relative;
-  background: goldenrod;
 }
 
 .generator-form {
@@ -12,4 +11,50 @@
 
   /* sizing */
   width: 100%;
+
+  background: goldenrod;
+}
+
+.generator-fieldset {
+  display: flex;
+  flex-direction: column;
+
+  background-color: yellowgreen;
+}
+
+.generator-input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.generator-input-field {
+  width: 100%;
+}
+
+.mode-options {
+  list-style-type: none;
+
+  display: none;
+  flex-direction: column;
+}
+
+.mode-options-expanded {
+  display: flex;
+}
+
+input[name="mode"] {
+  display: none;
+}
+
+input[name="mode"] + span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  background-color: orange;
+}
+
+input[name="mode"]:checked + span {
+  background-color: orangered;
 }

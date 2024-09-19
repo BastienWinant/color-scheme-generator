@@ -8,11 +8,37 @@ import { openLoginModal } from 'Components/auth/index'
 
 const colorInput = document.querySelector('#color')
 const modeInput = document.querySelector('#mode')
+const modeBtn = document.querySelector('#mode-btn')
+const modeOptions = document.querySelector('#mode-options')
+const modeInputs = document.querySelectorAll('.mode-option')
 const getSchemeBtn = document.querySelector('#get-scheme-btn')
+
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
 const generatorDisplay = document.querySelector('#generator-display')
+
+// collapse the dropdown when clicking outside of it
+const collapseModeDropdown = () => {
+  modeOptions.classList.remove('mode-options-expanded')
+}
+window.addEventListener('click', e => {
+  if (!(e.target === modeBtn)) collapseModeDropdown()
+})
+
+const toggleModeDropdown = () => {
+  modeOptions.classList.toggle('mode-options-expanded')
+}
+modeBtn.addEventListener('click', toggleModeDropdown)
+
+modeInputs.forEach(radioInput => {
+  radioInput.addEventListener('click', e => {
+    const modeValue = radioInput.value
+
+    modeBtn.innerText = modeValue
+    modeBtn.value = modeValue
+  })
+})
 
 const renderSchemeHTML = (liArr) => {
   generatorDisplay.innerHTML = ''
@@ -62,7 +88,7 @@ getSchemeBtn.addEventListener('click', e => {
   e.preventDefault()
 
   const color = colorInput.value.slice(1,)
-  const mode = modeInput.value
+  const mode = modeBtn.value
 
   updateColorScheme(color, mode)
 })
@@ -71,9 +97,10 @@ const initializeDisplay = async () => {
   const randomHex = Math.floor(Math.random() * 16777216).toString(16)
   colorInput.value = `#${randomHex}`
 
-  const modeOptions = document.querySelectorAll('.mode-option')
-  const randomModeIndex = Math.floor(Math.random() * modeOptions.length)
-  const randomMode = modeOptions[randomModeIndex].value
+  const randomModeIndex = Math.floor(Math.random() * modeInputs.length)
+  const randomMode = modeInputs[randomModeIndex].value
+  modeBtn.innerText = randomMode
+  modeBtn.value = randomMode
 
   updateColorScheme(randomHex, randomMode)
 }
