@@ -94,7 +94,8 @@ getSchemeBtn.addEventListener('click', e => {
 })
 
 const initializeDisplay = async () => {
-  const randomHex = Math.floor(Math.random() * 16777216).toString(16)
+  const randomHex = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
+  console.log(randomHex)
   colorInput.value = `#${randomHex}`
 
   const randomModeIndex = Math.floor(Math.random() * modeInputs.length)
