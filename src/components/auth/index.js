@@ -30,7 +30,7 @@ const signupBtn = document.querySelector('#signup-btn')
 const switchLoginBtn = document.querySelector('#switch-login-btn')
 
 // OPEN/CLOSE LOGIN MODAL
-const openLoginModal = () => {
+export const openLoginModal = () => {
   loginModal.showModal()
 }
 
@@ -46,7 +46,7 @@ loginModal.addEventListener('click', e => {
 })
 
 // OPEN/CLOSE SIGNUP MODAL
-const openSignupModal = () => {
+export const openSignupModal = () => {
   signupModal.showModal()
 }
 

@@ -4,6 +4,7 @@ import './style.css'
 import { ref, child, push, update } from "firebase/database"
 
 import { auth, db } from 'Src/app'
+import { openLoginModal } from 'Components/auth/index'
 
 const generatorForm = document.querySelector('#generator-form')
 const colorInput = document.querySelector('#color')
@@ -102,6 +103,6 @@ saveSchemeBtn.addEventListener('click', () => {
     }
 
   } else {
-    // TODO: open the login modal
+    openLoginModal()
   }
 })

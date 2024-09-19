@@ -9,19 +9,9 @@ import {
 import(/* webpackPrefetch: true */ 'Components/auth/index')
 
 import { auth } from 'Src/app'
+import { openLoginModal, openSignupModal } from 'Components/auth/index'
 
 const nav = document.querySelector('#nav')
-
-const loginModal = document.querySelector('#login-modal')
-const signupModal = document.querySelector('#signup-modal')
-
-const openLoginModal = () => {
-  loginModal.showModal()
-}
-
-const openSignupModal = () => {
-  signupModal.showModal()
-}
 
 const logOut = async () => {
   await signOut(auth)
