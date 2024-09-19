@@ -12,21 +12,18 @@
     <header class="header">
       <img src=<%=require("./components/header/img/pantone.svg")%> />
       <nav class="nav" id="nav">
-        <section id="nav-links" class="nav-links">
-          <a href="#" class="nav-link">my schemes</a>
-          <a href="#" class="nav-link">my colors</a>
-        </section>
+        <section id="nav-links" class="nav-links"></section>
         <section id="nav-btns" class="nav-btns"></section>
       </nav>
     </header>
     <main>
       <div class="generator-container">
         <form method="post" id="generator-form" class="generator-form">
-          <fieldset class="generator-fieldset">
+          <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
             <label for="color" class="generator-input-group">
               <input type="color" name="color" id="color" class="generator-input-field" />
             </label>
-            <div class="generator-input-group">
+            <div class="generator-input-group mode-input-group">
               <button type="button" id="mode-btn" class="generator-input-field">analogic-complement</button>
               <ul id="mode-options" class="mode-options">
                 <li>
@@ -81,7 +78,7 @@
             </div>
             <button type="submit" id="get-scheme-btn">get color scheme</button>
           </fieldset>
-          <fieldset class="generator-fieldset">
+          <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane fieldset-expanded">
             <button type="button" id="new-scheme-btn">new color scheme</button>
             <button type="button" id="save-scheme-btn">save color scheme</button>
           </fieldset>

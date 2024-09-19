@@ -16,10 +16,14 @@
 }
 
 .generator-fieldset {
-  display: flex;
+  display: none;
   flex-direction: column;
 
   background-color: yellowgreen;
+}
+
+.fieldset-expanded {
+  display: flex;
 }
 
 .generator-input-group {
@@ -51,6 +55,8 @@ input[name="mode"] + span {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  cursor: pointer;
   
   background-color: orange;
 }

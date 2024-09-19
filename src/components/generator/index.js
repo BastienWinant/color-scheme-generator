@@ -7,7 +7,6 @@ import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth/index'
 
 const colorInput = document.querySelector('#color')
-const modeInput = document.querySelector('#mode')
 const modeBtn = document.querySelector('#mode-btn')
 const modeOptions = document.querySelector('#mode-options')
 const modeInputs = document.querySelectorAll('.mode-option')
@@ -23,7 +22,7 @@ const collapseModeDropdown = () => {
   modeOptions.classList.remove('mode-options-expanded')
 }
 window.addEventListener('click', e => {
-  if (!(e.target === modeBtn)) collapseModeDropdown()
+  if (!(e.target.closest('.mode-input-group'))) collapseModeDropdown()
 })
 
 const toggleModeDropdown = () => {
@@ -91,11 +90,11 @@ getSchemeBtn.addEventListener('click', e => {
   const mode = modeBtn.value
 
   updateColorScheme(color, mode)
+  toggleGeneratorForm()
 })
 
 const initializeDisplay = async () => {
   const randomHex = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
-  console.log(randomHex)
   colorInput.value = `#${randomHex}`
 
   const randomModeIndex = Math.floor(Math.random() * modeInputs.length)
@@ -106,6 +105,12 @@ const initializeDisplay = async () => {
   updateColorScheme(randomHex, randomMode)
 }
 initializeDisplay()
+
+const toggleGeneratorForm = () => {
+  document.querySelector('#scheme-ctrl-pane').classList.toggle('fieldset-expanded')
+  document.querySelector('#scheme-create-pane').classList.toggle('fieldset-expanded')
+}
+newSchemeBtn.addEventListener('click', toggleGeneratorForm)
 
 function writeNewScheme(uid, schemeData) {
   // Get a key for a new Scheme.
@@ -125,7 +130,6 @@ saveSchemeBtn.addEventListener('click', () => {
 
     if (schemeData) {
       const userId = auth.currentUser.uid
-
       writeNewScheme(userId, schemeData)
     }
 
