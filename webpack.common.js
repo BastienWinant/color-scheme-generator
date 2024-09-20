@@ -3,9 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    generator: './src/index.js',
-    schemes: './src/index.js',
-    colors: './src/index.js'
+    // generator: './src/index.js',
+    generator: './src/components/header/index',
+    schemes: './src/components/header/index',
+    colors: './src/components/header/index',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -27,6 +28,12 @@ module.exports = {
       filename: 'colors.html'
     })
   ],
+  resolve: {
+    alias: {
+      Src: path.resolve(__dirname, 'src/'),
+      Components: path.resolve(__dirname, 'src/components/')
+    },
+  },
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'public'),
