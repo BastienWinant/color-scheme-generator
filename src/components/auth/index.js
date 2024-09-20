@@ -1,7 +1,4 @@
-import 'Src/style.css'
 import './style.css'
-
-import(/* webpackPreload: true */ 'Src/app.js')
 
 import {
   signInWithEmailAndPassword,
@@ -102,6 +99,6 @@ const signupEmailPassword = async (e) => {
 }
 signupBtn.addEventListener('click', signupEmailPassword)
 
-export const logOut = async (e) => {
+export const logOut = async () => {
   signOut(auth)
 }
