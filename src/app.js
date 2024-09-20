@@ -25,5 +25,5 @@ if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!')
 
   connectAuthEmulator(auth, 'http://localhost:9099')
-  connectDatabaseEmulator(db, 'http://localhost', 9000)
+  connectDatabaseEmulator(db, "127.0.0.1", 9000)
 }

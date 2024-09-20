@@ -2,8 +2,7 @@ import './style.css'
 
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut
+  createUserWithEmailAndPassword
 } from 'firebase/auth'
 import { ref, set } from "firebase/database"
 
@@ -66,7 +65,7 @@ const loginEmailPassword = async (e) => {
   const loginPassword = loginPasswordInput.value
   try {
     const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    console.log(userCredential.user)
+    console.log(userCredential)
   } catch (e) {
     console.log(e.code)
   }
@@ -98,7 +97,3 @@ const signupEmailPassword = async (e) => {
   }
 }
 signupBtn.addEventListener('click', signupEmailPassword)
-
-export const logOut = async () => {
-  signOut(auth)
-}
