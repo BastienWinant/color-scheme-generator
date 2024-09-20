@@ -1,7 +1,7 @@
 import 'Src/style.css'
 import './style.css'
 
-import(/* webpackPrefetch: true */ 'Components/auth/index.js')
+import(/* webpackPrefetch: true */ 'Components/auth')
 
 import { signOut, onAuthStateChanged } from 'firebase/auth'
 

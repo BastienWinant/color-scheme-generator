@@ -23,7 +23,64 @@
         </section>
       </nav>
     </header>
-    <main></main>
+    <main>
+      <div class="generator-container">
+        <form method="post" id="generator-form" class="generator-form">
+          <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
+            <label for="color">
+              <span>color</span>
+              <input type="color" name="color" id="color" />
+            </label>
+            <div>
+              <span>mode</span>
+              <button type="button" id="dropdown-btn" class="dropdown-btn">
+                <span>analogic complement</span>
+                <i class="fa-solid fa-chevron-down"></i>
+              </button>
+              <ul id="dropdown-list" class="dropdown-list">
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
+                  <label for="monochrome">monochrome</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
+                  <label for="monochrome-dark">monochrome-dark</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
+                  <label for="monochrome-light">monochrome-light</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="analogic" value="analogic" />
+                  <label for="analogic">analogic</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="complement" value="complement" />
+                  <label for="complement">complement</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
+                  <label for="analogic-complement">analogic-complement</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="triad" value="triad" />
+                  <label for="triad">triad</label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="quad" value="quad" />
+                  <label for="quad">quad</label>
+                </li>
+              </ul>
+            </div>
+            <button type="submit" id="get-scheme-btn" class="get-scheme-btn">get color-scheme</button>
+          </fieldset>
+          <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
+            <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn">new color scheme</button>
+            <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save color scheme</button>
+          </fieldset>
+        </form>
+      </div>
+    </main>
   </div>
   <dialog id="login-modal" class="auth-modal">
     <form id="login-form" class="auth-form">
