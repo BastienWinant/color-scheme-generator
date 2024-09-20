@@ -8,19 +8,62 @@
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <section>
-        <a href="index.html">generator</a>
-        <a href="schemes.html">schemes</a>
-        <a href="colors.html">colors</a>
-      </section>
-      <section>
-        <button type="button" id="nav-login-btn">log in</button>
-        <button type="button" id="nav-signup-btn">sign up</button>
-      </section>
-    </nav>
-  </header>
-  <main></main>
+  <div class="app-container">
+    <header id="header">
+      <nav id="nav" class="nav">
+        <section id="nav-links" class="nav-links">
+          <a href="index.html" class="nav-link">generator</a>
+          <a href="schemes.html" class="nav-link">schemes</a>
+          <a href="colors.html" class="nav-link">colors</a>
+        </section>
+        <section id="nav-btns" class="nav-btns">
+          <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+          <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button>
+        </section>
+      </nav>
+    </header>
+  </div>
+  <dialog id="login-modal" class="auth-modal">
+    <form id="login-form" class="auth-form">
+      <fieldset class="auth-fieldset">
+        <legend>
+          <h2>log in</h2>
+        </legend>
+        <label for="login-email" class="auth-input-group">
+          <span>email</span>
+          <input type="email" name="email" id="login-email" />
+        </label>
+        <label for="login-password" class="auth-input-group">
+          <span>password</span>
+          <input type="password" name="password" id="login-password" />
+        </label>
+        <button type="submit" id="login-btn" class="auth-btn">log in</button>
+      </fieldset>
+      <button type="button" id="switch-signup-btn" class="switch-auth-btn">sign up</button>
+    </form>
+  </dialog>
+  <dialog id="signup-modal" class="auth-modal">
+    <form id="signup-form" class="auth-form">
+      <fieldset class="auth-fieldset">
+        <legend>
+          <h2>sign up</h2>
+        </legend>
+        <label for="signup-username" class="auth-input-group">
+          <span>username</span>
+          <input type="text" name="username" id="signup-username" />
+        </label>
+        <label for="signup-email" class="auth-input-group">
+          <span>email</span>
+          <input type="email" name="email" id="signup-email" />
+        </label>
+        <label for="signup-password" class="auth-input-group">
+          <span>password</span>
+          <input type="password" name="password" id="signup-password" />
+        </label>
+        <button type="submit" id="signup-btn" class="auth-btn">sign up</button>
+      </fieldset>
+      <button type="button" id="switch-login-btn" class="switch-auth-btn">log in</button>
+    </form>
+  </dialog>
 </body>
 </html>
