@@ -1,0 +1,30 @@
+.generator-input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.generator-input-field {
+  width: 100%;
+}
+
+/* DROPDOWN */
+.dropdown-list {
+  list-style-type: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+input[name="mode"] {
+  display: none;
+}
+
+input[name="mode"] + label {
+  display: flex;
+  align-items: center;
+}
+
+input[name="mode"]:checked + label {
+  background-color: orangered;
+}
