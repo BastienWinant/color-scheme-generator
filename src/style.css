@@ -34,6 +34,21 @@ dialog {
   margin: auto;
 }
 
+/* PAGE LAYOUT */
+.app-container {
+  height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: ghostwhite;
+}
+
+main {
+  flex-grow: 1;
+  background-color: lightcoral;
+}
+
 /* AUTH MODALS */
 .auth-fieldset {
   display: flex;
