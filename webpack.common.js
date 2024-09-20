@@ -3,29 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    // generator: './src/index.js',
-    generator: './src/components/header/index',
-    schemes: './src/components/header/index',
-    colors: './src/components/header/index',
+    index: './src/components/header/index'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Generator',
+      title: 'Color Scheme Generator',
       template: './src/templates/index.html',
-      chunks: ['generator'],
+      chunks: ['index'],
       filename: 'index.html'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Schemes',
-      template: './src/templates/index.html',
-      chunks: ['schemes'],
-      filename: 'schemes.html'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Colors',
-      template: './src/templates/index.html',
-      chunks: ['colors'],
-      filename: 'colors.html'
     })
   ],
   resolve: {

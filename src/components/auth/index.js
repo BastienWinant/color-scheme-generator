@@ -56,5 +56,3 @@ switchLoginBtn.addEventListener('click', () => {
   openLoginModal()
   closeSignupModal()
 })
-
-console.log('this is the auth')
