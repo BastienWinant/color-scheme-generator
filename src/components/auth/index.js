@@ -89,8 +89,12 @@ const signupEmailPassword = async (e) => {
   const signupPassword = signupPasswordInput.value
 
   try {
+    const userName = signupUsernameInput.value
+
+    if (!userName) throw new Error("missing username")
+
     const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
-    userCredential.displayName = signupUsernameInput.value
+    userCredential.user.displayName = userName
     writeUserData(userCredential.user)
   } catch (e) {
     console.log(e.code)
