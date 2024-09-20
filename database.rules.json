@@ -1,16 +1,7 @@
 {
+  /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
   "rules": {
-    "users": {
-      ".read": false,
-      ".write": true
-    },
-    "schemes": {
-      ".read": false,
-      ".write": true
-    },
-    "user-schemes": {
-      ".read": false,
-      ".write": true
-    }
+    ".read": false,
+    ".write": false
   }
 }
