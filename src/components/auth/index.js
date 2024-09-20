@@ -1,11 +1,16 @@
+import 'Src/style.css'
 import './style.css'
 
 import(/* webpackPreload: true */ 'Src/app.js')
 
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  signOut
 } from 'firebase/auth'
+import { ref, set } from "firebase/database"
+
+import { auth, db } from 'Src/app'
 
 // AUTH MODALS
 const loginModal = document.querySelector('#login-modal')
@@ -56,3 +61,43 @@ switchLoginBtn.addEventListener('click', () => {
   openLoginModal()
   closeSignupModal()
 })
+
+const loginEmailPassword = async (e) => {
+  e.preventDefault()
+
+  const loginEmail = loginEmailInput.value
+  const loginPassword = loginPasswordInput.value
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    console.log(userCredential.user)
+  } catch (e) {
+    console.log(e.code)
+  }
+}
+loginBtn.addEventListener('click', loginEmailPassword)
+
+function writeUserData(user) {
+  set(ref(db, 'users/' + user.uid), {
+    username: user.displayName,
+    email: user.email
+  })
+}
+const signupEmailPassword = async (e) => {
+  e.preventDefault()
+
+  const signupEmail = signupEmailInput.value
+  const signupPassword = signupPasswordInput.value
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+    userCredential.displayName = signupUsernameInput.value
+    writeUserData(userCredential.user)
+  } catch (e) {
+    console.log(e.code)
+  }
+}
+signupBtn.addEventListener('click', signupEmailPassword)
+
+export const logOut = async (e) => {
+  signOut(auth)
+}
