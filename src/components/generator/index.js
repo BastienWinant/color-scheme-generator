@@ -41,6 +41,8 @@ const getSchemeDislayHTML = (colorsArr) => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-display-color')
 
+    liEl.style.backgroundColor = colorObj.hex.value
+
     liEl.innerHTML = `${colorObj.name.value}`
     return liEl
   })
@@ -57,6 +59,7 @@ getSchemeBtn.addEventListener('click', async (e) => {
   const colorsArr = await getColorScheme(color, mode)
 
   if (colorsArr) {
+    generatorDisplay.innerHTML = ''
     localStorage.setItem('csg-scheme', JSON.stringify(colorsArr))
     const colorsHTML = getSchemeDislayHTML(colorsArr)
     generatorDisplay.append(...colorsHTML)
@@ -65,7 +68,7 @@ getSchemeBtn.addEventListener('click', async (e) => {
 
 const initializeDisplay = () => {
   const randomHex = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
-  colorInput.value = randomHex
+  colorInput.value = `#${randomHex}`
 
   const randomIndex = Math.floor(Math.random() * dropdownOptions.length)
   dropdownOptions[randomIndex].checked = true
