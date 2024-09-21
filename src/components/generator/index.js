@@ -5,62 +5,17 @@ import { ref, child, push, update } from "firebase/database"
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
-const generatorDisplay = document.querySelector('#generator-display')
-const colorInput = document.querySelector('#color')
-const dropdownBtn = document.querySelector('#dropdown-btn')
-const dropdownBtnText = document.querySelector('#dropdown-btn span')
-const dropdownOptions = document.querySelectorAll('input[name="mode"]')
-const getSchemeBtn = document.querySelector('#get-scheme-btn')
+import {
+  colorInput,
+  dropdownBtn,
+  dropdownOptions,
+  getSchemeBtn,
+  saveSchemeBtn,
+  selectDropdownOption,
+  getColorScheme
+} from './form'
 
-const newSchemeBtn = document.querySelector('#new-scheme-btn')
-const saveSchemeBtn = document.querySelector('#save-scheme-btn')
-
-const selectDropdownOption = () => {
-  const optionValue = document.querySelector('input[name="mode"]:checked').value
-    
-  dropdownBtn.value = optionValue
-  dropdownBtnText.textContent = optionValue
-}
-dropdownOptions.forEach(radioInput => {
-  radioInput.addEventListener('click', selectDropdownOption)
-})
-selectDropdownOption()
-
-const getColorScheme = async (color, mode) => {
-  const baseUrl = 'https://www.thecolorapi.com'
-  const endpoint = 'scheme'
-
-  const requestUrl = `${baseUrl}/${endpoint}?hex=${color}&mode=${mode}&count=5`
-
-  try {
-    const res = await fetch(requestUrl)
-    const data = await res.json()
-    return data
-  } catch (error) {
-    return
-  }
-}
-
-const getSchemeDislayHTML = (colorSchemeObj) => {
-  const liEls = colorSchemeObj.colors.map(colorObj => {
-    const liEl = document.createElement('li')
-    liEl.classList.add('generator-display-color')
-
-    liEl.style.backgroundColor = colorObj.hex.value
-
-    liEl.innerHTML = `${colorObj.name.value}`
-    return liEl
-  })
-
-  return liEls
-}
-
-const renderSchemeDisplay = async (colorSchemeObj) => {
-  generatorDisplay.innerHTML = ''
-  localStorage.setItem('csg-scheme', JSON.stringify(colorSchemeObj))
-  const colorsHTML = getSchemeDislayHTML(colorSchemeObj)
-  generatorDisplay.append(...colorsHTML)
-}
+import { renderSchemeDisplay } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
   e.preventDefault()
@@ -104,18 +59,16 @@ initializeDisplay()
 
 function writeNewScheme(uid, schemeData) {
   // Get a key for a new Scheme.
-  const newSchemeKey = push(child(ref(db), 'schemes')).key;
+  const newSchemeKey = push(child(ref(db), 'schemes')).key
 
-  // Write the new post's data simultaneously in the posts list and the user's post list.
+  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
   const updates = {};
-  updates['/schemes/' + newSchemeKey] = schemeData;
-  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData;
+  updates['/schemes/' + newSchemeKey] = schemeData
+  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData
 
-  return update(ref(db), updates);
+  return update(ref(db), updates)
 }
-saveSchemeBtn.addEventListener('click', () => {
-  const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
-  
+saveSchemeBtn.addEventListener('click', () => {  
   if (auth.currentUser) {
     const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
     const userId = auth.currentUser.uid
