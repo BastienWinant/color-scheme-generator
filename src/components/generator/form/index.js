@@ -13,10 +13,6 @@ export const selectDropdownOption = () => {
   dropdownBtn.value = optionValue
   dropdownBtnText.textContent = optionValue
 }
-dropdownOptions.forEach(radioInput => {
-  radioInput.addEventListener('click', selectDropdownOption)
-})
-selectDropdownOption()
 
 export const getColorScheme = async (color, mode) => {
   const baseUrl = 'https://www.thecolorapi.com'

@@ -55,7 +55,6 @@ const initializeDisplay = async () => {
 
   if (colorSchemeObj) renderSchemeDisplay(colorSchemeObj)
 }
-initializeDisplay()
 
 function writeNewScheme(uid, schemeData) {
   // Get a key for a new Scheme.
@@ -78,3 +77,9 @@ saveSchemeBtn.addEventListener('click', () => {
     openLoginModal()
   }
 })
+
+dropdownOptions.forEach(radioInput => {
+  radioInput.addEventListener('click', selectDropdownOption)
+})
+selectDropdownOption()
+initializeDisplay()
