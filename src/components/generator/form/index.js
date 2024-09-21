@@ -1,3 +1,4 @@
+export const generatorCollapseBtn = document.querySelector('#generator-collapse-btn')
 export const colorInput = document.querySelector('#color')
 export const dropdownBtn = document.querySelector('#dropdown-btn')
 const dropdownBtnText = document.querySelector('#dropdown-btn span')
@@ -28,3 +29,17 @@ export const getColorScheme = async (color, mode) => {
     return
   }
 }
+
+newSchemeBtn.addEventListener('click', () => {
+  document.querySelector('#scheme-create-pane').style.display = 'flex'
+  setTimeout(() => {
+    document.querySelector('#scheme-create-pane').classList.add('pane-expanded')
+  }, 50)
+})
+
+generatorCollapseBtn.addEventListener('click', () => {
+  document.querySelector('#scheme-create-pane').classList.remove('pane-expanded')
+  setTimeout(() => {
+    document.querySelector('#scheme-create-pane').style.display = 'none'
+  }, 350)
+})

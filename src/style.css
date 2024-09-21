@@ -41,22 +41,11 @@ dialog {
   display: flex;
   flex-direction: column;
 
-  background-color: ghostwhite;
+  overflow-y: hidden;
 }
 
 main {
   flex-grow: 1;
+  position: relative;
   background-color: lightcoral;
-}
-
-/* AUTH MODALS */
-.auth-fieldset {
-  display: flex;
-  flex-direction: column;
-}
-
-.auth-input-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }

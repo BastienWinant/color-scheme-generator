@@ -1,0 +1,11 @@
+/* AUTH MODALS */
+.auth-fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
