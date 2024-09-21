@@ -10,12 +10,16 @@ import { auth, db } from 'Src/app'
 
 // AUTH MODALS
 const loginModal = document.querySelector('#login-modal')
+const loginForm = document.querySelector('#login-form')
+const loginFieldset = document.querySelector('#login-fieldset')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
 const switchSignupBtn = document.querySelector('#switch-signup-btn')
 
 const signupModal = document.querySelector('#signup-modal')
+const signupForm = document.querySelector('#signup-form')
+const signupFieldset = document.querySelector('#signup-fieldset')
 const signupUsernameInput = document.querySelector('#signup-username')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
@@ -27,6 +31,8 @@ export const openLoginModal = () => {
 }
 
 const closeLoginModal = () => {
+  clearLoginError()
+  clearLoginForm()
   loginModal.close()
 }
 
@@ -35,6 +41,8 @@ export const openSignupModal = () => {
 }
 
 const closeSignupModal = () => {
+  clearSignupError()
+  clearSignupForm()
   signupModal.close()
 }
 
@@ -46,9 +54,6 @@ signupModal.addEventListener('click', e => {
   if (!e.target.closest('.auth-form')) closeSignupModal()
 })
 
-loginBtn.addEventListener('click', closeLoginModal)
-signupBtn.addEventListener('click', closeSignupModal)
-
 switchSignupBtn.addEventListener('click', () => {
   closeLoginModal()
   openSignupModal()
@@ -58,6 +63,30 @@ switchLoginBtn.addEventListener('click', () => {
   closeSignupModal()
 })
 
+const clearLoginForm = () => {
+  loginForm.reset()
+}
+
+const clearSignupForm = () => {
+  signupForm.reset()
+}
+
+const clearLoginError = () => {
+  try {
+    loginFieldset.querySelector('.auth-error-message').remove()
+  } catch (err) {}
+}
+const showLoginError = (err) => {
+  clearLoginError()
+
+  const errorMessage = err.code.replaceAll("/", ": ").replaceAll("-", " ")
+
+  loginFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-error-message">${errorMessage}</p>`
+  )
+}
+
 const loginEmailPassword = async (e) => {
   e.preventDefault()
 
@@ -65,12 +94,30 @@ const loginEmailPassword = async (e) => {
   const loginPassword = loginPasswordInput.value
   try {
     const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    console.log(userCredential)
-  } catch (e) {
-    console.log(e.code)
+  } catch (error) {
+    showLoginError(error)
   }
 }
 loginBtn.addEventListener('click', loginEmailPassword)
+
+const clearSignupError = () => {
+  try {
+    signupFieldset.querySelector('.auth-error-message').remove()
+  } catch (err) {}
+}
+
+const showSignupError = (err) => {
+  clearSignupError()
+
+  let errorMessage = err.code || err.message
+
+  errorMessage = errorMessage.replaceAll("/", ": ").replaceAll("-", " ")
+
+  signupFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-error-message">${errorMessage}</p>`
+  )
+}
 
 function writeUserData(user) {
   set(ref(db, 'users/' + user.uid), {
@@ -92,8 +139,8 @@ const signupEmailPassword = async (e) => {
     const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
     userCredential.user.displayName = userName
     writeUserData(userCredential.user)
-  } catch (e) {
-    console.log(e.code)
+  } catch (err) {
+    showSignupError(err)
   }
 }
 signupBtn.addEventListener('click', signupEmailPassword)

@@ -1,11 +1,91 @@
 /* AUTH MODALS */
+.auth-modal {
+  border-radius: 1em;
+  border: none;
+}
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+
+  padding: 1.25em;
+}
+
 .auth-fieldset {
   display: flex;
   flex-direction: column;
+  gap: 1.125em;
+
+  position: relative;
+
+  border: none;
+}
+
+.auth-fieldset-legend {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin-bottom: .5em;
 }
 
 .auth-input-group {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  gap: .3125em;
+}
+
+.auth-input-group span {
+  font-weight: 600;
+  font-size: 1.125em;
+  text-transform: capitalize;
+}
+
+.auth-input-field {
+  height: 2.625em;
+  border-radius: .5em;
+  border: 2px solid #ccc;
+  background-color: white;
+  padding: 0 .625em;
+  font-size: .875rem;
+}
+
+.auth-input-field:focus {
+  outline: none;
+  border-color: #999;
+}
+
+.auth-btn {
+  border: none;
+  background-color: lightseagreen;
+  color: white;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.auth-error-message {
+  position: absolute;
+  bottom: -2em;
+
+  font-size: .875rem;
+  color: red;
+  text-align: center;
+  align-self: center;
+}
+
+.switch-auth-msg {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25em;
+
+  font-size: .875rem;
+}
+
+.switch-auth-btn {
+  background-color: transparent;
+  border: none;
+
+  color: #333;
+  text-decoration: underline;
 }
