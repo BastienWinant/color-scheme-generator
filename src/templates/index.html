@@ -9,17 +9,25 @@
 </head>
 <body>
   <div class="app-container">
-    <header id="header">
+    <header id="header" class="header">
+      <img src=<%=require("./img/pantone.svg")%> />
+      <button type="button" id="nav-expand-btn" class="nav-expand-btn">
+        <i class="fa-solid fa-bars fa-xl"></i>
+      </button>
       <nav id="nav" class="nav">
         <section id="header-nav-btns" class="header-nav-btns">
-          <button type="button" class="header-nav-btn">generator</button>
-          <button type="button" class="header-nav-btn">schemes</button>
-          <button type="button" class="header-nav-btn">colors</button>
+          <button type="button" class="header-btn header-nav-btn">generator</button>
+          <button type="button" class="header-btn header-nav-btn">schemes</button>
+          <button type="button" class="header-btn header-nav-btn">colors</button>
         </section>
+        <hr class="nav-separator" />
+        <button type="button" id="header-auth-expand-btn" class="header-auth-expand-btn">
+          <i class="fa-solid fa-circle-user fa-xl"></i>
+        </button>
         <section id="header-auth-btns" class="header-auth-btns">
-          <button type="button" id="nav-login-btn" class="header-auth-btn">log in</button>
-          <button type="button" id="nav-signup-btn" class="header-auth-btn">sign up</button>
-          <button type="button" id="nav-logout-btn" class="header-auth-btn">log out</button>
+          <button type="button" id="nav-login-btn" class="header-btn header-auth-btn">log in</button>
+          <button type="button" id="nav-signup-btn" class="header-btn header-auth-btn">sign up</button>
+          <button type="button" id="nav-logout-btn" class="header-btn header-auth-btn">log out</button>
         </section>
       </nav>
     </header>
@@ -76,11 +84,11 @@
                 </li>
               </ul>
             </div>
-            <button type="submit" id="get-scheme-btn" class="generator-input-field get-scheme-btn">get color-scheme</button>
+            <button type="submit" id="get-scheme-btn" class="generator-input-field get-scheme-btn">get scheme</button>
           </fieldset>
           <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
-            <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn">new color scheme</button>
-            <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save color scheme</button>
+            <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn">new scheme</button>
+            <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save scheme</button>
           </fieldset>
         </form>
       </div>
@@ -90,11 +98,11 @@
     <form id="login-form" class="auth-form">
       <fieldset id="login-fieldset" class="auth-fieldset">
         <legend class="auth-fieldset-legend">
-          <h2>log in</h2>
+          <h2>welcome back!</h2>
         </legend>
         <label for="login-email" class="auth-input-group">
           <span>email</span>
-          <input type="email" name="email" id="login-email" class="auth-input-field" />
+          <input type="email" name="email" id="login-email" class="auth-input-field" placeholder="mail@example.com" />
         </label>
         <label for="login-password" class="auth-input-group">
           <span>password</span>
@@ -112,15 +120,15 @@
     <form id="signup-form" class="auth-form">
       <fieldset id="signup-fieldset" class="auth-fieldset">
         <legend class="auth-fieldset-legend">
-          <h2>sign up</h2>
+          <h2>join us!</h2>
         </legend>
         <label for="signup-username" class="auth-input-group">
           <span>username</span>
-          <input type="text" name="username" id="signup-username" class="auth-input-field" />
+          <input type="text" name="username" id="signup-username" class="auth-input-field" placeholder="Obi Wan Kenobi" />
         </label>
         <label for="signup-email" class="auth-input-group">
           <span>email</span>
-          <input type="email" name="email" id="signup-email" class="auth-input-field" />
+          <input type="email" name="email" id="signup-email" class="auth-input-field" placeholder="mail@example.com" />
         </label>
         <label for="signup-password" class="auth-input-group">
           <span>password</span>

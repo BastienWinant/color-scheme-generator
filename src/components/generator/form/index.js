@@ -1,3 +1,6 @@
+import 'Src/style.css'
+import './style.css'
+
 export const generatorCollapseBtn = document.querySelector('#generator-collapse-btn')
 export const colorInput = document.querySelector('#color')
 export const dropdownBtn = document.querySelector('#dropdown-btn')

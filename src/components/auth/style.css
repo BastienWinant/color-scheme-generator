@@ -2,19 +2,22 @@
 .auth-modal {
   border-radius: 1em;
   border: none;
+  background-color: #F8F8F8;
 }
+
 .auth-form {
   display: flex;
   flex-direction: column;
   gap: 3em;
 
   padding: 1.25em;
+  color: #3C3C3C;
 }
 
 .auth-fieldset {
   display: flex;
   flex-direction: column;
-  gap: 1.125em;
+  gap: 1.5em;
 
   position: relative;
 
@@ -22,10 +25,10 @@
 }
 
 .auth-fieldset-legend {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
   text-transform: capitalize;
-  margin-bottom: .5em;
+  margin-bottom: 1.15em;
 }
 
 .auth-input-group {
@@ -36,18 +39,19 @@
 }
 
 .auth-input-group span {
-  font-weight: 600;
-  font-size: 1.125em;
+  font-weight: 800;
   text-transform: capitalize;
+  font-size: .875rem;
 }
 
 .auth-input-field {
-  height: 2.625em;
-  border-radius: .5em;
-  border: 2px solid #ccc;
-  background-color: white;
+  height: 3em;
+  border-radius: .6em;
+  border: 1px solid #B7B7B7;
+  background-color: #F8F8F8;
   padding: 0 .625em;
   font-size: .875rem;
+  color: inherit;
 }
 
 .auth-input-field:focus {
@@ -55,12 +59,17 @@
   border-color: #999;
 }
 
+.auth-input-field::placeholder {
+  opacity: .7;
+}
+
 .auth-btn {
   border: none;
   background-color: lightseagreen;
-  color: white;
+  color: #F8F8F8;
   font-weight: 500;
   text-transform: capitalize;
+  font-size: 1rem;
 }
 
 .auth-error-message {
@@ -86,6 +95,6 @@
   background-color: transparent;
   border: none;
 
-  color: #333;
+  color: blue;
   text-decoration: underline;
 }

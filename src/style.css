@@ -23,6 +23,9 @@
 button {
   display: block;
   cursor: pointer;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
 }
 
 img {
