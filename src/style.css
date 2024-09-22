@@ -43,7 +43,7 @@ dialog {
 
 /* PAGE LAYOUT */
 .app-container {
-  min-height: 90vh;
+  min-height: 95vh;
 
   display: flex;
   flex-direction: column;

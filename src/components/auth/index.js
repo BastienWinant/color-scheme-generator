@@ -94,6 +94,7 @@ const loginEmailPassword = async (e) => {
   const loginPassword = loginPasswordInput.value
   try {
     const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    closeLoginModal()
   } catch (error) {
     showLoginError(error)
   }
@@ -139,6 +140,8 @@ const signupEmailPassword = async (e) => {
     const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
     userCredential.user.displayName = userName
     writeUserData(userCredential.user)
+
+    closeSignupModal()
   } catch (err) {
     showSignupError(err)
   }
