@@ -1,12 +1,5 @@
+import 'Src/style.css'
 import './style.css'
-
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
-} from 'firebase/auth'
-import { ref, set } from "firebase/database"
-
-import { auth, db } from 'Src/app'
 
 // AUTH MODALS
 const loginModal = document.querySelector('#login-modal')
@@ -25,6 +18,14 @@ const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
 const switchLoginBtn = document.querySelector('#switch-login-btn')
+
+const clearLoginForm = () => {
+  loginForm.reset()
+}
+
+const clearSignupForm = () => {
+  signupForm.reset()
+}
 
 export const openLoginModal = () => {
   loginModal.showModal()
@@ -47,54 +48,43 @@ const closeSignupModal = () => {
 }
 
 loginModal.addEventListener('click', e => {
-  if (!e.target.closest('.auth-form')) closeLoginModal()
+  if (!(e.target.closest('.auth-form'))) {
+    closeLoginModal()
+  }
 })
 
 signupModal.addEventListener('click', e => {
-  if (!e.target.closest('.auth-form')) closeSignupModal()
+  if (!(e.target.closest('.auth-form'))) {
+    closeSignupModal()
+  }
 })
-
-switchSignupBtn.addEventListener('click', () => {
-  closeLoginModal()
-  openSignupModal()
-})
-switchLoginBtn.addEventListener('click', () => {
-  openLoginModal()
-  closeSignupModal()
-})
-
-const clearLoginForm = () => {
-  loginForm.reset()
-}
-
-const clearSignupForm = () => {
-  signupForm.reset()
-}
 
 const clearLoginError = () => {
   try {
-    loginFieldset.querySelector('.auth-error-message').remove()
-  } catch (err) {}
+    loginFieldset.querySelector('.error-message').remove()
+  } catch (error) {}
 }
-const showLoginError = (err) => {
+
+const showLoginError = (error) => {
   clearLoginError()
 
-  const errorMessage = err.code.replaceAll("/", ": ").replaceAll("-", " ")
+  let errorMessage = error.code || error.message
+  errorMessage = errorMessage.replace("/", ": ").replace("-", " ")
 
   loginFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p class="auth-error-message">${errorMessage}</p>`
+    `<p class="error-message">${errorMessage}</p>`
   )
 }
 
 const loginEmailPassword = async (e) => {
   e.preventDefault()
-
+  
   const loginEmail = loginEmailInput.value
   const loginPassword = loginPasswordInput.value
+
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    closeLoginModal()
+    const userCredential = {}
   } catch (error) {
     showLoginError(error)
   }
@@ -103,47 +93,46 @@ loginBtn.addEventListener('click', loginEmailPassword)
 
 const clearSignupError = () => {
   try {
-    signupFieldset.querySelector('.auth-error-message').remove()
-  } catch (err) {}
+    signupFieldset.querySelector('.error-message').remove()
+  } catch (error) {}
 }
 
-const showSignupError = (err) => {
+const showSignupError = (error) => {
   clearSignupError()
 
-  let errorMessage = err.code || err.message
-
-  errorMessage = errorMessage.replaceAll("/", ": ").replaceAll("-", " ")
+  let errorMessage = error.code || error.message
+  errorMessage = errorMessage.replace("/", ": ").replace("-", " ")
 
   signupFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p class="auth-error-message">${errorMessage}</p>`
+    `<p class="error-message">${errorMessage}</p>`
   )
-}
-
-function writeUserData(user) {
-  set(ref(db, 'users/' + user.uid), {
-    username: user.displayName,
-    email: user.email
-  })
 }
 const signupEmailPassword = async (e) => {
   e.preventDefault()
 
+  const signupUsername = signupUsernameInput.value
   const signupEmail = signupEmailInput.value
   const signupPassword = signupPasswordInput.value
 
   try {
-    const userName = signupUsernameInput.value
+    if (!signupUsername) {
+      throw new Error("auth/invalid-username")
+    }
 
-    if (!userName) throw new Error("missing username")
-
-    const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
-    userCredential.user.displayName = userName
-    writeUserData(userCredential.user)
-
-    closeSignupModal()
-  } catch (err) {
-    showSignupError(err)
+    const userCredential = {}
+  } catch (error) {
+    showSignupError(error)
   }
 }
 signupBtn.addEventListener('click', signupEmailPassword)
+
+switchLoginBtn.addEventListener('click', () => {
+  closeSignupModal()
+  openLoginModal()
+})
+
+switchSignupBtn.addEventListener('click', () => {
+  closeLoginModal()
+  openSignupModal()
+})

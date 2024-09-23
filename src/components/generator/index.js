@@ -1,85 +1,72 @@
+import 'Src/style.css'
 import './style.css'
-
-import { ref, child, push, update } from "firebase/database"
-
-import { auth, db } from 'Src/app'
-import { openLoginModal } from 'Components/auth'
 
 import {
   colorInput,
-  dropdownBtn,
-  dropdownOptions,
-  getSchemeBtn,
-  saveSchemeBtn,
+  modeDropdownBtn,
+  modeOptions,
   selectDropdownOption,
-  getColorScheme
+  getSchemeBtn,
+  getColorScheme,
+  countDecreaseBtn,
+  countIncreaseBtn,
+  generatorCount
 } from './form'
+import { renderColorScheme } from './display'
 
-import { renderSchemeDisplay } from './display'
-
-getSchemeBtn.addEventListener('click', async (e) => {
+getSchemeBtn.addEventListener('click', async e => {
   e.preventDefault()
 
   const color = colorInput.value.slice(1,)
-  const mode = dropdownBtn.value
+  const mode = modeDropdownBtn.value
+  const count = generatorCount.dataset.count
 
-  const colorSchemeObj = await getColorScheme(color, mode)
+  const colorSchemeObj = await getColorScheme(color, mode, count)
 
-  if (colorSchemeObj) renderSchemeDisplay(colorSchemeObj)
+  if (colorSchemeObj) renderColorScheme(colorSchemeObj)
 })
 
 const initializeDisplay = async () => {
-  // check for a saved color scheme in localStorage
+  // check if a scheme object is stored locally
   let colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
 
   if (colorSchemeObj) {
-    const mode = colorSchemeObj.mode
     const color = colorSchemeObj.seed.hex.value
-
     colorInput.value = color
 
-    Object.values(dropdownOptions).find(radioInput => radioInput.value === mode).checked = true
-    selectDropdownOption()
-  } else {
-    const randomHex = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
-    colorInput.value = `#${randomHex}`
-
-    const randomIndex = Math.floor(Math.random() * dropdownOptions.length)
-    dropdownOptions[randomIndex].checked = true
+    const mode = colorSchemeObj.mode
+    Object.values(modeOptions).find(radioInput => radioInput.value === mode).checked = true
     selectDropdownOption()
 
-    const mode = dropdownBtn.value
+    const count = colorSchemeObj.count
+    generatorCount.dataset.count = count
+    generatorCount.innerText = count
 
-    colorSchemeObj = await getColorScheme(randomHex, mode)
-  }
+    if (count === 5) {
+      countIncreaseBtn.disabled = true
+    } else if (count === 0) {
+      countDecreaseBtn.disabled = true
+    }
 
-  if (colorSchemeObj) renderSchemeDisplay(colorSchemeObj)
-}
-
-function writeNewScheme(uid, schemeData) {
-  // Get a key for a new Scheme.
-  const newSchemeKey = push(child(ref(db), 'schemes')).key
-
-  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
-  const updates = {};
-  updates['/schemes/' + newSchemeKey] = schemeData
-  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData
-
-  return update(ref(db), updates)
-}
-saveSchemeBtn.addEventListener('click', () => {  
-  if (auth.currentUser) {
-    const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
-    const userId = auth.currentUser.uid
-
-    writeNewScheme(userId, colorSchemeObj)
   } else {
-    openLoginModal()
-  }
-})
+    // select a random color
+    const randomColor = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, '0')
+    colorInput.value = `#${randomColor}`
 
-dropdownOptions.forEach(radioInput => {
-  radioInput.addEventListener('click', selectDropdownOption)
-})
-selectDropdownOption()
+    // select a mode at random from the dropdown list
+    const randomModeIndex = Math.floor(Math.random() * modeOptions.length)
+    modeOptions[randomModeIndex].checked = true
+    selectDropdownOption()
+    const randomMode = modeDropdownBtn.value
+
+    const randomCount = Math.floor(Math.random() * 5) + 1
+    generatorCount.dataset.count = randomCount
+    generatorCount.innerText = randomCount
+    
+    // get a color scheme from the API
+    colorSchemeObj = await getColorScheme(randomColor, randomMode, randomCount)
+  }
+
+  if (colorSchemeObj) renderColorScheme(colorSchemeObj)
+}
 initializeDisplay()

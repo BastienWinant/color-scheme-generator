@@ -1,3 +1,13 @@
+.black-border {
+  /* border: 1px solid black; */
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'Heebo';
   src: url('../fonts/Heebo/Heebo-VariableFont_wght.ttf') format('truetype');
@@ -10,18 +20,16 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
-  font-style: normal;
+:root {
+  --main-bg: #F8F8F8;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  
-  font-family: "Inter", sans-serif;
+  box-sizing:border-box;
+
+  font-family: 'Inter';
   font-size: inherit;
 }
 
@@ -29,9 +37,6 @@
 button {
   display: block;
   cursor: pointer;
-  font-family: inherit;
-  background-color: transparent;
-  border: none;
 }
 
 img {
@@ -42,23 +47,19 @@ img {
 
 dialog {
   margin: auto;
-
-  width: 90vw;
-  max-width: 320px;
 }
 
-/* PAGE LAYOUT */
+/* APP LAYOUT */
 .app-container {
-  min-height: 95vh;
+  height: 100vh;
+  min-height: 480px;
 
   display: flex;
   flex-direction: column;
-
-  overflow-y: hidden;
 }
 
 main {
   flex-grow: 1;
-  position: relative;
+
   background-color: lightcoral;
 }

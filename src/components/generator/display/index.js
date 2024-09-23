@@ -1,24 +1,26 @@
-const generatorDisplay = document.querySelector('#generator-display')
+import 'Src/style.css'
+import './style.css'
 
-// convert an array of color object into an array of li DOM elements
-const getSchemeDislayHTML = (colorSchemeObj) => {
-  const liEls = colorSchemeObj.colors.map(colorObj => {
+export const generatorDisplay = document.querySelector('#generator-display')
+
+export const generateSchemeHTML = (colorSchemeObj) => {
+  return colorSchemeObj.colors.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-display-color')
 
     liEl.style.backgroundColor = colorObj.hex.value
+    liEl.style.color = colorObj.contrast.value
 
-    liEl.innerHTML = `${colorObj.name.value}`
+    liEl.innerHTML = `${colorObj.hex.value}`
+
     return liEl
   })
-
-  return liEls
 }
 
-// render the color JSON data in the DOM
-export const renderSchemeDisplay = async (colorSchemeObj) => {
-  generatorDisplay.innerHTML = ''
+export const renderColorScheme = (colorSchemeObj) => {
   localStorage.setItem('csg-scheme', JSON.stringify(colorSchemeObj))
-  const colorsHTML = getSchemeDislayHTML(colorSchemeObj)
-  generatorDisplay.append(...colorsHTML)
+  const colorSchemeHTML = generateSchemeHTML(colorSchemeObj)
+  
+  generatorDisplay.innerHTML = ''
+  generatorDisplay.append(...colorSchemeHTML)
 }

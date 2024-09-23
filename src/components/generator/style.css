@@ -1,95 +1,10 @@
 .generator-container {
-  position: absolute;
   height: 100%;
-  width: 100%;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-
-  background-color: red;
-}
-
-/* SCHEME CONTROL PANE */
-.scheme-create-pane {
-  position: absolute;
-  bottom: -15em;
-
-  width: 100%;
-  height: 15em;
-
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1em;
-
-  background-color: #F8F8F8;
-  transition: bottom .5s ease-out;
-}
-
-.pane-expanded {
-  bottom: 0;
-  transition: bottom .3s ease-out;
-}
-
-.generator-collapse-btn {
-  align-self: flex-end;
-}
-
-.generator-input-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.generator-input-field {
-  width: 100%;
-}
-
-/* DROPDOWN */
-.dropdown-list {
-  list-style-type: none;
-
-  display: none;
-  flex-direction: column;
-}
-
-input[name="mode"] {
-  display: none;
-}
-
-input[name="mode"] + label {
-  display: flex;
-  align-items: center;
-}
-
-input[name="mode"]:checked + label {
-  background-color: orangered;
-}
-
-.scheme-ctrl-pane {
-  display: flex;
-}
-
-.scheme-ctrl-btn {
-  flex-grow: 1;
-}
-
-/* DISPLAY */
-.generator-display {
-  flex-grow: 1;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.generator-display-color {
-  flex-grow: 1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   position: relative;
-}
 
+  background-color: lightblue;
+}

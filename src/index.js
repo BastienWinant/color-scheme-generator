@@ -1,5 +1,5 @@
+import 'Src/style.css'
 import './style.css'
 
-import(/* webpackPreload: true */ 'Src/app.js')
-import(/* webpackPrefetch: true */ 'Components/header')
-import(/* webpackPrefetch: true */ 'Components/generator')
+import(/* webpackPreload: true */ 'Components/header')
+import(/* webpackPreload: true */ 'Components/generator')
