@@ -119,7 +119,7 @@ const showSignupError = (error) => {
   )
 }
 
-function writeUserData(user) {
+const writeUserData = (user) => {
   set(ref(db, 'users/' + user.uid), {
     username: user.displayName,
     email: user.email,
@@ -139,6 +139,7 @@ const signupEmailPassword = async (e) => {
     }
 
     const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+    userCredential.user.displayName = signupUsername
     writeUserData(userCredential.user)
     closeSignupModal()
   } catch (error) {
