@@ -3,6 +3,8 @@ import './style.css'
 import { connectAuthEmulator } from 'firebase/auth'
 import { connectDatabaseEmulator } from 'firebase/database'
 
+import(/* webpackPrefetch: true */ 'Components/header')
+
 import { auth, db } from 'Src/app'
 
 if (process.env.NODE_ENV !== 'production') {
