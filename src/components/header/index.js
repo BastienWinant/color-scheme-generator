@@ -3,6 +3,9 @@ import './style.css'
 
 import(/* webpackPrefetch: true */ 'Components/auth')
 
+import { signOut, onAuthStateChanged } from 'firebase/auth'
+
+import { auth } from 'Src/app'
 import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const navToggler = document.querySelector('#nav-toggler')
@@ -11,9 +14,15 @@ const navBtnsToggler = document.querySelector('#nav-btns-toggler')
 const navBtns = document.querySelector('#nav-btns')
 const navLoginBtn = document.querySelector('#nav-login-btn')
 const navSignupBtn = document.querySelector('#nav-signup-btn')
+const navLogoutBtn = document.querySelector('#nav-logout-btn')
+
+const logOut = async () => {
+  signOut(auth)
+}
 
 navLoginBtn.addEventListener('click', openLoginModal)
 navSignupBtn.addEventListener('click', openSignupModal)
+navLogoutBtn.addEventListener('click', logOut)
 
 // NAV RESPONSIVENESS
 const collapseNav = () => {
@@ -26,7 +35,7 @@ const toggleNav = () => {
 navToggler.addEventListener('click', toggleNav)
 
 const collapseNavBtns = () => {
-  navBtns.classList.toggle('nav-expanded')
+  navBtns.classList.remove('nav-expanded')
 }
 
 const toggleNavBtns = () => {
@@ -49,4 +58,17 @@ window.addEventListener('resize', () => {
   collapseNavBtns()
 })
 
-console.log('this is the header')
+const monitorAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      navLoginBtn.style.display = 'none'
+      navSignupBtn.style.display = 'none'
+      navLogoutBtn.style.display = 'block'
+    } else {
+      navLoginBtn.style.display = 'block'
+      navSignupBtn.style.display = 'block'
+      navLogoutBtn.style.display = 'none'
+    }
+  })
+}
+monitorAuthState()

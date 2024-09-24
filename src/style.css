@@ -31,6 +31,7 @@
 
   font-family: 'Inter';
   font-size: inherit;
+  user-select: none;
 }
 
 /* CSS SELECTORS */
@@ -51,8 +52,8 @@ dialog {
 
 /* APP LAYOUT */
 .app-container {
-  height: 100vh;
-  min-height: 480px;
+  height: 90vh;
+  /* min-height: 480px; */
 
   display: flex;
   flex-direction: column;

@@ -1,7 +1,16 @@
 import 'Src/style.css'
 import './style.css'
 
-// AUTH MODALS
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut
+} from 'firebase/auth'
+
+import { ref, set } from 'firebase/database'
+
+import { auth, db } from 'Src/app'
+
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
 const loginFieldset = document.querySelector('#login-fieldset')
@@ -84,7 +93,8 @@ const loginEmailPassword = async (e) => {
   const loginPassword = loginPasswordInput.value
 
   try {
-    const userCredential = {}
+    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    closeLoginModal()
   } catch (error) {
     showLoginError(error)
   }
@@ -108,6 +118,14 @@ const showSignupError = (error) => {
     `<p class="error-message">${errorMessage}</p>`
   )
 }
+
+function writeUserData(user) {
+  set(ref(db, 'users/' + user.uid), {
+    username: user.displayName,
+    email: user.email,
+  });
+}
+
 const signupEmailPassword = async (e) => {
   e.preventDefault()
 
@@ -120,7 +138,9 @@ const signupEmailPassword = async (e) => {
       throw new Error("auth/invalid-username")
     }
 
-    const userCredential = {}
+    const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+    writeUserData(userCredential.user)
+    closeSignupModal()
   } catch (error) {
     showSignupError(error)
   }

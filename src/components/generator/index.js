@@ -10,7 +10,8 @@ import {
   getColorScheme,
   countDecreaseBtn,
   countIncreaseBtn,
-  generatorCount
+  generatorCount,
+  collapseGeneratorForm
 } from './form'
 import { renderColorScheme } from './display'
 
@@ -23,7 +24,10 @@ getSchemeBtn.addEventListener('click', async e => {
 
   const colorSchemeObj = await getColorScheme(color, mode, count)
 
-  if (colorSchemeObj) renderColorScheme(colorSchemeObj)
+  if (colorSchemeObj) {
+    renderColorScheme(colorSchemeObj)
+    collapseGeneratorForm()
+  }
 })
 
 const initializeDisplay = async () => {
@@ -67,6 +71,9 @@ const initializeDisplay = async () => {
     colorSchemeObj = await getColorScheme(randomColor, randomMode, randomCount)
   }
 
-  if (colorSchemeObj) renderColorScheme(colorSchemeObj)
+  if (colorSchemeObj) {
+    renderColorScheme(colorSchemeObj)
+    collapseGeneratorForm()
+  }
 }
 initializeDisplay()

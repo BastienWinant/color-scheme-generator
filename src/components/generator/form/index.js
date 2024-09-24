@@ -78,7 +78,7 @@ export const getColorScheme = async (color, mode, count) => {
   }
 }
 
-const collapseGeneratorForm = () => {
+export const collapseGeneratorForm = () => {
   schemeCreatePane.classList.remove('pane-expanded')
 }
 collapseBtn.addEventListener('click', collapseGeneratorForm)
