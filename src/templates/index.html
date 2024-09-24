@@ -6,7 +6,21 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <header></header>
+  <header>
+    <img src=<%=require("../../img/pantone.svg")%> />
+    <nav id="nav" class="nav">
+      <section id="nav-links" class="nav-links">
+        <a href="#" class="nav-link">generator</a>
+        <a href="#" class="nav-link">schemes</a>
+        <a href="#" class="nav-link">colors</a>
+      </section>
+      <section id="nav-btns" class="nav-btns">
+        <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+        <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button>
+        <button type="button" id="anv-logout-btn" class="nav-btn">log out</button>
+      </section>
+    </nav>
+  </header>
   <main></main>
 </body>
 </html>
