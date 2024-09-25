@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -10,6 +11,7 @@ module.exports = {
     colors: './src/index.js'
   },
   plugins: [
+    new Dotenv(),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
       chunkFilename: "[id].[contenthash].css",
@@ -20,7 +22,25 @@ module.exports = {
       chunks: ['index'],
       filename: 'index.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/templates/index.html',
+      title: 'Schemes',
+      chunks: ['schemes'],
+      filename: 'schemes.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/templates/index.html',
+      title: 'Colors',
+      chunks: ['colors'],
+      filename: 'colors.html'
+    }),
   ],
+  resolve: {
+    alias: {
+      Src: path.resolve(__dirname, 'src/'),
+      Components: path.resolve(__dirname, 'src/components/'),
+    },
+  },
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'public'),

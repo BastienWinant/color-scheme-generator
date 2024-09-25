@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
   <header class="header">
+    <img src=<%=require("../../img/pantone.svg")%> />
     <nav id="nav" class="nav">
       <section class="nav-links">
-        <a href="#" class="nav-link">generator</a>
-        <a href="#" class="nav-link">schemes</a>
-        <a href="#" class="nav-link">colors</a>
+        <a href="index.html" class="nav-link">generator</a>
+        <a href="schemes.html" class="nav-link">schemes</a>
+        <a href="colors.html" class="nav-link">colors</a>
       </section>
       <section id="nav-btns" class="nav-btns">
         <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
