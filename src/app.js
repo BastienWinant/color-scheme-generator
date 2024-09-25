@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
-import { getDatabase } from "firebase/database"
+import { initializeApp } from 'firebase/app'
+import { getAuth, connectAuthEmulator } from 'firebase/auth'
+import { getDatabase, connectDatabaseEmulator } from 'firebase/database'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,3 +18,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 export const db = getDatabase(app)
+
+if (process.env.NODE_ENV !== 'production') {
+  connectAuthEmulator(auth, 'http://localhost:9099')
+  connectDatabaseEmulator(db, '127.0.0.1', 9000)
+  console.log('Looks like we are in development mode!')
+}

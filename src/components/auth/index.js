@@ -1,8 +1,9 @@
 import './style.css'
 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth"
+import { ref, set } from 'firebase/database'
 
-import { auth } from "Src/app"
+import { auth, db } from "Src/app"
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
@@ -15,7 +16,6 @@ const signupBtn = document.querySelector('#signup-btn')
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
 const loginFieldset = document.querySelector('#login-fieldset')
-const loginUsername = document.querySelector('#login-username')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
@@ -25,7 +25,38 @@ export const openSignupModal = () => {
 }
 
 const closeSignupModal = () => {
+  signupForm.reset()
   signupModal.close()
+}
+signupModal.addEventListener('click', e => {
+  if (!e.target.closest('.auth-form')) {
+    closeSignupModal()
+  }
+})
+
+const clearSignupError = () => {
+  try {
+    signupFieldset.querySelector('.auth-error-msg').remove()
+  } catch {}
+}
+
+const showSignupError = (error) => {
+  clearSignupError()
+
+  let errorMessage = error.code || error.message
+  errorMessage = errorMessage.replace("/", ": ").replace("-", " ")
+
+  signupFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-error-msg">${errorMessage}</p>`
+  )
+}
+
+function writeUserData(user) {
+  set(ref(db, 'users/' + user.uid), {
+    username: user.displayName,
+    email: user.email,
+  });
 }
 
 const signupEmailPassword = async (e) => {
@@ -38,10 +69,12 @@ const signupEmailPassword = async (e) => {
   if (!username) throw new Error('invalid username')
 
   try {
-    const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
-    console.log(userCredentials)
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+    userCredential.user.displayName = username
+    console.log(userCredential.user)
+    writeUserData(userCredential.user)
   } catch (error) {
-    console.log(error.message)
+    showSignupError(error)
   }
 }
 
@@ -52,7 +85,31 @@ export const openLoginModal = () => {
 }
 
 const closeLoginModal = () => {
+  loginForm.reset()
   loginModal.close()
+}
+loginModal.addEventListener('click', e => {
+  if (!e.target.closest('.auth-form')) {
+    closeLoginModal()
+  }
+})
+
+const clearLoginError = () => {
+  try {
+    loginFieldset.querySelector('.auth-error-msg').remove()
+  } catch {}
+}
+
+const showLoginError = (error) => {
+  clearLoginError()
+
+  let errorMessage = error.code || error.message
+  errorMessage = errorMessage.replace("/", ": ").replace("-", " ")
+
+  loginFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p clas="auth-error-msg">${errorMessage}</p>`
+  )
 }
 
 const loginEmailPassword = async (e) => {
@@ -62,10 +119,10 @@ const loginEmailPassword = async (e) => {
   const password = loginPasswordInput.value
 
   try {
-    const userCredentials = await signInWithEmailAndPassword(auth, email, password)
-    console.log(userCredentials)
+    const userCredential = await signInWithEmailAndPassword(auth, email, password)
+    console.log(userCredential)
   } catch (error) {
-    console.log(error.message)
+    showLoginError(error)
   }
 }
 

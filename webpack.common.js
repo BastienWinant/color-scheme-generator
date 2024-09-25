@@ -6,9 +6,9 @@ const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: {
-    index: './src/index.js',
-    schemes: './src/index.js',
-    colors: './src/index.js'
+    index: './src/entries/index.js',
+    schemes: './src/entries/schemes.js',
+    colors: './src/entries/colors.js'
   },
   plugins: [
     new Dotenv(),
