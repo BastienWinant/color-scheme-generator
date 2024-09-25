@@ -23,13 +23,13 @@ module.exports = {
       filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/templates/index.html',
+      template: './src/templates/schemes.html',
       title: 'Schemes',
       chunks: ['schemes'],
       filename: 'schemes.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/templates/index.html',
+      template: './src/templates/colors.html',
       title: 'Colors',
       chunks: ['colors'],
       filename: 'colors.html'
