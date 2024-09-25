@@ -22,6 +22,85 @@
     </nav>
   </header>
 
+  <main>
+    <div class="generator-container">
+      <form method="post" id="generator-form" class="generator-form">
+        <fieldset class="generator-fieldset">
+          <label for="seed" class="generator-input-group">
+            <h2>seed</h2>
+            <input type="color" name="seed" id="seed" class="generator-input-field">
+          </label>
+          <div class="generator-input-group">
+            <h2>mode</h2>
+            <button type="button" id="dropdown-btn" class="dropdown-btn" value="monochrome">
+              <h3 id="dropdown-btn-text">monochrome</h3>
+            </button>
+            <ul id="dropdown-list" class="dropdown-list">
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
+                <label for="monochrome" class="dropdown-label">
+                  <h4>monochrome</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
+                <label for="monochrome-dark" class="dropdown-label">
+                  <h4>monochrome-dark</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
+                <label for="monochrome-light" class="dropdown-label">
+                  <h4>monochrome-light</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="analogic" value="analogic" />
+                <label for="analogic" class="dropdown-label">
+                  <h4>analogic</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="complement" value="complement" />
+                <label for="complement" class="dropdown-label">
+                  <h4>complement</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
+                <label for="analogic-complement" class="dropdown-label">
+                  <h4>analogic-complement</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="triad" value="triad" />
+                <label for="triad" class="dropdown-label">
+                  <h4>triad</h4>
+                </label>
+              </li>
+              <li class="dropdown-option">
+                <input type="radio" name="mode" id="quad" value="quad" />
+                <label for="quad" class="dropdown-label">
+                  <h4>quad</h4>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div class="generator-input-group">
+            <h2>count</h2>
+            <div>
+              <button type="button" id="count-decrease-btn" class="count-btn">decrease</button>
+              <span id="count" data-count="5">5</span>
+              <button type="button" id="count-increase-btn" class="count-btn">increase</button>
+            </div>
+          </div>
+          <button type="submit" id="get-scheme-btn" class="get-scheme-btn">get color scheme</button>
+        </fieldset>
+      </form>
+      <ul id="generator-display" class="generator-display"></ul>
+    </div>
+  </main>
+
   <!-- signup modal -->
    <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="auth-form">
