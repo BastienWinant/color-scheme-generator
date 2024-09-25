@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOR_SCHEME_GENERATOR_E00B0 }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_COLOR_SCHEME_GENERATOR_E5A3F }}
           channelId: live
-          projectId: color-scheme-generator-e00b0
+          projectId: color-scheme-generator-e5a3f
