@@ -25,6 +25,7 @@ export const openSignupModal = () => {
 }
 
 const closeSignupModal = () => {
+  clearSignupError()
   signupForm.reset()
   signupModal.close()
 }
@@ -94,6 +95,7 @@ export const openLoginModal = () => {
 }
 
 const closeLoginModal = () => {
+  clearLoginError()
   loginForm.reset()
   loginModal.close()
 }
@@ -117,7 +119,7 @@ const showLoginError = (error) => {
 
   loginFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p clas='auth-error-msg'>${errorMessage}</p>`
+    `<p class='auth-error-msg'>${errorMessage}</p>`
   )
 }
 
@@ -130,7 +132,6 @@ const loginEmailPassword = async (e) => {
 
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
-    console.log(userCredential)
     closeLoginModal()
   } catch (error) {
     showLoginError(error)
