@@ -1,9 +1,9 @@
 import './style.css'
 
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth"
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
 import { ref, set } from 'firebase/database'
 
-import { auth, db } from "Src/app"
+import { auth, db } from 'Src/app'
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
@@ -41,38 +41,47 @@ const clearSignupError = () => {
 }
 
 const showSignupError = (error) => {
+  // erase any existing error message
   clearSignupError()
 
+  // format the error message
   let errorMessage = error.code || error.message
-  errorMessage = errorMessage.replace("/", ": ").replace("-", " ")
+  errorMessage = errorMessage.replace('/', ': ').replace('-', ' ')
 
+  // display the error message
   signupFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p class="auth-error-msg">${errorMessage}</p>`
+    `<p class='auth-error-msg'>${errorMessage}</p>`
   )
 }
 
+// saves the user's email and username in the db
 function writeUserData(user) {
   set(ref(db, 'users/' + user.uid), {
     username: user.displayName,
     email: user.email,
-  });
+  })
 }
 
 const signupEmailPassword = async (e) => {
   e.preventDefault()
 
+  // retrieve input credentials
   const username = signupUsername.value
   const email = signupEmailInput.value
   const password = signupPasswordInput.value
 
-  if (!username) throw new Error('invalid username')
-
   try {
+    // throw an error if no username is provided
+    if (!username) throw new Error('invalid username')
+    
+    // retrieve new user credentials
     const userCredential = await createUserWithEmailAndPassword(auth, email, password)
     userCredential.user.displayName = username
-    console.log(userCredential.user)
+
+    // save username and email in the db and close modal
     writeUserData(userCredential.user)
+    closeSignupModal()
   } catch (error) {
     showSignupError(error)
   }
@@ -104,23 +113,25 @@ const showLoginError = (error) => {
   clearLoginError()
 
   let errorMessage = error.code || error.message
-  errorMessage = errorMessage.replace("/", ": ").replace("-", " ")
+  errorMessage = errorMessage.replace('/', ': ').replace('-', ' ')
 
   loginFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p clas="auth-error-msg">${errorMessage}</p>`
+    `<p clas='auth-error-msg'>${errorMessage}</p>`
   )
 }
 
 const loginEmailPassword = async (e) => {
   e.preventDefault()
 
+  // retrieve input credentials
   const email = loginEmailInput.value
   const password = loginPasswordInput.value
 
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password)
     console.log(userCredential)
+    closeLoginModal()
   } catch (error) {
     showLoginError(error)
   }
