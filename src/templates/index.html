@@ -49,5 +49,28 @@
       </fieldset>
     </form>
    </dialog>
+
+   <!-- login modal -->
+    <dialog id="login-modal" class="auth-modal">
+      <form method="post" id="login-form" class="auth-form">
+        <fieldset id="login-fieldset" class="auth-fieldset">
+          <legend class="auth-fieldset-legend">
+            <h2>log in</h2>
+          </legend>
+
+          <label for="login-email" class="auth-input-group">
+            <h3>email</h3>
+            <input type="email" name="email" id="login-email" class="auth-input-field" />
+          </label>
+
+          <label for="login-password" class="auth-input-group">
+            <h3>password</h3>
+            <input type="password" name="password" id="login-password" class="auth-input-field" />
+          </label>
+
+          <button type="submit" id="login-btn" class="auth-btn">log in</button>
+        </fieldset>
+      </form>
+    </dialog>
 </body>
 </html>
