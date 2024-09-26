@@ -28,13 +28,13 @@ modeInputs.forEach(radioInput => {
 // GENERATOR COUNT
 const decreaseSchemeCount = () => {
   let count = parseInt(schemeCount.dataset.count)
-  count = Math.max(0, count - 1)
+  count = Math.max(1, count - 1)
 
   schemeCount.dataset.count = count
   schemeCount.innerText = count
 
   countIncreaseBtn.disabled = false
-  if (count === 0) countDecreaseBtn.disabled = true
+  if (count === 1) countDecreaseBtn.disabled = true
 }
 countDecreaseBtn.addEventListener('click', decreaseSchemeCount)
 
@@ -89,7 +89,7 @@ const setFormInputs = (seed, mode, count) => {
   schemeCount.dataset.count = count
   schemeCount.innerText = count
   if (count == 5) countIncreaseBtn.disabled = true
-  else if (count == 0) countDecreaseBtn.disabled = true
+  else if (count == 1) countDecreaseBtn.disabled = true
 }
 
 export const initializeColorScheme = async () => {
