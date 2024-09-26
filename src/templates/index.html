@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="header">
@@ -25,7 +26,7 @@
   <main>
     <div class="generator-container">
       <form method="post" id="generator-form" class="generator-form">
-        <fieldset class="generator-fieldset">
+        <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
           <label for="seed" class="generator-input-group">
             <h2>seed</h2>
             <input type="color" name="seed" id="seed" class="generator-input-field">
@@ -89,12 +90,20 @@
           <div class="generator-input-group">
             <h2>count</h2>
             <div>
-              <button type="button" id="count-decrease-btn" class="count-btn">decrease</button>
+              <button type="button" id="count-decrease-btn" class="count-btn">
+                <i class="fa-solid fa-circle-minus fa-lg"></i>
+              </button>
               <span id="count" data-count="5">5</span>
-              <button type="button" id="count-increase-btn" class="count-btn">increase</button>
+              <button type="button" id="count-increase-btn" class="count-btn">
+                <i class="fa-solid fa-circle-plus fa-lg"></i>
+              </button>
             </div>
           </div>
           <button type="submit" id="get-scheme-btn" class="get-scheme-btn">get color scheme</button>
+        </fieldset>
+        <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
+          <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn">new scheme</button>
+          <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save scheme</button>
         </fieldset>
       </form>
       <ul id="generator-display" class="generator-display"></ul>

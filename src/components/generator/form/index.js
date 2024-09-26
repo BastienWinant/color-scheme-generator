@@ -1,3 +1,8 @@
+import { ref, child, push, update } from 'firebase/database'
+
+import { auth, db } from 'Src/app'
+import { openLoginModal } from 'Components/auth'
+
 const generatorForm = document.querySelector('#generator-form')
 const schemeSeed = document.querySelector('#seed')
 const modeDropdownBtn = document.querySelector('#dropdown-btn')
@@ -7,8 +12,10 @@ const schemeCount = document.querySelector('#count')
 const countDecreaseBtn = document.querySelector('#count-decrease-btn')
 const countIncreaseBtn = document.querySelector('#count-increase-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
+const newSchemeBtn = document.querySelector('#new-scheme-btn')
+const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
-// GENERATOR DROPDOWN
+// update the dropdown button to show the selected option
 const selectModeOption = () => {
   const mode = document.querySelector('input[name="mode"]:checked').value
   modeDropdownBtnText.innerText = mode
@@ -43,7 +50,7 @@ const increaseSchemeCount = () => {
 }
 countIncreaseBtn.addEventListener('click', increaseSchemeCount)
 
-// GENERATOR SUBMISSION
+// get data for a new color scheme from the Colors API
 const getColorScheme = async (hex, mode, count) => {
   const baseUrl = 'https://www.thecolorapi.com'
   const endpoint = 'scheme'
@@ -58,6 +65,7 @@ const getColorScheme = async (hex, mode, count) => {
   } catch {}
 }
 
+// use form inputs to fetch and display a new color scheme
 export const updateColorScheme = async () => {
   const seed = schemeSeed.value.slice(1,)
   const mode = modeDropdownBtn.value
@@ -71,6 +79,7 @@ export const updateColorScheme = async () => {
   }
 }
 
+// manually update the form inputs
 const setFormInputs = (seed, mode, count) => {
   schemeSeed.value = `#${seed}`
 
@@ -79,6 +88,8 @@ const setFormInputs = (seed, mode, count) => {
 
   schemeCount.dataset.count = count
   schemeCount.innerText = count
+  if (count == 5) countIncreaseBtn.disabled = true
+  else if (count == 0) countDecreaseBtn.disabled = true
 }
 
 export const initializeColorScheme = async () => {
@@ -104,3 +115,26 @@ export const initializeColorScheme = async () => {
 
   return colorSchemeObj
 }
+
+function writeNewScheme(uid, schemeData) {
+  // Get a key for a new Scheme.
+  const newSchemeKey = push(child(ref(db), 'schemes')).key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates['/schemes/' + newSchemeKey] = schemeData
+  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData;
+
+  return update(ref(db), updates);
+}
+saveSchemeBtn.addEventListener('click', () => {
+  const currentUser = auth.currentUser
+
+  if (currentUser) {
+    const userId = currentUser.uid
+    const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
+    writeNewScheme(userId, colorSchemeObj)
+  } else {
+    openLoginModal()
+  }
+})
