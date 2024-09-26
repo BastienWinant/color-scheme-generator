@@ -1,3 +1,8 @@
+import { ref, child, push, update } from 'firebase/database'
+
+import { auth, db } from 'Src/app'
+import { openLoginModal } from 'Components/auth'
+
 const generatorDisplay = document.querySelector('#generator-display')
 
 const generateDisplayHTML = (colorArr) => {
@@ -37,11 +42,32 @@ export const updateDisplay = (colorSchemeObj) => {
   generatorDisplay.append(...displayHTML)
 }
 
+function writeNewColor(uid, colorData) {
+  // Get a key for a new Scheme.
+  const newColorKey = push(child(ref(db), 'colors')).key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates['/colors/' + newColorKey] = colorData
+  updates['/user-colors/' + uid + '/' + newColorKey] = colorData;
+
+  return update(ref(db), updates);
+}
+
 generatorDisplay.addEventListener('click', e => {
   const generatorColor = e.target.closest('.generator-color')
   const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
+  const colorObj = colorSchemeObj.colors.find(colorObj => colorObj.hex.value === generatorColor.dataset.hex)
 
   if (e.target.closest('.generator-color-save')) {
+    const currentUser = auth.currentUser
+
+    if (currentUser) {
+      const userId = currentUser.uid
+      writeNewColor(userId, colorObj)
+    } else {
+      openLoginModal()
+    }
 
   } else if (e.target.closest('.generator-color-remove')) {
     // remove the color element from the DOM
