@@ -10,8 +10,9 @@ const generateDisplayHTML = (colorArr) => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
     liEl.dataset.hex = colorObj.hex.value
-    liEl.dataset.saved = '0'
 
+    const colorSaved = true
+    liEl.dataset.saved = colorSaved.toString()
     const removeBtnStatus = colorArr.length > 1 ? '' : ' disabled'
 
     liEl.innerHTML = `
@@ -22,7 +23,7 @@ const generateDisplayHTML = (colorArr) => {
         </hgroup>
         <div>
           <button type="button" class="generator-color-btn generator-color-save">
-            <i class="fa-regular fa-heart"></i>
+            ${colorSaved ? `<i class="fa-solid fa-heart"></i>` : `<i class="fa-regular fa-heart"></i>`}
           </button>
           <button type="button" class="generator-color-btn generator-color-copy">
             <i class="fa-solid fa-copy"></i>
@@ -43,7 +44,7 @@ export const updateDisplay = (colorSchemeObj) => {
   generatorDisplay.append(...displayHTML)
 }
 
-function writeNewColor(uid, colorData) {
+const saveColor = (uid, colorData) => {
   // Use the hex value as key.
   const colorKey = colorData.hex.clean
 
@@ -67,6 +68,25 @@ function writeNewColor(uid, colorData) {
   update(ref(db, '/colors/' + colorKey), colorData)
 }
 
+const deleteColor = (uid, colorHex) => {
+  // Delete the color hex from the user's color list.
+  const userColorsRef = ref(db, '/user-colors/' + uid)
+  get(userColorsRef).then(snapshot => {
+    if (snapshot.exists()) {
+      const userColors = snapshot.val()
+
+      const colorIndex = userColors.indexOf(colorHex)
+      if (colorIndex != -1) {
+        userColors.splice(colorIndex, 1)
+        set(userColorsRef, userColors)
+      }
+    }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
 generatorDisplay.addEventListener('click', e => {
   const generatorColor = e.target.closest('.generator-color')
   const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
@@ -77,16 +97,15 @@ generatorDisplay.addEventListener('click', e => {
 
     if (currentUser) {
       const userId = currentUser.uid
-      console.log(generatorColor.dataset.saved)
-      if (generatorColor.dataset.saved === '1') {
-        console.log('unsaving the color')
+
+      if (generatorColor.dataset.saved === 'true') {
+        deleteColor(userId, colorObj.hex.clean)
         e.target.closest('.generator-color-save').innerHTML = `<i class="fa-regular fa-heart"></i>`
-        generatorColor.dataset.saved = '0'
+        generatorColor.dataset.saved = 'false'
       } else {
-        console.log('saving the color')
-        writeNewColor(userId, colorObj)
+        saveColor(userId, colorObj)
         e.target.closest('.generator-color-save').innerHTML = `<i class="fa-solid fa-heart"></i>`
-        generatorColor.dataset.saved = '1'
+        generatorColor.dataset.saved = 'true'
       }
     } else {
       openLoginModal()

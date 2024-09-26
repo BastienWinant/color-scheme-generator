@@ -117,7 +117,7 @@ export const initializeColorScheme = async () => {
   return colorSchemeObj
 }
 
-function writeNewScheme(uid, schemeData) {
+const saveScheme = (uid, schemeData) => {
   // Get a key for a new Scheme.
   const newSchemeKey = push(child(ref(db), 'schemes')).key
 
@@ -141,7 +141,7 @@ saveSchemeBtn.addEventListener('click', () => {
   if (currentUser) {
     const userId = currentUser.uid
     const colorSchemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
-    writeNewScheme(userId, colorSchemeObj)
+    saveScheme(userId, colorSchemeObj)
   } else {
     openLoginModal()
   }
