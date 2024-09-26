@@ -108,6 +108,7 @@ export const initializeColorScheme = async () => {
 
     // get a new color scheme from the API
     colorSchemeObj = await getColorScheme(seed, mode.value, count)
+    localStorage.setItem('csg-scheme', JSON.stringify(colorSchemeObj))
   }
   
   // update the generator form and display
