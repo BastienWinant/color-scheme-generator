@@ -1,4 +1,4 @@
-import { ref, child, push, update, get, set } from 'firebase/database'
+import { ref, child, push, get, set } from 'firebase/database'
 
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'

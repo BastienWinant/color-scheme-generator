@@ -1,4 +1,4 @@
-import { ref, child, push, update } from 'firebase/database'
+import { ref, get, set, update } from 'firebase/database'
 
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
@@ -47,12 +47,24 @@ function writeNewColor(uid, colorData) {
   // Use the hex value as key.
   const colorKey = colorData.hex.clean
 
-  // Write the new color's data simultaneously in the colors list and the user's color list.
-  const updates = {}
-  updates['/colors/' + colorKey] = colorData
-  updates['/user-colors/' + uid + '/' + colorKey] = colorData
-
-  return update(ref(db), updates)
+  // Write the color hex in the user's color list.
+  const userColorsRef = ref(db, '/user-colors/' + uid)
+  get(userColorsRef).then(snapshot => {
+    // retrieve the user's color list
+    let userColors = snapshot.exists() ? snapshot.val() : []
+    
+    // user color entries should be unique
+    if (!userColors.includes(colorKey)) {
+      userColors.push(colorKey)
+      set(userColorsRef, userColors)
+    }
+  })
+  .catch(error => {
+    console.log(error)
+  })
+  
+  // Write the new color's data in the colors.
+  update(ref(db, '/colors/' + colorKey), colorData)
 }
 
 generatorDisplay.addEventListener('click', e => {
