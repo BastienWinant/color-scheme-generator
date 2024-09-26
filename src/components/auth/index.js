@@ -1,6 +1,11 @@
 import './style.css'
 
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail
+} from 'firebase/auth'
 import { ref, set } from 'firebase/database'
 
 import { auth, db } from 'Src/app'
@@ -20,8 +25,17 @@ const loginFieldset = document.querySelector('#login-fieldset')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
+const switchResetBtn = document.querySelector('#switch-reset-btn')
 const switchSignupBtn = document.querySelector('#switch-signup-btn')
 
+const resetModal = document.querySelector('#reset-modal')
+const resetForm = document.querySelector('#reset-form')
+const resetFieldset = document.querySelector('#reset-fieldset')
+const resetEmailInput = document.querySelector('#reset-email')
+const resetBtn = document.querySelector('#reset-btn')
+const cancelResetBtn = document.querySelector('#cancel-reset-btn')
+
+// SIGNUP FUNCTIONALITY
 export const openSignupModal = () => {
   signupModal.showModal()
 }
@@ -92,6 +106,7 @@ const signupEmailPassword = async (e) => {
 
 signupBtn.addEventListener('click', signupEmailPassword)
 
+// LOGIN FUNCTIONALITY
 export const openLoginModal = () => {
   loginModal.showModal()
 }
@@ -142,6 +157,66 @@ const loginEmailPassword = async (e) => {
 
 loginBtn.addEventListener('click', loginEmailPassword)
 
+// PASSWORD RESET
+const openResetModal = () => {
+  resetModal.showModal()
+}
+
+switchResetBtn.addEventListener('click', () => {
+  closeLoginModal()
+  openResetModal()
+})
+
+const closeResetModal = () => {
+  clearResetError()
+  resetForm.reset()
+  resetModal.close()
+}
+resetModal.addEventListener('click', e => {
+  if (!e.target.closest('.auth-form')) {
+    closeResetModal()
+  }
+})
+
+const clearResetError = () => {
+  try {
+    resetFieldset.querySelector('.auth-error-msg').remove()
+  } catch {}
+}
+
+const showResetError = (error) => {
+  clearResetError()
+
+  let errorMessage = error.code || error.message
+  errorMessage = errorMessage.replace('/', ': ').replace('-', ' ')
+
+  resetFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class='auth-error-msg'>${errorMessage}</p>`
+  )
+}
+
+resetBtn.addEventListener('click', async e => {
+  e.preventDefault()
+
+  const email = resetEmailInput.value  
+  
+  sendPasswordResetEmail(auth, email)
+  .then(() => {
+    clearResetError()
+    // TODO: show confirmation msg
+  })
+  .catch(error => {
+    showResetError(error)
+  })
+})
+
+cancelResetBtn.addEventListener('click', () => {
+  closeResetModal()
+  openLoginModal()
+})
+
+// LOGOUT
 export const logOut = async () => {
   signOut(auth)
 }

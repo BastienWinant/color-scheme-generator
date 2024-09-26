@@ -162,10 +162,9 @@
           </label>
 
           <button type="submit" id="login-btn" class="auth-btn">log in</button>
-
-          <div class="reset-password">
+          <div class="auth-switch">
             Forgot password?
-            <button type="button" id="password-reset-btn" class="password-reset-btn">Reset it here</button>
+            <button type="button" id="switch-reset-btn" class="switch-auth-btn">reset it here</button>
           </div>
         </fieldset>
 
@@ -173,6 +172,27 @@
           <p>Don't have an account yet?</p>
           <button type="button" id="switch-signup-btn" class="switch-auth-btn">sign up</button>
         </div>
+      </form>
+    </dialog>
+
+    <!-- password reset modal -->
+    <dialog id="reset-modal" class="auth-modal">
+      <form method="post" id="reset-form" class="auth-form">
+        <fieldset id="reset-fieldset" class="auth-fieldset">
+          <legend class="auth-fieldset-legend">
+            <h2>password reset</h2>
+          </legend>
+
+          <label for="reset-email" class="auth-input-group">
+            <h3>email</h3>
+            <input type="email" name="email" id="reset-email" class="auth-input-field" />
+          </label>
+
+          <button type="submit" id="reset-btn" class="auth-btn">reset password</button>
+          <div class="auth-switch">
+            <button type="button" id="cancel-reset-btn" class="switch-auth-btn">back to login</button>
+          </div>
+        </fieldset>
       </form>
     </dialog>
 </body>
