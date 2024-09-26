@@ -10,6 +10,7 @@ const generateDisplayHTML = (colorArr) => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
     liEl.dataset.hex = colorObj.hex.value
+    liEl.dataset.saved = '0'
 
     const removeBtnStatus = colorArr.length > 1 ? '' : ' disabled'
 
@@ -43,13 +44,14 @@ export const updateDisplay = (colorSchemeObj) => {
 }
 
 function writeNewColor(uid, colorData) {
-  // Get a key for a new Scheme.
-  const newColorKey = push(child(ref(db), 'colors')).key;
+  // // Get a key for a new Scheme.
+  // const newColorKey = push(child(ref(db), 'colors')).key;
+  const colorKey = colorData.hex.clean
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
   const updates = {};
-  updates['/colors/' + newColorKey] = colorData
-  updates['/user-colors/' + uid + '/' + newColorKey] = colorData;
+  updates['/colors/' + colorKey] = colorData
+  updates['/user-colors/' + uid + '/' + colorKey] = colorData;
 
   return update(ref(db), updates);
 }
@@ -64,7 +66,17 @@ generatorDisplay.addEventListener('click', e => {
 
     if (currentUser) {
       const userId = currentUser.uid
-      writeNewColor(userId, colorObj)
+      console.log(generatorColor.dataset.saved)
+      if (generatorColor.dataset.saved === '1') {
+        console.log('unsaving the color')
+        e.target.closest('.generator-color-save').innerHTML = `<i class="fa-regular fa-heart"></i>`
+        generatorColor.dataset.saved = '0'
+      } else {
+        console.log('saving the color')
+        writeNewColor(userId, colorObj)
+        e.target.closest('.generator-color-save').innerHTML = `<i class="fa-solid fa-heart"></i>`
+        generatorColor.dataset.saved = '1'
+      }
     } else {
       openLoginModal()
     }
