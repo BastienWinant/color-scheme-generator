@@ -5,14 +5,30 @@ import { openLoginModal } from 'Components/auth'
 
 const generatorDisplay = document.querySelector('#generator-display')
 
-const generateDisplayHTML = (colorArr) => {
-  return colorArr.map(colorObj => {
+// retrieve the user's saved colors
+const getUserColors = async (user) => {
+  const uid = user.uid
+  const userColorsRef = ref(db, '/user-colors/' + uid)
+  const snapshot = await get(userColorsRef)
+
+  if (snapshot.exists()) return snapshot.val()
+  else return []
+}
+
+// convert schema data to list of DOM elements
+const generateDisplayHTML = async (colorArr) => {
+  let userColors = []
+  if (auth.currentUser) userColors = await getUserColors(auth.currentUser)
+
+  const liArr = colorArr.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-color')
     liEl.dataset.hex = colorObj.hex.value
 
-    const colorSaved = true
+    // flag whether user has saved the color
+    const colorSaved = userColors.includes(colorObj.hex.clean)
     liEl.dataset.saved = colorSaved.toString()
+    
     const removeBtnStatus = colorArr.length > 1 ? '' : ' disabled'
 
     liEl.innerHTML = `
@@ -36,11 +52,13 @@ const generateDisplayHTML = (colorArr) => {
       `
     return liEl
   })
+
+  return Promise.all(liArr)
 }
 
-export const updateDisplay = (colorSchemeObj) => {
+export const updateDisplay = async (colorSchemeObj) => {
   generatorDisplay.innerHTML = ''
-  const displayHTML = generateDisplayHTML(colorSchemeObj.colors)
+  const displayHTML = await generateDisplayHTML(colorSchemeObj.colors)
   generatorDisplay.append(...displayHTML)
 }
 

@@ -3,7 +3,6 @@ import { ref, child, push, get, set } from 'firebase/database'
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
-const generatorForm = document.querySelector('#generator-form')
 const schemeSeed = document.querySelector('#seed')
 const modeDropdownBtn = document.querySelector('#dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#dropdown-btn-text')
