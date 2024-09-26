@@ -12,6 +12,7 @@ const signupUsername = document.querySelector('#signup-username')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
 const signupBtn = document.querySelector('#signup-btn')
+const switchLoginBtn = document.querySelector('#switch-login-btn')
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
@@ -19,6 +20,7 @@ const loginFieldset = document.querySelector('#login-fieldset')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
+const switchSignupBtn = document.querySelector('#switch-signup-btn')
 
 export const openSignupModal = () => {
   signupModal.showModal()
@@ -143,3 +145,13 @@ loginBtn.addEventListener('click', loginEmailPassword)
 export const logOut = async () => {
   signOut(auth)
 }
+
+switchLoginBtn.addEventListener('click', () => {
+  closeSignupModal()
+  openLoginModal()
+})
+
+switchSignupBtn.addEventListener('click', () => {
+  closeLoginModal()
+  openSignupModal()
+})
