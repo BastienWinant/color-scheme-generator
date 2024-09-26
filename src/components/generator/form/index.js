@@ -121,7 +121,7 @@ function writeNewScheme(uid, schemeData) {
   // Get a key for a new Scheme.
   const newSchemeKey = push(child(ref(db), 'schemes')).key;
 
-  // Write the new post's data simultaneously in the posts list and the user's post list.
+  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
   const updates = {};
   updates['/schemes/' + newSchemeKey] = schemeData
   updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData;

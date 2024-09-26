@@ -44,11 +44,10 @@ export const updateDisplay = (colorSchemeObj) => {
 }
 
 function writeNewColor(uid, colorData) {
-  // // Get a key for a new Scheme.
-  // const newColorKey = push(child(ref(db), 'colors')).key;
+  // Use the hex value as key.
   const colorKey = colorData.hex.clean
 
-  // Write the new post's data simultaneously in the posts list and the user's post list.
+  // Write the new color's data simultaneously in the colors list and the user's color list.
   const updates = {};
   updates['/colors/' + colorKey] = colorData
   updates['/user-colors/' + uid + '/' + colorKey] = colorData;
