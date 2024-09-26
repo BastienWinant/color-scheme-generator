@@ -1,4 +1,4 @@
-import { ref, child, push, update } from 'firebase/database'
+import { ref, child, push, update, get, set } from 'firebase/database'
 
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
@@ -119,14 +119,21 @@ export const initializeColorScheme = async () => {
 
 function writeNewScheme(uid, schemeData) {
   // Get a key for a new Scheme.
-  const newSchemeKey = push(child(ref(db), 'schemes')).key;
+  const newSchemeKey = push(child(ref(db), 'schemes')).key
 
-  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
-  const updates = {};
-  updates['/schemes/' + newSchemeKey] = schemeData
-  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeData;
-
-  return update(ref(db), updates);
+  // Write the scheme key in the user's scheme list.
+  const userSchemesRef = ref(db, '/user-schemes/' + uid)
+  get(userSchemesRef).then(snapshot => {
+    let userSchemeIds = snapshot.exists() ? snapshot.val() : []
+    userSchemeIds.push(newSchemeKey)
+    set(userSchemesRef, userSchemeIds)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+  
+  // Write the new scheme's data in the schemes.
+  set(ref(db, '/schemes/' + newSchemeKey), schemeData)
 }
 saveSchemeBtn.addEventListener('click', () => {
   const currentUser = auth.currentUser

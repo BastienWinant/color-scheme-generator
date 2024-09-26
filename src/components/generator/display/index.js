@@ -48,11 +48,11 @@ function writeNewColor(uid, colorData) {
   const colorKey = colorData.hex.clean
 
   // Write the new color's data simultaneously in the colors list and the user's color list.
-  const updates = {};
+  const updates = {}
   updates['/colors/' + colorKey] = colorData
-  updates['/user-colors/' + uid + '/' + colorKey] = colorData;
+  updates['/user-colors/' + uid + '/' + colorKey] = colorData
 
-  return update(ref(db), updates);
+  return update(ref(db), updates)
 }
 
 generatorDisplay.addEventListener('click', e => {
