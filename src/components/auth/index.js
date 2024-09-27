@@ -196,6 +196,13 @@ const showResetError = (error) => {
   )
 }
 
+const showResetSuccess = (text) => {
+  resetFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="auth-success-msg">${text}</p>`
+  )
+}
+
 resetBtn.addEventListener('click', async e => {
   e.preventDefault()
 
@@ -204,7 +211,7 @@ resetBtn.addEventListener('click', async e => {
   sendPasswordResetEmail(auth, email)
   .then(() => {
     clearResetError()
-    // TODO: show confirmation msg
+    showResetSuccess(`A password reset email has been sent to ${email}`)
   })
   .catch(error => {
     showResetError(error)
