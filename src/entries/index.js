@@ -17,6 +17,8 @@ getSchemeBtn.addEventListener('click', async e => {
   
   if (colorSchemeObj) {
     updateDisplay(colorSchemeObj)
+  } else {
+    // TODO: show the error placeholder instead of the display: showDisplayError
   }
 })
 
@@ -26,7 +28,10 @@ const initializeDisplay = async () => {
   
   // render the color scheme data in the DOM
   if (colorSchemeObj) {
+    // TODO: remove the placeholder container
     updateDisplay(colorSchemeObj)
+  } else {
+    // TODO: show the error placeholder instead of the display: showDisplayError
   }
 }
 
