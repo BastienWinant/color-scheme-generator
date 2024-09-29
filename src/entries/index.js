@@ -8,7 +8,7 @@ import(/* webpackPreload: true */ 'Components/generator/display')
 import { auth } from 'Src/app'
 import { showAuthState } from 'Components/header'
 import { initializeColorScheme, updateColorScheme, getSchemeBtn } from 'Components/generator/form'
-import { updateDisplay } from 'Components/generator/display'
+import { updateDisplay, showDisplayError } from 'Components/generator/display'
 
 getSchemeBtn.addEventListener('click', async e => {
   e.preventDefault()
@@ -18,7 +18,7 @@ getSchemeBtn.addEventListener('click', async e => {
   if (colorSchemeObj) {
     updateDisplay(colorSchemeObj)
   } else {
-    // TODO: show the error placeholder instead of the display: showDisplayError
+    showDisplayError()
   }
 })
 
@@ -28,10 +28,9 @@ const initializeDisplay = async () => {
   
   // render the color scheme data in the DOM
   if (colorSchemeObj) {
-    // TODO: remove the placeholder container
     updateDisplay(colorSchemeObj)
   } else {
-    // TODO: show the error placeholder instead of the display: showDisplayError
+    showDisplayError()
   }
 }
 

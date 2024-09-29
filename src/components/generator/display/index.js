@@ -62,6 +62,13 @@ export const updateDisplay = async (colorSchemeObj) => {
   generatorDisplay.append(...displayHTML)
 }
 
+export const showDisplayError = () => {
+  const errorMessage = 'Digital Picasso is missing a little inspiration at this time...Try again?'
+
+  document.querySelector('#generator-display').innerHTML = `
+    <p class="generator-palceholder">${errorMessage}</p>`
+}
+
 const saveColor = (uid, colorData) => {
   // Use the hex value as key.
   const colorKey = colorData.hex.clean
