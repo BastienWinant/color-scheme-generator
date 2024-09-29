@@ -65,8 +65,8 @@ export const updateDisplay = async (colorSchemeObj) => {
 export const showDisplayError = () => {
   const errorMessage = 'Digital Picasso is missing a little inspiration at this time...Try again?'
 
-  document.querySelector('#generator-display').innerHTML = `
-    <p class="generator-palceholder">${errorMessage}</p>`
+  generatorDisplay.innerHTML = `
+    <p class="generator-placeholder">${errorMessage}</p>`
 }
 
 const saveColor = (uid, colorData) => {
