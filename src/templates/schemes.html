@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="header">
@@ -15,17 +16,20 @@
         <a href="colors.html" class="nav-link">colors</a>
       </section>
       <section id="nav-btns" class="nav-btns">
-        <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
-        <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button>
-        <button type="button" id="nav-logout-btn" class="nav-btn">log out</button>
+        <!-- <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+        <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button> -->
+        <!-- <button type="button" id="nav-logout-btn" class="nav-btn">log out</button> -->
       </section>
     </nav>
   </header>
 
   <main></main>
 
+  <!-- scheme modal -->
+  <dialog id="scheme-modal" class="scheme-modal"></dialog>
+
   <!-- signup modal -->
-   <dialog id="signup-modal" class="auth-modal">
+  <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="auth-form">
       <fieldset id="signup-fieldset" class="auth-fieldset">
         <legend class="auth-fieldset-legend">
@@ -49,30 +53,65 @@
         
         <button type="submit" id="signup-btn" class="auth-btn">sign up</button>
       </fieldset>
+
+      <div class="auth-switch">
+        <p>New here?</p>
+        <button type="button" id="switch-login-btn" class="switch-auth-btn">log in</button>
+      </div>
     </form>
    </dialog>
 
-   <!-- login modal -->
-    <dialog id="login-modal" class="auth-modal">
-      <form method="post" id="login-form" class="auth-form">
-        <fieldset id="login-fieldset" class="auth-fieldset">
-          <legend class="auth-fieldset-legend">
-            <h2>log in</h2>
-          </legend>
+  <!-- login modal -->
+  <dialog id="login-modal" class="auth-modal">
+    <form method="post" id="login-form" class="auth-form">
+      <fieldset id="login-fieldset" class="auth-fieldset">
+        <legend class="auth-fieldset-legend">
+          <h2>log in</h2>
+        </legend>
 
-          <label for="login-email" class="auth-input-group">
-            <h3>email</h3>
-            <input type="email" name="email" id="login-email" class="auth-input-field" />
-          </label>
+        <label for="login-email" class="auth-input-group">
+          <h3>email</h3>
+          <input type="email" name="email" id="login-email" class="auth-input-field" />
+        </label>
 
-          <label for="login-password" class="auth-input-group">
-            <h3>password</h3>
-            <input type="password" name="password" id="login-password" class="auth-input-field" />
-          </label>
+        <label for="login-password" class="auth-input-group">
+          <h3>password</h3>
+          <input type="password" name="password" id="login-password" class="auth-input-field" />
+        </label>
 
-          <button type="submit" id="login-btn" class="auth-btn">log in</button>
-        </fieldset>
-      </form>
-    </dialog>
+        <button type="submit" id="login-btn" class="auth-btn">log in</button>
+        <div class="auth-switch">
+          Forgot password?
+          <button type="button" id="switch-reset-btn" class="switch-auth-btn">reset it here</button>
+        </div>
+      </fieldset>
+
+      <div class="auth-switch">
+        <p>Don't have an account yet?</p>
+        <button type="button" id="switch-signup-btn" class="switch-auth-btn">sign up</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- password reset modal -->
+  <dialog id="reset-modal" class="auth-modal">
+    <form method="post" id="reset-form" class="auth-form">
+      <fieldset id="reset-fieldset" class="auth-fieldset">
+        <legend class="auth-fieldset-legend">
+          <h2>password reset</h2>
+        </legend>
+
+        <label for="reset-email" class="auth-input-group">
+          <h3>email</h3>
+          <input type="email" name="email" id="reset-email" class="auth-input-field" />
+        </label>
+
+        <button type="submit" id="reset-btn" class="auth-btn">reset password</button>
+        <div class="auth-switch">
+          <button type="button" id="cancel-reset-btn" class="switch-auth-btn">back to login</button>
+        </div>
+      </fieldset>
+    </form>
+  </dialog>
 </body>
 </html>
