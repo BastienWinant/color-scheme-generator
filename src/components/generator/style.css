@@ -17,12 +17,13 @@
   background-color: red;
 }
 
-.generator-fieldset {
-  display: flex;
+.scheme-create-pane {
+  display: none;
+  flex-direction: column;
 }
 
-.scheme-create-pane {
-  flex-direction: column;
+.pane-expanded {
+  display: flex;
 }
 
 .generator-input-group {
@@ -32,6 +33,10 @@
 
 .generator-input-field {
   width: 100%;
+}
+
+.form-collapse-btn {
+  align-self: flex-end;
 }
 
 /* mode dropdown */
@@ -70,6 +75,7 @@ input[name="mode"]:checked + .dropdown-label {
 }
 
 .scheme-ctrl-pane {
+  display: flex;
   align-items: center;
 }
 

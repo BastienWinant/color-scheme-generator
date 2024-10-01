@@ -3,6 +3,8 @@ import { ref, child, push, get, set } from 'firebase/database'
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
+const schemeCreatePane = document.querySelector('#scheme-create-pane')
+const formCollapseBtn = document.querySelector('#form-collapse-btn')
 const schemeSeed = document.querySelector('#seed')
 const modeDropdownBtn = document.querySelector('#dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#dropdown-btn-text')
@@ -14,6 +16,10 @@ const countIncreaseBtn = document.querySelector('#count-increase-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
+
+formCollapseBtn.addEventListener('click', () => {
+  schemeCreatePane.classList.remove('pane-expanded')
+})
 
 const toggleDropdownList = () => {
   modeDropdownList.classList.toggle('dropdown-list-expanded')
@@ -150,4 +156,8 @@ saveSchemeBtn.addEventListener('click', () => {
   } else {
     openLoginModal()
   }
+})
+
+newSchemeBtn.addEventListener('click', () => {
+  schemeCreatePane.classList.toggle('pane-expanded')
 })
