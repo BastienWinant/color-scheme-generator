@@ -1,3 +1,5 @@
+import 'Src/style.css'
+
 import { onAuthStateChanged } from 'firebase/auth'
 
 import(/* webpackPrefetch: true */ 'Src/app')

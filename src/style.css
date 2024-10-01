@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: 'Inter', sans-serif;
+  font-size: inherit;
+
+  user-select: none;
+}
+
+/* CSS SELECTORS */
+button {
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* PAGE LAYOUT */
+.app-container {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: hidden;
+}
+
+main {
+  flex-grow: 1;
+}

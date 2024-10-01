@@ -7,108 +7,110 @@
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="header">
-    <img src=<%=require("../../img/pantone.svg")%> />
-    <nav id="nav" class="nav">
-      <section class="nav-links">
-        <a href="index.html" class="nav-link">generator</a>
-        <a href="schemes.html" class="nav-link">schemes</a>
-        <a href="colors.html" class="nav-link">colors</a>
-      </section>
-      <section id="nav-btns" class="nav-btns"></section>
-    </nav>
-  </header>
-
-  <main>
-    <div class="generator-container">
-      <form method="post" id="generator-form" class="generator-form">
-        <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
-          <label for="seed" class="generator-input-group">
-            <h2>seed</h2>
-            <input type="color" name="seed" id="seed" class="generator-input-field">
-          </label>
-          <div class="generator-input-group">
-            <h2>mode</h2>
-            <button type="button" id="dropdown-btn" class="dropdown-btn" value="monochrome">
-              <h3 id="dropdown-btn-text">monochrome</h3>
-            </button>
-            <ul id="dropdown-list" class="dropdown-list">
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
-                <label for="monochrome" class="dropdown-label">
-                  <h4>monochrome</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
-                <label for="monochrome-dark" class="dropdown-label">
-                  <h4>monochrome-dark</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
-                <label for="monochrome-light" class="dropdown-label">
-                  <h4>monochrome-light</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="analogic" value="analogic" />
-                <label for="analogic" class="dropdown-label">
-                  <h4>analogic</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="complement" value="complement" />
-                <label for="complement" class="dropdown-label">
-                  <h4>complement</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
-                <label for="analogic-complement" class="dropdown-label">
-                  <h4>analogic-complement</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="triad" value="triad" />
-                <label for="triad" class="dropdown-label">
-                  <h4>triad</h4>
-                </label>
-              </li>
-              <li class="dropdown-option">
-                <input type="radio" name="mode" id="quad" value="quad" />
-                <label for="quad" class="dropdown-label">
-                  <h4>quad</h4>
-                </label>
-              </li>
-            </ul>
-          </div>
-          <div class="generator-input-group">
-            <h2>count</h2>
-            <div>
-              <button type="button" id="count-decrease-btn" class="count-btn">
-                <i class="fa-solid fa-circle-minus fa-lg"></i>
+  <div class="app-container">
+    <header class="header">
+      <img src=<%=require("../../img/pantone.svg")%> />
+      <nav id="nav" class="nav">
+        <section class="nav-links">
+          <a href="index.html" class="nav-link">generator</a>
+          <a href="schemes.html" class="nav-link">schemes</a>
+          <a href="colors.html" class="nav-link">colors</a>
+        </section>
+        <section id="nav-btns" class="nav-btns"></section>
+      </nav>
+    </header>
+  
+    <main>
+      <div class="generator-container">
+        <form method="post" id="generator-form" class="generator-form">
+          <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
+            <label for="seed" class="generator-input-group">
+              <h2>seed</h2>
+              <input type="color" name="seed" id="seed" class="generator-input-field">
+            </label>
+            <div class="generator-input-group">
+              <h2>mode</h2>
+              <button type="button" id="dropdown-btn" class="dropdown-btn" value="monochrome">
+                <h3 id="dropdown-btn-text">monochrome</h3>
               </button>
-              <span id="count" data-count="5">5</span>
-              <button type="button" id="count-increase-btn" class="count-btn">
-                <i class="fa-solid fa-circle-plus fa-lg"></i>
-              </button>
+              <ul id="dropdown-list" class="dropdown-list">
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
+                  <label for="monochrome" class="dropdown-label">
+                    <h4>monochrome</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
+                  <label for="monochrome-dark" class="dropdown-label">
+                    <h4>monochrome-dark</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
+                  <label for="monochrome-light" class="dropdown-label">
+                    <h4>monochrome-light</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="analogic" value="analogic" />
+                  <label for="analogic" class="dropdown-label">
+                    <h4>analogic</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="complement" value="complement" />
+                  <label for="complement" class="dropdown-label">
+                    <h4>complement</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
+                  <label for="analogic-complement" class="dropdown-label">
+                    <h4>analogic-complement</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="triad" value="triad" />
+                  <label for="triad" class="dropdown-label">
+                    <h4>triad</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="quad" value="quad" />
+                  <label for="quad" class="dropdown-label">
+                    <h4>quad</h4>
+                  </label>
+                </li>
+              </ul>
             </div>
-          </div>
-          <button type="submit" id="get-scheme-btn" class="get-scheme-btn">get color scheme</button>
-        </fieldset>
-        <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
-          <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn">new scheme</button>
-          <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save scheme</button>
-        </fieldset>
-      </form>
-      <ul id="generator-display" class="generator-display">
-        <p class="display-placeholder">
-          Generating template...
-        </p>
-      </ul>
-    </div>
-  </main>
+            <div class="generator-input-group">
+              <h2>count</h2>
+              <div>
+                <button type="button" id="count-decrease-btn" class="count-btn">
+                  <i class="fa-solid fa-circle-minus fa-lg"></i>
+                </button>
+                <span id="count" data-count="5">5</span>
+                <button type="button" id="count-increase-btn" class="count-btn">
+                  <i class="fa-solid fa-circle-plus fa-lg"></i>
+                </button>
+              </div>
+            </div>
+            <button type="submit" id="get-scheme-btn" class="get-scheme-btn">get color scheme</button>
+          </fieldset>
+          <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
+            <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn">new scheme</button>
+            <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save scheme</button>
+          </fieldset>
+        </form>
+        <ul id="generator-display" class="generator-display">
+          <p class="display-placeholder">
+            Generating template...
+          </p>
+        </ul>
+      </div>
+    </main>
+  </div>
 
   <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">

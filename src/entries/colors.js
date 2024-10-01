@@ -1,3 +1,5 @@
+import 'Src/style.css'
+
 import(/* webpackPreload: true */ 'Src/app')
 import(/* webpackPreload: true */ 'Components/header')
 
