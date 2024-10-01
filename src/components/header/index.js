@@ -4,7 +4,24 @@ import(/* webpackPrefetch: true */ 'Components/auth')
 
 import { openSignupModal, openLoginModal, logOut } from 'Components/auth'
 
+const nav = document.querySelector('#nav')
 const navBtns = document.querySelector('#nav-btns')
+
+const collapseNav = () => {
+  nav.classList.remove('nav-expanded')
+}
+
+const toggleNav = () => {
+  nav.classList.toggle('nav-expanded')
+}
+
+const collapseNavBtns = () => {
+  navBtns.classList.remove('nav-btns-expanded')
+}
+
+const toggleNavBtns = () => {
+  navBtns.classList.toggle('nav-btns-expanded')
+}
 
 navBtns.addEventListener('click', e => {
   if (e.target.id === 'nav-signup-btn') {
@@ -13,6 +30,18 @@ navBtns.addEventListener('click', e => {
     openLoginModal()
   } else if (e.target.id === 'nav-logout-btn') {
     logOut()
+  }
+})
+
+window.addEventListener('click', e => {
+  console.log()
+  if (e.target.closest('.nav-toggler')) {
+    toggleNav()
+  } else if (e.target.closest('.nav-btns-toggler')) {
+    toggleNavBtns()
+  } else {
+    collapseNav()
+    collapseNavBtns()
   }
 })
 

@@ -16,7 +16,7 @@ const monitorAuthState = () => {
     showAuthState(user)
 
     // render the scheme generator display
-    // initializeDisplay()
+    initializeDisplay()
   })
 }
 monitorAuthState()

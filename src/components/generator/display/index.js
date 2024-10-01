@@ -50,6 +50,9 @@ const generateDisplayHTML = async (colorArr) => {
         </div>
       </article>
       `
+
+    liEl.style.backgroundColor = colorObj.hex.value
+    
     return liEl
   })
 

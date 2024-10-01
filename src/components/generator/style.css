@@ -5,11 +5,36 @@
   background-color: orangered;
 }
 
-/* SCHEME CREATE PANE */
+/* GENERATOR DISPLAY */
+.generator-display {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: pink;
+}
+
+.generator-color {
+  flex-grow: 1;
+}
+
+.generator-color-container {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* GENERATOR FORM */
 .generator-form {
   /* positioning */
   position: absolute;
   bottom: 0;
+  /* z-index: 1; */
 
   /* sizing */
   width: 100%;
@@ -18,8 +43,15 @@
 }
 
 .scheme-create-pane {
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+
   display: none;
   flex-direction: column;
+
+  background-color: white;
 }
 
 .pane-expanded {

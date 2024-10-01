@@ -10,12 +10,18 @@
   <div class="app-container">
     <header class="header">
       <img src=<%=require("../../img/pantone.svg")%> />
+      <button type="button" id="nav-toggler" class="nav-toggler">
+        <i class="fa-solid fa-bars-staggered fa-xl"></i>
+      </button>
       <nav id="nav" class="nav">
         <section class="nav-links">
           <a href="index.html" class="nav-link">generator</a>
           <a href="schemes.html" class="nav-link">schemes</a>
           <a href="colors.html" class="nav-link">colors</a>
         </section>
+        <button type="button" id="nav-btns-toggler" class="nav-btns-toggler">
+          <i class="fa-solid fa-circle-user fa-xl"></i>
+        </button>
         <section id="nav-btns" class="nav-btns"></section>
       </nav>
     </header>

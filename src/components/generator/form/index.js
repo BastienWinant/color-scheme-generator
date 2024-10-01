@@ -18,7 +18,7 @@ const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
 formCollapseBtn.addEventListener('click', () => {
-  schemeCreatePane.classList.remove('pane-expanded')
+  schemeCreatePane.classList.toggle('pane-expanded')
 })
 
 const toggleDropdownList = () => {
