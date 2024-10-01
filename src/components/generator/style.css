@@ -1,0 +1,78 @@
+.generator-container {
+  height: 100%;
+  position: relative;
+
+  background-color: orangered;
+}
+
+/* SCHEME CREATE PANE */
+.generator-form {
+  /* positioning */
+  position: absolute;
+  bottom: 0;
+
+  /* sizing */
+  width: 100%;
+
+  background-color: red;
+}
+
+.generator-fieldset {
+  display: flex;
+}
+
+.scheme-create-pane {
+  flex-direction: column;
+}
+
+.generator-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.generator-input-field {
+  width: 100%;
+}
+
+/* mode dropdown */
+.dropdown-list {
+  display: none;
+  flex-direction: column;
+}
+
+.dropdown-list-expanded {
+  display: flex
+}
+
+.dropdown-option {
+  background-color: yellow;
+}
+
+input[name="mode"] {
+  display: none;
+}
+
+.dropdown-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[name="mode"]:checked + .dropdown-label {
+  background-color: greenyellow;
+}
+
+/* count input */
+.generator-count-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scheme-ctrl-pane {
+  align-items: center;
+}
+
+.scheme-ctrl-btn {
+  flex-grow: 1;
+}

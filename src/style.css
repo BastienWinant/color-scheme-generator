@@ -30,14 +30,17 @@ img {
 
 /* PAGE LAYOUT */
 .app-container {
-  height: 100vh;
+  height: 90vh;
 
   display: flex;
   flex-direction: column;
 
   overflow-y: hidden;
+
+  background-color: lightblue;
 }
 
 main {
   flex-grow: 1;
+  background-color: red;
 }

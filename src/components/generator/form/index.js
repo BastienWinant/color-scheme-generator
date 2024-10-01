@@ -6,6 +6,7 @@ import { openLoginModal } from 'Components/auth'
 const schemeSeed = document.querySelector('#seed')
 const modeDropdownBtn = document.querySelector('#dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#dropdown-btn-text')
+const modeDropdownList = document.querySelector('#dropdown-list')
 const modeInputs = document.querySelectorAll('input[name="mode"]')
 const schemeCount = document.querySelector('#count')
 const countDecreaseBtn = document.querySelector('#count-decrease-btn')
@@ -14,11 +15,16 @@ export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
+const toggleDropdownList = () => {
+  modeDropdownList.classList.toggle('dropdown-list-expanded')
+}
+modeDropdownBtn.addEventListener('click', toggleDropdownList)
 // update the dropdown button to show the selected option
 const selectModeOption = () => {
   const mode = document.querySelector('input[name="mode"]:checked').value
   modeDropdownBtnText.innerText = mode
   modeDropdownBtn.value = mode
+  toggleDropdownList()
 }
 modeInputs.forEach(radioInput => {
   radioInput.addEventListener('click', selectModeOption)
