@@ -1,13 +1,10 @@
 .header {
   flex: 0 0 4em;
 
+  /* content layout */
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  position: relative;
-
-  background: orange
 }
 
 .nav {
@@ -15,7 +12,6 @@
   position: absolute;
   top: 4em;
   right: 0;
-  z-index: 1;
 
   /* content layout */
   display: none;
@@ -28,16 +24,18 @@
   display: flex;
 }
 
-.nav-btns,
-.nav-links {
+.nav-links,
+.nav-btns {
   display: flex;
   flex-direction: column;
+
+  background-color: white;
 }
 
 .nav-link,
 .nav-btn {
-  text-decoration: none;
   text-transform: capitalize;
+  text-decoration: none;
   text-align: center;
 }
 
@@ -75,10 +73,7 @@
     top: 4em;
     right: 0;
 
-    /* content layout */
     display: none;
-
-    background-color: white;
   }
 
   .nav-btns-expanded {

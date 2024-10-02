@@ -4,6 +4,7 @@
   font-style: normal;
 }
 
+/* DEFAULT STYLING */
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +20,8 @@
 button {
   display: block;
   cursor: pointer;
+  /* border: none; */
+  background-color: transparent;
 }
 
 img {
@@ -34,15 +37,13 @@ dialog {
 /* PAGE LAYOUT */
 .app-container {
   height: 90vh;
-  /* min-height: 288px; */
 
   display: flex;
   flex-direction: column;
-
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 main {
   flex-grow: 1;
-  background-color: lightcoral;
+  background-color: lightblue;
 }

@@ -148,14 +148,3 @@ saveSchemeBtn.addEventListener('click', () => {
     openLoginModal()
   }
 })
-
-const toggleCreatePane = () => {
-  schemeCreatePane.classList.toggle('pane-expanded')
-}
-formCollapseBtn.addEventListener('click', () => {
-  toggleCreatePane()
-})
-
-newSchemeBtn.addEventListener('click', () => {
-  toggleCreatePane()
-})
