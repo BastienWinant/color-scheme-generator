@@ -1,61 +1,33 @@
 .generator-container {
   height: 100%;
+
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: green;
+
   position: relative;
-
-  background-color: orangered;
 }
 
-/* GENERATOR DISPLAY */
-.generator-display {
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  background-color: pink;
-}
-
-.generator-color {
-  flex-grow: 1;
-}
-
-.generator-color-container {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* GENERATOR FORM */
-.generator-form {
+.scheme-create-pane {
   /* positioning */
   position: absolute;
   bottom: 0;
-  /* z-index: 1; */
 
   /* sizing */
   width: 100%;
 
-  background-color: red;
-}
-
-.scheme-create-pane {
-  position: absolute;
-  bottom: 0;
-
-  width: 100%;
+  background-color: white;
 
   display: none;
   flex-direction: column;
-
-  background-color: white;
 }
 
 .pane-expanded {
   display: flex;
+}
+
+.form-collapse-btn {
+  align-self: flex-end;
 }
 
 .generator-input-group {
@@ -67,50 +39,45 @@
   width: 100%;
 }
 
-.form-collapse-btn {
-  align-self: flex-end;
-}
-
-/* mode dropdown */
 .dropdown-list {
   display: none;
-  flex-direction: column;
-}
-
-.dropdown-list-expanded {
-  display: flex
-}
-
-.dropdown-option {
-  background-color: yellow;
 }
 
 input[name="mode"] {
   display: none;
 }
 
-.dropdown-label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-input[name="mode"]:checked + .dropdown-label {
-  background-color: greenyellow;
-}
-
-/* count input */
-.generator-count-input {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .scheme-ctrl-pane {
   display: flex;
-  align-items: center;
 }
 
 .scheme-ctrl-btn {
   flex-grow: 1;
+}
+
+.generator-display {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: yellow;
+}
+
+.generator-color {
+  flex-grow: 1;
+}
+
+.generator-color-container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.generator-color-btns {
+  display: flex;
+  align-items: center;
 }

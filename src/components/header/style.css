@@ -1,11 +1,13 @@
 .header {
-  height: 4em;
+  flex: 0 0 4em;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   position: relative;
+
+  background: orange
 }
 
 .nav {
@@ -26,25 +28,24 @@
   display: flex;
 }
 
-.nav-btns-toggler {
-  display: none;
-}
-
-.nav-links,
-.nav-btns {
+.nav-btns,
+.nav-links {
   display: flex;
   flex-direction: column;
 }
 
 .nav-link,
 .nav-btn {
-  text-align: center;
+  text-decoration: none;
   text-transform: capitalize;
-
-  border: 1px solid black;
+  text-align: center;
 }
 
-@media only screen and (min-width: 768px) {
+.nav-btns-toggler {
+  display: none;
+}
+
+@media only screen and (min-width: 576px) {
   .nav-toggler {
     display: none;
   }
@@ -73,11 +74,9 @@
     position: absolute;
     top: 4em;
     right: 0;
-    z-index: 1;
 
     /* content layout */
     display: none;
-    flex-direction: column;
 
     background-color: white;
   }
@@ -87,7 +86,7 @@
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   .nav-btns-toggler {
     display: none;
   }

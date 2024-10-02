@@ -17,20 +17,11 @@ export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
-formCollapseBtn.addEventListener('click', () => {
-  schemeCreatePane.classList.toggle('pane-expanded')
-})
-
-const toggleDropdownList = () => {
-  modeDropdownList.classList.toggle('dropdown-list-expanded')
-}
-modeDropdownBtn.addEventListener('click', toggleDropdownList)
 // update the dropdown button to show the selected option
 const selectModeOption = () => {
   const mode = document.querySelector('input[name="mode"]:checked').value
   modeDropdownBtnText.innerText = mode
   modeDropdownBtn.value = mode
-  toggleDropdownList()
 }
 modeInputs.forEach(radioInput => {
   radioInput.addEventListener('click', selectModeOption)
@@ -158,6 +149,13 @@ saveSchemeBtn.addEventListener('click', () => {
   }
 })
 
-newSchemeBtn.addEventListener('click', () => {
+const toggleCreatePane = () => {
   schemeCreatePane.classList.toggle('pane-expanded')
+}
+formCollapseBtn.addEventListener('click', () => {
+  toggleCreatePane()
+})
+
+newSchemeBtn.addEventListener('click', () => {
+  toggleCreatePane()
 })

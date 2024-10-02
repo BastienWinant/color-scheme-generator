@@ -45,6 +45,11 @@ window.addEventListener('click', e => {
   }
 })
 
+window.addEventListener('resize', () => {
+  collapseNav()
+  collapseNavBtns()
+})
+
 export const showAuthState = (user) => {
   if (user) {
     navBtns.innerHTML = `

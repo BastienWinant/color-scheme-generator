@@ -37,7 +37,7 @@ const generateDisplayHTML = async (colorArr) => {
           <h2>${colorObj.hex.value}</h2>
           <p>${colorObj.name.value}</p>
         </hgroup>
-        <div>
+        <div class="generator-color-btns">
           <button type="button" class="generator-color-btn generator-color-save">
             ${colorSaved ? `<i class="fa-solid fa-heart"></i>` : `<i class="fa-regular fa-heart"></i>`}
           </button>

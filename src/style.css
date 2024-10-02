@@ -19,7 +19,6 @@
 button {
   display: block;
   cursor: pointer;
-  background-color: transparent;
 }
 
 img {
@@ -28,19 +27,22 @@ img {
   object-fit: cover;
 }
 
+dialog {
+  margin: auto;
+}
+
 /* PAGE LAYOUT */
 .app-container {
   height: 90vh;
+  /* min-height: 288px; */
 
   display: flex;
   flex-direction: column;
 
   overflow-y: hidden;
-
-  background-color: lightblue;
 }
 
 main {
   flex-grow: 1;
-  background-color: red;
+  background-color: lightcoral;
 }
