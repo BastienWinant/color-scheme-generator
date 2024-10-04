@@ -52,10 +52,14 @@
   bottom: 0;
   width: 100%;
 
-  display: flex;
+  display: none;
   flex-direction: column;
 
   background-color: white;
+}
+
+.pane-expanded {
+  display: flex;
 }
 
 .form-collapse-btn {
@@ -66,6 +70,10 @@
 .dropdown-list {
   display: none;
   flex-direction: column;
+}
+
+.dropdown-list-expanded {
+  display: flex;
 }
 
 input[name="mode"] {

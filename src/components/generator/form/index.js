@@ -27,6 +27,14 @@ modeInputs.forEach(radioInput => {
   radioInput.addEventListener('click', selectModeOption)
 })
 
+const collapseDropdownList = () => {
+  modeDropdownList.classList.remove('dropdown-list-expanded')
+}
+
+modeDropdownBtn.addEventListener('click', () => {
+  modeDropdownList.classList.toggle('dropdown-list-expanded')
+})
+
 // GENERATOR COUNT
 const decreaseSchemeCount = () => {
   let count = parseInt(schemeCount.dataset.count)
@@ -52,6 +60,7 @@ const increaseSchemeCount = () => {
 }
 countIncreaseBtn.addEventListener('click', increaseSchemeCount)
 
+// COLOR SCHEME GENERATION
 // get data for a new color scheme from the Colors API
 const getColorScheme = async (hex, mode, count) => {
   const baseUrl = 'https://www.thecolorapi.com'
@@ -148,3 +157,14 @@ saveSchemeBtn.addEventListener('click', () => {
     openLoginModal()
   }
 })
+
+const expandCreatePane = () => {
+  schemeCreatePane.classList.add('pane-expanded')
+}
+newSchemeBtn.addEventListener('click', expandCreatePane)
+
+export const collapseCreatePane = () => {
+  schemeCreatePane.classList.remove('pane-expanded')
+  collapseDropdownList()
+}
+formCollapseBtn.addEventListener('click', collapseCreatePane)
