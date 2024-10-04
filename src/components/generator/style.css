@@ -3,23 +3,29 @@
 
   display: flex;
   flex-direction: column-reverse;
+
+  position: relative;
+
+  background-color: indianred;
 }
 
-/* GENERATOR-DISPLAY */
+/* GENERATOR DISPLAY */
 .generator-display {
   flex-grow: 1;
 
   display: flex;
   flex-direction: column;
+
+  list-style-type: none;
+
+  background-color: yellow;
 }
 
 .generator-color {
-  flex-grow: 1;
+  flex: 1 0 1em;
 }
 
 .generator-color-container {
-  height: 100%;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,9 +38,6 @@
 
 /* GENERATOR FORM */
 .generator-form {
-  display: flex;
-  flex-direction: column;
-
   position: relative;
 }
 
@@ -47,6 +50,7 @@
   width: 100%;
 }
 
+/* scheme create fieldset */
 .scheme-create-pane {
   position: absolute;
   bottom: 0;
@@ -68,12 +72,11 @@
 
 /* dropdown */
 .dropdown-list {
-  display: none;
-  flex-direction: column;
+  list-style-type: none;
 }
 
-.dropdown-list-expanded {
-  display: flex;
+.dropdown-option {
+  background-color: yellow;
 }
 
 input[name="mode"] {
@@ -84,12 +87,12 @@ input[name="mode"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  background-color: yellow;
+
+  background-color: yellowgreen;
 }
 
 input[name="mode"]:checked + .dropdown-label {
-  background-color: green;
+  background-color: orangered;
 }
 
 /* count input */
@@ -99,6 +102,7 @@ input[name="mode"]:checked + .dropdown-label {
   justify-content: space-between;
 }
 
+/* scheme create fieldset */
 .scheme-ctrl-pane {
   display: flex;
   align-items: center;
@@ -106,4 +110,52 @@ input[name="mode"]:checked + .dropdown-label {
 
 .scheme-ctrl-btn {
   flex-grow: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .generator-display {
+    flex-direction: row;
+  }
+
+  .generator-color-container {
+    flex-direction: column-reverse;
+  }
+
+  .generator-color-btns {
+    flex-direction: column;
+  }
+
+  .generator-form-container {
+    position: absolute;
+    bottom: 2em;
+
+    width: 100%;
+
+    background-color: orange;
+  }
+
+  .generator-form {
+    width: 360px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .generator-container {
+    flex-direction: row;
+  }
+
+  .generator-form-container {
+    position: static;
+    width: auto;
+  }
+
+  .scheme-create-pane {
+    position: static;
+    display: flex;
+  }
+
+  .form-collapse-btn {
+    display: none;
+  }
 }
