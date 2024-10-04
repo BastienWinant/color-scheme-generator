@@ -39,6 +39,9 @@
 /* GENERATOR FORM */
 .generator-form {
   position: relative;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .generator-input-group {
@@ -148,9 +151,15 @@ input[name="mode"]:checked + .dropdown-label {
   .generator-form-container {
     position: static;
     width: auto;
+    background-color: blue;
+  }
+
+  .generator-form {
+    height: 100%;
   }
 
   .scheme-create-pane {
+    flex-grow: 1;
     position: static;
     display: flex;
   }
