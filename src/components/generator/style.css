@@ -5,8 +5,6 @@
   flex-direction: column-reverse;
 
   position: relative;
-
-  background-color: indianred;
 }
 
 /* GENERATOR DISPLAY */
@@ -17,8 +15,6 @@
   flex-direction: column;
 
   list-style-type: none;
-
-  background-color: yellow;
 }
 
 .generator-color {
@@ -47,6 +43,8 @@
 .generator-input-group {
   display: flex;
   flex-direction: column;
+
+  position: relative;
 }
 
 .generator-input-field {
@@ -76,11 +74,17 @@
 
 /* dropdown */
 .dropdown-list {
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+
   list-style-type: none;
 }
 
-.dropdown-option {
-  background-color: yellow;
+.dropdown-list-expanded {
+  display: flex;
 }
 
 input[name="mode"] {
@@ -134,8 +138,6 @@ input[name="mode"]:checked + .dropdown-label {
     bottom: 2em;
 
     width: 100%;
-
-    background-color: orange;
   }
 
   .generator-form {
@@ -152,7 +154,6 @@ input[name="mode"]:checked + .dropdown-label {
   .generator-form-container {
     position: static;
     width: auto;
-    background-color: blue;
   }
 
   .generator-form {

@@ -31,9 +31,9 @@ const collapseDropdownList = () => {
   modeDropdownList.classList.remove('dropdown-list-expanded')
 }
 
-modeDropdownBtn.addEventListener('click', () => {
+const toggleDropdownList = () => {
   modeDropdownList.classList.toggle('dropdown-list-expanded')
-})
+}
 
 // GENERATOR COUNT
 const decreaseSchemeCount = () => {
@@ -168,3 +168,13 @@ export const collapseCreatePane = () => {
   collapseDropdownList()
 }
 formCollapseBtn.addEventListener('click', collapseCreatePane)
+
+window.addEventListener('click', e => {
+  if (e.target.closest('#dropdown-btn')) {
+    toggleDropdownList()
+  } else {
+    collapseDropdownList()
+  }
+})
+
+window.addEventListener('resize', collapseCreatePane)
