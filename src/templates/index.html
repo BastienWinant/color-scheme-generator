@@ -133,17 +133,17 @@
 
         <label for="signup-username" class="auth-input-group">
           <h3 class="auth-input-label">username</h3>
-          <input type="text" name="username" id="signup-username" class="auth-input-field" />
+          <input type="text" name="username" id="signup-username" class="auth-input-field" placeholder="Obi-Wan Kenobi" />
         </label>
 
         <label for="signup-email" class="auth-input-group">
           <h3 class="auth-input-label">email</h3>
-          <input type="email" name="email" id="signup-email" class="auth-input-field" />
+          <input type="email" name="email" id="signup-email" class="auth-input-field" placeholder="example@email.com" />
         </label>
         
         <label for="signup-password" class="auth-input-group">
           <h3 class="auth-input-label">password</h3>
-          <input type="password" name="password" id="signup-password" class="auth-input-field" />
+          <input type="password" name="password" id="signup-password" class="auth-input-field" placeholder="************" />
         </label>
         
         <button type="submit" id="signup-btn" class="auth-input-field auth-btn">sign up</button>
@@ -151,7 +151,7 @@
 
       <div class="auth-switch">
         <p>New here?</p>
-        <button type="button" id="switch-login-btn" class="switch-auth-btn">log in</button>
+        <button type="button" id="switch-login-btn" class="auth-switch-btn">log in</button>
       </div>
     </form>
   </dialog>
@@ -166,24 +166,24 @@
 
         <label for="login-email" class="auth-input-group">
           <h3 class="auth-input-label">email</h3>
-          <input type="email" name="email" id="login-email" class="auth-input-field" />
+          <input type="email" name="email" id="login-email" class="auth-input-field" placeholder="example@email.com" />
         </label>
 
         <label for="login-password" class="auth-input-group">
           <h3 class="auth-input-label">password</h3>
-          <input type="password" name="password" id="login-password" class="auth-input-field" />
+          <input type="password" name="password" id="login-password" class="auth-input-field" placeholder="************" />
         </label>
 
         <button type="submit" id="login-btn" class="auth-input-field auth-btn">log in</button>
         <div class="auth-switch">
           Forgot password?
-          <button type="button" id="switch-reset-btn" class="switch-auth-btn">reset it here</button>
+          <button type="button" id="switch-reset-btn" class="auth-switch-btn">reset it here</button>
         </div>
       </fieldset>
 
       <div class="auth-switch">
         <p>Don't have an account yet?</p>
-        <button type="button" id="switch-signup-btn" class="switch-auth-btn">sign up</button>
+        <button type="button" id="switch-signup-btn" class="auth-switch-btn">sign up</button>
       </div>
     </form>
   </dialog>
@@ -203,7 +203,7 @@
 
         <button type="submit" id="reset-btn" class="auth-btn">reset password</button>
         <div class="auth-switch">
-          <button type="button" id="cancel-reset-btn" class="switch-auth-btn">back to login</button>
+          <button type="button" id="cancel-reset-btn" class="auth-switch-btn">back to login</button>
         </div>
       </fieldset>
     </form>
