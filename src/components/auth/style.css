@@ -1,0 +1,46 @@
+.auth-modal {
+  width: 90vw;
+  max-width: 320px;
+
+  padding: 1em;
+
+  border-radius: 1em;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+
+  border: none;
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.auth-input-label {
+  font-size: .875rem;
+  text-transform: capitalize;
+}
+
+.auth-input-field {
+  height: 3.5em;
+  border-radius: .5em;
+}
+
+.auth-input-field:focus {
+  outline: none;
+}
+
+.auth-btn {
+  background-color: royalblue;
+  color: white;
+}

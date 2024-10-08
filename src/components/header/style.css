@@ -1,9 +1,11 @@
 .header {
+  flex: 0 0 4em;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .nav {
-  display: none;
+  /* display: none; */
 }
