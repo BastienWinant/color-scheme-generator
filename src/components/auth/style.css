@@ -2,8 +2,6 @@
   width: 90vw;
   max-width: 320px;
 
-  padding: 2em;
-
   border-radius: 1em;
   border: none;
 }
@@ -11,12 +9,12 @@
 .auth-form {
   display: flex;
   flex-direction: column;
+  padding: 2em;
 }
 
 .auth-fieldset {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
 
   border: none;
 }
@@ -31,6 +29,10 @@
   display: flex;
   flex-direction: column;
   gap: .5em;
+
+  margin-top: 1.5em;
+
+  border: 1px solid black;
 }
 
 .auth-input-label {
@@ -49,6 +51,8 @@
 }
 
 .auth-btn {
+  margin: 1.5em 0 .5em;
+  
   background-color: royalblue;
   color: white;
   text-transform: capitalize;
