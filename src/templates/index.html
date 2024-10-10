@@ -150,8 +150,8 @@
       </fieldset>
 
       <div class="auth-switch">
-        <p>New here?</p>
-        <button type="button" id="switch-login-btn" class="auth-switch-btn">log in</button>
+        <p>Already have an account?</p>
+        <button type="button" id="switch-login-btn" class="auth-switch-btn">Log in</button>
       </div>
     </form>
   </dialog>
@@ -173,17 +173,17 @@
           <h3 class="auth-input-label">password</h3>
           <input type="password" name="password" id="login-password" class="auth-input-field" placeholder="************" />
         </label>
-
-        <button type="submit" id="login-btn" class="auth-input-field auth-btn">log in</button>
-        <div class="auth-switch">
+        <div class="auth-switch reset-switch">
           Forgot password?
           <button type="button" id="switch-reset-btn" class="auth-switch-btn">reset it here</button>
         </div>
+
+        <button type="submit" id="login-btn" class="auth-input-field auth-btn">log in</button>
       </fieldset>
 
       <div class="auth-switch">
-        <p>Don't have an account yet?</p>
-        <button type="button" id="switch-signup-btn" class="auth-switch-btn">sign up</button>
+        <p>New here?</p>
+        <button type="button" id="switch-signup-btn" class="auth-switch-btn">Sign up</button>
       </div>
     </form>
   </dialog>
@@ -201,9 +201,9 @@
           <input type="email" name="email" id="reset-email" class="auth-input-field" />
         </label>
 
-        <button type="submit" id="reset-btn" class="auth-btn">reset password</button>
+        <button type="submit" id="reset-btn" class="auth-input-field auth-btn">reset password</button>
         <div class="auth-switch">
-          <button type="button" id="cancel-reset-btn" class="auth-switch-btn">back to login</button>
+          <button type="button" id="cancel-reset-btn" class="auth-switch-btn">Back to login</button>
         </div>
       </fieldset>
     </form>
