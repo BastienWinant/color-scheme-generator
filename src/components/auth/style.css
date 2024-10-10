@@ -14,6 +14,8 @@
 }
 
 .auth-fieldset {
+  position: relative;
+
   display: flex;
   flex-direction: column;
 
@@ -70,4 +72,15 @@
 .auth-switch-btn {
   text-decoration: underline;
   color: blue;
+}
+
+.auth-error-msg {
+  position: absolute;
+  bottom: -1.25em;
+
+  width: 100%;
+  text-align: center;
+
+  color: red;
+  font-weight: 600;  
 }
