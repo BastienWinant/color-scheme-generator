@@ -57,6 +57,6 @@ export const showAuthState = (user) => {
   } else {
     navBtns.innerHTML = `
       <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
-      <button type="button" id="nav-signup-btn" class="nav-btn">sign up</button>`
+      <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>`
   }
 }

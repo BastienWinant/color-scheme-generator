@@ -90,10 +90,17 @@ input[name="mode"]:checked + .dropdown-label {
 /* SCHEME CTRL PANE */
 .scheme-ctrl-pane {
   display: flex;
+  gap: .5em;
 }
 
 .scheme-ctrl-btn {
   flex: 1 0 auto;
+  height: 3.25em;
+  border-radius: .5em;
+  border: 1px solid grey;
+
+  text-transform: capitalize;
+  font-weight: 600;
 }
 
 @media only screen and (min-width: 576px) {
