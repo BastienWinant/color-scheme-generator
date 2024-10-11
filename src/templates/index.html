@@ -36,13 +36,14 @@
                 <i class="fa-solid fa-xmark fa-lg"></i>
               </button>
               <label for="seed" class="generator-input-group">
-                <h2>seed</h2>
-                <input type="color" name="seed" id="seed" class="generator-input-field">
+                <h2 class="generator-input-label">seed</h2>
+                <input type="color" name="seed" id="seed" class="generator-input-field generator-color-input">
               </label>
               <div class="generator-input-group">
-                <h2>mode</h2>
+                <h2 class="generator-input-label">mode</h2>
                 <button type="button" id="dropdown-btn" class="generator-input-field dropdown-btn" value="monochrome">
                   <h3 id="dropdown-btn-text">monochrome</h3>
+                  <i class="fa-solid fa-chevron-down fa-sm"></i>
                 </button>
                 <ul id="dropdown-list" class="dropdown-list">
                   <li class="dropdown-option">
@@ -96,7 +97,7 @@
                 </ul>
               </div>
               <div class="generator-input-group">
-                <h2>count</h2>
+                <h2 class="generator-input-label">count</h2>
                 <div class="generator-input-field generator-count-input">
                   <button type="button" id="count-decrease-btn" class="count-btn">
                     <i class="fa-solid fa-circle-minus fa-lg"></i>
@@ -107,7 +108,7 @@
                   </button>
                 </div>
               </div>
-              <button type="submit" id="get-scheme-btn" class="generator-input-field get-scheme-btn">get color scheme</button>
+              <button type="submit" id="get-scheme-btn" class="generator-input-field get-scheme-btn">get scheme</button>
             </fieldset>
             <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
               <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn new-scheme-btn">new scheme</button>
@@ -198,7 +199,7 @@
         </legend>
 
         <label for="reset-email" class="auth-input-group">
-          <h3>email</h3>
+          <h3 class="auth-input-label">email</h3>
           <input type="email" name="email" id="reset-email" class="auth-input-field" />
         </label>
 
