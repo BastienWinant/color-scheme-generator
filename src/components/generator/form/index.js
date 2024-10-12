@@ -10,6 +10,7 @@ const modeDropdownBtn = document.querySelector('#dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#dropdown-btn-text')
 const modeDropdownList = document.querySelector('#dropdown-list')
 const modeInputs = document.querySelectorAll('input[name="mode"]')
+const modeLabels = document.querySelectorAll('.dropdown-label')
 const schemeCount = document.querySelector('#count')
 const countDecreaseBtn = document.querySelector('#count-decrease-btn')
 const countIncreaseBtn = document.querySelector('#count-increase-btn')
@@ -18,10 +19,27 @@ const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
 // update the dropdown button to show the selected option
+const removeCheckmarks = () => {
+  modeLabels.forEach(labelEl => {
+    try {
+      labelEl.querySelector('.fa-check').remove()
+    } catch {}
+  })
+}
 const selectModeOption = () => {
-  const mode = document.querySelector('input[name="mode"]:checked').value
-  modeDropdownBtnText.innerText = mode
-  modeDropdownBtn.value = mode
+  const mode = document.querySelector('input[name="mode"]:checked')
+  const modeValue = mode.value
+
+  removeCheckmarks()
+
+  // add checkmark to the selected option
+  const modeLabel = mode.nextElementSibling
+  modeLabel.innerHTML += `
+    <i class="fa-solid fa-check fa-lg"></i>`
+
+  // update the dropdown button
+  modeDropdownBtnText.innerText = modeValue
+  modeDropdownBtn.value = modeValue
 }
 modeInputs.forEach(radioInput => {
   radioInput.addEventListener('click', selectModeOption)

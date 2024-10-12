@@ -29,93 +29,92 @@
   
     <main>
       <div class="generator-container">
-        <div class="generator-form-container">
-          <form method="post" id="generator-form" class="generator-form">
-            <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
-              <button type="button" id="form-collapse-btn" class="form-collapse-btn">
-                <i class="fa-solid fa-xmark fa-lg"></i>
+        <form method="post" id="generator-form" class="generator-form">
+          <fieldset id="scheme-create-pane" class="generator-fieldset scheme-create-pane">
+            <button type="button" id="form-collapse-btn" class="form-collapse-btn">
+              <i class="fa-solid fa-xmark fa-lg"></i>
+            </button>
+            <label for="seed" class="generator-input-group">
+              <h2 class="generator-input-label">seed</h2>
+              <input type="color" name="seed" id="seed" class="generator-input-field generator-color-input">
+            </label>
+            <div class="generator-input-group">
+              <h2 class="generator-input-label">mode</h2>
+              <button type="button" id="dropdown-btn" class="generator-input-field dropdown-btn" value="monochrome">
+                <h3 id="dropdown-btn-text">monochrome</h3>
+                <i class="fa-solid fa-chevron-down fa-sm"></i>
               </button>
-              <label for="seed" class="generator-input-group">
-                <h2 class="generator-input-label">seed</h2>
-                <input type="color" name="seed" id="seed" class="generator-input-field generator-color-input">
-              </label>
-              <div class="generator-input-group">
-                <h2 class="generator-input-label">mode</h2>
-                <button type="button" id="dropdown-btn" class="generator-input-field dropdown-btn" value="monochrome">
-                  <h3 id="dropdown-btn-text">monochrome</h3>
-                  <i class="fa-solid fa-chevron-down fa-sm"></i>
+              <ul id="dropdown-list" class="dropdown-list">
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
+                  <label for="monochrome" class="dropdown-label">
+                    <h4>monochrome</h4>
+                    <i class="fa-solid fa-check fa-lg"></i>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
+                  <label for="monochrome-dark" class="dropdown-label">
+                    <h4>monochrome-dark</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
+                  <label for="monochrome-light" class="dropdown-label">
+                    <h4>monochrome-light</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="analogic" value="analogic" />
+                  <label for="analogic" class="dropdown-label">
+                    <h4>analogic</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="complement" value="complement" />
+                  <label for="complement" class="dropdown-label">
+                    <h4>complement</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
+                  <label for="analogic-complement" class="dropdown-label">
+                    <h4>analogic-complement</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="triad" value="triad" />
+                  <label for="triad" class="dropdown-label">
+                    <h4>triad</h4>
+                  </label>
+                </li>
+                <li class="dropdown-option">
+                  <input type="radio" name="mode" id="quad" value="quad" />
+                  <label for="quad" class="dropdown-label">
+                    <h4>quad</h4>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="generator-input-group">
+              <h2 class="generator-input-label">count</h2>
+              <div class="generator-input-field generator-count-input">
+                <button type="button" id="count-decrease-btn" class="count-btn">
+                  <i class="fa-solid fa-circle-minus fa-lg"></i>
                 </button>
-                <ul id="dropdown-list" class="dropdown-list">
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
-                    <label for="monochrome" class="dropdown-label">
-                      <h4>monochrome</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
-                    <label for="monochrome-dark" class="dropdown-label">
-                      <h4>monochrome-dark</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
-                    <label for="monochrome-light" class="dropdown-label">
-                      <h4>monochrome-light</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="analogic" value="analogic" />
-                    <label for="analogic" class="dropdown-label">
-                      <h4>analogic</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="complement" value="complement" />
-                    <label for="complement" class="dropdown-label">
-                      <h4>complement</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
-                    <label for="analogic-complement" class="dropdown-label">
-                      <h4>analogic-complement</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="triad" value="triad" />
-                    <label for="triad" class="dropdown-label">
-                      <h4>triad</h4>
-                    </label>
-                  </li>
-                  <li class="dropdown-option">
-                    <input type="radio" name="mode" id="quad" value="quad" />
-                    <label for="quad" class="dropdown-label">
-                      <h4>quad</h4>
-                    </label>
-                  </li>
-                </ul>
+                <span id="count" data-count="5">5</span>
+                <button type="button" id="count-increase-btn" class="count-btn">
+                  <i class="fa-solid fa-circle-plus fa-lg"></i>
+                </button>
               </div>
-              <div class="generator-input-group">
-                <h2 class="generator-input-label">count</h2>
-                <div class="generator-input-field generator-count-input">
-                  <button type="button" id="count-decrease-btn" class="count-btn">
-                    <i class="fa-solid fa-circle-minus fa-lg"></i>
-                  </button>
-                  <span id="count" data-count="5">5</span>
-                  <button type="button" id="count-increase-btn" class="count-btn">
-                    <i class="fa-solid fa-circle-plus fa-lg"></i>
-                  </button>
-                </div>
-              </div>
-              <button type="submit" id="get-scheme-btn" class="generator-input-field get-scheme-btn">get scheme</button>
-            </fieldset>
-            <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
-              <button type="button" id="new-scheme-btn" class="scheme-ctrl-btn new-scheme-btn">new scheme</button>
-              <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn save-scheme-btn">save scheme</button>
-            </fieldset>
-          </form>
-        </div>
+            </div>
+            <button type="submit" id="get-scheme-btn" class="generator-input-field get-scheme-btn">get scheme</button>
+          </fieldset>
+          <fieldset id="scheme-ctrl-pane" class="generator-fieldset scheme-ctrl-pane">
+            <button type="button" id="new-scheme-btn" class="generator-input-field scheme-ctrl-btn new-scheme-btn">new scheme</button>
+            <button type="button" id="save-scheme-btn" class="generator-input-field scheme-ctrl-btn save-scheme-btn">save scheme</button>
+          </fieldset>
+        </form>
         <ul id="generator-display" class="generator-display">
           <p class="display-placeholder">
             Generating template...

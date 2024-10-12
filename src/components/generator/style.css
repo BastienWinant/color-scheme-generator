@@ -1,22 +1,21 @@
 .generator-container {
   height: 100%;
-
   display: flex;
   flex-direction: column-reverse;
+
+  background-color: orange;
 }
 
 /* GENERATOR DISPLAY */
 .generator-display {
-  flex: 1 0 auto;
-
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-
   list-style-type: none;
 }
 
 .generator-color {
-  flex: 1 0 auto;
+  flex-grow: 1;
 }
 
 .generator-color-container {
@@ -33,14 +32,22 @@
 
 /* GENERATOR FORM */
 .generator-form {
-  display: flex;
-  flex-direction: column;
-
   position: relative;
 }
 
-.generator-fieldset {
+.scheme-create-pane {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
   background-color: white;
+}
+
+.form-collapse-btn {
+  align-self: flex-end;
 }
 
 .generator-input-group {
@@ -55,38 +62,17 @@
 
 .generator-input-field {
   width: 100%;
-  height: 3em;
-  border-radius: .5em;
-  border: 2px solid black;
+  height: 4em;
+  border-radius: .25em;
+  border: 2px solid red;
 }
 
-/* SCHEME CREATE PANE */
-.scheme-create-pane {
-  position: absolute;
-  height: 2vh;
-  min-height: 400px;
-  width: 100%;
-  bottom: 0;
-
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: .75em;
-  border-radius: 1em 1em 0 0;
-}
-
-.form-collapse-btn {
-  align-self: flex-end;
-}
-
-/* seed color input */
+/* seed input */
 .generator-color-input {
-  background-color: transparent;
   padding: .125em .25em;
+  background-color: transparent;
 }
-
-/* dropdown */
+/* mode input */
 .dropdown-btn {
   display: flex;
   align-items: center;
@@ -95,7 +81,18 @@
 }
 
 .dropdown-list {
+  list-style-type: none;
+
   display: none;
+  flex-direction: column;
+
+  padding: .5em;
+
+  border: 1px solid black;
+}
+
+.dropdown-option {
+  background-color: blue;
 }
 
 input[name="mode"] {
@@ -106,11 +103,15 @@ input[name="mode"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: yellow;
+
+  padding: .625em;
+  border-radius: .25em;
+
+  background-color: red;
 }
 
 input[name="mode"]:checked + .dropdown-label {
-  background-color: yellowgreen;
+  background-color: green;
 }
 
 /* count input */
@@ -118,38 +119,40 @@ input[name="mode"]:checked + .dropdown-label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 .125em;
 }
 
-.count-btn {
-  height: 2.5em;
-  width: 2.5em;
-  border-radius: .25em;
-  border: 2px solid black;
-}
-
-/* SCHEME CTRL PANE */
 .scheme-ctrl-pane {
   display: flex;
-  gap: .5em;
+  align-items: center;
 }
 
 .scheme-ctrl-btn {
-  flex: 1 0 auto;
-  height: 3.25em;
-  border-radius: .5em;
-  border: 1px solid grey;
-
-  text-transform: capitalize;
-  font-weight: 600;
+  flex-grow: 1;
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   .generator-container {
-    position: relative;
+    flex-direction: row;
   }
 
-  /* GENERATOR DISPLAY */
+  .generator-form {
+    flex: 0 0 380px;
+  }
+
+  .scheme-create-pane {
+    position: static;
+  }
+
+  .form-collapse-btn {
+    display: none;
+  }
+
+  .new-scheme-btn {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 992px) {
   .generator-display {
     flex-direction: row;
   }
@@ -161,44 +164,5 @@ input[name="mode"]:checked + .dropdown-label {
 
   .generator-color-btns {
     flex-direction: column;
-  }
-
-  /* GENERATOR FORM */
-  .generator-form-container {
-    position: absolute;
-    bottom: 2em;
-    width: 100%;
-  }
-
-  .generator-form {
-    width: 420px;
-    margin: 0 auto;
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .generator-container {
-    flex-direction: row;
-  }
-
-  .generator-form-container {
-    position: static;
-    width: auto;
-    background-color: yellow;
-  }
-
-  .generator-form {
-    height: 100%;
-    background-color: orange;
-  }
-
-  .scheme-create-pane {
-    flex-grow: 1;
-
-    display: flex;
-  }
-
-  .new-scheme-btn {
-    display: none;
   }
 }
