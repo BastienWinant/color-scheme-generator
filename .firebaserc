@@ -1,8 +1,0 @@
-{
-  "projects": {
-    "default": "color-scheme-generator-f60fe",
-    "prod": "color-scheme-generator-f60ff"
-  },
-  "targets": {},
-  "etags": {}
-}
