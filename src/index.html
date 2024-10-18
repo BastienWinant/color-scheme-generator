@@ -6,6 +6,56 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <!-- login modal -->
+  <dialog id="login-modal" class="auth-modal">
+    <form method="post" id="login-form" class="auth-form">
+      <fieldset id="login-fieldset" class="auth-fieldset">
+        <label for="login-email" class="auth-input-group">
+          <h3 class="auth-input-label">Email</h3>
+          <input type="email" name="email" id="login-email" class="auth-input-field">
+        </label>
+        <label for="login-password" class="auth-input-group">
+          <h3 class="auth-input-label">Password</h3>
+          <input type="password" name="password" id="login-password" class="auth-input-field">
+          <button type="button" id="new-password-btn" class="auth-switch-btn">Reset Password</button>
+        </label>
+        <button type="submit" id="login-btn" class="auth-submit-btn">Log In</button>
+      </fieldset>
+    </form>
+  </dialog>
+
+  <!-- signup modal -->
+  <dialog id="signup-modal" class="auth-modal">
+    <form method="post" id="signup-form" class="auth-form">
+      <fieldset id="signup-fieldset" class="auth-fieldset">
+        <label for="signup-username" class="auth-input-group">
+          <h3 class="auth-input-label">Username</h3>
+          <input type="text" name="username" id="signup-username" class="auth-input-field">
+        </label>
+        <label for="signup-email" class="auth-input-group">
+          <h3 class="auth-input-label">Email</h3>
+          <input type="email" name="email" id="signup-email" class="auth-input-field">
+        </label>
+        <label for="signup-password" class="auth-input-group">
+          <h3 class="auth-input-label">Password</h3>
+          <input type="password" name="password" id="signup-password" class="auth-input-field">
+        </label>
+        <button type="submit" id="signup-btn" class="auth-submit-btn">Sign Up</button>
+      </fieldset>
+    </form>
+  </dialog>
+
+  <!-- password reset modal -->
+  <dialog id="password-reset-modal" class="auth-modal">
+    <form method="post" id="password-reset-form" class="auth-form">
+      <fieldset id="password-reset-fieldset" class="auth-fieldset">
+        <label for="password-reset-email" class="auth-input-group">
+          <h3 class="auth-input-label">Email</h3>
+          <input type="email" name="email" id="password-reset-email" class="auth-input-field">
+        </label>
+        <button type="submit" id="password-reset-btn" class="auth-submit-btn">Reset Password</button>
+      </fieldset>
+    </form>
+  </dialog>
 </body>
 </html>
