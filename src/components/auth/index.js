@@ -20,7 +20,7 @@ const resetEmailInput = document.querySelector('#password-reset-email')
 const resetBtn = document.querySelector('#password-reset-btn')
 
 // LOGIN FUNCTIONALITY
-const openLoginModal = () => {
+export const openLoginModal = () => {
   loginModal.showModal()
 }
 
@@ -35,7 +35,7 @@ loginModal.addEventListener('click', e => {
 })
 
 // SIGNUP FUNCTIONALITY
-const openSignupModal = () => {
+export const openSignupModal = () => {
   signupModal.showModal()
 }
 
@@ -44,7 +44,7 @@ const closeSignupModal = () => {
   signupModal.close()
 }
 signupModal.addEventListener('click', e => {
-  if (!e.target.closest('#aignup-form')) {
+  if (!e.target.closest('#signup-form')) {
     closeSignupModal()
   }
 })

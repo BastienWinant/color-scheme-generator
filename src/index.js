@@ -1,3 +1,4 @@
 import './style.css'
 
-import(/* webpackPrefetch: true */ './App');
+import(/* webpackPrefetch: true */ './app');
+import(/* webpackPrefetch: true */ 'Components/header');

@@ -14,3 +14,16 @@
 
   user-select: none;
 }
+
+/* CSS SELECTORS */
+button {
+  display: block;
+  background-color: transparent;
+  border: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
