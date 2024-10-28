@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "color-scheme-generator-5ea37",
-    "prod": "color-scheme-generator-24df8"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "color-scheme-generator-8ec07"
+  }
 }

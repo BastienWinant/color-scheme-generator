@@ -1,4 +1,5 @@
-import './style.css'
+import './index.css'
 
-import(/* webpackPrefetch: true */ './app');
-import(/* webpackPrefetch: true */ 'Components/header');
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+}

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Inter';
-  src: url('./Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  src: url('../src/assets/fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
   font-style: normal;
 }
 
@@ -20,6 +20,7 @@ button {
   display: block;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 img {
