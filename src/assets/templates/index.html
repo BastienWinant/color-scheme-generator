@@ -6,6 +6,81 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-  <h1>Hello World</h1>
+  <header class="header">
+    <nav id="nav" class="nav">
+      <div id="nav-btns" class="nav-btns">
+        <button id="nav-login-btn" class="nav-auth-btn">log in</button>
+        <button id="nav-signup-btn" class="nav-auth-btn">sign up</button>
+        <button id="nav-logout-btn" class="nav-auth-btn">log out</button>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- login modal -->
+  <dialog id="login-modal" class="auth-modal">
+    <form method="post" id="login-form" class="auth-form">
+      <fieldset id="login-fieldset" class="auth-fieldset">
+        <legend class="auth-fieldset-legend">
+          <h2>Log In</h2>
+        </legend>
+        <label for="login-email" class="auth-input-group">
+          <h3 class="auth-input-label">email</h3>
+          <input type="email" name="email" id="login-email" class="auth-input-field">
+        </label>
+        <label for="login-password" class="auth-input-group">
+          <h3 class="auth-input-label">password</h3>
+          <input type="password" name="password" id="login-password" class="auth-input-field">
+          <button type="button" id="to-reset-btn" class="auth-switch-btn">forgot password?</button>
+        </label>
+        <button type="submit" id="login-btn" class="auth-submit-btn">Log In</button>
+      </fieldset>
+
+      <button type="button" id="to-signup-btn" class="auth-switch-btn">sign up</button>
+    </form>
+  </dialog>
+
+  <!-- signup modal -->
+  <dialog id="signup-modal" class="auth-modal">
+    <form method="post" id="signup-form" class="auth-form">
+      <fieldset id="signup-fieldset" class="auth-fieldset">
+        <legend class="auth-fieldset-legend">
+          <h2>Sign Up</h2>
+        </legend>
+        <label for="signup-username" class="auth-input-group">
+          <h3 class="auth-input-label">username</h3>
+          <input type="text" name="username" id="signup-username" class="auth-input-field">
+        </label>
+        <label for="signup-email" class="auth-input-group">
+          <h3 class="auth-input-label">email</h3>
+          <input type="email" name="email" id="signup-email" class="auth-input-field">
+        </label>
+        <label for="signup-password" class="auth-input-group">
+          <h3 class="auth-input-label">password</h3>
+          <input type="password" name="password" id="signup-password" class="auth-input-field">
+        </label>
+        <button type="submit" id="signup-btn" class="auth-submit-btn">Sign Up</button>
+      </fieldset>
+
+      <button type="button" id="to-login-btn" class="auth-switch-btn">login</button>
+    </form>
+  </dialog>
+
+  <!-- reset modal -->
+  <dialog id="reset-modal" class="auth-modal">
+    <form method="post" id="reset-form" class="auth-form">
+      <fieldset id="reset-fieldset" class="auth-fieldset">
+        <legend class="auth-fieldset-legend">
+          <h2>Reset Password</h2>
+        </legend>
+        <label for="reset-email" class="auth-input-group">
+          <h3 class="auth-input-label">email</h3>
+          <input type="email" name="email" id="reset-email" class="auth-input-field">
+        </label>
+        <button type="submit" id="reset-btn" class="auth-submit-btn">Reset Password</button>
+      </fieldset>
+
+      <button type="button" id="cancel-reset-btn" class="auth-switch-btn">cancel</button>
+    </form>
+  </dialog>
 </body>
 </html>
