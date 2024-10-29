@@ -9,6 +9,8 @@ const generateDisplayElements = (colorsArr) => {
 
     liEl.innerHTML = `${colorObj.name.value}`
 
+    liEl.style.backgroundColor = colorObj.hex.value
+
     return liEl
   })
 }

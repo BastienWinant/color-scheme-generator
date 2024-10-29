@@ -3,6 +3,7 @@ import './index.css'
 import { ref, child, push, update } from 'firebase/database'
 
 import { auth, db } from 'Src/app'
+import { openLoginModal } from 'Components/auth'
 
 const generatorColorInput = document.querySelector('#generator-color-input')
 const generatorDropdownBtn = document.querySelector('#generator-dropdown-btn')
@@ -12,6 +13,10 @@ const decreaseCountBtn = document.querySelector('#decrease-count-btn')
 const increaseCountBtn = document.querySelector('#increase-count-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
+
+const fillFormInputs = (schemeObj) => {
+  // TODO: fill the input values based on the object data
+}
 
 const gatherFormInputs = () => {
   const seedColor = generatorColorInput.value
@@ -95,6 +100,6 @@ saveSchemeBtn.addEventListener('click', () => {
     const userId = currentUser.uid
     writeNewScheme(userId, schemeObj)
   } else {
-    // TODO: open the login modal
+    openLoginModal()
   }
 })
