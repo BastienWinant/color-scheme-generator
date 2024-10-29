@@ -9,7 +9,7 @@ const env_file = process.env.NODE_ENV == 'production' ? './.prod.env' : './.dev.
 
 module.exports = {
   entry: {
-    index: ['./src/index', './src/components/header/index'],
+    index: ['./src/index', './src/components/header', './src/components/generator'],
   },
   optimization: {
     minimizer: [

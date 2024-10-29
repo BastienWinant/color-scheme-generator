@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
-import { getAuth, connectAuthEmulator } from "firebase/auth"
-import { getDatabase, connectDatabaseEmulator } from "firebase/database"
+import { getAuth } from "firebase/auth"
+import { getDatabase } from "firebase/database"
 
 // Firebase configuration
 const firebaseConfig = {
@@ -17,10 +17,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const auth = getAuth(app)
 export const db = getDatabase(app)
-
-if (process.env.NODE_ENV !== 'production') {
-  connectAuthEmulator(auth, "http://127.0.0.1:9099")
-  connectDatabaseEmulator(db, "127.0.0.1", 9000)
-
-  console.log('Looks like we are in development mode!')
-}

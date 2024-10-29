@@ -32,3 +32,19 @@ img {
 dialog {
   margin: auto;
 }
+
+/* PAGE LAYOUT */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: indianred;
+}
+
+main {
+  flex-grow: 1;
+  background-color: azure;
+}
