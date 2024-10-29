@@ -1,5 +1,9 @@
 import './index.css'
 
+import { ref, child, push, update } from 'firebase/database'
+
+import { auth, db } from 'Src/app'
+
 const generatorColorInput = document.querySelector('#generator-color-input')
 const generatorDropdownBtn = document.querySelector('#generator-dropdown-btn')
 const generatorModeInputs = document.querySelectorAll('input[name="mode"]')
@@ -68,5 +72,29 @@ increaseCountBtn.addEventListener('click', () => {
   decreaseCountBtn.disabled = false
   if (newCount === 6) {
     increaseCountBtn.disabled = true
+  }
+})
+
+export function writeNewScheme(uid, schemeObj) {
+  // Get a key for a new Scheme.
+  const newSchemeKey = push(child(ref(db), 'schemes')).key;
+
+  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
+  const updates = {};
+  updates['/schemes/' + newSchemeKey] = schemeObj;
+  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeObj;
+
+  return update(ref(db), updates);
+}
+
+saveSchemeBtn.addEventListener('click', () => {
+  const currentUser = auth.currentUser
+  const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
+  
+  if (currentUser && schemeObj) {
+    const userId = currentUser.uid
+    writeNewScheme(userId, schemeObj)
+  } else {
+    // TODO: open the login modal
   }
 })
