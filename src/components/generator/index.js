@@ -1,4 +1,6 @@
 import './index.css'
+import(/* webpackPrefetch: true */ './form')
+import(/* webpackPrefetch: true */ './display')
 import { getSchemeBtn, requestColorScheme } from './form'
 import { displayColorScheme } from './display'
 
