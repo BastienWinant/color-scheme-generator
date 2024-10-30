@@ -1,13 +1,36 @@
 import './index.css'
 
-import { ref, push, child, update } from 'firebase/database'
+import { ref, push, child, update, get } from 'firebase/database'
 
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
 const generatorDisplay = document.querySelector('#generator-display')
 
-const generateDisplayElements = (colorsArr) => {
+const getUserColors = async () => {
+  const currentUser = auth.currentUser
+  if (currentUser) {
+    const userId = currentUser.uid
+
+    try {
+      const userColorsRef = child(ref(db), `/user-colors/${userId}`)
+      const snapshot = await get(userColorsRef)
+
+      if (snapshot.exists()) {
+        return Object.values(snapshot.val()).map(colorObj => colorObj.hex.clean)
+      } else {
+        return []
+      }
+    } catch (error) {
+      return []
+    }
+  }
+}
+
+const generateDisplayElements = async (colorsArr) => {
+  let userColors = await getUserColors()
+  console.log(userColors)
+
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-display-color')
@@ -26,8 +49,8 @@ const generateDisplayElements = (colorsArr) => {
   })
 }
 
-export const displayColorScheme = (schemeObj) => {
-  const liArray = generateDisplayElements(schemeObj.colors)
+export const displayColorScheme = async (schemeObj) => {
+  const liArray = await generateDisplayElements(schemeObj.colors)
   
   generatorDisplay.innerHTML = ''
   generatorDisplay.append(...liArray)
