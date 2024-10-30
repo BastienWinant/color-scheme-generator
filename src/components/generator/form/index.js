@@ -82,14 +82,14 @@ increaseCountBtn.addEventListener('click', () => {
 
 export function writeNewScheme(uid, schemeObj) {
   // Get a key for a new Scheme.
-  const newSchemeKey = push(child(ref(db), 'schemes')).key;
+  const newSchemeKey = push(child(ref(db), 'schemes')).key
 
   // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
-  const updates = {};
-  updates['/schemes/' + newSchemeKey] = schemeObj;
-  updates['/user-schemes/' + uid + '/' + newSchemeKey] = schemeObj;
+  const updates = {}
+  updates[`/schemes/${newSchemeKey}`] = schemeObj
+  updates[`/user-schemes/${uid}/${newSchemeKey}`] = schemeObj
 
-  return update(ref(db), updates);
+  return update(ref(db), updates)
 }
 
 saveSchemeBtn.addEventListener('click', () => {

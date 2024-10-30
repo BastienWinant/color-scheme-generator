@@ -52,19 +52,19 @@ const writeNewColor = (schemeObj, e, uid) => {
   const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
 
   // Get a key for a new Color.
-  const newColorKey = push(child(ref(db), 'colors')).key;
+  const newColorKey = push(child(ref(db), 'colors')).key
 
   // Write the new color's data simultaneously in the colors list and the user's color list.
-  const updates = {};
-  updates['/colors/' + newColorKey] = colorObj;
-  updates['/user-colors/' + uid + '/' + newColorKey] = colorObj;
+  const updates = {}
+  updates[`/colors/${newColorKey}`] = colorObj
+  updates[`/user-colors/${uid}/${newColorKey}`] = colorObj
 
-  return update(ref(db), updates);
+  return update(ref(db), updates)
 }
 
 const copySchemeColor = (e) => {
   const hex = e.target.closest('.generator-display-color').dataset.hex
-  navigator.clipboard.writeText(`#${hex}`);
+  navigator.clipboard.writeText(`#${hex}`)
 }
 
 generatorDisplay.addEventListener('click', e => {
