@@ -29,7 +29,6 @@ const getUserColors = async () => {
 
 const generateDisplayElements = async (colorsArr) => {
   let userColors = await getUserColors()
-  console.log(userColors)
 
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')

@@ -14,3 +14,5 @@ getSchemeBtn.addEventListener('click', async (e) => {
     displayColorScheme(schemeObj)
   }
 })
+
+// TODO: load the user schemes and colors on auth status change
