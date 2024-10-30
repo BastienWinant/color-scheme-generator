@@ -13,7 +13,7 @@ const generateDisplayElements = (colorsArr) => {
       <p>${colorObj.hex.value}</p>
       <button type="button" class="generator-display-btn save-color-btn">save color</button>
       <button type="button" class="generator-display-btn remove-color-btn">remove color</button>
-      <button type="button" class="generator-display-btn save-color-btn">save color</button>`
+      <button type="button" class="generator-display-btn copy-color-btn">copy color</button>`
 
     liEl.style.backgroundColor = colorObj.hex.value
 
@@ -45,8 +45,9 @@ const saveSchemeColor = () => {
   
 }
 
-const copySchemeColor = () => {
-
+const copySchemeColor = (e) => {
+  const hex = e.target.closest('.generator-display-color').dataset.hex
+  navigator.clipboard.writeText(`#${hex}`);
 }
 
 generatorDisplay.addEventListener('click', e => {
@@ -57,9 +58,7 @@ generatorDisplay.addEventListener('click', e => {
     const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
     console.log(colorObj)
   } else if (e.target.classList.contains('copy-color-btn')) {
-    const hex = e.target.closest('.generator-display-color').dataset.hex
-    const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
-    console.log(colorObj)
+    copySchemeColor(e)
   } else if (e.target.classList.contains('remove-color-btn')) {
     removeSchemeColor(schemeObj, e)
   }
