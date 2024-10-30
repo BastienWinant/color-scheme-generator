@@ -1,5 +1,10 @@
 import './index.css'
 
+import { ref, push, child, update } from 'firebase/database'
+
+import { auth, db } from 'Src/app'
+import { openLoginModal } from 'Components/auth'
+
 const generatorDisplay = document.querySelector('#generator-display')
 
 const generateDisplayElements = (colorsArr) => {
@@ -41,8 +46,20 @@ const removeSchemeColor = (schemeObj, e) => {
   }
 }
 
-const saveSchemeColor = () => {
-  
+const writeNewColor = (schemeObj, e, uid) => {
+  // A color entry.
+  const hex = e.target.closest('.generator-display-color').dataset.hex
+  const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
+
+  // Get a key for a new Color.
+  const newColorKey = push(child(ref(db), 'colors')).key;
+
+  // Write the new color's data simultaneously in the colors list and the user's color list.
+  const updates = {};
+  updates['/colors/' + newColorKey] = colorObj;
+  updates['/user-colors/' + uid + '/' + newColorKey] = colorObj;
+
+  return update(ref(db), updates);
 }
 
 const copySchemeColor = (e) => {
@@ -54,9 +71,14 @@ generatorDisplay.addEventListener('click', e => {
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
 
   if (e.target.classList.contains('save-color-btn')) {
-    const hex = e.target.closest('.generator-display-color').dataset.hex
-    const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
-    console.log(colorObj)
+    const currentUser = auth.currentUser
+
+    if (currentUser) {
+      const userId = currentUser.uid
+      writeNewColor(schemeObj, e, userId)
+    } else {
+      openLoginModal()
+    }
   } else if (e.target.classList.contains('copy-color-btn')) {
     copySchemeColor(e)
   } else if (e.target.classList.contains('remove-color-btn')) {
