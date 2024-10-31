@@ -99,7 +99,7 @@ const copySchemeColor = (e) => {
 generatorDisplay.addEventListener('click', e => {
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
 
-  if (e.target.classList.contains('save-color-btn')) {
+  if (e.target.closest('.save-color-btn')) {
     const currentUser = auth.currentUser
 
     if (currentUser) {
@@ -108,9 +108,9 @@ generatorDisplay.addEventListener('click', e => {
     } else {
       openLoginModal()
     }
-  } else if (e.target.classList.contains('copy-color-btn')) {
+  } else if (e.target.closest('.copy-color-btn')) {
     copySchemeColor(e)
-  } else if (e.target.classList.contains('remove-color-btn')) {
+  } else if (e.target.closest('.remove-color-btn')) {
     removeSchemeColor(schemeObj, e)
   }
 })
