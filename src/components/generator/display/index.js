@@ -79,10 +79,14 @@ const removeSchemeColor = (schemeObj, e) => {
   }
 }
 
-const writeNewColor = (schemeObj, e, uid) => {
+const writeNewColor = async (schemeObj, e, uid) => {
+  let userColors = await getUserColors()
+
   // A color entry.
   const hex = e.target.closest('.generator-display-color').dataset.hex
   const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
+
+  if (userColors.includes(colorObj.hex.clean)) return
 
   // Get a key for a new Color.
   const newColorKey = push(child(ref(db), 'colors')).key
