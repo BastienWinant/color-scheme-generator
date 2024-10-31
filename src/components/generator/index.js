@@ -1,7 +1,7 @@
 import './index.css'
 import(/* webpackPrefetch: true */ './form')
 import(/* webpackPrefetch: true */ './display')
-import { getSchemeBtn, requestColorScheme, getRandomScheme } from './form'
+import { getSchemeBtn, requestColorScheme, getRandomScheme, fillFormInputs } from './form'
 import { displayColorScheme } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
@@ -16,7 +16,13 @@ getSchemeBtn.addEventListener('click', async (e) => {
 })
 
 const initializeDisplay = async () => {
-  const schemeObj = await getRandomScheme()
+  let schemeObj = JSON.parse(localStorage.getItem('csg-scheme')) || await getRandomScheme()
+  
+  const seed = schemeObj.seed.hex.value
+  const mode = schemeObj.mode
+  const count = schemeObj.count
+
+  fillFormInputs(seed, mode, count)
   localStorage.setItem('csg', JSON.stringify(schemeObj))
   displayColorScheme(schemeObj)
 }

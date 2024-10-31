@@ -14,7 +14,7 @@ const increaseCountBtn = document.querySelector('#increase-count-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
-const fillFormInputs = (color, mode, count) => {
+export const fillFormInputs = (color, mode, count) => {
   generatorColorInput.value = color
 
   generatorDropdownBtn.innerText = mode
@@ -136,8 +136,6 @@ export const getRandomScheme = async () => {
   const seed = getRandomSeed()
   const mode = getRandomMode()
   const count = getRandomCount()
-
-  fillFormInputs(seed, mode, count)
 
   const randomSchemeObj = await getColorScheme(seed, mode, count)
   
