@@ -14,8 +14,20 @@ const increaseCountBtn = document.querySelector('#increase-count-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
-const fillFormInputs = (schemeObj) => {
-  // TODO: fill the input values based on the object data
+const fillFormInputs = (color, mode, count) => {
+  generatorColorInput.value = color
+
+  generatorDropdownBtn.innerText = mode
+  generatorDropdownBtn.value = mode
+  for (const modeInput of generatorModeInputs) {
+    if (modeInput.value === mode) {
+      modeInput.checked = true
+      break
+    }
+  }
+
+  generatorColorCount.innerText = count
+  generatorColorCount.dataset.value = count
 }
 
 const gatherFormInputs = () => {
@@ -103,3 +115,31 @@ saveSchemeBtn.addEventListener('click', () => {
     openLoginModal()
   }
 })
+
+const getRandomSeed = () => {
+  const randomSeed = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, 0)
+  return `#${randomSeed}`
+}
+
+const getRandomMode = () => {
+  const randomIndex = Math.floor(Math.random() * generatorModeInputs.length)
+  const randomMode = generatorModeInputs[randomIndex].value
+  return randomMode
+}
+
+const getRandomCount = () => {
+  const randomCount = Math.ceil(Math.random() * 6)
+  return randomCount
+}
+
+export const getRandomScheme = async () => {
+  const seed = getRandomSeed()
+  const mode = getRandomMode()
+  const count = getRandomCount()
+
+  fillFormInputs(seed, mode, count)
+
+  const randomSchemeObj = await getColorScheme(seed, mode, count)
+  
+  return randomSchemeObj
+}

@@ -1,7 +1,7 @@
 import './index.css'
 import(/* webpackPrefetch: true */ './form')
 import(/* webpackPrefetch: true */ './display')
-import { getSchemeBtn, requestColorScheme } from './form'
+import { getSchemeBtn, requestColorScheme, getRandomScheme } from './form'
 import { displayColorScheme } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
@@ -15,4 +15,9 @@ getSchemeBtn.addEventListener('click', async (e) => {
   }
 })
 
-// TODO: load the user schemes and colors on auth status change
+const initializeDisplay = async () => {
+  const schemeObj = await getRandomScheme()
+  localStorage.setItem('csg', JSON.stringify(schemeObj))
+  displayColorScheme(schemeObj)
+}
+initializeDisplay()

@@ -43,6 +43,7 @@ const generateDisplayElements = async (colorsArr) => {
       <button type="button" class="generator-display-btn copy-color-btn">copy color</button>`
 
     liEl.style.backgroundColor = colorObj.hex.value
+    liEl.style.color = colorObj.contrast.value
 
     return liEl
   })
