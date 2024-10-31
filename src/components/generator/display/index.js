@@ -25,6 +25,8 @@ const getUserColors = async () => {
       return []
     }
   }
+
+  return []
 }
 
 const generateDisplayElements = async (colorsArr) => {
@@ -34,6 +36,8 @@ const generateDisplayElements = async (colorsArr) => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-display-color')
     liEl.dataset.hex = colorObj.hex.clean
+
+    const colorSaved = userColors.includes(colorObj.hex.clean)
 
     liEl.innerHTML = `
       <h2>${colorObj.name.value}</h2>
