@@ -38,9 +38,15 @@ const generateDisplayElements = async (colorsArr) => {
     liEl.innerHTML = `
       <h2>${colorObj.name.value}</h2>
       <p>${colorObj.hex.value}</p>
-      <button type="button" class="generator-display-btn save-color-btn">save color</button>
-      <button type="button" class="generator-display-btn remove-color-btn">remove color</button>
-      <button type="button" class="generator-display-btn copy-color-btn">copy color</button>`
+      <button type="button" class="generator-display-btn save-color-btn">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      <button type="button" class="generator-display-btn remove-color-btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button type="button" class="generator-display-btn copy-color-btn">
+        <i class="fa-solid fa-copy"></i>
+      </button>`
 
     liEl.style.backgroundColor = colorObj.hex.value
     liEl.style.color = colorObj.contrast.value
