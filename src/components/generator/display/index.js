@@ -32,6 +32,8 @@ const generateDisplayElements = async (colorsArr) => {
   const userColors = await getUserColors()
   const userColorHexCodes = Object.values(userColors).map(colorObj => colorObj.hex.clean)
 
+  const oneColor = colorsArr.length === 1
+
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-display-color')
@@ -47,7 +49,7 @@ const generateDisplayElements = async (colorsArr) => {
       <button type="button" class="generator-display-btn save-color-btn">
         ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
       </button>
-      <button type="button" class="generator-display-btn remove-color-btn">
+      <button type="button" class="generator-display-btn remove-color-btn" ${oneColor ? 'disabled' : ''}>
         <i class="fa-solid fa-xmark"></i>
       </button>
       <button type="button" class="generator-display-btn copy-color-btn">
