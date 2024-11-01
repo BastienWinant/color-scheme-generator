@@ -1,7 +1,5 @@
 import './index.css'
-
 import { onAuthStateChanged } from 'firebase/auth'
-
 import { auth } from 'Src/app'
 import { openLoginModal, openSignupModal, logOut } from 'Components/auth'
 

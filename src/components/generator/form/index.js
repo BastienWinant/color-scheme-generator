@@ -1,7 +1,5 @@
 import './index.css'
-
 import { ref, child, push, update } from 'firebase/database'
-
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 

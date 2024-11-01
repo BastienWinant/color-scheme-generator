@@ -1,7 +1,5 @@
 import './index.css'
-
 import { ref, push, child, update, get } from 'firebase/database'
-
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
@@ -31,6 +29,7 @@ const getUserColors = async () => {
 
 const generateDisplayElements = async (colorsArr) => {
   let userColors = await getUserColors()
+  console.log(userColors)
 
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
