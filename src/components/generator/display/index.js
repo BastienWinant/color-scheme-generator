@@ -1,5 +1,5 @@
 import './index.css'
-import { ref, push, child, update, get, remove } from 'firebase/database'
+import { ref, set, child, get, remove } from 'firebase/database'
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
@@ -27,6 +27,7 @@ const getUserColors = async () => {
   return {}
 }
 
+// returns a list of formatted li elements from a list of color data array
 const generateDisplayElements = async (colorsArr) => {
   const userColors = await getUserColors()
   const userColorHexCodes = Object.values(userColors).map(colorObj => colorObj.hex.clean)
@@ -36,8 +37,8 @@ const generateDisplayElements = async (colorsArr) => {
     liEl.classList.add('generator-display-color')
     liEl.dataset.hex = colorObj.hex.clean
 
+    // flag whether the current user has saved the color
     const colorSaved = userColorHexCodes.includes(colorObj.hex.clean)
-    
     liEl.dataset.saved = colorSaved ? '1' : ''
 
     liEl.innerHTML = `
@@ -60,6 +61,7 @@ const generateDisplayElements = async (colorsArr) => {
   })
 }
 
+// render the new color scheme object in the DOM
 export const displayColorScheme = async (schemeObj) => {
   const liArray = await generateDisplayElements(schemeObj.colors)
   
@@ -70,48 +72,32 @@ export const displayColorScheme = async (schemeObj) => {
 const removeSchemeColor = (schemeObj, e) => {
   const hex = e.target.closest('.generator-display-color').dataset.hex
   schemeObj.colors = schemeObj.colors.filter(color => color.hex.clean !== hex)
+
+  // ensure the display is in sync with the localStorage object
   localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
   e.target.closest('.generator-display-color').remove()
 
+  // deactivate the remove button if there is only one color left in the scheme
   const removeColorBtns = document.querySelectorAll('.remove-color-btn')
-
   if (removeColorBtns.length === 1) {
     removeColorBtns[0].disabled = true
   }
 }
 
-const writeNewColor = async (schemeObj, e, uid) => {
-  // A color entry.
-  const hex = e.target.closest('.generator-display-color').dataset.hex
-  const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
-
-  // Get a key for a new Color.
-  const newColorKey = push(child(ref(db), 'colors')).key
-
-  // Write the new color's data simultaneously in the colors list and the user's color list.
-  const updates = {}
-  updates[`/colors/${newColorKey}`] = colorObj
-  updates[`/user-colors/${uid}/${newColorKey}`] = colorObj
-
-  return update(ref(db), updates)
+const writeNewColor = async (colorObj, uid) => {
+  // Use the color hex code as unique table id
+  const newColorKey = colorObj.hex.clean
+  const userColorsRef = child(ref(db), `/user-colors/${uid}/${newColorKey}`)
+  return set(userColorsRef, colorObj)
 }
 
-const deleteColor = async (schemeObj, e, uid) => {
-  // A color entry.
-  const hex = e.target.closest('.generator-display-color').dataset.hex
-  const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
-
-  const userColors = await getUserColors()
-
+// remove a user color from the database
+const deleteColor = async (hex, uid) => {
   try {
-    for (const [id, entry] of Object.entries(userColors)) {
-      if (colorObj.hex.value === entry.hex.value) {
-        const colorRef = child(ref(db), `/user-colors/${uid}/${id}`)
-        remove(colorRef)
-        break
-      }
-    }
-  } catch (error) {}
+    // the hex value is used as the key in the table
+    const colorRef = child(ref(db), `/user-colors/${uid}/${hex}`)
+    remove(colorRef)
+  } catch {}
 }
 
 const copySchemeColor = (e) => {
@@ -119,34 +105,40 @@ const copySchemeColor = (e) => {
   navigator.clipboard.writeText(`#${hex}`)
 }
 
+// handle clicks on color display cards
 generatorDisplay.addEventListener('click', e => {
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
 
+  // save/delete the color data in the database
   if (e.target.closest('.save-color-btn')) {
     const currentUser = auth.currentUser
 
     if (currentUser) {
+      // retrieve the id of the current user
       const userId = currentUser.uid
 
       const displayColor = e.target.closest('.generator-display-color')
       const saveBtn = displayColor.querySelector('.save-color-btn')
 
       if (displayColor.dataset.saved) {
-        deleteColor(schemeObj, e, userId)
+        // delete the color from the database and update the save button
+        deleteColor(displayColor.dataset.hex, userId)
         displayColor.dataset.saved = ''
         saveBtn.innerHTML = '<i class="fa-regular fa-heart"></i>'
-
       } else {
-        writeNewColor(schemeObj, e, userId)
+        // save the scheme color object and update save the button 
+        const colorObj = schemeObj.colors.find(color =>
+          color.hex.clean === displayColor.dataset.hex)
+        writeNewColor(colorObj, userId)
         displayColor.dataset.saved = '1'
         saveBtn.innerHTML = '<i class="fa-solid fa-heart"></i>'
       }
     } else {
-      openLoginModal()
+      openLoginModal() // open the login modal if the current used is not logged in
     }
   } else if (e.target.closest('.copy-color-btn')) {
-    copySchemeColor(e)
+    copySchemeColor(e) // copy the hex code to the clipboard
   } else if (e.target.closest('.remove-color-btn')) {
-    removeSchemeColor(schemeObj, e)
+    removeSchemeColor(schemeObj, e) // remove the color from the display and update localStorage
   }
 })
