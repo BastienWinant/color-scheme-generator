@@ -35,15 +35,15 @@ const generateDisplayElements = async (colorsArr) => {
   const oneColor = colorsArr.length === 1
 
   return colorsArr.map(colorObj => {
-    const liEl = document.createElement('article')
-    liEl.classList.add('generator-display-color')
-    liEl.dataset.hex = colorObj.hex.clean
+    const articleEl = document.createElement('article')
+    articleEl.classList.add('generator-display-color')
+    articleEl.dataset.hex = colorObj.hex.clean
 
     // flag whether the current user has saved the color
     const colorSaved = userColorHexCodes.includes(colorObj.hex.clean)
-    liEl.dataset.saved = colorSaved ? '1' : ''
+    articleEl.dataset.saved = colorSaved ? '1' : ''
 
-    liEl.innerHTML = `
+    articleEl.innerHTML = `
       <h2>${colorObj.name.value}</h2>
       <p>${colorObj.hex.value}</p>
       <button type="button" class="generator-display-btn save-color-btn">
@@ -56,10 +56,10 @@ const generateDisplayElements = async (colorsArr) => {
         <i class="fa-solid fa-copy"></i>
       </button>`
 
-    liEl.style.backgroundColor = colorObj.hex.value
-    liEl.style.color = colorObj.contrast.value
+    articleEl.style.backgroundColor = colorObj.hex.value
+    articleEl.style.color = colorObj.contrast.value
 
-    return liEl
+    return articleEl
   })
 }
 
