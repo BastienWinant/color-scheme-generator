@@ -89,8 +89,8 @@ const removeSchemeColor = (schemeObj, e) => {
 const writeNewColor = async (colorObj, uid) => {
   // Use the color hex code as unique table id
   const newColorKey = colorObj.hex.clean
-  const userColorsRef = child(ref(db), `/user-colors/${uid}/${newColorKey}`)
-  return set(userColorsRef, colorObj)
+  const userColorRef = child(ref(db), `/user-colors/${uid}/${newColorKey}`)
+  return set(userColorRef, colorObj)
 }
 
 // remove a user color from the database

@@ -1,5 +1,5 @@
 import './index.css'
-import { ref, child, push, update } from 'firebase/database'
+import { ref, child, push, update, set } from 'firebase/database'
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
@@ -94,12 +94,9 @@ export function writeNewScheme(uid, schemeObj) {
   // Get a key for a new Scheme.
   const newSchemeKey = push(child(ref(db), 'schemes')).key
 
-  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
-  const updates = {}
-  updates[`/schemes/${newSchemeKey}`] = schemeObj
-  updates[`/user-schemes/${uid}/${newSchemeKey}`] = schemeObj
-
-  return update(ref(db), updates)
+  // Write the new scheme's data in the user's scheme list.
+  const userSchemeRef = child(ref(db), `/user-schemes/${uid}/${newSchemeKey}`)
+  return set(userSchemeRef, schemeObj)
 }
 
 saveSchemeBtn.addEventListener('click', () => {
