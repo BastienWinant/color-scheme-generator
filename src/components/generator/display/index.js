@@ -35,7 +35,7 @@ const generateDisplayElements = async (colorsArr) => {
   const oneColor = colorsArr.length === 1
 
   return colorsArr.map(colorObj => {
-    const liEl = document.createElement('li')
+    const liEl = document.createElement('article')
     liEl.classList.add('generator-display-color')
     liEl.dataset.hex = colorObj.hex.clean
 
