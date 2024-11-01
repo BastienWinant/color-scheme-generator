@@ -1,5 +1,5 @@
 import './index.css'
-import { ref, push, child, update, get } from 'firebase/database'
+import { ref, push, child, update, get, remove } from 'firebase/database'
 import { auth, db } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 
@@ -15,34 +15,36 @@ const getUserColors = async () => {
       const snapshot = await get(userColorsRef)
 
       if (snapshot.exists()) {
-        return Object.values(snapshot.val()).map(colorObj => colorObj.hex.clean)
+        return snapshot.val()
       } else {
-        return []
+        return {}
       }
     } catch (error) {
-      return []
+      return {}
     }
   }
 
-  return []
+  return {}
 }
 
 const generateDisplayElements = async (colorsArr) => {
-  let userColors = await getUserColors()
-  console.log(userColors)
+  const userColors = await getUserColors()
+  const userColorHexCodes = Object.values(userColors).map(colorObj => colorObj.hex.clean)
 
   return colorsArr.map(colorObj => {
     const liEl = document.createElement('li')
     liEl.classList.add('generator-display-color')
     liEl.dataset.hex = colorObj.hex.clean
 
-    const colorSaved = userColors.includes(colorObj.hex.clean)
+    const colorSaved = userColorHexCodes.includes(colorObj.hex.clean)
+    
+    liEl.dataset.saved = colorSaved ? '1' : ''
 
     liEl.innerHTML = `
       <h2>${colorObj.name.value}</h2>
       <p>${colorObj.hex.value}</p>
       <button type="button" class="generator-display-btn save-color-btn">
-        <i class="fa-regular fa-heart"></i>
+        ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
       </button>
       <button type="button" class="generator-display-btn remove-color-btn">
         <i class="fa-solid fa-xmark"></i>
@@ -79,13 +81,9 @@ const removeSchemeColor = (schemeObj, e) => {
 }
 
 const writeNewColor = async (schemeObj, e, uid) => {
-  let userColors = await getUserColors()
-
   // A color entry.
   const hex = e.target.closest('.generator-display-color').dataset.hex
   const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
-
-  if (userColors.includes(colorObj.hex.clean)) return
 
   // Get a key for a new Color.
   const newColorKey = push(child(ref(db), 'colors')).key
@@ -96,6 +94,24 @@ const writeNewColor = async (schemeObj, e, uid) => {
   updates[`/user-colors/${uid}/${newColorKey}`] = colorObj
 
   return update(ref(db), updates)
+}
+
+const deleteColor = async (schemeObj, e, uid) => {
+  // A color entry.
+  const hex = e.target.closest('.generator-display-color').dataset.hex
+  const colorObj = schemeObj.colors.find(color => color.hex.clean === hex)
+
+  const userColors = await getUserColors()
+
+  try {
+    for (const [id, entry] of Object.entries(userColors)) {
+      if (colorObj.hex.value === entry.hex.value) {
+        const colorRef = child(ref(db), `/user-colors/${uid}/${id}`)
+        remove(colorRef)
+        break
+      }
+    }
+  } catch (error) {}
 }
 
 const copySchemeColor = (e) => {
@@ -111,7 +127,20 @@ generatorDisplay.addEventListener('click', e => {
 
     if (currentUser) {
       const userId = currentUser.uid
-      writeNewColor(schemeObj, e, userId)
+
+      const displayColor = e.target.closest('.generator-display-color')
+      const saveBtn = displayColor.querySelector('.save-color-btn')
+
+      if (displayColor.dataset.saved) {
+        deleteColor(schemeObj, e, userId)
+        displayColor.dataset.saved = ''
+        saveBtn.innerHTML = '<i class="fa-regular fa-heart"></i>'
+
+      } else {
+        writeNewColor(schemeObj, e, userId)
+        displayColor.dataset.saved = '1'
+        saveBtn.innerHTML = '<i class="fa-solid fa-heart"></i>'
+      }
     } else {
       openLoginModal()
     }
