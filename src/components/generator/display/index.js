@@ -41,7 +41,7 @@ const generateDisplayElements = async (colorsArr) => {
 
     // flag whether the current user has saved the color
     const colorSaved = userColorHexCodes.includes(colorObj.hex.clean)
-    articleEl.dataset.saved = colorSaved ? '1' : ''
+    articleEl.dataset.saved = colorSaved ? '1' : '0'
 
     articleEl.innerHTML = `
       <h2>${colorObj.name.value}</h2>
@@ -122,10 +122,10 @@ generatorDisplay.addEventListener('click', e => {
       const displayColor = e.target.closest('.generator-display-color')
       const saveBtn = displayColor.querySelector('.save-color-btn')
 
-      if (displayColor.dataset.saved) {
+      if (displayColor.dataset.saved === '1') {
         // delete the color from the database and update the save button
         deleteColor(displayColor.dataset.hex, userId)
-        displayColor.dataset.saved = ''
+        displayColor.dataset.saved = '0'
         saveBtn.innerHTML = '<i class="fa-regular fa-heart"></i>'
       } else {
         // save the scheme color object and update save the button 
