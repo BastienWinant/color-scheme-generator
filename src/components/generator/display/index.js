@@ -102,9 +102,18 @@ const deleteColor = async (hex, uid) => {
   } catch {}
 }
 
-const copySchemeColor = (e) => {
-  const hex = e.target.closest('.generator-display-color').dataset.hex
+const copySchemeColor = (displayColor) => {
+  const hex = displayColor.dataset.hex
   navigator.clipboard.writeText(`#${hex}`)
+}
+
+const displayCopyMessage = (displayColor) => {
+  displayColor.innerHTML += `
+    <p class="copy-message">Copied!</p>`
+
+  setTimeout(() => {
+    displayColor.querySelector('.copy-message').remove()
+  }, 2000)
 }
 
 // handle clicks on color display cards
@@ -139,7 +148,9 @@ generatorDisplay.addEventListener('click', e => {
       openLoginModal() // open the login modal if the current used is not logged in
     }
   } else if (e.target.closest('.copy-color-btn')) {
-    copySchemeColor(e) // copy the hex code to the clipboard
+    const displayColor = e.target.closest('.generator-display-color')
+    copySchemeColor(displayColor) // copy the hex code to the clipboard
+    displayCopyMessage(displayColor)
   } else if (e.target.closest('.remove-color-btn')) {
     removeSchemeColor(schemeObj, e) // remove the color from the display and update localStorage
   }
