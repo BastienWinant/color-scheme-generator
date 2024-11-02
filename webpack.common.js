@@ -10,6 +10,8 @@ const env_file = process.env.NODE_ENV == 'production' ? './.prod.env' : './.dev.
 module.exports = {
   entry: {
     index: ['./src/index', './src/components/header', './src/components/generator'],
+    schemes: ['./src/index', './src/components/header'],
+    colors: ['./src/index', './src/components/header']
   },
   optimization: {
     minimizer: [
@@ -44,10 +46,22 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
-      title: 'Color Scheme Generator',
+      title: 'Generator',
       template: './src/assets/templates/index.html',
       chunks: ['index'],
       filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Schemes',
+      template: './src/assets/templates/schemes.html',
+      chunks: ['schemes'],
+      filename: 'schemes.html'
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Colors',
+      template: './src/assets/templates/colors.html',
+      chunks: ['colors'],
+      filename: 'colors.html'
     }),
   ],
   output: {
