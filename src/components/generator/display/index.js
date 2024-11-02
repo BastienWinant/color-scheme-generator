@@ -71,13 +71,13 @@ export const displayColorScheme = async (schemeObj) => {
   generatorDisplay.append(...liArray)
 }
 
-const removeSchemeColor = (schemeObj, e) => {
-  const hex = e.target.closest('.generator-display-color').dataset.hex
+const removeSchemeColor = (schemeObj, displayColor) => {
+  const hex = displayColor.dataset.hex
   schemeObj.colors = schemeObj.colors.filter(color => color.hex.clean !== hex)
 
   // ensure the display is in sync with the localStorage object
   localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
-  e.target.closest('.generator-display-color').remove()
+  displayColor.remove()
 
   // deactivate the remove button if there is only one color left in the scheme
   const removeColorBtns = document.querySelectorAll('.remove-color-btn')
@@ -152,6 +152,7 @@ generatorDisplay.addEventListener('click', e => {
     copySchemeColor(displayColor) // copy the hex code to the clipboard
     displayCopyMessage(displayColor)
   } else if (e.target.closest('.remove-color-btn')) {
-    removeSchemeColor(schemeObj, e) // remove the color from the display and update localStorage
+    const displayColor = e.target.closest('.generator-display-color')
+    removeSchemeColor(schemeObj, displayColor) // remove the color from the display and update localStorage
   }
 })
