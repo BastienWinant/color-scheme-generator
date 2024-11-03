@@ -27,7 +27,7 @@ const initializeDisplay = async () => {
     const count = schemeObj.count
 
     fillFormInputs(seed, mode, count)
-    localStorage.setItem('csg', JSON.stringify(schemeObj))
+    localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
     displayColorScheme(schemeObj)
   })
 }

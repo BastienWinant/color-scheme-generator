@@ -2,10 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
-const Dotenv = require('dotenv-webpack')
-
-const devMode = process.env.NODE_ENV !== 'production'
-const env_file = process.env.NODE_ENV == 'production' ? './.prod.env' : './.dev.env'
 
 module.exports = {
   entry: {
@@ -38,12 +34,9 @@ module.exports = {
     },
   },
   plugins: [
-    new Dotenv({
-      path: env_file
-    }),
     new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[contenthash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css',
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       title: 'Generator',
@@ -91,4 +84,4 @@ module.exports = {
       Components: path.resolve(__dirname, 'src/components/'),
     },
   },
-};
+}
