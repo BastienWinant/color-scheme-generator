@@ -2,9 +2,11 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = (env) => {
-  const devMode = env.prod == null
+  const devMode = env.WEBPACK_SERVE
+  const devConfig = devMode || env.staging
 
   return {
     mode: devMode ? 'development' : 'production',
@@ -61,10 +63,12 @@ module.exports = (env) => {
         chunks: ['colors'],
         filename: 'colors.html'
       }),
-    ].concat(devMode ? [] : [new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
-    })]),
+    ].concat(devMode ? [] : [
+      new MiniCssExtractPlugin({
+        filename: "[name].[contenthash].css",
+        chunkFilename: "[id].[contenthash].css",
+      }),
+    ]).concat(devConfig ? [new Dotenv()] : []),
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'public'),

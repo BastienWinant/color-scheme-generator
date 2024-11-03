@@ -4,7 +4,7 @@ import { getDatabase } from "firebase/database"
 
 // Firebase configuration
 let firebaseConfig
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.DEV_MODE) {
   firebaseConfig = {
     apiKey: "AIzaSyAAHBpxG_hpPn8gCvkvsMbIZ5n2Sk81x4w",
     authDomain: "color-scheme-generator-8ec07.firebaseapp.com",
