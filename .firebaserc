@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "color-scheme-generator-8ec07",
-    "prod": "color-scheme-generator-aadfc"
+    "default": "color-scheme-generator-8ec07"
   },
   "targets": {},
   "etags": {}
