@@ -116,6 +116,10 @@ const displayCopyMessage = (displayColor) => {
   }, 2000)
 }
 
+export const displayErrorMessage = () => {
+  generatorDisplay.innerHTML = '<p class="generator-display-error"></p>'
+}
+
 // handle clicks on color display cards
 generatorDisplay.addEventListener('click', e => {
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))

@@ -4,7 +4,7 @@ import(/* webpackPrefetch: true */ './form')
 import(/* webpackPrefetch: true */ './display')
 import { auth } from 'Src/app'
 import { getSchemeBtn, requestColorScheme, getRandomScheme, fillFormInputs } from './form'
-import { displayColorScheme } from './display'
+import { displayColorScheme, displayErrorMessage } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
   e.preventDefault()
@@ -16,8 +16,7 @@ getSchemeBtn.addEventListener('click', async (e) => {
     localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
     displayColorScheme(schemeObj)
   } else {
-    // TODO: display error message
-    // displayErrorMessage
+    displayErrorMessage()
   }
 })
 
