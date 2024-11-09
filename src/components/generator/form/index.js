@@ -42,10 +42,14 @@ const getColorScheme = async (hex, mode, count) => {
 
   const requestUrl = `${baseUrl}/${endPoint}?hex=${hex.slice(1,)}&mode=${mode}&count=${count}`
 
-  const response = await fetch(requestUrl)
-  const data = response.json()
+  try {
+    const response = await fetch(requestUrl)
+    const data = response.json()
 
-  return data
+    return data
+  } catch {
+    return
+  }
 }
 
 export const requestColorScheme = async () => {
