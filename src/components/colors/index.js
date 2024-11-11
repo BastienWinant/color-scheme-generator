@@ -6,28 +6,13 @@ import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const colorGrid = document.querySelector('#color-grid')
 
-const fillColorGrid = (userColors) => {
-  return
-}
-
-const showNoColorsMessage = () => {
-  colorGrid.innerHTML = `
-    <div class="color-grid-placeholder">
-      <p>It's looking a little bland in here...</p>
-      <a href="./index.html">Let's add some color!</a>
-    </div>`
-}
-
-const showLoginMessage = () => {
-  colorGrid.innerHTML = `
-    <div class="color-grid-placeholder">
-      <p>Log in to view your bookmarked colors</p>
-      <div class="nav-btns">
-        <button id="login-modal-btn" class="auth-btn">log in</button>
-        <button id="signup-modal-btn" class="auth-btn">sign up</button>
-      </div>
-    </div>`
-}
+window.addEventListener('click', e => {
+  if (e.target.id === 'login-modal-btn') {
+    openLoginModal()
+  } else if (e.target.id === 'signup-modal-btn') {
+    openSignupModal()
+  }
+})
 
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, async (user) => {
@@ -35,12 +20,23 @@ const monitorAuthState = async () => {
       const userColors = await getUserColors()
 
       if (Object.keys(userColors).length) {
-        fillColorGrid(userColors)
+        console.log(userColors)
       } else {
-        showNoColorsMessage()
+        colorGrid.innerHTML = `
+          <div class="grid-placeholder">
+            <p class="grid-placeholder-text">It's looking a little bland in here...</p>
+            <a href="./index.html">Let's add some colors!</a>
+          </div>`
       }
     } else {
-      showLoginMessage()
+      colorGrid.innerHTML = `
+        <div class="grid-placeholder">
+          <p class="grid-placeholder-text">Log in to save and view colors that inspire you!</p>
+          <div class="grid-auth-btns">
+            <button type="button" id="login-modal-btn" class="login-modal-btn" onclick="openLoginModal()">log in</button>
+            <button type="button" id="signup-modal-btn" class="signup-modal-btn">sign up</button>
+          </div>
+        </div>`
     }
   })
 }
