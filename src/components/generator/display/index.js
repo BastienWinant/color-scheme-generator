@@ -1,31 +1,9 @@
 import './index.css'
-import { ref, set, child, get, remove } from 'firebase/database'
-import { auth, db } from 'Src/app'
+import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
+import { getUserColors, writeNewColor, deleteColor } from 'Src/utils'
 
 const generatorDisplay = document.querySelector('#generator-display')
-
-const getUserColors = async () => {
-  const currentUser = auth.currentUser
-  if (currentUser) {
-    const userId = currentUser.uid
-
-    try {
-      const userColorsRef = child(ref(db), `/user-colors/${userId}`)
-      const snapshot = await get(userColorsRef)
-
-      if (snapshot.exists()) {
-        return snapshot.val()
-      } else {
-        return {}
-      }
-    } catch (error) {
-      return {}
-    }
-  }
-
-  return {}
-}
 
 // returns a list of formatted li elements from a list of color data array
 const generateDisplayElements = async (colorsArr) => {
@@ -84,22 +62,6 @@ const removeSchemeColor = (schemeObj, displayColor) => {
   if (removeColorBtns.length === 1) {
     removeColorBtns[0].disabled = true
   }
-}
-
-const writeNewColor = async (colorObj, uid) => {
-  // Use the color hex code as unique table id
-  const newColorKey = colorObj.hex.clean
-  const userColorRef = child(ref(db), `/user-colors/${uid}/${newColorKey}`)
-  return set(userColorRef, colorObj)
-}
-
-// remove a user color from the database
-const deleteColor = async (hex, uid) => {
-  try {
-    // the hex value is used as the key in the table
-    const colorRef = child(ref(db), `/user-colors/${uid}/${hex}`)
-    remove(colorRef)
-  } catch {}
 }
 
 const copySchemeColor = (displayColor) => {

@@ -1,7 +1,7 @@
 import './index.css'
-import { ref, child, push, update, set } from 'firebase/database'
-import { auth, db } from 'Src/app'
+import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
+import { writeNewScheme } from 'Src/utils'
 
 const generatorColorInput = document.querySelector('#generator-color-input')
 const generatorDropdownBtn = document.querySelector('#generator-dropdown-btn')
@@ -93,15 +93,6 @@ increaseCountBtn.addEventListener('click', () => {
     increaseCountBtn.disabled = true
   }
 })
-
-export function writeNewScheme(uid, schemeObj) {
-  // Get a key for a new Scheme.
-  const newSchemeKey = push(child(ref(db), 'schemes')).key
-
-  // Write the new scheme's data in the user's scheme list.
-  const userSchemeRef = child(ref(db), `/user-schemes/${uid}/${newSchemeKey}`)
-  return set(userSchemeRef, schemeObj)
-}
 
 saveSchemeBtn.addEventListener('click', () => {
   const currentUser = auth.currentUser
