@@ -23,6 +23,28 @@ export const getUserColors = async () => {
   return {}
 }
 
+export const getUserSchemes = async () => {
+  const currentUser = auth.currentUser
+  if (currentUser) {
+    const userId = currentUser.uid
+
+    try {
+      const userSchemesRef = child(ref(db), `/user-schemes/${userId}`)
+      const snapshot = await get(userSchemesRef)
+
+      if (snapshot.exists()) {
+        return snapshot.val()
+      } else {
+        return {}
+      }
+    } catch (error) {
+      return {}
+    }
+  }
+
+  return {}
+}
+
 export const writeNewColor = async (colorObj, uid) => {
   // Use the color hex code as unique table id
   const newColorKey = colorObj.hex.clean
