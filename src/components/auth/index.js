@@ -1,3 +1,4 @@
+import './index.css'
 import { auth, db } from "Src/app"
 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth"

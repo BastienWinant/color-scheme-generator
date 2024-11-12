@@ -1,0 +1,82 @@
+.auth-modal {
+  width: 90vw;
+  max-width: 320px;
+
+  border-radius: 1em;
+  border: none;
+}
+
+.auth-form {
+  padding: 1.5em;
+}
+
+.auth-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1.5em 0;
+  border: none;
+  position: relative;
+}
+
+.auth-fieldset-legend {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.auth-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+}
+
+.auth-input-label {
+  font-size: .875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.auth-input-field {
+  font-size: .75rem;
+  flex: 0 0 3.25em;
+  padding: 0 .625em;
+  border: 1px solid lightgray;
+  border-radius: .35em;
+  font-weight: 500;
+}
+
+.auth-input-field:focus {
+  outline: none;
+  border: 1px solid darkgray;
+}
+
+.auth-input-field::placeholder {
+  font-size: .75rem;
+  opacity: .5;
+  font-weight: 400;
+}
+
+.auth-submit-btn {
+  font-size: .875rem;
+  font-weight: 500;
+  flex: 0 0 3em;
+  border-radius: .3em;
+  background-color: cornflowerblue;
+  color: beige;
+}
+
+.auth-error-msg {
+  color: red;
+  font-size: .875rem;
+  font-weight: 500;
+
+  position: absolute;
+  bottom: 3.25em;
+}
+
+.auth-switch-btn {
+  align-self: flex-start;
+  color: blue;
+  font-size: .875rem;
+  text-decoration: underline;
+}
