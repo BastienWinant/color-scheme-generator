@@ -1,3 +1,50 @@
+.header {
+  /* sizing */
+  flex: 0 0 3.5em;
+  width: 100%;
+
+  /* content layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: relative;
+}
+
+.header-logo {
+  height: 2em;
+  width: auto;
+}
+
+.nav-toggler-img {
+  height: 1.25em;
+  width: auto;
+}
+
+.nav {
+  /* positioning */
+  position: absolute;
+  top: 3.5em;
+  right: 0;
+
+  /* content layout */
+  display: none;
+  flex-direction: column;
+
+  background-color: white;
+}
+
+.nav-expanded {
+  display: flex;
+}
+
+.nav-links,
+.nav-btns {
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+}
+
 .nav-logout-btn {
   display: none;
 }
