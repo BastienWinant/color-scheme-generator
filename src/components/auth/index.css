@@ -14,9 +14,10 @@
   display: flex;
   flex-direction: column;
   gap: 1.5em;
-  padding: 1.5em 0;
+  padding-top: 1.5em;
   border: none;
   position: relative;
+  margin-bottom: 2em;
 }
 
 .auth-fieldset-legend {
@@ -71,7 +72,7 @@
   font-weight: 500;
 
   position: absolute;
-  bottom: 3.25em;
+  bottom: -1.5em;
 }
 
 .auth-success-msg {

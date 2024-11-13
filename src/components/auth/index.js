@@ -50,7 +50,7 @@ const showLoginError = (error) => {
   errorMsg = errorMsg.replace('/', ': ').replace('-', " ")
   
   loginFieldset.insertAdjacentHTML(
-    'afterend',
+    'beforeend',
     `<p class="auth-error-msg">${errorMsg}</p>`
   )
 }
@@ -104,7 +104,7 @@ const showSignupError = (error) => {
   errorMsg = errorMsg.replace('/', ': ').replace('-', " ")
 
   signupFieldset.insertAdjacentHTML(
-    'afterend',
+    'beforeend',
     `<p class="auth-error-msg">${errorMsg}</p>`
   )
 }
@@ -181,7 +181,7 @@ const showResetError = (error) => {
   clearResetSuccess()
   
   resetFieldset.insertAdjacentHTML(
-    'afterend',
+    'beforeend',
     `<p class="auth-error-msg">${error.code}</p>`
   )
 }
@@ -200,7 +200,7 @@ const showResetSuccess = () => {
   clearResetSuccess()
 
   resetFieldset.insertAdjacentElement(
-    'afterend'
+    'beforeend'
     `<p class="auth-success-message">Reset link sent!</p>`
   )
 }
@@ -216,7 +216,7 @@ const closeResetModal = () => {
 resetBtn.addEventListener('click', async e => {
   e.preventDefault()
   const resetEmail = resetEmailInput.value
-  
+
   sendPasswordResetEmail(auth, resetEmail)
     .then(showResetSuccess)
     .catch(showResetError)
