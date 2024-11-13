@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, se
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
+const closeLoginBtn = document.querySelector('#close-login-btn')
 const loginFieldset = document.querySelector('#login-fieldset')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
@@ -15,6 +16,7 @@ const toSignupBtn = document.querySelector('#to-signup-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
+const closeSignupBtn = document.querySelector('#close-signup-btn')
 const signupFieldset = document.querySelector('#signup-fieldset')
 const signupUsernameInput = document.querySelector('#signup-username')
 const signupEmailInput = document.querySelector('#signup-email')
@@ -24,6 +26,7 @@ const toLoginBtn = document.querySelector('#to-login-btn')
 
 const resetModal = document.querySelector('#reset-modal')
 const resetForm = document.querySelector('#reset-form')
+const closeResetBtn = document.querySelector('#close-reset-btn')
 const resetFieldset = document.querySelector('#reset-fieldset')
 const resetEmailInput = document.querySelector('#reset-email')
 const resetBtn = document.querySelector('#reset-btn')
@@ -83,6 +86,8 @@ toSignupBtn.addEventListener('click', () => {
   openSignupModal()
 })
 
+closeLoginBtn.addEventListener('click', closeLoginModal)
+
 // SIGNUP FUNCTIONALITY
 export const openSignupModal = () => {
   signupModal.showModal()
@@ -115,17 +120,6 @@ const closeSignupModal = () => {
   signupModal.close()
 }
 
-// const writeUserData = (user) => {
-//   const userId = user.uid
-//   const userName = user.displayName
-//   const userEmail = user.email
-
-//   set(ref(db, 'users/' + userId), {
-//     username: userName,
-//     email: userEmail,
-//   });
-// }
-
 const signupEmailPassword = async () => {
   const signupUsername = signupUsernameInput.value
   const signupEmail = signupEmailInput.value
@@ -156,6 +150,8 @@ toLoginBtn.addEventListener('click', () => {
   closeSignupModal()
   openLoginModal()
 })
+
+closeSignupBtn.addEventListener('click', closeSignupModal)
 
 // LOGOUT FUNCTIONALITY
 export const logOut = async() => {
@@ -226,6 +222,8 @@ cancelResetBtn.addEventListener('click', () => {
   closeResetModal()
   openLoginModal()
 })
+
+closeResetBtn.addEventListener('click', closeResetModal)
 
 window.addEventListener('click', e => {
   if (e.target.classList.contains('auth-modal')) {
