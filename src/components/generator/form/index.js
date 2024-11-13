@@ -5,6 +5,7 @@ import { writeNewScheme } from 'Src/utils'
 
 const generatorColorInput = document.querySelector('#generator-color-input')
 const generatorDropdownBtn = document.querySelector('#generator-dropdown-btn')
+const generatorDropdownBtnText = document.querySelector('#generator-dropdown-btn-text')
 const generatorModeInputs = document.querySelectorAll('input[name="mode"]')
 const generatorColorCount = document.querySelector('#generator-count')
 const decreaseCountBtn = document.querySelector('#decrease-count-btn')
@@ -15,7 +16,7 @@ const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 export const fillFormInputs = (color, mode, count) => {
   generatorColorInput.value = color
 
-  generatorDropdownBtn.innerText = mode
+  generatorDropdownBtnText.innerText = mode
   generatorDropdownBtn.value = mode
   for (const modeInput of generatorModeInputs) {
     if (modeInput.value === mode) {
@@ -62,7 +63,7 @@ export const requestColorScheme = async () => {
 generatorModeInputs.forEach(inputEl => {
   inputEl.addEventListener('click', e => {
     const mode = e.target.value
-    generatorDropdownBtn.innerText = mode
+    generatorDropdownBtnText.innerText = mode
     generatorDropdownBtn.value = mode
 
   })
@@ -89,7 +90,7 @@ increaseCountBtn.addEventListener('click', () => {
   generatorColorCount.innerText = newCount
 
   decreaseCountBtn.disabled = false
-  if (newCount === 6) {
+  if (newCount === 5) {
     increaseCountBtn.disabled = true
   }
 })

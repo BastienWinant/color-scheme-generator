@@ -41,10 +41,9 @@ dialog {
   display: flex;
   flex-direction: column;
 
-  background-color: white;
+  overflow: scroll;
 }
 
 main {
   flex-grow: 1;
-  background-color: azure;
 }

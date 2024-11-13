@@ -34,14 +34,20 @@
     <main>
       <div class="generator-container">
         <form method="post" id="generator-form" class="generator-form">
-          <fieldset>
+          <fieldset class="scheme-create-pane">
+            <button type="button" id="close-generator-form-btn" class="close-generator-form-btn">
+              <img class="close-generator-form-icon" src=<%=require("../images/c-remove.svg")%> />
+            </button>
             <label for="color" class="generator-input-group">
               <h2 class="generator-input-label">base</h2>
               <input type="color" name="color" id="generator-color-input" class="generator-input-field">
             </label>
             <div class="generator-input-group">
               <h2 class="generator-input-label">mode</h2>
-              <button type="button" id="generator-dropdown-btn" class="generator-dropdown-btn" value="monochrome">monochrome</button>
+              <button type="button" id="generator-dropdown-btn" class="generator-input-field generator-dropdown-btn" value="monochrome">
+                <p id="generator-dropdown-btn-text">monochrome</p>
+                <img class="generator-dropdown-btn-icon" src=<%=require("../images/chevron-down-sm.svg")%> />
+              </button>
               <ul id="generator-dropdown-list" class="generator-dropdown-list">
                 <li>
                   <label for="monochrome">monochrome</label>
@@ -75,7 +81,7 @@
             </div>
             <div class="generator-input-group">
               <h2 class="generator-input-label">count</h2>
-              <div class="generator-count-btns">
+              <div class="generator-input-field generator-count-btns">
                 <button type="button" id="decrease-count-btn" class="generator-count-btn">
                   <i class="fa-solid fa-minus"></i>
                 </button>
@@ -86,9 +92,9 @@
               </div>
             </div>
           </fieldset>
-          <div>
-            <button type="submit" id="get-scheme-btn" class="generator-form-btn">get scheme</button>
-            <button type="button" id="save-scheme-btn" class="generator-form-btn">save scheme</button>
+          <div class="scheme-ctrl-pane">
+            <button type="submit" id="get-scheme-btn" class="scheme-ctrl-btn">get scheme</button>
+            <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save scheme</button>
           </div>
         </form>
         <div id="generator-display" class="generator-display">

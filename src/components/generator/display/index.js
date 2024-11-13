@@ -22,17 +22,19 @@ const generateDisplayElements = async (colorsArr) => {
     articleEl.dataset.saved = colorSaved ? '1' : '0'
 
     articleEl.innerHTML = `
-      <h2>${colorObj.name.value}</h2>
-      <p>${colorObj.hex.value}</p>
-      <button type="button" class="generator-display-btn save-color-btn">
-        ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
-      </button>
-      <button type="button" class="generator-display-btn remove-color-btn" ${oneColor ? 'disabled' : ''}>
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <button type="button" class="generator-display-btn copy-color-btn">
-        <i class="fa-solid fa-copy"></i>
-      </button>`
+      <h2 class="generator-color-name">${colorObj.name.value}</h2>
+      <p class="generator-color-hex">${colorObj.hex.value}</p>
+      <div class="generator-display-color-btns">
+        <button type="button" class="generator-display-btn save-color-btn">
+          ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
+        </button>
+        <button type="button" class="generator-display-btn remove-color-btn" ${oneColor ? 'disabled' : ''}>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button type="button" class="generator-display-btn copy-color-btn">
+          <i class="fa-solid fa-copy"></i>
+        </button>
+      </div>`
 
     articleEl.style.backgroundColor = colorObj.hex.value
     articleEl.style.color = colorObj.contrast.value
