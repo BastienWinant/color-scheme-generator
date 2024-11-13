@@ -38,8 +38,6 @@ export const openLoginModal = () => {
 }
 
 const clearLoginError = () => {
-  loginForm.reset()
-
   try {
     const errorMsg = loginForm.querySelector('.auth-error-msg')
     errorMsg.remove()
@@ -94,8 +92,6 @@ export const openSignupModal = () => {
 }
 
 const clearSignupError = () => {
-  signupForm.reset()
-
   try {
     const errorMsg = signupForm.querySelector('.auth-error-msg')
     errorMsg.remove()
@@ -164,8 +160,6 @@ export const openResetModal = () => {
 }
 
 const clearResetError = () => {
-  resetForm.reset()
-
   try {
     const errorMsg = resetForm.querySelector('.auth-error-msg')
     errorMsg.remove()
