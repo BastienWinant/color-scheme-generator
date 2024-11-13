@@ -8,21 +8,33 @@
 
 .auth-form {
   padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.close-auth-modal-btn {
+  align-self: flex-end;
+}
+
+.close-auth-modal-icon {
+  height: 1em;
+  width: auto;
 }
 
 .auth-fieldset {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
-  padding-top: 1.5em;
+  gap: 1.25em;
   border: none;
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .auth-fieldset-legend {
   font-size: 1.25rem;
   font-weight: 600;
+  margin-bottom: 1em;
 }
 
 .auth-input-group {
@@ -73,6 +85,9 @@
 
   position: absolute;
   bottom: -1.5em;
+
+  width: 100%;
+  text-align: center;
 }
 
 .auth-success-msg {
