@@ -74,6 +74,15 @@
   bottom: 3.25em;
 }
 
+.auth-success-msg {
+  color: green;
+  font-size: .875rem;
+  font-weight: 500;
+
+  position: absolute;
+  bottom: 3.25em;
+}
+
 .auth-switch {
   align-self: flex-start;
   font-size: .75rem;

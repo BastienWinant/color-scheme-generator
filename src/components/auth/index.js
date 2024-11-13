@@ -178,6 +178,7 @@ const clearResetError = () => {
 
 const showResetError = (error) => {
   clearResetError()
+  clearResetSuccess()
   
   resetFieldset.insertAdjacentHTML(
     'afterend',
@@ -185,8 +186,29 @@ const showResetError = (error) => {
   )
 }
 
+const clearResetSuccess = () => {
+  resetForm.reset()
+
+  try {
+    const successMsg = resetForm.querySelector('.auth-success-msg')
+    successMsg.remove()
+  } catch {}
+}
+
+const showResetSuccess = () => {
+  clearResetError()
+  clearResetSuccess()
+
+  resetFieldset.insertAdjacentElement(
+    'afterend'
+    `<p class="auth-success-message">Reset link sent!</p>`
+  )
+}
+
 const closeResetModal = () => {
   clearResetError()
+  clearResetSuccess()
+
   resetForm.reset()
   resetModal.close()
 }
@@ -194,13 +216,10 @@ const closeResetModal = () => {
 resetBtn.addEventListener('click', async e => {
   e.preventDefault()
   const resetEmail = resetEmailInput.value
-  try {
-    sendPasswordResetEmail(auth, resetEmail)
-      .then(() => console.log('password email sent'))
-      .catch(showResetError)
-  } catch (error) {
-    show
-  }
+  
+  sendPasswordResetEmail(auth, resetEmail)
+    .then(showResetSuccess)
+    .catch(showResetError)
 })
 
 cancelResetBtn.addEventListener('click', () => {
