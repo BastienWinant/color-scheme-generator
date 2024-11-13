@@ -1,7 +1,7 @@
 import './index.css'
 import { auth, db } from "Src/app"
 
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth"
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth"
 import { ref, set } from "firebase/database"
 
 const loginModal = document.querySelector('#login-modal')
@@ -190,6 +190,18 @@ const closeResetModal = () => {
   resetForm.reset()
   resetModal.close()
 }
+
+resetBtn.addEventListener('click', async e => {
+  e.preventDefault()
+  const resetEmail = resetEmailInput.value
+  try {
+    sendPasswordResetEmail(auth, resetEmail)
+      .then(() => console.log('password email sent'))
+      .catch(showResetError)
+  } catch (error) {
+    show
+  }
+})
 
 cancelResetBtn.addEventListener('click', () => {
   closeResetModal()
