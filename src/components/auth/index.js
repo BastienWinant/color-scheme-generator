@@ -1,8 +1,8 @@
 import './index.css'
-import { auth, db } from "Src/app"
+import { auth } from "Src/app"
+import { writeUserData } from 'Src/utils'
 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth"
-import { ref, set } from "firebase/database"
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
@@ -115,16 +115,16 @@ const closeSignupModal = () => {
   signupModal.close()
 }
 
-const writeUserData = (user) => {
-  const userId = user.uid
-  const userName = user.displayName
-  const userEmail = user.email
+// const writeUserData = (user) => {
+//   const userId = user.uid
+//   const userName = user.displayName
+//   const userEmail = user.email
 
-  set(ref(db, 'users/' + userId), {
-    username: userName,
-    email: userEmail,
-  });
-}
+//   set(ref(db, 'users/' + userId), {
+//     username: userName,
+//     email: userEmail,
+//   });
+// }
 
 const signupEmailPassword = async () => {
   const signupUsername = signupUsernameInput.value

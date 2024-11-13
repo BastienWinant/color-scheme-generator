@@ -69,3 +69,14 @@ export function writeNewScheme(uid, schemeObj) {
   const userSchemeRef = child(ref(db), `/user-schemes/${uid}/${newSchemeKey}`)
   return set(userSchemeRef, schemeObj)
 }
+
+export const writeUserData = (user) => {
+  const userId = user.uid
+  const userName = user.displayName
+  const userEmail = user.email
+
+  set(ref(db, 'users/' + userId), {
+    username: userName,
+    email: userEmail,
+  });
+}
