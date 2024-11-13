@@ -74,9 +74,17 @@
   bottom: 3.25em;
 }
 
-.auth-switch-btn {
+.auth-switch {
   align-self: flex-start;
+  font-size: .75rem;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5em;
+}
+
+.auth-switch-btn {
   color: blue;
-  font-size: .875rem;
-  text-decoration: underline;
+  text-transform: capitalize;
 }
