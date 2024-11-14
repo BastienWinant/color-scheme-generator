@@ -35,13 +35,19 @@
       <div class="generator-container">
         <form id="generator-form" class="form generator-form">
           <fieldset id="scheme-create-pane" class="fieldset scheme-create-pane">
-            <button type="button" id="generator-close-form-btn" class="close-form-btn">
+            
+            <!-- close form button -->
+            <button type="button" id="generator-form-close-btn" class="close-form-btn">
               <i class="fa-solid fa-circle-xmark"></i>
             </button>
+
+            <!-- seed color -->
             <label for="color" class="input-group">
               <h2 class="input-label">seed</h2>
               <input type="color" name="color" id="color" class="input-field color">
             </label>
+
+            <!-- color mode -->
             <section class="input-group">
               <h2 class="input-label">mode</h2>
               <button type="button" id="mode-dropdown-btn" class="input-field mode-dropdown-btn">
@@ -49,6 +55,8 @@
                 <i class="fa-solid fa-chevron-down"></i>
               </button>
             </section>
+
+            <!-- color count -->
             <section class="input-group">
               <h2 class="input-label">count</h2>
               <div class="input-field count-input-field">
@@ -61,6 +69,8 @@
                 </button>
               </div>
             </section>
+
+            <!-- submit -->
             <button type="button" id="get-scheme-btn" class="form-btn get-scheme-btn">get scheme</button>
           </fieldset>
           <fieldset id="scheme-ctrl-pane" class="fieldset scheme-ctrl-pane">
@@ -77,85 +87,109 @@
   
   <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
-    <form method="post" id="login-form" class="auth-form">
-      <button type="button" id="close-login-btn" class="close-auth-modal-btn">
-        <img class="close-auth-modal-icon" src=<%=require("../images/c-remove.svg")%> />
-      </button>
-      <fieldset id="login-fieldset" class="auth-fieldset">
-        <legend class="auth-fieldset-legend">
-          <h2>Log In</h2>
+    <form method="post" id="login-form" class="form auth-form">
+      <fieldset id="login-fieldset" class="fieldset auth-fieldset">
+        <legend class="legend">
+          <h2>log in</h2>
         </legend>
-        <label for="login-email" class="auth-input-group">
-          <h3 class="auth-input-label">email</h3>
-          <input type="email" name="email" id="login-email" class="auth-input-field">
+
+        <!-- close modal button -->
+        <button type="button" id="login-modal-close-btn" class="close-form-btn">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+
+        <!-- email -->
+        <label for="login-email" class="input-group">
+          <h3 class="input-label">email</h3>
+          <input type="email" name="email" id="login-email" class="input-field">
         </label>
-        <label for="login-password" class="auth-input-group">
-          <h3 class="auth-input-label">password</h3>
-          <input type="password" name="password" id="login-password" class="auth-input-field">
-          <button type="button" id="to-reset-btn" class="auth-switch auth-switch-btn">forgot password?</button>
+
+        <!-- password -->
+        <label for="login-password" class="input-group">
+          <h3 class="input-label">password</h3>
+          <input type="password" name="password" id="login-password" class="input-field">
+          <div class="auth-nav">
+            <p>Forgot password?</p>
+            <button type="button" id="new-password-btn" class="form-btn-inline">Reset it here</button>
+          </div>
         </label>
-        <button type="submit" id="login-btn" class="auth-submit-btn">Log In</button>
+
+        <!-- submit -->
+        <button type="button" id="login-btn" class="form-btn login-btn">log in</button>
       </fieldset>
 
-      <div class="auth-switch">
-        Don't have an account yet?
-        <button type="button" id="to-signup-btn" class="auth-switch-btn">sign up</button>
+      <div class="auth-nav">
+        <p>No account yet?</p>
+        <button type="button" id="to-signup-btn" class="form-btn-inline">Sign up</button>
       </div>
     </form>
   </dialog>
 
   <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
-    <form method="post" id="signup-form" class="auth-form">
-      <button type="button" id="close-signup-btn" class="close-auth-modal-btn">
-        <img class="close-auth-modal-icon" src=<%=require("../images/c-remove.svg")%> />
-      </button>
-      <fieldset id="signup-fieldset" class="auth-fieldset">
-        <legend class="auth-fieldset-legend">
-          <h2>Sign Up</h2>
+    <form method="post" id="signup-form" class="form auth-form">
+      <fieldset id="signup-fieldset" class="fieldset auth-fieldset">
+        <legend class="legend">
+          <h2>sign up</h2>
         </legend>
-        <label for="signup-username" class="auth-input-group">
-          <h3 class="auth-input-label">username</h3>
-          <input type="text" name="username" id="signup-username" class="auth-input-field">
+
+        <!-- close modal button -->
+        <button type="button" id="signup-modal-close-btn" class="close-form-btn">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+
+        <!-- username -->
+        <label for="signup-username" class="input-group">
+          <h3 class="input-label">username</h3>
+          <input type="text" name="username" id="signup-username" class="input-field">
         </label>
-        <label for="signup-email" class="auth-input-group">
-          <h3 class="auth-input-label">email</h3>
-          <input type="email" name="email" id="signup-email" class="auth-input-field">
+
+        <!-- email -->
+        <label for="signup-email" class="input-group">
+          <h3 class="input-label">email</h3>
+          <input type="email" name="email" id="signup-email" class="input-field">
         </label>
-        <label for="signup-password" class="auth-input-group">
-          <h3 class="auth-input-label">password</h3>
-          <input type="password" name="password" id="signup-password" class="auth-input-field">
+
+        <!-- password -->
+        <label for="signup-password" class="input-group">
+          <h3 class="input-label">password</h3>
+          <input type="password" name="password" id="signup-password" class="input-field">
         </label>
-        <button type="submit" id="signup-btn" class="auth-submit-btn">Sign Up</button>
+
+        <!-- submit -->
+        <button type="button" id="signup-btn" class="form-btn signup-btn">sign up</button>
       </fieldset>
 
-      <div class="auth-switch">
-        Already have an account?
-        <button type="button" id="to-login-btn" class="auth-switch-btn">log in</button>
+      <div class="auth-nav">
+        <p>Already have an account?</p>
+        <button type="button" id="to-login-btn" class="form-btn-inline">Log in</button>
       </div>
     </form>
   </dialog>
 
-  <!-- reset modal -->
+  <!-- password reset modal -->
   <dialog id="reset-modal" class="auth-modal">
-    <form method="post" id="reset-form" class="auth-form">
-      <button type="button" id="close-reset-btn" class="close-auth-modal-btn">
-        <img class="close-auth-modal-icon" src=<%=require("../images/c-remove.svg")%> />
-      </button>
-      <fieldset id="reset-fieldset" class="auth-fieldset">
-        <legend class="auth-fieldset-legend">
-          <h2>Reset Password</h2>
+    <form method="post" id="reset-form" class="form auth-form">
+      <fieldset id="reset-fieldset" class="fieldset auth-fieldset">
+        <legend class="legend">
+          <h2>reset password</h2>
         </legend>
-        <label for="reset-email" class="auth-input-group">
-          <h3 class="auth-input-label">email</h3>
-          <input type="email" name="email" id="reset-email" class="auth-input-field">
-        </label>
-        <button type="submit" id="reset-btn" class="auth-submit-btn">Reset Password</button>
-      </fieldset>
 
-      <div class="auth-switch">
-        <button type="button" id="cancel-reset-btn" class="auth-switch-btn">cancel</button>
-      </div>
+        <!-- close modal button -->
+        <button type="button" id="reset-modal-close-btn" class="close-form-btn">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+
+        <!-- email -->
+        <label for="reset-email" class="input-group">
+          <h3 class="input-label">email</h3>
+          <input type="email" name="email" id="reset-email" class="input-field">
+        </label>
+
+        <!-- submit -->
+        <button type="button" id="reset-btn" class="form-btn reset-btn">reset password</button>
+      </fieldset>
+      <button type="button" id="cancel-reset-btn" class="form-btn-inline">back to log in</button>
     </form>
   </dialog>
 </body>

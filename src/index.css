@@ -48,7 +48,7 @@ main {
   flex-grow: 1;
 }
 
-/* FORM STYLING */
+/* DEFAULT FORM STYLES */
 .form {
   border: 2px solid yellow;
 }
@@ -56,8 +56,14 @@ main {
 .fieldset {
   display: flex;
   flex-direction: column;
-
+  position: relative;
   border: none;
+}
+
+.legend {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: capitalize;
 }
 
 .close-form-btn {
@@ -76,11 +82,25 @@ main {
 
 .input-field {
   width: 100%;
-  flex: 1 0 3em;
+  flex: 1 0 2.75em;
   border: 1px solid black;
 }
 
 .form-btn {
-  height: 3em;
+  height: 2.75em;
   border: 1px solid red;
+}
+
+.form-btn-inline {
+  text-decoration: underline;
+  color: blue;
+  font-size: .875rem;
+}
+
+.auth-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5em;
+  font-size: .875rem;
 }

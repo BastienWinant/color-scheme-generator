@@ -6,18 +6,18 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, se
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
-const closeLoginBtn = document.querySelector('#close-login-btn')
 const loginFieldset = document.querySelector('#login-fieldset')
+const closeLoginBtn = document.querySelector('#login-modal-close-btn')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
-const toResetBtn = document.querySelector('#to-reset-btn')
+const newPasswordBtn = document.querySelector('#new-password-btn')
 const toSignupBtn = document.querySelector('#to-signup-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
-const closeSignupBtn = document.querySelector('#close-signup-btn')
 const signupFieldset = document.querySelector('#signup-fieldset')
+const closeSignupBtn = document.querySelector('#signup-modal-close-btn')
 const signupUsernameInput = document.querySelector('#signup-username')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
@@ -26,8 +26,8 @@ const toLoginBtn = document.querySelector('#to-login-btn')
 
 const resetModal = document.querySelector('#reset-modal')
 const resetForm = document.querySelector('#reset-form')
-const closeResetBtn = document.querySelector('#close-reset-btn')
 const resetFieldset = document.querySelector('#reset-fieldset')
+const closeResetBtn = document.querySelector('#reset-modal-close-btn')
 const resetEmailInput = document.querySelector('#reset-email')
 const resetBtn = document.querySelector('#reset-btn')
 const cancelResetBtn = document.querySelector('#cancel-reset-btn')
@@ -74,7 +74,7 @@ const loginEmailPassword = async (e) => {
 }
 loginBtn.addEventListener('click', loginEmailPassword)
 
-toResetBtn.addEventListener('click', () => {
+newPasswordBtn.addEventListener('click', () => {
   closeLoginModal()
   openResetModal()
 })
@@ -84,7 +84,7 @@ toSignupBtn.addEventListener('click', () => {
   openSignupModal()
 })
 
-closeLoginBtn.addEventListener('click', closeLoginModal)
+closeLoginBtn.addEventListener('click', closeLoginModal())
 
 // SIGNUP FUNCTIONALITY
 export const openSignupModal = () => {
@@ -147,7 +147,7 @@ toLoginBtn.addEventListener('click', () => {
   openLoginModal()
 })
 
-closeSignupBtn.addEventListener('click', closeSignupModal)
+closeSignupBtn.addEventListener('click', closeLoginModal)
 
 // LOGOUT FUNCTIONALITY
 export const logOut = async() => {
