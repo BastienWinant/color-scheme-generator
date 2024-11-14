@@ -84,7 +84,7 @@ toSignupBtn.addEventListener('click', () => {
   openSignupModal()
 })
 
-closeLoginBtn.addEventListener('click', closeLoginModal())
+closeLoginBtn.addEventListener('click', closeLoginModal)
 
 // SIGNUP FUNCTIONALITY
 export const openSignupModal = () => {
@@ -147,7 +147,7 @@ toLoginBtn.addEventListener('click', () => {
   openLoginModal()
 })
 
-closeSignupBtn.addEventListener('click', closeLoginModal)
+closeSignupBtn.addEventListener('click', closeSignupModal)
 
 // LOGOUT FUNCTIONALITY
 export const logOut = async() => {

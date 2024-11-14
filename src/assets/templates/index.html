@@ -88,20 +88,20 @@
   <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="form auth-form">
+      <!-- close modal button -->
+      <button type="button" id="login-modal-close-btn" class="close-form-btn">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+
       <fieldset id="login-fieldset" class="fieldset auth-fieldset">
         <legend class="legend">
           <h2>log in</h2>
         </legend>
 
-        <!-- close modal button -->
-        <button type="button" id="login-modal-close-btn" class="close-form-btn">
-          <i class="fa-solid fa-circle-xmark"></i>
-        </button>
-
         <!-- email -->
         <label for="login-email" class="input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="login-email" class="input-field">
+          <input type="email" name="email" id="login-email" class="input-field" autofocus>
         </label>
 
         <!-- password -->
@@ -115,7 +115,7 @@
         </label>
 
         <!-- submit -->
-        <button type="button" id="login-btn" class="form-btn login-btn">log in</button>
+        <button type="submit" id="login-btn" class="form-btn auth-form-btn login-btn">log in</button>
       </fieldset>
 
       <div class="auth-nav">
@@ -128,20 +128,20 @@
   <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="form auth-form">
+      <!-- close modal button -->
+      <button type="button" id="signup-modal-close-btn" class="close-form-btn">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+
       <fieldset id="signup-fieldset" class="fieldset auth-fieldset">
         <legend class="legend">
           <h2>sign up</h2>
         </legend>
 
-        <!-- close modal button -->
-        <button type="button" id="signup-modal-close-btn" class="close-form-btn">
-          <i class="fa-solid fa-circle-xmark"></i>
-        </button>
-
         <!-- username -->
         <label for="signup-username" class="input-group">
           <h3 class="input-label">username</h3>
-          <input type="text" name="username" id="signup-username" class="input-field">
+          <input type="text" name="username" id="signup-username" class="input-field" autofocus>
         </label>
 
         <!-- email -->
@@ -157,7 +157,7 @@
         </label>
 
         <!-- submit -->
-        <button type="button" id="signup-btn" class="form-btn signup-btn">sign up</button>
+        <button type="submit" id="signup-btn" class="form-btn auth-form-btn signup-btn">sign up</button>
       </fieldset>
 
       <div class="auth-nav">
@@ -170,26 +170,26 @@
   <!-- password reset modal -->
   <dialog id="reset-modal" class="auth-modal">
     <form method="post" id="reset-form" class="form auth-form">
+      <!-- close modal button -->
+      <button type="button" id="reset-modal-close-btn" class="close-form-btn">
+        <i class="fa-solid fa-circle-xmark"></i>
+      </button>
+
       <fieldset id="reset-fieldset" class="fieldset auth-fieldset">
         <legend class="legend">
           <h2>reset password</h2>
         </legend>
 
-        <!-- close modal button -->
-        <button type="button" id="reset-modal-close-btn" class="close-form-btn">
-          <i class="fa-solid fa-circle-xmark"></i>
-        </button>
-
         <!-- email -->
         <label for="reset-email" class="input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="reset-email" class="input-field">
+          <input type="email" name="email" id="reset-email" class="input-field" autofocus>
         </label>
 
         <!-- submit -->
-        <button type="button" id="reset-btn" class="form-btn reset-btn">reset password</button>
+        <button type="submit" id="reset-btn" class="form-btn auth-form-btn reset-btn">reset password</button>
       </fieldset>
-      <button type="button" id="cancel-reset-btn" class="form-btn-inline">back to log in</button>
+      <button type="button" id="cancel-reset-btn" class="form-btn-inline">Back to log in</button>
     </form>
   </dialog>
 </body>

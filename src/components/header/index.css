@@ -27,6 +27,7 @@
   position: absolute;
   top: 2.75em;
   right: .5em;
+  z-index: 1;
 
   /* content layout */
   display: none;
@@ -154,6 +155,7 @@
     position: absolute;
     top: 3em;
     right: .75em;
+    z-index: 1;
 
     /* content layout */
     display: none;
