@@ -33,69 +33,40 @@
     </header>
     <main>
       <div class="generator-container">
-        <form method="post" id="generator-form" class="generator-form">
-          <fieldset class="scheme-create-pane">
-            <button type="button" id="close-generator-form-btn" class="close-generator-form-btn">
-              <img class="close-generator-form-icon" src=<%=require("../images/c-remove.svg")%> />
+        <form id="generator-form" class="form generator-form">
+          <fieldset id="scheme-create-pane" class="fieldset scheme-create-pane">
+            <button type="button" id="generator-close-form-btn" class="close-form-btn">
+              <i class="fa-solid fa-circle-xmark"></i>
             </button>
-            <label for="color" class="generator-input-group">
-              <h2 class="generator-input-label">base</h2>
-              <input type="color" name="color" id="generator-color-input" class="generator-input-field">
+            <label for="color" class="input-group">
+              <h2 class="input-label">seed</h2>
+              <input type="color" name="color" id="color" class="input-field color">
             </label>
-            <div class="generator-input-group">
-              <h2 class="generator-input-label">mode</h2>
-              <button type="button" id="generator-dropdown-btn" class="generator-input-field generator-dropdown-btn" value="monochrome">
-                <p id="generator-dropdown-btn-text">monochrome</p>
-                <img class="generator-dropdown-btn-icon" src=<%=require("../images/chevron-down-sm.svg")%> />
+            <section class="input-group">
+              <h2 class="input-label">mode</h2>
+              <button type="button" id="mode-dropdown-btn" class="input-field mode-dropdown-btn">
+                <p id="mode-dropdown-btn-text" class="mode-dropdown-btn-text">monochrome</p>
+                <i class="fa-solid fa-chevron-down"></i>
               </button>
-              <ul id="generator-dropdown-list" class="generator-dropdown-list">
-                <li>
-                  <label for="monochrome">monochrome</label>
-                  <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
-                </li>
-                <li>
-                  <label for="monochrome-dark">monochrome-dark</label>
-                  <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
-                </li>
-                <li>
-                  <label for="monochrome-light">monochrome-light</label>
-                  <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
-                </li>
-                <li>
-                  <label for="analogic">analogic</label>
-                  <input type="radio" name="mode" id="analogic" value="analogic" />
-                </li>
-                <li>
-                  <label for="complement">complement</label>
-                  <input type="radio" name="mode" id="complement" value="complement" />
-                </li>
-                <li>
-                  <label for="analogic-complement">analogic-complement</label>
-                  <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
-                </li>
-                <li>
-                  <label for="triad">triad</label>
-                  <input type="radio" name="mode" id="triad" value="triad" />
-                </li>
-              </ul>
-            </div>
-            <div class="generator-input-group">
-              <h2 class="generator-input-label">count</h2>
-              <div class="generator-input-field generator-count-btns">
-                <button type="button" id="decrease-count-btn" class="generator-count-btn">
+            </section>
+            <section class="input-group">
+              <h2 class="input-label">count</h2>
+              <div class="input-field count-input-field">
+                <button type="button" id="count-decrease-btn" class="count-btn">
                   <i class="fa-solid fa-minus"></i>
                 </button>
-                <p id="generator-count" class="generator-count" data-value="5">5</p>
-                <button type="button" id="increase-count-btn" class="generator-count-btn">
+                <p id="count" class="count" data-value="5">5</p>
+                <button type="button" id="count-increase-btn" class="count-btn">
                   <i class="fa-solid fa-plus"></i>
                 </button>
               </div>
-            </div>
+            </section>
+            <button type="button" id="get-scheme-btn" class="form-btn get-scheme-btn">get scheme</button>
           </fieldset>
-          <div class="scheme-ctrl-pane">
-            <button type="submit" id="get-scheme-btn" class="scheme-ctrl-btn">get scheme</button>
-            <button type="button" id="save-scheme-btn" class="scheme-ctrl-btn">save scheme</button>
-          </div>
+          <fieldset id="scheme-ctrl-pane" class="fieldset scheme-ctrl-pane">
+            <button type="button" id="save-scheme-btn" class="form-btn scheme-ctrl-btn">save scheme</button>
+            <button type="button" id="new-scheme-btn" class="form-btn scheme-ctrl-btn">new scheme</button>
+          </fieldset>
         </form>
         <div id="generator-display" class="generator-display">
           <p class="generator-display-placeholder">Generating color scheme...</p>

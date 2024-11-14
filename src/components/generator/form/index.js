@@ -3,21 +3,24 @@ import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 import { writeNewScheme } from 'Src/utils'
 
-const generatorColorInput = document.querySelector('#generator-color-input')
-const generatorDropdownBtn = document.querySelector('#generator-dropdown-btn')
-const generatorDropdownBtnText = document.querySelector('#generator-dropdown-btn-text')
-const generatorModeInputs = document.querySelectorAll('input[name="mode"]')
-const generatorColorCount = document.querySelector('#generator-count')
-const decreaseCountBtn = document.querySelector('#decrease-count-btn')
-const increaseCountBtn = document.querySelector('#increase-count-btn')
+const colorInput = document.querySelector('#color')
+const modeDropdownBtn = document.querySelector('#mode-dropdown-btn')
+const modeDropdownBtnText = document.querySelector('#mode-dropdown-btn-text')
+const generatorColorCount = document.querySelector('#count')
+export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
+export const countIncreaseBtn = document.querySelector('#count-increase-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
+
+const schemeCtrlPane = document.querySelector('#scheme-ctrl-pane')
+const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
+// fill the form input fields with fixed values
 export const fillFormInputs = (color, mode, count) => {
-  generatorColorInput.value = color
+  colorInput.value = color
 
-  generatorDropdownBtnText.innerText = mode
-  generatorDropdownBtn.value = mode
+  modeDropdownBtnText.innerText = mode
+  modeDropdownBtn.value = mode
   for (const modeInput of generatorModeInputs) {
     if (modeInput.value === mode) {
       modeInput.checked = true
@@ -30,8 +33,8 @@ export const fillFormInputs = (color, mode, count) => {
 }
 
 const gatherFormInputs = () => {
-  const seedColor = generatorColorInput.value
-  const schemeMode = generatorDropdownBtn.value
+  const seedColor = colorInput.value
+  const schemeMode = modeDropdownBtn.value
   const schemeCount = generatorColorCount.innerText
 
   return [seedColor, schemeMode, schemeCount]
@@ -60,41 +63,34 @@ export const requestColorScheme = async () => {
   return schemeObj
 }
 
-generatorModeInputs.forEach(inputEl => {
-  inputEl.addEventListener('click', e => {
-    const mode = e.target.value
-    generatorDropdownBtnText.innerText = mode
-    generatorDropdownBtn.value = mode
-
-  })
-})
-
-decreaseCountBtn.addEventListener('click', () => {
+// COLOR COUNT
+countDecreaseBtn.addEventListener('click', () => {
   const currentCount = parseInt(generatorColorCount.dataset.value)
   const newCount = currentCount - 1
 
   generatorColorCount.dataset.value = newCount
   generatorColorCount.innerText = newCount
 
-  increaseCountBtn.disabled = false
+  countIncreaseBtn.disabled = false
   if (newCount === 1) {
-    decreaseCountBtn.disabled = true
+    countDecreaseBtn.disabled = true
   }
 })
 
-increaseCountBtn.addEventListener('click', () => {
+countIncreaseBtn.addEventListener('click', () => {
   const currentCount = parseInt(generatorColorCount.dataset.value)
   const newCount = currentCount + 1
 
   generatorColorCount.dataset.value = newCount
   generatorColorCount.innerText = newCount
 
-  decreaseCountBtn.disabled = false
+  countDecreaseBtn.disabled = false
   if (newCount === 5) {
-    increaseCountBtn.disabled = true
+    countIncreaseBtn.disabled = true
   }
 })
 
+// save the scheme objet from localstorage to database
 saveSchemeBtn.addEventListener('click', () => {
   const currentUser = auth.currentUser
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
@@ -107,19 +103,21 @@ saveSchemeBtn.addEventListener('click', () => {
   }
 })
 
+// RANDOM SCHEME GENERATION
 const getRandomSeed = () => {
   const randomSeed = Math.floor(Math.random() * 16777216).toString(16).padEnd(6, 0)
   return `#${randomSeed}`
 }
 
 const getRandomMode = () => {
-  const randomIndex = Math.floor(Math.random() * generatorModeInputs.length)
-  const randomMode = generatorModeInputs[randomIndex].value
-  return randomMode
+  // const randomIndex = Math.floor(Math.random() * generatorModeInputs.length)
+  // const randomMode = generatorModeInputs[randomIndex].value
+  // return randomMode
+  return 'monochrome'
 }
 
 const getRandomCount = () => {
-  const randomCount = Math.ceil(Math.random() * 6)
+  const randomCount = Math.ceil(Math.random() * 5)
   return randomCount
 }
 
@@ -128,7 +126,7 @@ export const getRandomScheme = async () => {
   const mode = getRandomMode()
   const count = getRandomCount()
 
-  const randomSchemeObj = await getColorScheme(seed, mode, count)
+  const schemeObj = await getColorScheme(seed, mode, count)
   
-  return randomSchemeObj
+  return schemeObj
 }

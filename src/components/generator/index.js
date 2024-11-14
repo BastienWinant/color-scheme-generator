@@ -3,7 +3,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 import(/* webpackPrefetch: true */ './form')
 import(/* webpackPrefetch: true */ './display')
 import { auth } from 'Src/app'
-import { getSchemeBtn, requestColorScheme, getRandomScheme, fillFormInputs } from './form'
+import { getSchemeBtn, requestColorScheme, getRandomScheme,
+  fillFormInputs, countDecreaseBtn, countIncreaseBtn } from './form'
 import { displayColorScheme, displayErrorMessage } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
@@ -12,6 +13,7 @@ getSchemeBtn.addEventListener('click', async (e) => {
   // get a new color scheme from the API
   const schemeObj = await requestColorScheme()
   
+  // save the scheme object to localstorage
   if (schemeObj) {
     localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
     displayColorScheme(schemeObj)
@@ -30,7 +32,10 @@ const initializeDisplay = async () => {
     const seed = schemeObj.seed.hex.value
     const mode = schemeObj.mode
     const count = schemeObj.count
-    fillFormInputs(seed, mode, count)
+    // fillFormInputs(seed, mode, count)
+
+    if (count == 1) countDecreaseBtn.disabled = true
+    else if (count == 5) countIncreaseBtn.disabled = true
 
     // render the color scheme
     localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))

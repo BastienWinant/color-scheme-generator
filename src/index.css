@@ -47,3 +47,40 @@ dialog {
 main {
   flex-grow: 1;
 }
+
+/* FORM STYLING */
+.form {
+  border: 2px solid yellow;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+
+  border: none;
+}
+
+.close-form-btn {
+  align-self: flex-end;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+}
+
+.input-label {
+  text-transform: capitalize;
+}
+
+.input-field {
+  width: 100%;
+  flex: 1 0 3em;
+  border: 1px solid black;
+}
+
+.form-btn {
+  height: 3em;
+  border: 1px solid red;
+}
