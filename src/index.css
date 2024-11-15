@@ -46,6 +46,8 @@ dialog {
 
 main {
   flex-grow: 1;
+
+  background-color: indianred;
 }
 
 /* DEFAULT FORM STYLES */

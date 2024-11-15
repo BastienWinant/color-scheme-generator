@@ -1,23 +1,15 @@
-.count-input-field {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.mode-dropdown-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5em;
+.scheme-create-pane {
+  display: none;
 }
 
 .scheme-ctrl-pane {
-  display: flex;
   flex-direction: row;
+  align-items: center;
   flex-wrap: wrap;
-  gap: .5em;
+  gap: 0;
 }
 
 .scheme-ctrl-btn {
   flex: 1 0 8em;
+  border: 1px solid black;
 }

@@ -21,23 +21,26 @@ const generateDisplayElements = async (colorsArr) => {
     const colorSaved = userColorHexCodes.includes(colorObj.hex.clean)
     articleEl.dataset.saved = colorSaved ? '1' : '0'
 
+    const colorClass = colorObj.contrast.value === '#000000' ? 'dark-text' : 'light-text'
+
     articleEl.innerHTML = `
-      <h2 class="generator-color-name">${colorObj.name.value}</h2>
-      <p class="generator-color-hex">${colorObj.hex.value}</p>
+      <div class="${colorClass}">
+        <h2 class="generator-color-name">${colorObj.name.value}</h2>
+        <p class="generator-color-hex">${colorObj.hex.value}</p>
+      </div>
       <div class="generator-display-color-btns">
-        <button type="button" class="generator-display-btn save-color-btn">
-          ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
+        <button type="button" class="generator-display-btn save-color-btn ${colorClass}">
+          ${colorSaved ? '<i class="fa-solid fa-heart fa-lg"></i>' : '<i class="fa-regular fa-heart fa-lg"></i>'}
         </button>
-        <button type="button" class="generator-display-btn remove-color-btn" ${oneColor ? 'disabled' : ''}>
-          <i class="fa-solid fa-xmark"></i>
+        <button type="button" class="generator-display-btn remove-color-btn ${colorClass}" ${oneColor ? 'disabled' : ''}>
+          <i class="fa-solid fa-xmark fa-lg"></i>
         </button>
-        <button type="button" class="generator-display-btn copy-color-btn">
-          <i class="fa-solid fa-copy"></i>
+        <button type="button" class="generator-display-btn copy-color-btn ${colorClass}">
+          <i class="fa-solid fa-copy fa-lg"></i>
         </button>
       </div>`
 
     articleEl.style.backgroundColor = colorObj.hex.value
-    articleEl.style.color = colorObj.contrast.value
 
     return articleEl
   })
@@ -73,7 +76,10 @@ const copySchemeColor = (displayColor) => {
 
 const displayCopyMessage = (displayColor) => {
   displayColor.innerHTML += `
-    <p class="copy-message">Copied!</p>`
+    <div class="copy-message">
+      <p>Copied!</p>
+      <i class="fa-solid fa-check fa-lg"></i>
+    </div>`
 
   setTimeout(() => {
     displayColor.querySelector('.copy-message').remove()

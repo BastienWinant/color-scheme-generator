@@ -1,0 +1,73 @@
+.generator-display {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.generator-display-color {
+  flex-grow: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0 1em; */
+
+  font-size: .875rem;
+  position: relative;
+}
+
+.generator-color-hex {
+  font-size: .875em;
+}
+
+.generator-display-color-btns {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.generator-display-btn:hover {
+  opacity: .75;
+}
+
+.generator-display-btn:disabled {
+  opacity: .4;
+  cursor: unset;
+}
+
+.light-text {
+  color: whitesmoke;
+}
+
+.dark-text {
+  color: #191919;
+}
+
+.copy-message {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75em;
+
+  background-color: rgba(0, 0, 0, .5);
+  color: white;
+  font-weight: 600;
+}
+
+@media only screen and (min-width: 576px) {
+  .generator-display-color {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .generator-display-color {
+    font-size: 1.25rem;
+  }
+}
