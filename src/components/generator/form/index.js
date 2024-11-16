@@ -25,7 +25,7 @@ export const fillFormInputs = (color, mode, count) => {
 
   modeDropdownBtnText.innerText = mode
   modeDropdownBtn.value = mode
-  for (const modeInput of generatorModeInputs) {
+  for (const modeInput of modeDropdownOptions) {
     if (modeInput.value === mode) {
       modeInput.checked = true
       break
@@ -101,7 +101,7 @@ countDecreaseBtn.addEventListener('click', () => {
   generatorColorCount.innerText = newCount
 
   countIncreaseBtn.disabled = false
-  if (newCount === 1) {
+  if (newCount <= 1) {
     countDecreaseBtn.disabled = true
   }
 })
@@ -114,7 +114,7 @@ countIncreaseBtn.addEventListener('click', () => {
   generatorColorCount.innerText = newCount
 
   countDecreaseBtn.disabled = false
-  if (newCount === 5) {
+  if (newCount >= 5) {
     countIncreaseBtn.disabled = true
   }
 })
@@ -159,8 +159,8 @@ const getRandomSeed = () => {
 }
 
 const getRandomMode = () => {
-  // const randomIndex = Math.floor(Math.random() * generatorModeInputs.length)
-  // const randomMode = generatorModeInputs[randomIndex].value
+  // const randomIndex = Math.floor(Math.random() * modeDropdownOptions.length)
+  // const randomMode = modeDropdownOptions[randomIndex].value
   // return randomMode
   return 'monochrome'
 }

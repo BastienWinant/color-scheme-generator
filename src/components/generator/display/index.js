@@ -24,20 +24,22 @@ const generateDisplayElements = async (colorsArr) => {
     const colorClass = colorObj.contrast.value === '#000000' ? 'dark-text' : 'light-text'
 
     articleEl.innerHTML = `
-      <div class="${colorClass}">
-        <h2 class="generator-color-name">${colorObj.name.value}</h2>
-        <p class="generator-color-hex">${colorObj.hex.value}</p>
-      </div>
-      <div class="generator-display-color-btns">
-        <button type="button" class="generator-display-btn save-color-btn ${colorClass}">
-          ${colorSaved ? '<i class="fa-solid fa-heart fa-lg"></i>' : '<i class="fa-regular fa-heart fa-lg"></i>'}
-        </button>
-        <button type="button" class="generator-display-btn remove-color-btn ${colorClass}" ${oneColor ? 'disabled' : ''}>
-          <i class="fa-solid fa-xmark fa-lg"></i>
-        </button>
-        <button type="button" class="generator-display-btn copy-color-btn ${colorClass}">
-          <i class="fa-solid fa-copy fa-lg"></i>
-        </button>
+      <div class="generator-display-color-container">
+        <div class="${colorClass}">
+          <h2 class="generator-color-name">${colorObj.name.value}</h2>
+          <p class="generator-color-hex">${colorObj.hex.value}</p>
+        </div>
+        <div class="generator-display-color-btns">
+          <button type="button" class="generator-display-btn save-color-btn ${colorClass}">
+            ${colorSaved ? '<i class="fa-solid fa-heart fa-lg"></i>' : '<i class="fa-regular fa-heart fa-lg"></i>'}
+          </button>
+          <button type="button" class="generator-display-btn remove-color-btn ${colorClass}" ${oneColor ? 'disabled' : ''}>
+            <i class="fa-solid fa-xmark fa-lg"></i>
+          </button>
+          <button type="button" class="generator-display-btn copy-color-btn ${colorClass}">
+            <i class="fa-solid fa-copy fa-lg"></i>
+          </button>
+        </div>
       </div>`
 
     articleEl.style.backgroundColor = colorObj.hex.value
@@ -83,7 +85,7 @@ const displayCopyMessage = (displayColor) => {
 
   setTimeout(() => {
     displayColor.querySelector('.copy-message').remove()
-  }, 2000)
+  }, 1000)
 }
 
 export const displayErrorMessage = () => {
