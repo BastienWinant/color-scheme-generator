@@ -1,7 +1,58 @@
+/* SCHEME CREATE PANE */
 .scheme-create-pane {
   display: none;
+
+  /* positioning */
+  position: absolute;
+  bottom: -23em;
+  width: 100%;
+
+  /* content layout */
+  height: 23em;
+  padding: 1em;
+  justify-content: space-between;
+
+  border-radius: 1.5em 1.5em 0 0;
+  background-color: white;
+  z-index: 1;
+
+  transition: bottom .3s;
+
+  border: 3px solid orange;
 }
 
+.pane-expanded {
+  bottom: 0;
+}
+
+/* SCHEME SEED COLOR */
+.color {
+  padding:.125em .25em;
+  background-color: transparent;
+}
+
+/* SCHEME MODE */
+.mode-dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  font-weight: 500;
+}
+
+/* SCHEME COLOR COUNT */
+.count-input-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.get-scheme-btn {
+  background-color: black;
+  color: white;
+}
+
+/* SCHEME CONTROL PANE */
 .scheme-ctrl-pane {
   flex-direction: row;
   align-items: center;

@@ -11,6 +11,7 @@
 }
 
 .auth-fieldset {
+  gap: 1.5em;
   padding: 1em 0;
   margin-bottom: 1em;
   position: relative;

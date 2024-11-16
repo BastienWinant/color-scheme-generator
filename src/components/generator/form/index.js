@@ -3,6 +3,8 @@ import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 import { writeNewScheme } from 'Src/utils'
 
+const schemeCreatePane = document.querySelector('#scheme-create-pane')
+const formCollapseBtn = document.querySelector('#generator-form-collapse-btn')
 const colorInput = document.querySelector('#color')
 const modeDropdownBtn = document.querySelector('#mode-dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#mode-dropdown-btn-text')
@@ -89,6 +91,26 @@ countIncreaseBtn.addEventListener('click', () => {
     countIncreaseBtn.disabled = true
   }
 })
+
+// expand/collapse the generator form
+const expandGeneratorForm = () => {
+  schemeCreatePane.style.display = 'flex'
+
+  setTimeout(() => {
+    schemeCreatePane.classList.add('pane-expanded')
+  }, 100)
+}
+
+export const collapseGeneratorForm = () => {
+  schemeCreatePane.classList.remove('pane-expanded')
+
+  setTimeout(() => {
+    schemeCreatePane.style.display = 'none'
+  }, 300)
+}
+
+newSchemeBtn.addEventListener('click', expandGeneratorForm)
+formCollapseBtn.addEventListener('click', collapseGeneratorForm)
 
 // save the scheme objet from localstorage to database
 saveSchemeBtn.addEventListener('click', () => {

@@ -4,12 +4,10 @@ import(/* webpackPrefetch: true */ './form')
 import(/* webpackPrefetch: true */ './display')
 import { auth } from 'Src/app'
 import { getSchemeBtn, requestColorScheme, getRandomScheme,
-  fillFormInputs, countDecreaseBtn, countIncreaseBtn } from './form'
+  fillFormInputs, countDecreaseBtn, countIncreaseBtn, collapseGeneratorForm } from './form'
 import { displayColorScheme, displayErrorMessage } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
-  e.preventDefault()
-
   // get a new color scheme from the API
   const schemeObj = await requestColorScheme()
   
@@ -20,6 +18,8 @@ getSchemeBtn.addEventListener('click', async (e) => {
   } else {
     displayErrorMessage()
   }
+
+  collapseGeneratorForm()
 })
 
 const initializeDisplay = async () => {
