@@ -4,4 +4,6 @@
   flex-direction: column-reverse;
   position: relative;
   border: 2px solid red;
+
+  overflow: hidden;
 }

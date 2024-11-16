@@ -8,6 +8,8 @@ const formCollapseBtn = document.querySelector('#generator-form-collapse-btn')
 const colorInput = document.querySelector('#color')
 const modeDropdownBtn = document.querySelector('#mode-dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#mode-dropdown-btn-text')
+const modeDropdown = document.querySelector('#mode-dropdown-options')
+const modeDropdownOptions = document.querySelectorAll('.mode-dropdown-option input[type="radio"]')
 const generatorColorCount = document.querySelector('#count')
 export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
 export const countIncreaseBtn = document.querySelector('#count-increase-btn')
@@ -64,6 +66,31 @@ export const requestColorScheme = async () => {
 
   return schemeObj
 }
+
+// COLOR MODE
+const collapseModeDropdown = () => {
+  modeDropdown.classList.remove('dropdown-expanded')
+}
+
+const toggleModeDropdown = () => {
+  modeDropdown.classList.toggle('dropdown-expanded')
+}
+
+modeDropdownOptions.forEach(option => {
+  option.addEventListener('click', e => {
+    const mode = e.target.value
+    
+    modeDropdownBtnText.innerText = mode
+    modeDropdownBtn.value = mode
+
+    toggleModeDropdown()
+  })
+})
+
+window.addEventListener('click', e => {
+  if (e.target.closest('#mode-dropdown-btn')) toggleModeDropdown()
+  else if (!e.target.closest('.mode-dropdown-option')) collapseModeDropdown()
+})
 
 // COLOR COUNT
 countDecreaseBtn.addEventListener('click', () => {

@@ -32,12 +32,58 @@
 }
 
 /* SCHEME MODE */
+/* DROPDOWN BUTTON */
 .mode-dropdown-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: .5em;
   font-weight: 500;
+}
+
+/* DROPDOWN OPTIONS */
+.dropdown-options {
+  position: absolute;
+  top: 4.75em;
+  width: 100%;
+  z-index: 1;
+
+  display: none;
+  flex-direction: column;
+  padding: .25em;
+
+  height: 7.5em;
+  overflow-y: scroll;
+  list-style-type: none;
+
+  background-color: white;
+  border-radius: .5em;
+  border: 2px solid red;
+}
+
+.dropdown-expanded {
+  display: flex;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  display: block;
+  padding: .5em 1em;
+  cursor: pointer;
+  border-radius: .25em;
+  background-color: white;
+}
+
+input[type="radio"] + label:hover {
+  background-color: lightgray;
+}
+
+input[type="radio"]:checked + label {
+  background-color: darkgray;
+  color: white;
 }
 
 /* SCHEME COLOR COUNT */
