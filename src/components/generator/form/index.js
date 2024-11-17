@@ -159,10 +159,10 @@ const getRandomSeed = () => {
 }
 
 const getRandomMode = () => {
-  // const randomIndex = Math.floor(Math.random() * modeDropdownOptions.length)
-  // const randomMode = modeDropdownOptions[randomIndex].value
-  // return randomMode
-  return 'monochrome'
+  const randomIndex = Math.floor(Math.random() * modeDropdownOptions.length)
+  const randomMode = modeDropdownOptions[randomIndex].value
+
+  return randomMode
 }
 
 const getRandomCount = () => {
