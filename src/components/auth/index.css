@@ -8,6 +8,7 @@
 
 .auth-form {
   padding: 1.5em;
+  gap: .5em;
 }
 
 .auth-fieldset {
