@@ -121,18 +121,18 @@ countIncreaseBtn.addEventListener('click', () => {
 
 // expand/collapse the generator form
 const expandGeneratorForm = () => {
-  schemeCreatePane.style.display = 'flex'
+  schemeCreatePane.classList.add('pane-displayed')
 
   setTimeout(() => {
-    schemeCreatePane.classList.add('pane-expanded')
+    schemeCreatePane.classList.add('pane-visible')
   }, 100)
 }
 
 export const collapseGeneratorForm = () => {
-  schemeCreatePane.classList.remove('pane-expanded')
+  schemeCreatePane.classList.remove('pane-visible')
 
   setTimeout(() => {
-    schemeCreatePane.style.display = 'none'
+    schemeCreatePane.classList.remove('pane-displayed')
   }, 300)
 }
 

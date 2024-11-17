@@ -21,8 +21,12 @@
 
 }
 
-.pane-expanded {
+.pane-visible {
   bottom: 0;
+}
+
+.pane-displayed {
+  display: flex;
 }
 
 /* SCHEME SEED COLOR */
