@@ -57,8 +57,10 @@ export const displayColorScheme = async (schemeObj) => {
 }
 
 const removeSchemeColor = (schemeObj, displayColor) => {
+  // update scheme object (colors & count)
   const hex = displayColor.dataset.hex
   schemeObj.colors = schemeObj.colors.filter(color => color.hex.clean !== hex)
+  schemeObj.count = schemeObj.colors.length
 
   // ensure the display is in sync with the localStorage object
   localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
