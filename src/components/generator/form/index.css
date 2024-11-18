@@ -4,11 +4,11 @@
 
   /* positioning */
   position: absolute;
-  bottom: -25em;
+  bottom: -24em;
   width: 100%;
 
   /* content layout */
-  height: 25em;
+  height: 24em;
   padding: 1em;
   justify-content: space-between;
 
@@ -48,7 +48,7 @@
 /* DROPDOWN OPTIONS */
 .dropdown-options {
   position: absolute;
-  top: 4.75em;
+  top: 4.25em;
   width: 100%;
   z-index: 1;
 
@@ -62,6 +62,7 @@
 
   background-color: white;
   border-radius: .5em;
+  border: 1px solid #eee;
   box-shadow: 0 16px 24px #37435C25;
 }
 
@@ -110,18 +111,16 @@ input[type="radio"]:checked + label {
   flex-wrap: wrap;
   gap: 1em;
   padding: 1em;
-  border: 1px solid black;
 }
 
 .scheme-ctrl-btn {
-  flex: 1 0 8em;
+  flex: 1 0 auto;
   border: 1px solid black;
 }
 
 @media only screen and (min-width: 576px) {
   .generator-form {
-    width: 45%;
-    max-width: 340px;
+    flex: 1 0 45%;
   }
 
   .scheme-create-pane {  
@@ -130,7 +129,6 @@ input[type="radio"]:checked + label {
   
     /* content layout */
     height: 100%;
-    /* padding: 1em; */
     display: flex;
     justify-content: space-between;
   
@@ -144,5 +142,37 @@ input[type="radio"]:checked + label {
 
   .new-scheme-btn {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .generator-form {
+    flex: 0 0 auto;
+
+    width: 768px;
+    flex-direction: row;
+    gap: 1em;
+    padding: 1em;
+  }
+
+  .scheme-create-pane {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 1em;
+    padding: 0;
+  }
+
+  .generator-input-group {
+    flex: 1 0 auto;
+  }
+
+  .mode-input-group {
+    flex: 0 0 14em;
+  }
+
+  .scheme-ctrl-pane {
+    align-items: flex-end;
+    flex: 0 0 auto;
+    padding: 0;
   }
 }

@@ -50,9 +50,9 @@ dialog {
 
 main {
   flex-grow: 1;
+  /* flex: 0 0 85%; */
   display: flex;
   flex-direction: column;
-  /* background-color: lightblue; */
 }
 
 /* HERO SECTION */
@@ -79,7 +79,6 @@ main {
     align-items: center;
     justify-content: center;
     padding: 2em;
-    /* background-color: orange; */
   }
 }
 
@@ -87,15 +86,12 @@ main {
 .form {
   display: flex;
   flex-direction: column;
-
-  border: 1px solid black;
 }
 
 .fieldset {
   display: flex;
   flex-direction: column;
   border: none;
-  border: 1px solid black;
 }
 
 .legend {
@@ -122,9 +118,9 @@ main {
 
 .input-field {
   width: 100%;
-  flex: 1 0 3em;
+  flex: 0 0 2.5em;
   border-radius: .4em;
-  padding: .75em;
+  padding: 0 .75em;
   border: 1px solid black;
 }
 
@@ -133,7 +129,8 @@ main {
 }
 
 .form-btn {
-  height: 2.75em;
+  height: 2.5em;
+  padding: 0 .75em;
   border-radius: .4em;
   
   text-transform: capitalize;

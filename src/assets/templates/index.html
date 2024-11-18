@@ -46,13 +46,13 @@
             </button>
 
             <!-- seed color -->
-            <label for="color" class="input-group">
+            <label for="color" class="input-group generator-input-group seed-input-group">
               <h2 class="input-label">seed</h2>
               <input type="color" name="color" id="color" class="input-field color">
             </label>
 
             <!-- color mode -->
-            <section class="input-group">
+            <section class="input-group generator-input-group mode-input-group">
               <h2 class="input-label">mode</h2>
               <button type="button" id="mode-dropdown-btn" class="input-field mode-dropdown-btn">
                 <p id="mode-dropdown-btn-text" class="mode-dropdown-btn-text">monochrome</p>
@@ -83,15 +83,11 @@
                   <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
                   <label for="analogic-complement">analogic-complement</label>
                 </li>
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="triad" value="triad" />
-                  <label for="triad">triad</label>
-                </li>
               </ul>
             </section>
 
             <!-- color count -->
-            <section class="input-group">
+            <section class="input-group generator-input-group count-input-group">
               <h2 class="input-label">count</h2>
               <div class="input-field count-input-field">
                 <button type="button" id="count-decrease-btn" class="count-btn">
@@ -223,7 +219,9 @@
         <!-- submit -->
         <button type="submit" id="reset-btn" class="form-btn auth-form-btn reset-btn">reset password</button>
       </fieldset>
-      <button type="button" id="cancel-reset-btn" class="form-btn-inline">Back to log in</button>
+      <div class="auth-nav">
+        <button type="button" id="cancel-reset-btn" class="form-btn-inline">Back to log in</button>
+      </div>
     </form>
   </dialog>
 </body>

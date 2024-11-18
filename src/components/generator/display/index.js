@@ -31,13 +31,13 @@ const generateDisplayElements = async (colorsArr) => {
         </div>
         <div class="generator-display-color-btns">
           <button type="button" class="generator-display-btn save-color-btn ${colorClass}">
-            ${colorSaved ? '<i class="fa-solid fa-heart fa-lg"></i>' : '<i class="fa-regular fa-heart fa-lg"></i>'}
+            ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
           </button>
           <button type="button" class="generator-display-btn remove-color-btn ${colorClass}" ${oneColor ? 'disabled' : ''}>
-            <i class="fa-solid fa-xmark fa-lg"></i>
+            <i class="fa-solid fa-xmark"></i>
           </button>
           <button type="button" class="generator-display-btn copy-color-btn ${colorClass}">
-            <i class="fa-solid fa-copy fa-lg"></i>
+            <i class="fa-solid fa-copy"></i>
           </button>
         </div>
       </div>`
@@ -82,7 +82,7 @@ const displayCopyMessage = (displayColor) => {
   displayColor.innerHTML += `
     <div class="copy-message">
       <p>Copied!</p>
-      <i class="fa-solid fa-check fa-lg"></i>
+      <i class="fa-solid fa-check"></i>
     </div>`
 
   setTimeout(() => {
