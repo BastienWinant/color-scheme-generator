@@ -1,6 +1,12 @@
 @font-face {
   font-family: 'Inter';
-  src: url('../src/assets/fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  src: url('./assets/fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Knewave';
+  src: url('./assets/fonts/Knewave-Regular.ttf');
   font-style: normal;
 }
 
@@ -44,19 +50,52 @@ dialog {
 
 main {
   flex-grow: 1;
-  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  /* background-color: lightblue; */
+}
+
+/* HERO SECTION */
+.hero {
+  display: none;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-family: 'Knewave', serif;
+}
+
+.hero-page-name {
+  font-size: 1.25rem;
+}
+
+@media only screen and (min-height: 600px) {
+  .hero {
+    height: 25vh;
+    min-height: 6em;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    /* background-color: orange; */
+  }
 }
 
 /* DEFAULT FORM STYLES */
 .form {
   display: flex;
   flex-direction: column;
+
+  border: 1px solid black;
 }
 
 .fieldset {
   display: flex;
   flex-direction: column;
   border: none;
+  border: 1px solid black;
 }
 
 .legend {
@@ -95,7 +134,7 @@ main {
 
 .form-btn {
   height: 2.75em;
-  border-radius: .25em;
+  border-radius: .4em;
   
   text-transform: capitalize;
   font-weight: 600;

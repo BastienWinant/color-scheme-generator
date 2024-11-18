@@ -4,11 +4,11 @@
 
   /* positioning */
   position: absolute;
-  bottom: -23em;
+  bottom: -25em;
   width: 100%;
 
   /* content layout */
-  height: 23em;
+  height: 25em;
   padding: 1em;
   justify-content: space-between;
 
