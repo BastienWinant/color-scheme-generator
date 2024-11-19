@@ -37,77 +37,79 @@
         <p class="hero-page-name"><%= htmlWebpackPlugin.options.title %></p>
       </section>
       <div class="generator-container">
-        <form id="generator-form" class="form generator-form">
-          <fieldset id="scheme-create-pane" class="fieldset scheme-create-pane">
-            
-            <!-- close form button -->
-            <button type="button" id="generator-form-collapse-btn" class="close-form-btn generator-form-collapse-btn">
-              <i class="fa-solid fa-circle-xmark"></i>
-            </button>
-
-            <!-- seed color -->
-            <label for="color" class="input-group generator-input-group seed-input-group">
-              <h2 class="input-label">seed</h2>
-              <input type="color" name="color" id="color" class="input-field color">
-            </label>
-
-            <!-- color mode -->
-            <section class="input-group generator-input-group mode-input-group">
-              <h2 class="input-label">mode</h2>
-              <button type="button" id="mode-dropdown-btn" class="input-field mode-dropdown-btn">
-                <p id="mode-dropdown-btn-text" class="mode-dropdown-btn-text">monochrome</p>
-                <i class="fa-solid fa-chevron-down"></i>
+        <div class="generator-form-container">
+          <form id="generator-form" class="form generator-form">
+            <fieldset id="scheme-create-pane" class="fieldset scheme-create-pane">
+              
+              <!-- close form button -->
+              <button type="button" id="generator-form-collapse-btn" class="close-form-btn generator-form-collapse-btn">
+                <i class="fa-solid fa-circle-xmark"></i>
               </button>
-              <ul id="mode-dropdown-options" class="dropdown-options">
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
-                  <label for="monochrome">monochrome</label>
-                </li>
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
-                  <label for="monochrome-dark">monochrome-dark</label>
-                </li>
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
-                  <label for="monochrome-light">monochrome-light</label>
-                </li>
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="analogic" value="analogic" />
-                  <label for="analogic">analogic</label>
-                </li>
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="complement" value="complement" />
-                  <label for="complement">complement</label>
-                </li>
-                <li class="mode-dropdown-option">
-                  <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
-                  <label for="analogic-complement">analogic-complement</label>
-                </li>
-              </ul>
-            </section>
 
-            <!-- color count -->
-            <section class="input-group generator-input-group count-input-group">
-              <h2 class="input-label">count</h2>
-              <div class="input-field count-input-field">
-                <button type="button" id="count-decrease-btn" class="count-btn">
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-                <p id="count" class="count" data-value="5">5</p>
-                <button type="button" id="count-increase-btn" class="count-btn">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
-              </div>
-            </section>
+              <!-- seed color -->
+              <label for="color" class="input-group generator-input-group seed-input-group">
+                <h2 class="input-label">seed</h2>
+                <input type="color" name="color" id="color" class="input-field color">
+              </label>
 
-            <!-- submit -->
-            <button type="button" id="get-scheme-btn" class="form-btn get-scheme-btn">get scheme</button>
-          </fieldset>
-          <fieldset id="scheme-ctrl-pane" class="fieldset scheme-ctrl-pane">
-            <button type="button" id="save-scheme-btn" class="form-btn scheme-ctrl-btn save-scheme-btn">save scheme</button>
-            <button type="button" id="new-scheme-btn" class="form-btn scheme-ctrl-btn new-scheme-btn">new scheme</button>
-          </fieldset>
-        </form>
+              <!-- color mode -->
+              <section class="input-group generator-input-group mode-input-group">
+                <h2 class="input-label">mode</h2>
+                <button type="button" id="mode-dropdown-btn" class="input-field mode-dropdown-btn">
+                  <p id="mode-dropdown-btn-text" class="mode-dropdown-btn-text">monochrome</p>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <ul id="mode-dropdown-options" class="dropdown-options">
+                  <li class="mode-dropdown-option">
+                    <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
+                    <label for="monochrome">monochrome</label>
+                  </li>
+                  <li class="mode-dropdown-option">
+                    <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
+                    <label for="monochrome-dark">monochrome-dark</label>
+                  </li>
+                  <li class="mode-dropdown-option">
+                    <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
+                    <label for="monochrome-light">monochrome-light</label>
+                  </li>
+                  <li class="mode-dropdown-option">
+                    <input type="radio" name="mode" id="analogic" value="analogic" />
+                    <label for="analogic">analogic</label>
+                  </li>
+                  <li class="mode-dropdown-option">
+                    <input type="radio" name="mode" id="complement" value="complement" />
+                    <label for="complement">complement</label>
+                  </li>
+                  <li class="mode-dropdown-option">
+                    <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
+                    <label for="analogic-complement">analogic-complement</label>
+                  </li>
+                </ul>
+              </section>
+
+              <!-- color count -->
+              <section class="input-group generator-input-group count-input-group">
+                <h2 class="input-label">count</h2>
+                <div class="input-field count-input-field">
+                  <button type="button" id="count-decrease-btn" class="count-btn">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <p id="count" class="count" data-value="5">5</p>
+                  <button type="button" id="count-increase-btn" class="count-btn">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </section>
+
+              <!-- submit -->
+              <button type="button" id="get-scheme-btn" class="form-btn get-scheme-btn">get scheme</button>
+            </fieldset>
+            <fieldset id="scheme-ctrl-pane" class="fieldset scheme-ctrl-pane">
+              <button type="button" id="save-scheme-btn" class="form-btn scheme-ctrl-btn save-scheme-btn">save scheme</button>
+              <button type="button" id="new-scheme-btn" class="form-btn scheme-ctrl-btn new-scheme-btn">new scheme</button>
+            </fieldset>
+          </form>
+        </div>
         <div id="generator-display" class="generator-display">
           <p class="generator-display-placeholder">Generating color scheme...</p>
         </div>
