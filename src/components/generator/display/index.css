@@ -22,7 +22,13 @@
   padding: 1em;
 }
 
-.generator-color-hex {
+.generator-display-color-details {
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+}
+
+.generator-display-color-hex {
   font-size: .875em;
 }
 
@@ -75,13 +81,13 @@
   .generator-display-color-container {    
     flex-direction: column-reverse;
     justify-content: center;
-    padding: 0;
+    gap: 5vh;
 
     text-align: center;
   }
 
   .generator-display-color-btns {
     flex-direction: column;
-    gap: 0;
+    gap: 2vh;
   }
 }

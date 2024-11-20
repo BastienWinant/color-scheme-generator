@@ -25,9 +25,9 @@ const generateDisplayElements = async (colorsArr) => {
 
     articleEl.innerHTML = `
       <div class="generator-display-color-container">
-        <div class="${colorClass}">
-          <h2 class="generator-color-name">${colorObj.name.value}</h2>
-          <p class="generator-color-hex">${colorObj.hex.value}</p>
+        <div class="generator-display-color-details ${colorClass}">
+          <h2 class="generator-display-color-name">${colorObj.name.value}</h2>
+          <p class="generator-display-color-hex">${colorObj.hex.value}</p>
         </div>
         <div class="generator-display-color-btns">
           <button type="button" class="generator-display-btn save-color-btn ${colorClass}">
