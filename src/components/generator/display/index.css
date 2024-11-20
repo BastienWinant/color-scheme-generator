@@ -71,6 +71,15 @@
   font-weight: 600;
 }
 
+.generator-display-error,
+.generator-display-placeholder {
+  padding: 1em 3em;
+  margin: auto;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
   .generator-display {
     display: grid;

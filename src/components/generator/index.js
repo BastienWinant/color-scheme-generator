@@ -28,18 +28,22 @@ const initializeDisplay = async () => {
     // retrieve a scheme object from local storage or get a new random scheme
     const schemeObj = JSON.parse(localStorage.getItem('csg-scheme')) || await getRandomScheme()
 
-    // fill in the form inputs explicitely
-    const seed = schemeObj.seed.hex.value
-    const mode = schemeObj.mode
-    const count = schemeObj.count
-    fillFormInputs(seed, mode, count)
+    if (schemeObj) {
+      // fill in the form inputs explicitely
+      const seed = schemeObj.seed.hex.value
+      const mode = schemeObj.mode
+      const count = schemeObj.count
+      fillFormInputs(seed, mode, count)
 
-    if (count == 1) countDecreaseBtn.disabled = true
-    else if (count == 5) countIncreaseBtn.disabled = true
+      if (count == 1) countDecreaseBtn.disabled = true
+      else if (count == 5) countIncreaseBtn.disabled = true
 
-    // render the color scheme
-    localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
-    displayColorScheme(schemeObj)
+      // render the color scheme
+      localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
+      displayColorScheme(schemeObj)
+    } else {
+      displayErrorMessage()
+    }
   })
 }
 initializeDisplay()
