@@ -12,6 +12,10 @@ colorGrid.addEventListener('click', e => {
     const uid = auth.currentUser.uid
     deleteColor(hex, uid)
     updateColorGrid()
+  } else if (e.target.classList.contains('color-copy-btn')) {
+    const colorCard = e.target.closest('.color-card-caption')
+    const hex = colorCard.querySelector('.color-card-hex').innerText
+    navigator.clipboard.writeText(`#${hex}`)
   }
 })
 
@@ -37,7 +41,6 @@ const updateColorGrid = async () => {
   const userColors = await getUserColors()
 
   if (Object.keys(userColors).length) {
-    console.log(Object.values(userColors))
     renderColorGrid(userColors)
   } else {
     console.log('no color saved')
