@@ -30,6 +30,11 @@
   padding: .25em;
 }
 
+.color-card-hex {
+  margin-top: .25em;
+  font-size: .875rem;
+}
+
 .color-card-btns {
   display: flex;
   align-items: center;
