@@ -1,5 +1,8 @@
 .color-grid {
   height: 100%;
+  width: 100%;
+  max-width: 992px;
+  align-self: center;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
