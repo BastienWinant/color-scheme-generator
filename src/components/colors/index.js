@@ -2,8 +2,21 @@ import './index.css'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'Src/app'
 import { getUserColors, deleteColor } from 'Src/utils'
+import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const colorGrid = document.querySelector('#color-grid')
+
+const showAuthPlaceholder = () => {
+  colorGrid.innerHTML = `
+    <section class="grid-placeholder">
+      Log in to your account to see saved colors
+      <div class="grid-placeholder-btns">
+        <button type="button" class="grid-placeholder-btn grid-login-btn">log in</button>
+        <button type="button" class="grid-placeholder-btn grid-signup-btn">sign up</button>
+      </div>
+    </section>
+  `
+}
 
 colorGrid.addEventListener('click', e => {
   if (e.target.classList.contains('color-delete-btn')) {
@@ -16,6 +29,10 @@ colorGrid.addEventListener('click', e => {
     const colorCard = e.target.closest('.color-card-caption')
     const hex = colorCard.querySelector('.color-card-hex').innerText
     navigator.clipboard.writeText(`#${hex}`)
+  } else if (e.target.classList.contains('grid-login-btn')) {
+    openLoginModal()
+  } else if (e.target.classList.contains('grid-signup-btn')) {
+    openSignupModal()
   }
 })
 
@@ -43,7 +60,7 @@ const updateColorGrid = async () => {
   if (Object.keys(userColors).length) {
     renderColorGrid(userColors)
   } else {
-    console.log('no color saved')
+    colorGrid.innerHTML = ''
   }
 }
 
@@ -52,8 +69,7 @@ const monitorAuthState = async () => {
     if (user) {
       updateColorGrid()
     } else {
-      // showAuthPlaceholder()
-      console.log('not logged id')
+      showAuthPlaceholder()
     }
   })
 }
