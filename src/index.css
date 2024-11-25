@@ -50,9 +50,10 @@ dialog {
 
 main {
   flex-grow: 1;
-  /* flex: 0 0 85%; */
   display: flex;
   flex-direction: column;
+
+  overflow-y: scroll;
 }
 
 /* HERO SECTION */
@@ -71,7 +72,7 @@ main {
 
 @media only screen and (min-height: 600px) {
   .hero {
-    height: 25vh;
+    flex: 0 0 25vh;
     min-height: 6em;
   
     display: flex;
@@ -156,4 +157,59 @@ main {
   align-items: center;
   gap: .5em;
   font-size: .75rem;
+}
+
+/* DEFAULT PLACEHOLDER STYLE */
+.grid-placeholder {
+  /* sizing */
+  width: 80vw;
+  max-width: 320px;
+  
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  /* positioning */
+  margin: auto;
+  position: relative;
+  top: -5vh;
+
+  text-align: center;
+  padding: 2em;
+  border-radius: 1em;
+  border: 1px solid black;
+}
+
+.grid-placeholder-btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1em;
+}
+
+.grid-placeholder-btn {
+  /* sizing */
+  flex: 1 0 8em;
+  padding: .75em .25em;
+
+  /* content layout */
+
+  /* text styling */
+  font-size: .875rem;
+  text-transform: capitalize;
+  text-align: center;
+  font-weight: 500;
+  color: black;
+
+  /* styling */
+  border-radius: .5em;
+  
+  background-color: white;
+  border: 1px solid black;
+}
+
+.grid-signup-btn {
+  background-color: black;
+  color: white;
 }
