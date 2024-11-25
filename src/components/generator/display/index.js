@@ -1,7 +1,7 @@
 import './index.css'
 import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
-import { getUserColors, writeNewColor, deleteColor } from 'Src/utils'
+import { getUserColors, writeNewColor, deleteColor } from 'Src/db_utils'
 
 const generatorDisplay = document.querySelector('#generator-display')
 

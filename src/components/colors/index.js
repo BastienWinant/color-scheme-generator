@@ -1,7 +1,7 @@
 import './index.css'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'Src/app'
-import { getUserColors, deleteColor } from 'Src/utils'
+import { getUserColors, deleteColor } from 'Src/db_utils'
 import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const colorGrid = document.querySelector('#color-grid')

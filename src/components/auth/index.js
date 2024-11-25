@@ -1,6 +1,6 @@
 import './index.css'
 import { auth } from "Src/app"
-import { writeUserData } from 'Src/utils'
+import { writeUserData } from 'Src/db_utils'
 
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth"
 

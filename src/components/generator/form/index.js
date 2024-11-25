@@ -1,7 +1,7 @@
 import './index.css'
 import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
-import { writeNewScheme } from 'Src/utils'
+import { writeNewScheme } from 'Src/db_utils'
 
 const schemeCreatePane = document.querySelector('#scheme-create-pane')
 const formCollapseBtn = document.querySelector('#generator-form-collapse-btn')
