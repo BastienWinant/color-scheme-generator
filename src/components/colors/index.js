@@ -43,7 +43,7 @@ const renderColorGrid = (userColors) => {
       <figcaption class="color-card-caption">
         <hgroup>
           <h2 class="color-card-name">${colorObj.name.value}</h2>
-          <p class="color-card-hex">${colorObj.hex.clean}</p>
+          <p class="color-card-hex">${colorObj.hex.value}</p>
         </hgroup>
         <section class="color-card-btns">
           <button type="button" class="color-card-btn color-copy-btn">copy</button>
