@@ -6,11 +6,15 @@ import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const schemeGrid = document.querySelector('#schemes-grid')
 
+const renderSchemeGrid = (userSchemes) => {
+  console.log(userSchemes)
+}
+
 const updateSchemeGrid = async () => {
   const userSchemes = await getUserSchemes()
 
-  if (Object.keys(userColors).length) {
-    renderColorGrid(userColors)
+  if (Object.keys(userSchemes).length) {
+    renderSchemeGrid(userSchemes)
   } else {
     colorGrid.innerHTML = ''
   }
