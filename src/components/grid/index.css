@@ -44,6 +44,7 @@
 .card-btns {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: .5em;
 }
@@ -62,6 +63,15 @@
   color: white;
 }
 
-.centered-card {
+.placeholder-card {
   margin: auto;
+  width: 100%;
+  max-width: 20em;
+  gap: 2em;
+  line-height: 1.5em;
+}
+
+.card-signup-btn,
+.card-login-btn {
+  border: 1px solid black;
 }

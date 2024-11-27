@@ -10,7 +10,7 @@ const colorGrid = document.querySelector('#color-grid')
 const showEmptyGridCard = () => {
   colorGrid.innerHTML = `
     <div class="card placeholder-card">
-      It's looking a little dull in here...
+      <p>It's looking a little dull in here...</p>
       <a href="#" class="card-link">Let's add some color!</a>
     </div>`
 }
@@ -18,7 +18,11 @@ const showEmptyGridCard = () => {
 const showGridAuthCard = () => {
   colorGrid.innerHTML = `
     <div class="card placeholder-card">
-      this is a test
+      <p>We can't show you what you like if we don't know wo you are...</p>
+      <div class="card-btns">
+        <button type="button" class="card-btn card-login-btn">log in</button>
+        <button type="button" class="card-btn card-signup-btn">sign up</button>
+      </div>
     </div>`
 }
 
@@ -33,6 +37,10 @@ colorGrid.addEventListener('click', e => {
     const uid = auth.currentUser.uid
     deleteColor(hex, uid)
     updateColorGrid()
+  } else if (e.target.classList.contains('card-login-btn')) {
+    openLoginModal()
+  } else if (e.target.classList.contains('card-signup-btn')) {
+    openSignupModal()
   }
 })
 
@@ -70,7 +78,7 @@ const monitorAuthState = async () => {
     if (user) {
       updateColorGrid()
     } else {
-      // showGridAuthCard
+      showGridAuthCard()
     }
   })
 }
