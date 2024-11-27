@@ -1,5 +1,5 @@
 import '../index.css'
-import './index.css'
+
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'Src/app'
 import { getUserColors, deleteColor } from 'Src/db_utils'
@@ -11,7 +11,7 @@ const showEmptyGridCard = () => {
   colorGrid.innerHTML = `
     <div class="card placeholder-card">
       <p>It's looking a little dull in here...</p>
-      <a href="#" class="card-link">Let's add some color!</a>
+      <a href="./index.html" class="card-link">Let's add some color!</a>
     </div>`
 }
 

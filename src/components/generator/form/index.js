@@ -15,7 +15,6 @@ export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
 export const countIncreaseBtn = document.querySelector('#count-increase-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 
-const schemeCtrlPane = document.querySelector('#scheme-ctrl-pane')
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
