@@ -1,0 +1,67 @@
+.grid {
+  width: 100%;
+  max-width: 992px;
+  /* max-height: 100%; */
+  
+  align-self: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  grid-template-rows: 1fr;
+  gap: 1em;
+  padding: 3em 1em;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  padding: .5em;
+
+  border-radius: .5em;
+
+  border: 1px solid lightgrey;
+}
+
+.card-img {
+  height: 10em;
+  border-radius: .25em;
+}
+
+.card-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: .125em;
+}
+
+.card-subtitle {
+  font-size: .875rem;
+  font-style: italic;
+  padding-top: .25em;
+}
+
+.card-btns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5em;
+}
+
+.card-btn {
+  flex: 1 0 4em;
+  height: 2.5em;
+  border-radius: .25em;
+
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.card-copy-btn {
+  background-color: black;
+  color: white;
+}
+
+.centered-card {
+  margin: auto;
+}

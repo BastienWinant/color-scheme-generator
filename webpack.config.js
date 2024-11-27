@@ -15,8 +15,8 @@ module.exports = (env) => {
     },
     entry: {
       index: ['./src/index', './src/components/header', './src/components/generator'],
-      schemes: ['./src/index', './src/components/header', './src/components/schemes'],
-      colors: ['./src/index', './src/components/header', './src/components/colors']
+      schemes: ['./src/index', './src/components/header', './src/components/grid/schemes'],
+      colors: ['./src/index', './src/components/header', './src/components/grid/colors']
     },
     optimization: {
       minimizer: [
