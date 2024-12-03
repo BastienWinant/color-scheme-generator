@@ -8,6 +8,8 @@ import { getSchemeBtn, requestColorScheme, getRandomScheme,
 import { displayColorScheme, displayErrorMessage } from './display'
 
 getSchemeBtn.addEventListener('click', async (e) => {
+  e.preventDefault()
+  
   // get a new color scheme from the API
   const schemeObj = await requestColorScheme()
   
@@ -26,8 +28,7 @@ const initializeDisplay = async () => {
 
   onAuthStateChanged(auth, async () => {
     // retrieve a scheme object from local storage or get a new random scheme
-    // const schemeObj = JSON.parse(localStorage.getItem('csg-scheme')) || await getRandomScheme()
-    const schemeObj = await getRandomScheme()
+    const schemeObj = JSON.parse(localStorage.getItem('csg-scheme')) || await getRandomScheme()
 
     if (schemeObj) {
       // fill in the form inputs explicitely
