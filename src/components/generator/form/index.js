@@ -17,21 +17,6 @@ export const getSchemeBtn = document.querySelector('#get-scheme-btn')
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
-// const schemeCreatePane = document.querySelector('#scheme-create-pane')
-// const formCollapseBtn = document.querySelector('#generator-form-collapse-btn')
-// const colorInput = document.querySelector('#color')
-// const modeDropdownBtn = document.querySelector('#mode-dropdown-btn')
-// const modeDropdownBtnText = document.querySelector('#mode-dropdown-btn-text')
-// const modeDropdown = document.querySelector('#mode-dropdown-options')
-// const modeDropdownOptions = document.querySelectorAll('.mode-dropdown-option input[type="radio"]')
-// const generatorColorCount = document.querySelector('#count')
-// export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
-// export const countIncreaseBtn = document.querySelector('#count-increase-btn')
-// export const getSchemeBtn = document.querySelector('#get-scheme-btn')
-
-// const newSchemeBtn = document.querySelector('#new-scheme-btn')
-// const saveSchemeBtn = document.querySelector('#save-scheme-btn')
-
 // fill the form input fields with fixed values
 export const fillFormInputs = (color, mode, count) => {
   seedInput.value = color
@@ -100,11 +85,6 @@ modeDropdownInputs.forEach(input => {
     updateModeDropdownBtn()
   })
 })
-
-// window.addEventListener('click', e => {
-//   if (e.target.closest('#mode-dropdown-btn')) toggleModeDropdown()
-//   else if (!e.target.closest('.mode-dropdown-option')) collapseModeDropdown()
-// })
 
 // COLOR COUNT
 countDecreaseBtn.addEventListener('click', () => {
