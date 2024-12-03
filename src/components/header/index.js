@@ -29,20 +29,20 @@ navLoginBtn.addEventListener('click', openLoginModal)
 navSignupBtn.addEventListener('click', openSignupModal)
 navLogoutBtn.addEventListener('click', logOut)
 
-window.addEventListener('resize', () => {
-  collapseNav()
-  collapseNavBtns()
-})
-
-window.addEventListener('click', e => {
-  if (e.target.closest('#nav-toggler')) {
+document.addEventListener('click', e => {
+  if (e.target.closest('.nav-toggler')) {
     toggleNav()
-  } else if (e.target.closest('#nav-btns-toggler')) {
+  } else if (e.target.closest('.nav-btns-toggler')) {
     toggleNavBtns()
   } else {
     collapseNav()
     collapseNavBtns()
   }
+})
+
+window.addEventListener('resize', () => {
+  collapseNav()
+  collapseNavBtns()
 })
 
 const showAuthState = (user) => {

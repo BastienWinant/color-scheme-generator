@@ -3,42 +3,56 @@ import { auth } from 'Src/app'
 import { openLoginModal } from 'Components/auth'
 import { writeNewScheme } from 'Src/db_utils'
 
+const closeCreatePaneBtn = document.querySelector('#close-create-pane-btn')
 const schemeCreatePane = document.querySelector('#scheme-create-pane')
-const formCollapseBtn = document.querySelector('#generator-form-collapse-btn')
-const colorInput = document.querySelector('#color')
+const seedInput = document.querySelector('#seed-input')
 const modeDropdownBtn = document.querySelector('#mode-dropdown-btn')
 const modeDropdownBtnText = document.querySelector('#mode-dropdown-btn-text')
-const modeDropdown = document.querySelector('#mode-dropdown-options')
-const modeDropdownOptions = document.querySelectorAll('.mode-dropdown-option input[type="radio"]')
-const generatorColorCount = document.querySelector('#count')
-export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
+const modeDropdownList = document.querySelector('#mode-dropdown-list')
+const modeDropdownInputs = document.querySelectorAll('.mode-dropdown-input')
+const colorCount = document.querySelector('#count')
 export const countIncreaseBtn = document.querySelector('#count-increase-btn')
+export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
 export const getSchemeBtn = document.querySelector('#get-scheme-btn')
-
 const newSchemeBtn = document.querySelector('#new-scheme-btn')
 const saveSchemeBtn = document.querySelector('#save-scheme-btn')
 
+// const schemeCreatePane = document.querySelector('#scheme-create-pane')
+// const formCollapseBtn = document.querySelector('#generator-form-collapse-btn')
+// const colorInput = document.querySelector('#color')
+// const modeDropdownBtn = document.querySelector('#mode-dropdown-btn')
+// const modeDropdownBtnText = document.querySelector('#mode-dropdown-btn-text')
+// const modeDropdown = document.querySelector('#mode-dropdown-options')
+// const modeDropdownOptions = document.querySelectorAll('.mode-dropdown-option input[type="radio"]')
+// const generatorColorCount = document.querySelector('#count')
+// export const countDecreaseBtn = document.querySelector('#count-decrease-btn')
+// export const countIncreaseBtn = document.querySelector('#count-increase-btn')
+// export const getSchemeBtn = document.querySelector('#get-scheme-btn')
+
+// const newSchemeBtn = document.querySelector('#new-scheme-btn')
+// const saveSchemeBtn = document.querySelector('#save-scheme-btn')
+
 // fill the form input fields with fixed values
 export const fillFormInputs = (color, mode, count) => {
-  colorInput.value = color
+  seedInput.value = color
 
   modeDropdownBtnText.innerText = mode
   modeDropdownBtn.value = mode
-  for (const modeInput of modeDropdownOptions) {
+  for (const modeInput of modeDropdownInputs) {
     if (modeInput.value === mode) {
       modeInput.checked = true
       break
     }
   }
 
-  generatorColorCount.innerText = count
-  generatorColorCount.dataset.value = count
+  colorCount.innerText = count
+  colorCount.dataset.value = count
 }
 
 const gatherFormInputs = () => {
-  const seedColor = colorInput.value
+  const seedColor = seedInput.value
   const schemeMode = modeDropdownBtn.value
-  const schemeCount = generatorColorCount.innerText
+  const schemeCount = colorCount.dataset.value
 
   return [seedColor, schemeMode, schemeCount]
 }
@@ -67,78 +81,89 @@ export const requestColorScheme = async () => {
 }
 
 // COLOR MODE
-const collapseModeDropdown = () => {
-  modeDropdown.classList.remove('dropdown-expanded')
+const collapseDropdownList = () => {
+  modeDropdownList.classList.remove('list-expanded')
 }
 
-const toggleModeDropdown = () => {
-  modeDropdown.classList.toggle('dropdown-expanded')
+const toggleDropdownList = () => {
+  modeDropdownList.classList.toggle('list-expanded')
 }
+modeDropdownBtn.addEventListener('click', toggleDropdownList)
 
-modeDropdownOptions.forEach(option => {
-  option.addEventListener('click', e => {
-    const mode = e.target.value
-    
-    modeDropdownBtnText.innerText = mode
-    modeDropdownBtn.value = mode
-
-    toggleModeDropdown()
+const updateModeDropdownBtn = () => {
+  const mode = document.querySelector('.mode-dropdown-input:checked').value
+  modeDropdownBtnText.textContent = mode
+  modeDropdownBtn.value = mode
+}
+modeDropdownInputs.forEach(input => {
+  input.addEventListener('click', e => {
+    updateModeDropdownBtn()
   })
 })
 
-window.addEventListener('click', e => {
-  if (e.target.closest('#mode-dropdown-btn')) toggleModeDropdown()
-  else if (!e.target.closest('.mode-dropdown-option')) collapseModeDropdown()
-})
+// window.addEventListener('click', e => {
+//   if (e.target.closest('#mode-dropdown-btn')) toggleModeDropdown()
+//   else if (!e.target.closest('.mode-dropdown-option')) collapseModeDropdown()
+// })
 
 // COLOR COUNT
 countDecreaseBtn.addEventListener('click', () => {
-  const currentCount = parseInt(generatorColorCount.dataset.value)
+  const currentCount = parseInt(colorCount.dataset.value)
   const newCount = currentCount - 1
 
-  generatorColorCount.dataset.value = newCount
-  generatorColorCount.innerText = newCount
+  colorCount.dataset.value = newCount
+  colorCount.innerText = newCount
 
   countIncreaseBtn.disabled = false
-  if (newCount <= 1) {
-    countDecreaseBtn.disabled = true
-  }
+  if (newCount <= 1) countDecreaseBtn.disabled = true
 })
 
 countIncreaseBtn.addEventListener('click', () => {
-  const currentCount = parseInt(generatorColorCount.dataset.value)
+  const currentCount = parseInt(colorCount.dataset.value)
   const newCount = currentCount + 1
 
-  generatorColorCount.dataset.value = newCount
-  generatorColorCount.innerText = newCount
+  colorCount.dataset.value = newCount
+  colorCount.innerText = newCount
 
   countDecreaseBtn.disabled = false
-  if (newCount >= 5) {
-    countIncreaseBtn.disabled = true
-  }
+  if (newCount >= 5) countIncreaseBtn.disabled = true
 })
 
 // expand/collapse the generator form
+// const expandGeneratorForm = () => {
+//   schemeCreatePane.classList.add('pane-displayed')
+
+//   setTimeout(() => {
+//     schemeCreatePane.classList.add('pane-visible')
+//   }, 100)
+// }
 const expandGeneratorForm = () => {
-  schemeCreatePane.classList.add('pane-displayed')
-
-  setTimeout(() => {
-    schemeCreatePane.classList.add('pane-visible')
-  }, 100)
+  schemeCreatePane.classList.add('pane-expanded')
 }
-
-export const collapseGeneratorForm = () => {
-  schemeCreatePane.classList.remove('pane-visible')
-
-  setTimeout(() => {
-    schemeCreatePane.classList.remove('pane-displayed')
-  }, 300)
-}
-
 newSchemeBtn.addEventListener('click', expandGeneratorForm)
-formCollapseBtn.addEventListener('click', collapseGeneratorForm)
+
+// export const collapseGeneratorForm = () => {
+//   schemeCreatePane.classList.remove('pane-visible')
+
+//   setTimeout(() => {
+//     schemeCreatePane.classList.remove('pane-displayed')
+//   }, 300)
+// }
+export const collapseGeneratorForm = () => {
+  collapseDropdownList()
+  schemeCreatePane.classList.remove('pane-expanded')
+}
+closeCreatePaneBtn.addEventListener('click', collapseGeneratorForm)
 
 // save the scheme objet from localstorage to database
+const showSaveMessage = () => {
+  saveSchemeBtn.innerHTML = `<i class="fa-solid fa-check fa-lg"></i>`
+
+  setTimeout(() => {
+    saveSchemeBtn.innerHTML = `save`
+  }, 750)
+}
+
 saveSchemeBtn.addEventListener('click', () => {
   const currentUser = auth.currentUser
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
@@ -146,6 +171,7 @@ saveSchemeBtn.addEventListener('click', () => {
   if (currentUser && schemeObj) {
     const userId = currentUser.uid
     writeNewScheme(userId, schemeObj)
+    showSaveMessage()
   } else {
     openLoginModal()
   }
@@ -158,8 +184,8 @@ const getRandomSeed = () => {
 }
 
 const getRandomMode = () => {
-  const randomIndex = Math.floor(Math.random() * modeDropdownOptions.length)
-  const randomMode = modeDropdownOptions[randomIndex].value
+  const randomIndex = Math.floor(Math.random() * modeDropdownInputs.length)
+  const randomMode = modeDropdownInputs[randomIndex].value
 
   return randomMode
 }

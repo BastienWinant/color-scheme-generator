@@ -1,35 +1,32 @@
 .auth-modal {
+  /* sizing */
   width: 90vw;
   max-width: 320px;
 
-  border-radius: 1em;
+  /* styling */
+  border-radius: 1.5em;
   border: none;
 }
 
 .auth-form {
   padding: 1.5em;
-  gap: .5em;
 }
 
-.auth-fieldset {
-  gap: 1.5em;
-  padding: 1em 0;
-  margin-bottom: 1em;
-  position: relative;
+.auth-input-group {
+  margin-top: 2em;
 }
 
-.auth-form-btn {
-  background-color: steelblue;
-  color: whitesmoke;
+.auth-btn {
+  margin-top: 1.5em;
+  background-color: #0066FF;
+  border: none;
+  color: white;
 }
 
-.auth-error-msg {
-  font-size: .875rem;
-  font-weight: 600;
-  text-align: center;
-  color: red;
-  width: 100%;
-
+.new-password-nav {
+  /* positioning */
   position: absolute;
-  bottom: -.5em;
+  top: 0;
+  right: 0;
+  margin: 0;
 }

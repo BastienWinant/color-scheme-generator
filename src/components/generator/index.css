@@ -1,21 +1,19 @@
 .generator-container {
-  flex-grow: 1;
+  /* sizing */
+  height: 100%;
+  width: 100%;
+
+  /* content layout */
   display: flex;
   flex-direction: column-reverse;
-  position: relative;
 
-  overflow: hidden;
-}
-
-@media only screen and (min-width: 576px) {
-  .generator-container {
-    flex-direction: row;
-  }
+  /* styling */
+  /* border: 3px solid yellow; */
 }
 
 @media only screen and (min-width: 768px) {
   .generator-container {
+    /* content layout */
     flex-direction: column;
-    align-items: center;
   }
 }

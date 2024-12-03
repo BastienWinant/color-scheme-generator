@@ -26,7 +26,8 @@ const initializeDisplay = async () => {
 
   onAuthStateChanged(auth, async () => {
     // retrieve a scheme object from local storage or get a new random scheme
-    const schemeObj = JSON.parse(localStorage.getItem('csg-scheme')) || await getRandomScheme()
+    // const schemeObj = JSON.parse(localStorage.getItem('csg-scheme')) || await getRandomScheme()
+    const schemeObj = await getRandomScheme()
 
     if (schemeObj) {
       // fill in the form inputs explicitely

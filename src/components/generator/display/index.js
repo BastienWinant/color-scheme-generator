@@ -13,38 +13,38 @@ const generateDisplayElements = async (colorsArr) => {
   const oneColor = colorsArr.length === 1
 
   return colorsArr.map(colorObj => {
-    const articleEl = document.createElement('article')
-    articleEl.classList.add('generator-display-color')
-    articleEl.dataset.hex = colorObj.hex.clean
+    const liEl = document.createElement('li')
+    liEl.classList.add('display-color')
+    liEl.dataset.hex = colorObj.hex.clean
+    liEl.dataset.name = colorObj.name.value
 
     // flag whether the current user has saved the color
     const colorSaved = userColorHexCodes.includes(colorObj.hex.clean)
-    articleEl.dataset.saved = colorSaved ? '1' : '0'
+    liEl.dataset.saved = colorSaved ? '1' : '0'
 
-    const colorClass = colorObj.contrast.value === '#000000' ? 'dark-text' : 'light-text'
-
-    articleEl.innerHTML = `
-      <div class="generator-display-color-container">
-        <div class="generator-display-color-details ${colorClass}">
-          <h2 class="generator-display-color-name">${colorObj.name.value}</h2>
-          <p class="generator-display-color-hex">${colorObj.hex.value}</p>
-        </div>
-        <div class="generator-display-color-btns">
-          <button type="button" class="generator-display-btn save-color-btn ${colorClass}">
+    liEl.innerHTML = `
+      <div class="display-color-container">
+        <hgroup class="display-color-info">
+          <h2 class="display-color-name">${colorObj.name.value}</h2>
+          <p class="display-color-hex">${colorObj.hex.value}</p>
+        </hgroup>
+        <div class="display-color-btns">
+          <button type="button" class="display-color-btn save-color-btn">
             ${colorSaved ? '<i class="fa-solid fa-heart"></i>' : '<i class="fa-regular fa-heart"></i>'}
           </button>
-          <button type="button" class="generator-display-btn remove-color-btn ${colorClass}" ${oneColor ? 'disabled' : ''}>
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-          <button type="button" class="generator-display-btn copy-color-btn ${colorClass}">
+          <button type="button" class="display-color-btn copy-color-btn">
             <i class="fa-solid fa-copy"></i>
+          </button>
+          <button type="button" class="display-color-btn remove-color-btn" ${oneColor ? 'disabled' : ''}>
+            <i class="fa-solid fa-trash"></i>
           </button>
         </div>
       </div>`
 
-    articleEl.style.backgroundColor = colorObj.hex.value
+    liEl.style.backgroundColor = colorObj.hex.value
+    liEl.style.color = colorObj.contrast.value
 
-    return articleEl
+    return liEl
   })
 }
 
@@ -80,14 +80,14 @@ const copySchemeColor = (displayColor) => {
 
 const displayCopyMessage = (displayColor) => {
   displayColor.innerHTML += `
-    <div class="copy-message">
+    <div class="display-color-overlay">
       <p>Copied!</p>
       <i class="fa-solid fa-check"></i>
     </div>`
-
+  
   setTimeout(() => {
-    displayColor.querySelector('.copy-message').remove()
-  }, 1000)
+    displayColor.querySelector('.display-color-overlay').remove()
+  }, 750)
 }
 
 export const displayErrorMessage = () => {
@@ -106,7 +106,7 @@ generatorDisplay.addEventListener('click', e => {
       // retrieve the id of the current user
       const userId = currentUser.uid
 
-      const displayColor = e.target.closest('.generator-display-color')
+      const displayColor = e.target.closest('.display-color')
       const saveBtn = displayColor.querySelector('.save-color-btn')
 
       if (displayColor.dataset.saved === '1') {
@@ -126,11 +126,11 @@ generatorDisplay.addEventListener('click', e => {
       openLoginModal() // open the login modal if the current used is not logged in
     }
   } else if (e.target.closest('.copy-color-btn')) {
-    const displayColor = e.target.closest('.generator-display-color')
+    const displayColor = e.target.closest('.display-color')
     copySchemeColor(displayColor) // copy the hex code to the clipboard
     displayCopyMessage(displayColor)
   } else if (e.target.closest('.remove-color-btn')) {
-    const displayColor = e.target.closest('.generator-display-color')
+    const displayColor = e.target.closest('.display-color')
     removeSchemeColor(schemeObj, displayColor) // remove the color from the display and update localStorage
   }
 })

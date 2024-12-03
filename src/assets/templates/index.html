@@ -5,224 +5,286 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="app-container">
     <header class="header">
-      <img class="header-logo" src=<%=require("../images/pantone.svg")%> />
-      <button type="button" class="nav-toggler" id="nav-toggler">
-        <img class="nav-toggler-img" src=<%=require("../images/menu-8.svg")%> />
+      <i class="fa-solid fa-palette fa-lg"></i>
+      <button type="button" class="nav-toggler">
+        <i class="fa-solid fa-bars fa-lg"></i>
       </button>
       <nav id="nav" class="nav">
-        <div id="nav-links" class="nav-links">
-          <a href="./index.html" class="nav-link">generator</a>
-          <a href="./schemes.html" class="nav-link">my schemes</a>
-          <a href="./colors.html" class="nav-link">my colors</a>
-        </div>
-        <button type="button" class="nav-btns-toggler" id="nav-btns-toggler">
-          <img class="nav-btns-toggler-img" src=<%=require("../images/user-c-frame.svg")%> />
-        </button>
+        <section class="nav-links">
+          <a href="#" class="nav-link">generator</a>
+          <a href="#" class="nav-link">schemes</a>
+          <a href="#" class="nav-link">colors</a>
+        </section>
         <hr class="nav-separator">
-        <div id="nav-btns" class="nav-btns">
-          <button id="nav-login-btn" class="nav-btn nav-login-btn">log in</button>
-          <button id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
-          <button id="nav-logout-btn" class="nav-btn nav-logout-btn">log out</button>
-        </div>
+        <button type="button" class="nav-btns-toggler">
+          <i class="fa-solid fa-circle-user fa-lg"></i>
+        </button>
+        <section id="nav-btns" class="nav-btns">
+          <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+          <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
+          <button type="button" id="nav-logout-btn" class="nav-btn nav-logout-btn">log out</button>
+        </section>
       </nav>
     </header>
+    <section class="hero">
+      <h1 class="hero-title">ShadeMaker</h1>
+      <p class="hero-page-name">Generator</p>
+    </section>
     <main>
-      <section id="hero" class="hero">
-        <h1 class="hero-title">ShadeMaker</h1>
-        <p class="hero-page-name"><%= htmlWebpackPlugin.options.title %></p>
-      </section>
       <div class="generator-container">
         <div class="generator-form-container">
-          <form id="generator-form" class="form generator-form">
+          <form method="post" id="generator-form" class="form generator-form">
             <fieldset id="scheme-create-pane" class="fieldset scheme-create-pane">
-              
-              <!-- close form button -->
-              <button type="button" id="generator-form-collapse-btn" class="close-form-btn generator-form-collapse-btn">
-                <i class="fa-solid fa-circle-xmark"></i>
+              <button type="button" id="close-create-pane-btn" class="close-form-btn close-create-pane-btn">
+                <i class="fa-solid fa-xmark fa-lg"></i>
               </button>
 
-              <!-- seed color -->
-              <label for="color" class="input-group generator-input-group seed-input-group">
-                <h2 class="input-label">seed</h2>
-                <input type="color" name="color" id="color" class="input-field color">
+              <label for="seed-input" class="input-group generator-input-group">
+                <h3 class="input-label">seed</h3>
+                <input type="color" name="seed" id="seed-input" class="input-field seed-input">
               </label>
-
-              <!-- color mode -->
-              <section class="input-group generator-input-group mode-input-group">
-                <h2 class="input-label">mode</h2>
+              <section class="input-group generator-input-group">
+                <h3 class="input-label">mode</h3>
                 <button type="button" id="mode-dropdown-btn" class="input-field mode-dropdown-btn">
-                  <p id="mode-dropdown-btn-text" class="mode-dropdown-btn-text">monochrome</p>
-                  <i class="fa-solid fa-chevron-down"></i>
+                  <p id="mode-dropdown-btn-text"></p>
+                  <i class="fa-solid fa-chevron-down fa-sm"></i>
                 </button>
-                <ul id="mode-dropdown-options" class="dropdown-options">
+                <ul id="mode-dropdown-list" class="mode-dropdown-list">
                   <li class="mode-dropdown-option">
-                    <input type="radio" name="mode" id="monochrome" value="monochrome" checked />
-                    <label for="monochrome">monochrome</label>
+                    <input type="radio" name="mode" id="monochrome" value="monochrome" class="mode-dropdown-input" checked />
+                    <label for="monochrome" class="mode-dropdown-label">monochrome</label>
                   </li>
                   <li class="mode-dropdown-option">
-                    <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" />
-                    <label for="monochrome-dark">monochrome-dark</label>
+                    <input type="radio" name="mode" id="monochrome-dark" value="monochrome-dark" class="mode-dropdown-input">
+                    <label for="monochrome-dark" class="mode-dropdown-label">monochrome-dark</label>
                   </li>
                   <li class="mode-dropdown-option">
-                    <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" />
-                    <label for="monochrome-light">monochrome-light</label>
+                    <input type="radio" name="mode" id="monochrome-light" value="monochrome-light" class="mode-dropdown-input">
+                    <label for="monochrome-light" class="mode-dropdown-label">monochrome-light</label>
                   </li>
                   <li class="mode-dropdown-option">
-                    <input type="radio" name="mode" id="analogic" value="analogic" />
-                    <label for="analogic">analogic</label>
+                    <input type="radio" name="mode" id="analogic" value="analogic" class="mode-dropdown-input">
+                    <label for="analogic" class="mode-dropdown-label">analogic</label>
                   </li>
                   <li class="mode-dropdown-option">
-                    <input type="radio" name="mode" id="complement" value="complement" />
-                    <label for="complement">complement</label>
+                    <input type="radio" name="mode" id="complement" value="complement" class="mode-dropdown-input">
+                    <label for="complement" class="mode-dropdown-label">complement</label>
                   </li>
                   <li class="mode-dropdown-option">
-                    <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" />
-                    <label for="analogic-complement">analogic-complement</label>
+                    <input type="radio" name="mode" id="analogic-complement" value="analogic-complement" class="mode-dropdown-input">
+                    <label for="analogic-complement" class="mode-dropdown-label">analogic-complement</label>
                   </li>
                 </ul>
               </section>
-
-              <!-- color count -->
-              <section class="input-group generator-input-group count-input-group">
-                <h2 class="input-label">count</h2>
-                <div class="input-field count-input-field">
+              <section class="input-group generator-input-group">
+                <h3 class="input-label">count</h3>
+                <div class="input-field count-input">
                   <button type="button" id="count-decrease-btn" class="count-btn">
                     <i class="fa-solid fa-minus"></i>
                   </button>
-                  <p id="count" class="count" data-value="5">5</p>
+                  <p id="count" data-value="5">5</p>
                   <button type="button" id="count-increase-btn" class="count-btn">
                     <i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </section>
-
-              <!-- submit -->
-              <button type="button" id="get-scheme-btn" class="form-btn get-scheme-btn">get scheme</button>
+              <button type="submit" id="get-scheme-btn" class="input-field form-btn get-scheme-btn">get</button>
             </fieldset>
             <fieldset id="scheme-ctrl-pane" class="fieldset scheme-ctrl-pane">
-              <button type="button" id="save-scheme-btn" class="form-btn scheme-ctrl-btn save-scheme-btn">save scheme</button>
-              <button type="button" id="new-scheme-btn" class="form-btn scheme-ctrl-btn new-scheme-btn">new scheme</button>
+              <button type="button" id="save-scheme-btn" class="input-field form-btn scheme-ctrl-btn save-scheme-btn">save</button>
+              <button type="button" id="new-scheme-btn" class="input-field form-btn scheme-ctrl-btn new-scheme-btn">new</button>
             </fieldset>
           </form>
         </div>
-        <div id="generator-display" class="generator-display">
-          <p class="generator-display-placeholder">Generating color scheme...</p>
-        </div>
+        <ul id="generator-display" class="generator-display">
+          <li class="display-color" data-name="Periwinkle" data-hex="#B2ABF2" style="background-color: #B2ABF2;">
+            <div class="display-color-container">
+              <hgroup class="display-color-info">
+                <h2 class="display-color-name">Periwinkle</h2>
+                <p class="display-color-hex">#B2ABF2</p>
+              </hgroup>
+              <div class="display-color-btns">
+                <button type="button" class="display-color-btn save-color-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button type="button" class="display-color-btn copy-color-btn">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+                <button type="button" class="display-color-btn remove-color-btn">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="display-color" data-name="Claret" data-hex="#89043D" style="background-color: #89043D; color: white">
+            <div class="display-color-container">
+              <hgroup class="display-color-info">
+                <h2 class="display-color-name">Claret</h2>
+                <p class="display-color-hex">#89043D</p>
+              </hgroup>
+              <div class="display-color-btns">
+                <button type="button" class="display-color-btn save-color-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button type="button" class="display-color-btn copy-color-btn">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+                <button type="button" class="display-color-btn remove-color-btn">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="display-color" data-name="Turquoise" data-hex="#2FE6DE" style="background-color: #2FE6DE;">
+            <div class="display-color-container">
+              <hgroup class="display-color-info">
+                <h2 class="display-color-name">Turquoise</h2>
+                <p class="display-color-hex">#2FE6DE</p>
+              </hgroup>
+              <div class="display-color-btns">
+                <button type="button" class="display-color-btn save-color-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button type="button" class="display-color-btn copy-color-btn">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+                <button type="button" class="display-color-btn remove-color-btn">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="display-color" data-name="Prussian Blue" data-hex="#1C3041" style="background-color: #1C3041; color: white;">
+            <div class="display-color-container">
+              <hgroup class="display-color-info">
+                <h2 class="display-color-name">Prussian Blue</h2>
+                <p class="display-color-hex">#1C3041</p>
+              </hgroup>
+              <div class="display-color-btns">
+                <button type="button" class="display-color-btn save-color-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button type="button" class="display-color-btn copy-color-btn">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+                <button type="button" class="display-color-btn remove-color-btn">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+          <li class="display-color" data-name="Aquamarine" data-hex="#18F2B2" style="background-color: #18F2B2;">
+            <div class="display-color-container">
+              <hgroup class="display-color-info">
+                <h2 class="display-color-name">Aquamarine</h2>
+                <p class="display-color-hex">#18F2B2</p>
+              </hgroup>
+              <div class="display-color-btns">
+                <button type="button" class="display-color-btn save-color-btn">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+                <button type="button" class="display-color-btn copy-color-btn">
+                  <i class="fa-solid fa-copy"></i>
+                </button>
+                <button type="button" class="display-color-btn remove-color-btn">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
     </main>
   </div>
-  
+
   <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="form auth-form">
-      <!-- close modal button -->
-      <button type="button" id="login-modal-close-btn" class="close-form-btn">
-        <i class="fa-solid fa-circle-xmark"></i>
+      <button type="button" id="close-login-modal-btn" class="close-form-btn">
+        <i class="fa-solid fa-xmark fa-lg"></i>
       </button>
-
       <fieldset id="login-fieldset" class="fieldset auth-fieldset">
-        <legend class="legend">
-          <h2>log in</h2>
+        <legend class="fieldset-legend">
+          <h2>Welcome back!</h2>
         </legend>
-
-        <!-- email -->
-        <label for="login-email" class="input-group">
+        <label for="login-email" class="input-group auth-input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="login-email" class="input-field" autofocus>
+          <input type="email" name="email" id="login-email" class="input-field" autofocus />
         </label>
-
-        <!-- password -->
-        <label for="login-password" class="input-group">
+        <label for="login-password" class="input-group auth-input-group">
           <h3 class="input-label">password</h3>
-          <input type="password" name="password" id="login-password" class="input-field">
-          <div class="auth-nav">
-            <p>Forgot password?</p>
-            <button type="button" id="new-password-btn" class="form-btn-inline">Reset it here</button>
+          <input type="password" name="password" id="login-password" class="input-field" />
+          <div class="auth-nav new-password-nav">
+            <button type="button" id="new-password-btn" class="auth-nav-btn">forgot password?</button>
           </div>
         </label>
-
-        <!-- submit -->
-        <button type="submit" id="login-btn" class="form-btn auth-form-btn login-btn">log in</button>
+        <button type="submit" id="login-btn" class="input-field form-btn auth-btn">log in</button>
       </fieldset>
-
       <div class="auth-nav">
-        <p>No account yet?</p>
-        <button type="button" id="to-signup-btn" class="form-btn-inline">Sign up</button>
+        <p>New here?</p>
+        <button type="button" id="to-signup-btn" class="auth-nav-btn">Sign up</button>
       </div>
     </form>
   </dialog>
 
-  <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="form auth-form">
-      <!-- close modal button -->
-      <button type="button" id="signup-modal-close-btn" class="close-form-btn">
-        <i class="fa-solid fa-circle-xmark"></i>
+      <button type="button" id="close-signup-modal-btn" class="close-form-btn">
+        <i class="fa-solid fa-xmark fa-lg"></i>
       </button>
-
       <fieldset id="signup-fieldset" class="fieldset auth-fieldset">
-        <legend class="legend">
-          <h2>sign up</h2>
+        <legend class="fieldset-legend">
+          <h2>Join us!</h2>
         </legend>
-
-        <!-- username -->
-        <label for="signup-username" class="input-group">
+        <label for="signup-username" class="input-group auth-input-group">
           <h3 class="input-label">username</h3>
-          <input type="text" name="username" id="signup-username" class="input-field" autofocus>
+          <input type="text" name="username" id="signup-username" class="input-field" autofocus />
         </label>
-
-        <!-- email -->
-        <label for="signup-email" class="input-group">
+        <label for="signup-email" class="input-group auth-input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="signup-email" class="input-field">
+          <input type="email" name="email" id="signup-email" class="input-field" />
         </label>
-
-        <!-- password -->
-        <label for="signup-password" class="input-group">
+        <label for="signup-password" class="input-group auth-input-group">
           <h3 class="input-label">password</h3>
           <input type="password" name="password" id="signup-password" class="input-field">
         </label>
-
-        <!-- submit -->
-        <button type="submit" id="signup-btn" class="form-btn auth-form-btn signup-btn">sign up</button>
+        <button type="submit" id="signup-btn" class="input-field form-btn auth-btn">sign up</button>
       </fieldset>
-
       <div class="auth-nav">
-        <p>Already have an account?</p>
-        <button type="button" id="to-login-btn" class="form-btn-inline">Log in</button>
+        <p>Have an account already?</p>
+        <button type="button" id="to-login-btn" class="auth-nav-btn">Log in</button>
       </div>
     </form>
   </dialog>
 
-  <!-- password reset modal -->
   <dialog id="reset-modal" class="auth-modal">
     <form method="post" id="reset-form" class="form auth-form">
-      <!-- close modal button -->
-      <button type="button" id="reset-modal-close-btn" class="close-form-btn">
-        <i class="fa-solid fa-circle-xmark"></i>
+      <button type="button" id="close-reset-modal-btn" class="close-form-btn">
+        <i class="fa-solid fa-xmark fa-lg"></i>
       </button>
-
       <fieldset id="reset-fieldset" class="fieldset auth-fieldset">
-        <legend class="legend">
-          <h2>reset password</h2>
+        <legend class="fieldset-legend">
+          <h2>Reset password</h2>
         </legend>
-
-        <!-- email -->
-        <label for="reset-email" class="input-group">
+        <label for="reset-email" class="input-group auth-input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="reset-email" class="input-field" autofocus>
+          <input type="email" name="email" id="reset-email" class="input-field" autofocus />
         </label>
-
-        <!-- submit -->
-        <button type="submit" id="reset-btn" class="form-btn auth-form-btn reset-btn">reset password</button>
+        <button type="submit" id="reset-btn" class="input-field form-btn auth-btn">Reset password</button>
       </fieldset>
       <div class="auth-nav">
-        <button type="button" id="cancel-reset-btn" class="form-btn-inline">Back to log in</button>
+        <button type="button" id="cancel-reset-btn" class="auth-nav-btn">Back to log in</button>
       </div>
     </form>
   </dialog>

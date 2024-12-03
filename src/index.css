@@ -1,32 +1,22 @@
-@font-face {
-  font-family: 'Inter';
-  src: url('./assets/fonts/Inter-VariableFont_opsz\,wght.ttf') format('truetype');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Knewave';
-  src: url('./assets/fonts/Knewave-Regular.ttf');
-  font-style: normal;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
   font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 
   user-select: none;
 }
 
 /* CSS SELECTORS */
-button {
-  display: block;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+body {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
 }
 
 img {
@@ -35,25 +25,30 @@ img {
   object-fit: cover;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
 dialog {
   margin: auto;
 }
 
-/* PAGE LAYOUT */
+/* APP LAYOUT */
 .app-container {
-  width: 100vw;
+  /* sizing */
   height: 100vh;
 
+  /* content layout */
   display: flex;
   flex-direction: column;
+
+  border: 2px solid blue;
 }
 
 main {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-
-  overflow-y: scroll;
 }
 
 /* HERO SECTION */
@@ -63,72 +58,88 @@ main {
 
 .hero-title {
   font-size: 2rem;
-  font-family: 'Knewave', serif;
-}
-
-.hero-page-name {
-  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 @media only screen and (min-height: 600px) {
   .hero {
-    flex: 0 0 25vh;
-    min-height: 6em;
-  
+    /* sizing */
+    height: 20vh;
+    min-height: 7em;
+
+    /* content layout */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2em;
-  }
-}
+    gap: 1em;
 
-@media only screen and (max-width: 767px) {
-  .hero {
+    /* styling */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
     z-index: 1;
-    box-shadow: 0 .25em .25em rgba(0, 0, 0, .25);
   }
 }
 
-/* DEFAULT FORM STYLES */
+@media only screen and (min-width: 768px) {
+  .hero {
+    box-shadow: none;
+  }
+}
+
+/* DEFAULT FORM STYLE */
 .form {
+  /* content layout */
   display: flex;
   flex-direction: column;
-  font-size: .875rem;
-}
-
-.fieldset {
-  display: flex;
-  flex-direction: column;
-  border: none;
-}
-
-.legend {
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-transform: capitalize;
 }
 
 .close-form-btn {
   align-self: flex-end;
 }
 
+.fieldset {
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  /* styling */
+  border: none;
+}
+
+.fieldset-legend {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 .input-group {
+  /* content layout */
   display: flex;
   flex-direction: column;
   gap: .5em;
+
   position: relative;
+
+  /* border: 2px solid black; */
 }
 
 .input-label {
+  font-size: .875rem;
+  font-weight: 500;
   text-transform: capitalize;
 }
 
 .input-field {
+  /* sizing */
   width: 100%;
-  flex: 0 0 3em;
+  height: 2.5em;
+
+  display: block;
+  padding: 0 1em;
+  
+  /* styling */
   border-radius: .5em;
-  padding: 0 .75em;
   border: 1px solid black;
 }
 
@@ -137,79 +148,30 @@ main {
 }
 
 .form-btn {
-  height: 3em;
-  padding: 0 1.5em;
-  border-radius: .5em;
-  
   text-transform: capitalize;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.form-btn-inline {
-  text-decoration: underline;
-  color: blue;
-  font-size: .75rem;
+.form-error-msg {
+  font-size: .875rem;
+  font-weight: 500;
+  text-align: center;
+  color: red;
+
+  width: 100%;
+  position: absolute;
+  bottom: -1.5em;
 }
 
 .auth-nav {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: .5em;
-  font-size: .75rem;
-}
-
-/* DEFAULT PLACEHOLDER STYLE */
-.grid-placeholder {
-  /* sizing */
-  width: 80vw;
-  max-width: 320px;
-  
-  /* content layout */
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-
-  /* positioning */
-  margin: auto;
-  position: relative;
-  top: -5vh;
-
-  text-align: center;
-  padding: 2em;
-  border-radius: 1em;
-  border: 1px solid black;
-}
-
-.grid-placeholder-btns {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1em;
-}
-
-.grid-placeholder-btn {
-  /* sizing */
-  flex: 1 0 8em;
-  padding: .75em .25em;
-
-  /* content layout */
-
-  /* text styling */
+  margin-top: 2em;
   font-size: .875rem;
-  text-transform: capitalize;
-  text-align: center;
-  font-weight: 500;
-  color: black;
-
-  /* styling */
-  border-radius: .5em;
-  
-  background-color: white;
-  border: 1px solid black;
 }
 
-.grid-signup-btn {
-  background-color: black;
-  color: white;
+.auth-nav-btn {
+  color: blue;
+  text-decoration: underline;
 }

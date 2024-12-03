@@ -6,18 +6,18 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, se
 
 const loginModal = document.querySelector('#login-modal')
 const loginForm = document.querySelector('#login-form')
+const closeLoginModalBtn = document.querySelector('#close-login-modal-btn')
 const loginFieldset = document.querySelector('#login-fieldset')
-const closeLoginBtn = document.querySelector('#login-modal-close-btn')
 const loginEmailInput = document.querySelector('#login-email')
 const loginPasswordInput = document.querySelector('#login-password')
 const loginBtn = document.querySelector('#login-btn')
-const newPasswordBtn = document.querySelector('#new-password-btn')
 const toSignupBtn = document.querySelector('#to-signup-btn')
+const newPasswordBtn = document.querySelector('#new-password-btn')
 
 const signupModal = document.querySelector('#signup-modal')
 const signupForm = document.querySelector('#signup-form')
+const closeSignupModalBtn = document.querySelector('#close-signup-modal-btn')
 const signupFieldset = document.querySelector('#signup-fieldset')
-const closeSignupBtn = document.querySelector('#signup-modal-close-btn')
 const signupUsernameInput = document.querySelector('#signup-username')
 const signupEmailInput = document.querySelector('#signup-email')
 const signupPasswordInput = document.querySelector('#signup-password')
@@ -26,8 +26,8 @@ const toLoginBtn = document.querySelector('#to-login-btn')
 
 const resetModal = document.querySelector('#reset-modal')
 const resetForm = document.querySelector('#reset-form')
+const closeResetModalBtn = document.querySelector('#close-reset-modal-btn')
 const resetFieldset = document.querySelector('#reset-fieldset')
-const closeResetBtn = document.querySelector('#reset-modal-close-btn')
 const resetEmailInput = document.querySelector('#reset-email')
 const resetBtn = document.querySelector('#reset-btn')
 const cancelResetBtn = document.querySelector('#cancel-reset-btn')
@@ -39,8 +39,7 @@ export const openLoginModal = () => {
 
 const clearLoginError = () => {
   try {
-    const errorMsg = loginForm.querySelector('.auth-error-msg')
-    errorMsg.remove()
+    loginFieldset.querySelector('.form-error-msg').remove()
   } catch {}
 }
 
@@ -52,7 +51,7 @@ const showLoginError = (error) => {
   
   loginFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p class="auth-error-msg">${errorMsg}</p>`
+    `<p class="form-error-msg">${errorMsg}</p>`
   )
 }
 
@@ -84,7 +83,7 @@ toSignupBtn.addEventListener('click', () => {
   openSignupModal()
 })
 
-closeLoginBtn.addEventListener('click', closeLoginModal)
+closeLoginModalBtn.addEventListener('click', closeLoginModal)
 
 // SIGNUP FUNCTIONALITY
 export const openSignupModal = () => {
@@ -93,8 +92,7 @@ export const openSignupModal = () => {
 
 const clearSignupError = () => {
   try {
-    const errorMsg = signupForm.querySelector('.auth-error-msg')
-    errorMsg.remove()
+    signupFieldset.querySelector('.form-error-msg').remove()
   } catch {}
 }
 
@@ -106,7 +104,7 @@ const showSignupError = (error) => {
 
   signupFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p class="auth-error-msg">${errorMsg}</p>`
+    `<p class="form-error-msg">${errorMsg}</p>`
   )
 }
 
@@ -147,7 +145,7 @@ toLoginBtn.addEventListener('click', () => {
   openLoginModal()
 })
 
-closeSignupBtn.addEventListener('click', closeSignupModal)
+closeSignupModalBtn.addEventListener('click', closeSignupModal)
 
 // LOGOUT FUNCTIONALITY
 export const logOut = async() => {
@@ -161,7 +159,7 @@ export const openResetModal = () => {
 
 const clearResetError = () => {
   try {
-    const errorMsg = resetForm.querySelector('.auth-error-msg')
+    const errorMsg = resetForm.querySelector('.form-error-msg')
     errorMsg.remove()
   } catch {}
 }
@@ -169,30 +167,33 @@ const clearResetError = () => {
 const showResetError = (error) => {
   clearResetError()
   clearResetSuccess()
+
+  let errorMsg = error.code
+  errorMsg = errorMsg.replace('/', ': ').replace('-', " ")
   
   resetFieldset.insertAdjacentHTML(
     'beforeend',
-    `<p class="auth-error-msg">${error.code}</p>`
+    `<p class="form-error-msg">${errorMsg}</p>`
   )
 }
 
 const clearResetSuccess = () => {
-  resetForm.reset()
+  // resetForm.reset()
 
-  try {
-    const successMsg = resetForm.querySelector('.auth-success-msg')
-    successMsg.remove()
-  } catch {}
+  // try {
+  //   const successMsg = resetForm.querySelector('.auth-success-msg')
+  //   successMsg.remove()
+  // } catch {}
 }
 
 const showResetSuccess = () => {
-  clearResetError()
-  clearResetSuccess()
+  // clearResetError()
+  // clearResetSuccess()
 
-  resetFieldset.insertAdjacentElement(
-    'beforeend'
-    `<p class="auth-success-message">Reset link sent!</p>`
-  )
+  // resetFieldset.insertAdjacentElement(
+  //   'beforeend'
+  //   `<p class="auth-success-message">Reset link sent!</p>`
+  // )
 }
 
 const closeResetModal = () => {
@@ -205,6 +206,7 @@ const closeResetModal = () => {
 
 resetBtn.addEventListener('click', async e => {
   e.preventDefault()
+
   const resetEmail = resetEmailInput.value
 
   sendPasswordResetEmail(auth, resetEmail)
@@ -217,7 +219,7 @@ cancelResetBtn.addEventListener('click', () => {
   openLoginModal()
 })
 
-closeResetBtn.addEventListener('click', closeResetModal)
+closeResetModalBtn.addEventListener('click', closeResetModal)
 
 window.addEventListener('click', e => {
   if (e.target.classList.contains('auth-modal')) {
