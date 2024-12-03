@@ -50,9 +50,13 @@
   gap: 2em;
 }
 
-.display-color-btn:hover,
-.display-color-btn:focus {
+.display-color-btn:hover {
   opacity: .5;
+}
+
+.display-color-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
 }
 
 .display-color-overlay {

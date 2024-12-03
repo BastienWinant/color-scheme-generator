@@ -184,3 +184,13 @@ export const getRandomScheme = async () => {
   
   return schemeObj
 }
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.generator-form')) {
+    collapseGeneratorForm()
+  } else if (!e.target.closest('.mode-dropdown-btn')) {
+    collapseDropdownList()
+  }
+})
+
+window.addEventListener('resize', collapseGeneratorForm)
