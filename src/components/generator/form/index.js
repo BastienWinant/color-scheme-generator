@@ -118,7 +118,13 @@ countIncreaseBtn.addEventListener('click', () => {
 //   }, 100)
 // }
 const expandGeneratorForm = () => {
-  schemeCreatePane.classList.add('pane-expanded')
+  // display the element in the document
+  schemeCreatePane.classList.add('pane-displayed')
+
+  // move the element into the window fold
+  setTimeout(() => {
+    schemeCreatePane.classList.add('pane-visible')
+  }, 100)
 }
 newSchemeBtn.addEventListener('click', expandGeneratorForm)
 
@@ -131,7 +137,13 @@ newSchemeBtn.addEventListener('click', expandGeneratorForm)
 // }
 export const collapseGeneratorForm = () => {
   collapseDropdownList()
-  schemeCreatePane.classList.remove('pane-expanded')
+  // move the element outside of the window fold
+  schemeCreatePane.classList.remove('pane-visible')
+
+  // turn off the element's display
+  setTimeout(() => {
+    schemeCreatePane.classList.remove('pane-displayed')
+  }, 300)
 }
 closeCreatePaneBtn.addEventListener('click', collapseGeneratorForm)
 
