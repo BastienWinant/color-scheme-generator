@@ -168,7 +168,7 @@ const showResetError = (error) => {
   clearResetError()
   clearResetSuccess()
 
-  let errorMsg = error.code
+  let errorMsg = error.code || error.message
   errorMsg = errorMsg.replace('/', ': ').replace('-', " ")
   
   resetFieldset.insertAdjacentHTML(
@@ -178,22 +178,22 @@ const showResetError = (error) => {
 }
 
 const clearResetSuccess = () => {
-  // resetForm.reset()
+  resetForm.reset()
 
-  // try {
-  //   const successMsg = resetForm.querySelector('.auth-success-msg')
-  //   successMsg.remove()
-  // } catch {}
+  try {
+    const successMsg = resetForm.querySelector('.form-success-msg')
+    successMsg.remove()
+  } catch {}
 }
 
 const showResetSuccess = () => {
-  // clearResetError()
-  // clearResetSuccess()
+  clearResetError()
+  clearResetSuccess()
 
-  // resetFieldset.insertAdjacentElement(
-  //   'beforeend'
-  //   `<p class="auth-success-message">Reset link sent!</p>`
-  // )
+  resetFieldset.insertAdjacentHTML(
+    'beforeend',
+    `<p class="form-success-msg">Reset link sent!</p>`
+  )
 }
 
 const closeResetModal = () => {
