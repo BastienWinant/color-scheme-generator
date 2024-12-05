@@ -124,7 +124,8 @@
   .nav-link {
     /* sizing */
     height: 2.5em;
-    flex: 7em;
+    width: auto;
+    padding: 0 1em;
   }
 
   .nav-separator {

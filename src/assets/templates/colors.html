@@ -5,147 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/8b3af6f949.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="app-container">
     <header class="header">
-      <img class="header-logo" src=<%=require("../images/pantone.svg")%> />
-      <button type="button" class="nav-toggler" id="nav-toggler">
-        <img class="nav-toggler-img" src=<%=require("../images/menu-8.svg")%> />
+      <i class="fa-solid fa-palette fa-lg"></i>
+      <button type="button" class="nav-toggler">
+        <i class="fa-solid fa-bars fa-lg"></i>
       </button>
       <nav id="nav" class="nav">
-        <div id="nav-links" class="nav-links">
+        <section class="nav-links">
           <a href="./index.html" class="nav-link">generator</a>
-          <a href="./schemes.html" class="nav-link">my schemes</a>
-          <a href="./colors.html" class="nav-link">my colors</a>
-        </div>
-        <button type="button" class="nav-btns-toggler" id="nav-btns-toggler">
-          <img class="nav-btns-toggler-img" src=<%=require("../images/user-c-frame.svg")%> />
-        </button>
+          <a href="./schemes.html" class="nav-link">schemes</a>
+          <a href="./colors.html" class="nav-link">colors</a>
+        </section>
         <hr class="nav-separator">
-        <div id="nav-btns" class="nav-btns">
-          <button id="nav-login-btn" class="nav-btn nav-login-btn">log in</button>
-          <button id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
-          <button id="nav-logout-btn" class="nav-btn nav-logout-btn">log out</button>
-        </div>
+        <button type="button" class="nav-btns-toggler">
+          <i class="fa-solid fa-circle-user fa-lg"></i>
+        </button>
+        <section id="nav-btns" class="nav-btns">
+          <button type="button" id="nav-login-btn" class="nav-btn">log in</button>
+          <button type="button" id="nav-signup-btn" class="nav-btn nav-signup-btn">sign up</button>
+          <button type="button" id="nav-logout-btn" class="nav-btn nav-logout-btn">log out</button>
+        </section>
       </nav>
     </header>
+    <section class="hero">
+      <h1 class="hero-title">ShadeMaker</h1>
+      <p class="hero-page-name">Generator</p>
+    </section>
     <main>
-      <section id="hero" class="hero">
-        <h1 class="hero-title">ShadeMaker</h1>
-        <p class="hero-page-name"><%= htmlWebpackPlugin.options.title %></p>
-      </section>
-      <div id="color-grid" class="grid"></div>
+      
     </main>
   </div>
-  
+
   <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="form auth-form">
-      <!-- close modal button -->
-      <button type="button" id="login-modal-close-btn" class="close-form-btn">
-        <i class="fa-solid fa-circle-xmark"></i>
+      <button type="button" id="close-login-modal-btn" class="close-form-btn">
+        <i class="fa-solid fa-xmark fa-lg"></i>
       </button>
-
       <fieldset id="login-fieldset" class="fieldset auth-fieldset">
-        <legend class="legend">
-          <h2>log in</h2>
+        <legend class="fieldset-legend">
+          <h2>Welcome back!</h2>
         </legend>
-
-        <!-- email -->
-        <label for="login-email" class="input-group">
+        <label for="login-email" class="input-group auth-input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="login-email" class="input-field" autofocus>
+          <input type="email" name="email" id="login-email" class="input-field" autofocus />
         </label>
-
-        <!-- password -->
-        <label for="login-password" class="input-group">
+        <label for="login-password" class="input-group auth-input-group">
           <h3 class="input-label">password</h3>
-          <input type="password" name="password" id="login-password" class="input-field">
-          <div class="auth-nav">
-            <p>Forgot password?</p>
-            <button type="button" id="new-password-btn" class="form-btn-inline">Reset it here</button>
+          <input type="password" name="password" id="login-password" class="input-field" />
+          <div class="auth-nav new-password-nav">
+            <button type="button" id="new-password-btn" class="auth-nav-btn">forgot password?</button>
           </div>
         </label>
-
-        <!-- submit -->
-        <button type="submit" id="login-btn" class="form-btn auth-form-btn login-btn">log in</button>
+        <button type="submit" id="login-btn" class="input-field form-btn auth-btn">log in</button>
       </fieldset>
-
       <div class="auth-nav">
-        <p>No account yet?</p>
-        <button type="button" id="to-signup-btn" class="form-btn-inline">Sign up</button>
+        <p>New here?</p>
+        <button type="button" id="to-signup-btn" class="auth-nav-btn">Sign up</button>
       </div>
     </form>
   </dialog>
 
-  <!-- signup modal -->
   <dialog id="signup-modal" class="auth-modal">
     <form method="post" id="signup-form" class="form auth-form">
-      <!-- close modal button -->
-      <button type="button" id="signup-modal-close-btn" class="close-form-btn">
-        <i class="fa-solid fa-circle-xmark"></i>
+      <button type="button" id="close-signup-modal-btn" class="close-form-btn">
+        <i class="fa-solid fa-xmark fa-lg"></i>
       </button>
-
       <fieldset id="signup-fieldset" class="fieldset auth-fieldset">
-        <legend class="legend">
-          <h2>sign up</h2>
+        <legend class="fieldset-legend">
+          <h2>Join us!</h2>
         </legend>
-
-        <!-- username -->
-        <label for="signup-username" class="input-group">
+        <label for="signup-username" class="input-group auth-input-group">
           <h3 class="input-label">username</h3>
-          <input type="text" name="username" id="signup-username" class="input-field" autofocus>
+          <input type="text" name="username" id="signup-username" class="input-field" autofocus />
         </label>
-
-        <!-- email -->
-        <label for="signup-email" class="input-group">
+        <label for="signup-email" class="input-group auth-input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="signup-email" class="input-field">
+          <input type="email" name="email" id="signup-email" class="input-field" />
         </label>
-
-        <!-- password -->
-        <label for="signup-password" class="input-group">
+        <label for="signup-password" class="input-group auth-input-group">
           <h3 class="input-label">password</h3>
           <input type="password" name="password" id="signup-password" class="input-field">
         </label>
-
-        <!-- submit -->
-        <button type="submit" id="signup-btn" class="form-btn auth-form-btn signup-btn">sign up</button>
+        <button type="submit" id="signup-btn" class="input-field form-btn auth-btn">sign up</button>
       </fieldset>
-
       <div class="auth-nav">
-        <p>Already have an account?</p>
-        <button type="button" id="to-login-btn" class="form-btn-inline">Log in</button>
+        <p>Have an account already?</p>
+        <button type="button" id="to-login-btn" class="auth-nav-btn">Log in</button>
       </div>
     </form>
   </dialog>
 
-  <!-- password reset modal -->
   <dialog id="reset-modal" class="auth-modal">
     <form method="post" id="reset-form" class="form auth-form">
-      <!-- close modal button -->
-      <button type="button" id="reset-modal-close-btn" class="close-form-btn">
-        <i class="fa-solid fa-circle-xmark"></i>
+      <button type="button" id="close-reset-modal-btn" class="close-form-btn">
+        <i class="fa-solid fa-xmark fa-lg"></i>
       </button>
-
       <fieldset id="reset-fieldset" class="fieldset auth-fieldset">
-        <legend class="legend">
-          <h2>reset password</h2>
+        <legend class="fieldset-legend">
+          <h2>Reset password</h2>
         </legend>
-
-        <!-- email -->
-        <label for="reset-email" class="input-group">
+        <label for="reset-email" class="input-group auth-input-group">
           <h3 class="input-label">email</h3>
-          <input type="email" name="email" id="reset-email" class="input-field" autofocus>
+          <input type="email" name="email" id="reset-email" class="input-field" autofocus />
         </label>
-
-        <!-- submit -->
-        <button type="submit" id="reset-btn" class="form-btn auth-form-btn reset-btn">reset password</button>
+        <button type="submit" id="reset-btn" class="input-field form-btn auth-btn">Reset password</button>
       </fieldset>
       <div class="auth-nav">
-        <button type="button" id="cancel-reset-btn" class="form-btn-inline">Back to log in</button>
+        <button type="button" id="cancel-reset-btn" class="auth-nav-btn">Back to log in</button>
       </div>
     </form>
   </dialog>
