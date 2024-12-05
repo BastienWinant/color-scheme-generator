@@ -145,6 +145,12 @@
   flex-grow: 1;
 }
 
+.new-scheme-btn,
+.get-scheme-btn {
+  background-color: black;
+  color: white;
+}
+
 @media only screen and (min-width: 768px) {
   .generator-form-container {
     box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
