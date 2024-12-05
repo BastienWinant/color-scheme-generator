@@ -7,57 +7,37 @@ import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const colorGrid = document.querySelector('#color-grid')
 
-const showEmptyGridCard = () => {
+const showAuthPlaceholder = () => {
   colorGrid.innerHTML = `
-    <div class="card placeholder-card">
-      <p>It's looking a little dull in here...</p>
-      <a href="./index.html" class="card-link">Let's add some color!</a>
-    </div>`
-}
-
-const showGridAuthCard = () => {
-  colorGrid.innerHTML = `
-    <div class="card placeholder-card">
-      <p>We can't show you what you like if we don't know wo you are...</p>
-      <div class="card-btns">
-        <button type="button" class="card-btn card-login-btn">log in</button>
-        <button type="button" class="card-btn card-signup-btn">sign up</button>
+    <div class="grid-placeholder">
+      <p class="grid-placeholder-text">Tell us who you are and we'll paint your rainbow...</p>
+      <div class="grid-placeholder-btns">
+        <button class="grid-placeholder-btn grid-login-btn" type="button">log in</button>
+        <button class="grid-placeholder-btn grid-signup-btn" type="button">sign up</button>
       </div>
     </div>`
 }
 
-colorGrid.addEventListener('click', e => {
-  if (e.target.classList.contains('card-copy-btn')) {
-    const cardEl = e.target.closest('.card')
-    const hex = cardEl.dataset.hex
-    navigator.clipboard.writeText(`#${hex}`)
-  } else if (e.target.classList.contains('card-delete-btn')) {
-    const cardEl = e.target.closest('.card')
-    const hex = cardEl.dataset.hex
-    const uid = auth.currentUser.uid
-    deleteColor(hex, uid)
-    updateColorGrid()
-  } else if (e.target.classList.contains('card-login-btn')) {
-    openLoginModal()
-  } else if (e.target.classList.contains('card-signup-btn')) {
-    openSignupModal()
-  }
-})
+const showNoDataPlaceholder = () => {
+  colorGrid.innerHTML = `
+    <div class="grid-placeholder">
+      <p class="grid-placeholder-text">It's looking a little bland in here...</p>
+      <a href="./index.html" class="grid-placeholder-link">
+        <i class="fa-solid fa-circle-plus"></i>
+        <p>Let's add some color!</p>
+      </a>
+    </div>`
+}
 
 const renderColorGrid = (userColors) => {
   colorGrid.innerHTML = Object.values(userColors).map(colorObj => {
     return `
-      <figure class="card" data-name="${colorObj.name.value}" data-hex="${colorObj.hex.clean}">
-        <img class="card-img" src="${colorObj.image.bare}" alt="Color hue" />
-        <figcaption class="card-caption">
-          <div class="card-body">
-            <h2 class="card-title">${colorObj.name.value}</h2>
-            <p class="card-subtitle">${colorObj.hex.value}</p>
-          </div>
-          <div class="card-btns">
-            <button type="button" class="card-btn card-copy-btn">copy</button>
-            <button type="button" class="card-btn card-delete-btn">delete</button>
-          </div>
+      <figure class="card" data-hex="${colorObj.hex.clean}">
+        <img src="${colorObj.image.bare}" class="card-img" />
+        <figcaption class="card-body">
+          <h2 class="card-title">${colorObj.name.value}</h2>
+          <button type="button" class="card-view-btn">view</button>
+          <button type="button" class="card-delete-btn">delete</button>
         </figcaption>
       </figure>`
   }).join('\n')
@@ -69,16 +49,31 @@ const updateColorGrid = async () => {
   if (Object.keys(userColors).length) {
     renderColorGrid(userColors)
   } else {
-    showEmptyGridCard()
+    showNoDataPlaceholder()
   }
 }
+
+colorGrid.addEventListener('click', e => {
+  if (e.target.classList.contains('card-delete-btn')) {
+    const userId = auth.currentUser.uid
+    const colorHex = e.target.closest('.card').dataset.hex
+    deleteColor(colorHex, userId)
+    updateColorGrid()
+  } else if (e.target.classList.contains('card-view-btn')) {
+    console.log('viewing')
+  } else if (e.target.classList.contains('grid-login-btn')) {
+    openLoginModal()
+  } else if (e.target.classList.contains('grid-signup-btn')) {
+    openSignupModal()
+  }
+})
 
 const monitorAuthState = async () => {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       updateColorGrid()
     } else {
-      showGridAuthCard()
+      showAuthPlaceholder()
     }
   })
 }

@@ -1,77 +1,118 @@
-.grid {
+.grid-container {
+  /* sizing */
+  height: 100%;
   width: 100%;
-  max-width: 992px;
-  /* max-height: 100%; */
-  
-  align-self: center;
 
+  /* styling */
+  background-color: #E8ECF4;
+}
+
+.grid {
+  /* sizing */
+  max-width: 992px;
+  margin: auto;
+  min-height: 100%;
+
+  /* content layout */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
-  grid-template-rows: 1fr;
-  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+  grid-auto-rows: minmax(18em, 1fr);
+  gap: 2em;
   padding: 3em 1em;
 }
 
 .card {
+  /* content layout */
   display: flex;
   flex-direction: column;
-  gap: .5em;
-  padding: .5em;
+  gap: 1em;
+  padding: .5em .5em 1em;
 
-  border-radius: .5em;
-
-  border: 1px solid lightgrey;
+  /* styling */
+  background-color: white;
+  border-radius: 1em;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .15);
 }
 
 .card-img {
-  height: 10em;
+  /* sizing */
+  width: 100%;
+  height: 16em;
+
+  /* styling */
+  border-radius: .5em;
+}
+
+.card-body {
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.card-title {
+  font-weight: 600;
+  text-align: center;
+}
+
+.card-view-btn {
+  padding: .5em 2em;
+  background-color: orangered;
+  color: white;
   border-radius: .25em;
 }
 
-.card-caption {
+.card-delete-btn {
+  font-size: .875rem;
+  color: lightgray;
+}
+
+.grid-placeholder {
+  /* sizing */
+  width: 90vw;
+  max-width: 320px;
+  margin: auto;
+
+  /* content layout */
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
-  padding: .125em;
+  gap: 2em;
+  padding: 2em;
+
+  /* styling */
+  background-color: white;
+  border-radius: 1em;
+  line-height: 1.5;
 }
 
-.card-subtitle {
-  font-size: .875rem;
-  font-style: italic;
-  padding-top: .25em;
-}
-
-.card-btns {
+.grid-placeholder-btns {
+  /* content layout */
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
   gap: .5em;
 }
 
-.card-btn {
-  flex: 1 0 4em;
+.grid-placeholder-btn {
+  flex-grow: 1;
   height: 2.5em;
-  border-radius: .25em;
-
+  padding: 0 1em;
+  border-radius: .5em;
+  border: 1px solid black;
   text-transform: capitalize;
   font-weight: 500;
 }
 
-.card-copy-btn {
+.grid-placeholder-link {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.grid-signup-btn {
   background-color: black;
   color: white;
-}
-
-.placeholder-card {
-  margin: auto;
-  width: 100%;
-  max-width: 20em;
-  gap: 2em;
-  line-height: 1.5em;
-}
-
-.card-signup-btn,
-.card-login-btn {
-  border: 1px solid black;
 }

@@ -94,7 +94,7 @@ export const displayErrorMessage = () => {
   generatorDisplay.innerHTML = '<p class="generator-display-error">The generator was not very inspired this time.<br />Try again?</p>'
 }
 
-// handle clicks on color display cards
+// handle clicks on on the display
 generatorDisplay.addEventListener('click', e => {
   const schemeObj = JSON.parse(localStorage.getItem('csg-scheme'))
 
