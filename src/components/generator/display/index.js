@@ -62,6 +62,11 @@ const removeSchemeColor = (schemeObj, displayColor) => {
   schemeObj.colors = schemeObj.colors.filter(color => color.hex.clean !== hex)
   schemeObj.count = schemeObj.colors.length
 
+  const bareUrl = `https://www.thecolorapi.com/scheme?format=svg&named=false&hex=${schemeObj.seed.hex.clean}&mode=${schemeObj.mode}&count=${schemeObj.count}`
+  const namedUrl = `https://www.thecolorapi.com/scheme?format=svg&hex=${schemeObj.seed.hex.clean}&mode=${schemeObj.mode}&count=${schemeObj.count}`
+  schemeObj.image.bare = bareUrl
+  schemeObj.image.named = namedUrl
+
   // ensure the display is in sync with the localStorage object
   localStorage.setItem('csg-scheme', JSON.stringify(schemeObj))
   displayColor.remove()
