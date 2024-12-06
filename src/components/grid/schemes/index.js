@@ -58,8 +58,8 @@ const updateSchemeGrid = async () => {
 schemeGrid.addEventListener('click', e => {
   if (e.target.classList.contains('card-delete-btn')) {
     const userId = auth.currentUser.uid
-    const colorHex = e.target.closest('.card').dataset.hex
-    deleteScheme(colorHex, userId)
+    const schemeKey = e.target.closest('.card').dataset.id
+    deleteScheme(schemeKey, userId)
     updateSchemeGrid()
   } else if (e.target.classList.contains('card-view-btn')) {
     console.log('viewing')

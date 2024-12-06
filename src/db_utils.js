@@ -73,7 +73,7 @@ export function writeNewScheme(uid, schemeObj) {
 // remove a user scheme from the database
 export const deleteScheme = async (key, uid) => {
   try {
-    const schemeRef = child(ref(db), `/user-colors/${uid}/${key}`)
+    const schemeRef = child(ref(db), `/user-schemes/${uid}/${key}`)
     remove(schemeRef)
   } catch {}
 }
