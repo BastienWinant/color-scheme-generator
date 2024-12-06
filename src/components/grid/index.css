@@ -15,8 +15,9 @@
 
   /* content layout */
   display: grid;
-  justify-content: space-evenly;
-  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  align-items: start;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 12em));
   grid-auto-rows: auto;
   gap: 2em;
   padding: 3em 1em;
@@ -38,6 +39,7 @@
 .card-img {
   /* styling */
   border-radius: .5em;
+  height: 15em;
 }
 
 .card-body {
