@@ -71,7 +71,8 @@
   /* sizing */
   width: 90vw;
   max-width: 320px;
-  margin: auto;
+  align-self: center;
+  justify-self: center;
 
   /* content layout */
   display: flex;
