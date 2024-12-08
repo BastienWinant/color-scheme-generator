@@ -1,6 +1,36 @@
 import { ref, set, child, get, remove, push, update } from 'firebase/database'
 import { auth, db } from 'Src/app'
 
+export const getColor = async (hex) => {
+  try {
+    const colorRef = child(ref(db), `/colors/${hex}`)
+    const snapshot = await get(colorRef)
+
+    if (snapshot.exists()) {
+      return snapshot.val()
+    } else {
+      return {}
+    }
+  } catch {
+    return {}
+  }
+}
+
+export const getScheme = async (key) => {
+  try {
+    const schemeRef = child(ref(db), `/schemes/${key}`)
+    const snapshot = await get(schemeRef)
+
+    if (snapshot.exists()) {
+      return snapshot.val()
+    } else {
+      return {}
+    }
+  } catch {
+    return {}
+  }
+}
+
 export const getUserColors = async () => {
   const currentUser = auth.currentUser
   if (currentUser) {
