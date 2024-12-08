@@ -50,6 +50,37 @@
     </main>
   </div>
 
+  <!-- scheme modal -->
+  <dialog id="scheme-modal" class="scheme-modal">
+    <figure class="scheme-modal-figure">
+      <img src="https://images.unsplash.com/photo-1724527758754-a1a5ac2860ed?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D" alt="Scheme colors" id="scheme-modal-img" class="scheme-modal-img">
+      <figcaption id="scheme-modal-colors" class="scheme-modal-colors">
+      </figcaption>
+    </figcaption>
+  </dialog>
+
+  <!-- color modal -->
+  <dialog id="color-modal" class="color-modal">
+    <img id="color-modal-img" class="color-modal-img" alt="Color image.">
+    <div class="color-modal-body">
+      <h2 id="color-modal-name" class="color-modal-name">Tory Blue</h2>
+      <section class="color-modal-codes">
+        <div class="color-modal-code">
+          <p id="color-modal-hex" class="color-modal-hex">#174CB4</p>
+          <button type="button" id="copy-hex-btn" class="color-modal-btn copy-hex-btn" value="174CB4">copy</button>
+        </div>
+        <div class="color-modal-code">
+          <p id="color-modal-rgb" class="color-modal-rgb">23, 76, 180</p>
+          <button type="button" id="copy-rgb-btn" class="color-modal-btn copy-rgb-btn" value="23, 76, 180">copy</button>
+        </div>
+        <div class="color-modal-code">
+          <p id="color-modal-hsl" class="color-modal-hsl">220°, 77%, 40%</p>
+          <button type="button" id="copy-hsl-btn" class="color-modal-btn copy-hsl-btn" value="220°, 77%, 40%">copy</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
   <!-- login modal -->
   <dialog id="login-modal" class="auth-modal">
     <form method="post" id="login-form" class="form auth-form">

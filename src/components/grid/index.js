@@ -1,4 +1,4 @@
-import { getColor } from 'Src/db_utils'
+import { getColor, getScheme } from 'Src/db_utils'
 
 const colorModal = document.querySelector('#color-modal')
 const colorModalImg = document.querySelector('#color-modal-img')
@@ -11,6 +11,8 @@ const copyRGBBtn = document.querySelector('#copy-rgb-btn')
 const copyHSLBtn = document.querySelector('#copy-hsl-btn')
 
 const schemeModal = document.querySelector('#scheme-modal')
+const schemeModalImg = document.querySelector('#scheme-modal-img')
+const schemeModalColors = document.querySelector('#scheme-modal-colors')
 
 // GRID PLACEHOLDERS
 export const showAuthPlaceholder = (gridContainer) => {
@@ -58,4 +60,27 @@ export const openColorModal = () => {
 
 export const closeColorModal = () => {
   colorModal.close()
+}
+
+// SCHEME MODAL
+export const openSchemeModal = () => {
+  schemeModal.showModal()
+}
+
+export const closeSchemeModal = () => {
+  schemeModal.close()
+}
+
+export const updateSchemeModal = async (key) => {
+  const schemeObj = await getScheme(key)
+  
+  schemeModalImg.src = schemeObj.image.bare
+
+  schemeModalColors.innerHTML = schemeObj.colors.map(colorObj => {
+    return `
+      <section class="scheme-modal-color">
+        <p>${colorObj.name.value}</p>
+        <button type="button" class="scheme-modal-btn" value="${colorObj.hex.clean}">view</button>
+      </section>`
+  }).join('\n')
 }
