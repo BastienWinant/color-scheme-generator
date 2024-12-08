@@ -2,7 +2,7 @@ import '../index.css'
 
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'Src/app'
-import { getUserColors, deleteColor } from 'Src/db_utils'
+import { getUserColors, deleteColor, getColor } from 'Src/db_utils'
 import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const colorGrid = document.querySelector('#color-grid')
@@ -54,31 +54,39 @@ const updateColorGrid = async () => {
   }
 }
 
-const updateColorModal = () => {
-  // retrieve the color object
-  // set colorModalName
-  // set colorModalHex
-  // set colorModeRGB
-  // set colorModeHSL
+const updateColorModal = async (hex) => {
+  const colorObj = await getColor(hex)
+  
+  document.querySelector('#color-modal-img').src = colorObj.image.bare
+  document.querySelector('#color-modal-name').textContent = colorObj.name.value
+
+  document.querySelector('#color-modal-hex').textContent = colorObj.hex.value
+  document.querySelector('#copy-hex-btn').value = colorObj.hex.value
+
+  document.querySelector('#color-modal-rgb').textContent = colorObj.rgb.value
+  document.querySelector('#copy-rgb-btn').value = colorObj.rgb.value
+
+  document.querySelector('#color-modal-hsl').textContent = colorObj.hsl.value
+  document.querySelector('#copy-hsl-btn').value = colorObj.hsl.value
 }
 
 const openColorModal = () => {
   colorModal.showModal()
 }
-openColorModal()
 
 const closeColorModal = () => {
   colorModal.close()
 }
 
-colorGrid.addEventListener('click', e => {
+colorGrid.addEventListener('click', async e => {
   if (e.target.classList.contains('card-delete-btn')) {
     const userId = auth.currentUser.uid
     const colorHex = e.target.closest('.card').dataset.hex
     deleteColor(colorHex, userId)
     updateColorGrid()
   } else if (e.target.classList.contains('card-view-btn')) {
-    updateColorModal()
+    const hex = e.target.closest('.card').dataset.hex
+    await updateColorModal(hex)
     openColorModal()
   } else if (e.target.classList.contains('grid-login-btn')) {
     openLoginModal()
