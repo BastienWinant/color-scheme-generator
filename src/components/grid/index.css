@@ -20,7 +20,7 @@
   grid-template-columns: repeat(auto-fit, minmax(10em, 12em));
   grid-auto-rows: auto;
   gap: 2em;
-  padding: 3em 1em;
+  padding: 2em 1em;
 }
 
 .card {

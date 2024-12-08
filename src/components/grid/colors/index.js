@@ -2,33 +2,33 @@ import '../index.css'
 
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'Src/app'
-import { getUserColors, deleteColor, getColor } from 'Src/db_utils'
+import { getUserColors, deleteColor } from 'Src/db_utils'
 import { openLoginModal, openSignupModal } from 'Components/auth'
+import { showAuthPlaceholder, showNoDataPlaceholder, updateColorModal, openColorModal, closeColorModal } from 'Components/grid'
 
 const colorGrid = document.querySelector('#color-grid')
-const colorModal = document.querySelector('#color-modal')
 
-const showAuthPlaceholder = () => {
-  colorGrid.innerHTML = `
-    <div class="grid-placeholder">
-      <p class="grid-placeholder-text">Tell us who you are and we'll paint your rainbow...</p>
-      <div class="grid-placeholder-btns">
-        <button class="grid-placeholder-btn grid-login-btn" type="button">log in</button>
-        <button class="grid-placeholder-btn grid-signup-btn" type="button">sign up</button>
-      </div>
-    </div>`
-}
+// const showAuthPlaceholder = () => {
+//   colorGrid.innerHTML = `
+//     <div class="grid-placeholder">
+//       <p class="grid-placeholder-text">Tell us who you are and we'll paint your rainbow...</p>
+//       <div class="grid-placeholder-btns">
+//         <button class="grid-placeholder-btn grid-login-btn" type="button">log in</button>
+//         <button class="grid-placeholder-btn grid-signup-btn" type="button">sign up</button>
+//       </div>
+//     </div>`
+// }
 
-const showNoDataPlaceholder = () => {
-  colorGrid.innerHTML = `
-    <div class="grid-placeholder">
-      <p class="grid-placeholder-text">It's looking a little bland in here...</p>
-      <a href="./index.html" class="grid-placeholder-link">
-        <i class="fa-solid fa-circle-plus"></i>
-        <p>Let's add some color!</p>
-      </a>
-    </div>`
-}
+// const showNoDataPlaceholder = () => {
+//   colorGrid.innerHTML = `
+//     <div class="grid-placeholder">
+//       <p class="grid-placeholder-text">It's looking a little bland in here...</p>
+//       <a href="./index.html" class="grid-placeholder-link">
+//         <i class="fa-solid fa-circle-plus"></i>
+//         <p>Let's add some color!</p>
+//       </a>
+//     </div>`
+// }
 
 const renderColorGrid = (userColors) => {
   colorGrid.innerHTML = Object.values(userColors).map(colorObj => {
@@ -50,32 +50,8 @@ const updateColorGrid = async () => {
   if (Object.keys(userColors).length) {
     renderColorGrid(userColors)
   } else {
-    showNoDataPlaceholder()
+    showNoDataPlaceholder(colorGrid)
   }
-}
-
-const updateColorModal = async (hex) => {
-  const colorObj = await getColor(hex)
-  
-  document.querySelector('#color-modal-img').src = colorObj.image.bare
-  document.querySelector('#color-modal-name').textContent = colorObj.name.value
-
-  document.querySelector('#color-modal-hex').textContent = colorObj.hex.value
-  document.querySelector('#copy-hex-btn').value = colorObj.hex.value
-
-  document.querySelector('#color-modal-rgb').textContent = colorObj.rgb.value
-  document.querySelector('#copy-rgb-btn').value = colorObj.rgb.value
-
-  document.querySelector('#color-modal-hsl').textContent = colorObj.hsl.value
-  document.querySelector('#copy-hsl-btn').value = colorObj.hsl.value
-}
-
-const openColorModal = () => {
-  colorModal.showModal()
-}
-
-const closeColorModal = () => {
-  colorModal.close()
 }
 
 colorGrid.addEventListener('click', async e => {
@@ -108,7 +84,7 @@ const monitorAuthState = async () => {
     if (user) {
       updateColorGrid()
     } else {
-      showAuthPlaceholder()
+      showAuthPlaceholder(colorGrid)
     }
   })
 }
