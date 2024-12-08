@@ -1,6 +1,15 @@
 import { getColor } from 'Src/db_utils'
 
 const colorModal = document.querySelector('#color-modal')
+const colorModalImg = document.querySelector('#color-modal-img')
+const colorModalName = document.querySelector('#color-modal-name')
+const colorModalHex = document.querySelector('#color-modal-hex')
+const colorModalRGB = document.querySelector('#color-modal-rgb')
+const colorModalHSL = document.querySelector('#color-modal-hsl')
+const copyHexBtn = document.querySelector('#copy-hex-btn')
+const copyRGBBtn = document.querySelector('#copy-rgb-btn')
+const copyHSLBtn = document.querySelector('#copy-hsl-btn')
+
 const schemeModal = document.querySelector('#scheme-modal')
 
 // GRID PLACEHOLDERS
@@ -30,17 +39,17 @@ export const showNoDataPlaceholder = (gridContainer) => {
 export const updateColorModal = async (hex) => {
   const colorObj = await getColor(hex)
   
-  document.querySelector('#color-modal-img').src = colorObj.image.bare
-  document.querySelector('#color-modal-name').textContent = colorObj.name.value
+  colorModalImg.src = colorObj.image.bare
+  colorModalName.textContent = colorObj.name.value
 
-  document.querySelector('#color-modal-hex').textContent = colorObj.hex.value
-  document.querySelector('#copy-hex-btn').value = colorObj.hex.value
+  colorModalHex.textContent = colorObj.hex.value
+  copyHexBtn.value = colorObj.hex.value
 
-  document.querySelector('#color-modal-rgb').textContent = colorObj.rgb.value
-  document.querySelector('#copy-rgb-btn').value = colorObj.rgb.value
+  colorModalRGB.textContent = colorObj.rgb.value
+  copyRGBBtn.value = colorObj.rgb.value
 
-  document.querySelector('#color-modal-hsl').textContent = colorObj.hsl.value
-  document.querySelector('#copy-hsl-btn').value = colorObj.hsl.value
+  colorModalHSL.textContent = colorObj.hsl.value
+  copyHSLBtn.value = colorObj.hsl.value
 }
 
 export const openColorModal = () => {

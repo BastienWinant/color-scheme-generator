@@ -8,28 +8,6 @@ import { showAuthPlaceholder, showNoDataPlaceholder, updateColorModal, openColor
 
 const colorGrid = document.querySelector('#color-grid')
 
-// const showAuthPlaceholder = () => {
-//   colorGrid.innerHTML = `
-//     <div class="grid-placeholder">
-//       <p class="grid-placeholder-text">Tell us who you are and we'll paint your rainbow...</p>
-//       <div class="grid-placeholder-btns">
-//         <button class="grid-placeholder-btn grid-login-btn" type="button">log in</button>
-//         <button class="grid-placeholder-btn grid-signup-btn" type="button">sign up</button>
-//       </div>
-//     </div>`
-// }
-
-// const showNoDataPlaceholder = () => {
-//   colorGrid.innerHTML = `
-//     <div class="grid-placeholder">
-//       <p class="grid-placeholder-text">It's looking a little bland in here...</p>
-//       <a href="./index.html" class="grid-placeholder-link">
-//         <i class="fa-solid fa-circle-plus"></i>
-//         <p>Let's add some color!</p>
-//       </a>
-//     </div>`
-// }
-
 const renderColorGrid = (userColors) => {
   colorGrid.innerHTML = Object.values(userColors).map(colorObj => {
     return `
