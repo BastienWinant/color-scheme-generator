@@ -6,6 +6,7 @@ import { getUserColors, deleteColor } from 'Src/db_utils'
 import { openLoginModal, openSignupModal } from 'Components/auth'
 
 const colorGrid = document.querySelector('#color-grid')
+const colorModal = document.querySelector('#color-modal')
 
 const showAuthPlaceholder = () => {
   colorGrid.innerHTML = `
@@ -53,6 +54,23 @@ const updateColorGrid = async () => {
   }
 }
 
+const updateColorModal = () => {
+  // retrieve the color object
+  // set colorModalName
+  // set colorModalHex
+  // set colorModeRGB
+  // set colorModeHSL
+}
+
+const openColorModal = () => {
+  colorModal.showModal()
+}
+openColorModal()
+
+const closeColorModal = () => {
+  colorModal.close()
+}
+
 colorGrid.addEventListener('click', e => {
   if (e.target.classList.contains('card-delete-btn')) {
     const userId = auth.currentUser.uid
@@ -60,11 +78,20 @@ colorGrid.addEventListener('click', e => {
     deleteColor(colorHex, userId)
     updateColorGrid()
   } else if (e.target.classList.contains('card-view-btn')) {
-    console.log('viewing')
+    updateColorModal()
+    openColorModal()
   } else if (e.target.classList.contains('grid-login-btn')) {
     openLoginModal()
   } else if (e.target.classList.contains('grid-signup-btn')) {
     openSignupModal()
+  }
+})
+
+window.addEventListener('click', e => {
+  if (e.target.classList.contains('color-modal')) {
+    closeColorModal()
+  } else if (e.target.classList.contains('color-modal-btn')) {
+    navigator.clipboard.writeText(e.target.value)
   }
 })
 

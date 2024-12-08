@@ -116,3 +116,59 @@
   background-color: black;
   color: white;
 }
+
+.color-modal {
+  /* sizing */
+  width: 90vw;
+  max-width: 320px;
+
+  /* styling */
+  border: none;
+  border-radius: 1em;
+}
+
+.color-modal-img {
+  /* sizing */
+  width: 100%;
+  height: 15em;
+}
+
+.color-modal-body {
+  padding: 1em;
+}
+
+.color-modal-name {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+.color-modal-codes {
+  /* content layout */
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.color-modal-code {
+  /* content layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .25em .25em .25em .5em;
+
+  /* styling */
+  border-radius: .5em;
+  border: 1px solid black;
+}
+
+.color-modal-btn {
+  background-color: cornflowerblue;
+  color: white;
+  padding: .5em 1em;
+  border-radius: .25em;
+}
+
+.color-modal-btn:focus {
+  outline: none;
+}
