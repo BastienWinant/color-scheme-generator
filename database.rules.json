@@ -20,6 +20,14 @@
         ".write": "$uid === auth.uid",
         ".read": "$uid === auth.uid"
       }
+    },
+    "colors": {
+      ".read": "auth.uid !== null",
+      ".write": "auth.uid !== null"
+    },
+    "schemes": {
+      ".read": "auth.uid !== null",
+      ".write": "auth.uid !== null"
     }
   }
 }

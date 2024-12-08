@@ -1,4 +1,4 @@
-import { ref, set, child, get, remove, push } from 'firebase/database'
+import { ref, set, child, get, remove, push, update } from 'firebase/database'
 import { auth, db } from 'Src/app'
 
 export const getUserColors = async () => {
@@ -48,8 +48,13 @@ export const getUserSchemes = async () => {
 export const writeNewColor = async (colorObj, uid) => {
   // Use the color hex code as unique table id
   const newColorKey = colorObj.hex.clean
-  const userColorRef = child(ref(db), `/user-colors/${uid}/${newColorKey}`)
-  return set(userColorRef, colorObj)
+
+  // Write the new color's data simultaneously in the colors list and the user's color list.
+  const updates = {};
+  updates[`/colors/${newColorKey}`] = colorObj;
+  updates[`/user-colors/${uid}/${newColorKey}`] = colorObj;
+
+  return update(ref(db), updates);
 }
 
 // remove a user color from the database
@@ -65,9 +70,12 @@ export function writeNewScheme(uid, schemeObj) {
   // Get a key for a new Scheme.
   const newSchemeKey = push(child(ref(db), 'schemes')).key
 
-  // Write the new scheme's data in the user's scheme list.
-  const userSchemeRef = child(ref(db), `/user-schemes/${uid}/${newSchemeKey}`)
-  return set(userSchemeRef, schemeObj)
+  // Write the new scheme's data simultaneously in the schemes list and the user's scheme list.
+  const updates = {};
+  updates[`/schemes/${newSchemeKey}`] = schemeObj;
+  updates[`/user-schemes/${uid}/${newSchemeKey}`] = schemeObj;
+
+  return update(ref(db), updates);
 }
 
 // remove a user scheme from the database
