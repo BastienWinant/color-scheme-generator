@@ -132,7 +132,7 @@
 .color-modal-img {
   /* sizing */
   width: 100%;
-  height: 15em;
+  height: 12em;
 }
 
 .color-modal-body {
@@ -169,6 +169,7 @@
   color: white;
   padding: .5em 1em;
   border-radius: .25em;
+  font-size: .875rem;
 }
 
 .color-modal-btn:focus {
@@ -223,6 +224,7 @@
   color: white;
   padding: .5em 1em;
   border-radius: .25em;
+  font-size: .875rem;
 }
 
 .scheme-modal-btn:focus {

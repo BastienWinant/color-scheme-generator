@@ -55,6 +55,8 @@ schemeGrid.addEventListener('click', async e => {
 window.addEventListener('click', async e => {
   if (e.target.classList.contains('scheme-modal')) {
     closeSchemeModal()
+  } else if (e.target.classList.contains('color-modal')) {
+    closeColorModal()
   } else if (e.target.classList.contains('scheme-modal-btn')) {
     const hex = e.target.value
     await updateColorModal(hex)
