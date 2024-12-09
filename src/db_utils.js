@@ -105,6 +105,15 @@ export function writeNewScheme(uid, schemeObj) {
   updates[`/schemes/${newSchemeKey}`] = schemeObj;
   updates[`/user-schemes/${uid}/${newSchemeKey}`] = schemeObj;
 
+  schemeObj.colors.forEach(colorObj => {
+    // Use the color hex code as unique table id
+    const newColorKey = colorObj.hex.clean
+
+    // Write the new color's data in the colors list.
+    const updates = {};
+    updates[`/colors/${newColorKey}`] = colorObj;
+  })
+
   return update(ref(db), updates);
 }
 

@@ -57,7 +57,9 @@ window.addEventListener('click', async e => {
     closeSchemeModal()
   } else if (e.target.classList.contains('scheme-modal-btn')) {
     const hex = e.target.value
-    
+    await updateColorModal(hex)
+    closeSchemeModal()
+    openColorModal()
   }
 })
 
