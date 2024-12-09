@@ -137,6 +137,7 @@
 
 .color-modal-body {
   padding: 1em;
+  font-size: .875rem;
 }
 
 .color-modal-name {
@@ -161,7 +162,7 @@
 
   /* styling */
   border-radius: .5em;
-  border: 1px solid black;
+  border: 1px solid lightgray;
 }
 
 .color-modal-btn {
@@ -169,7 +170,7 @@
   color: white;
   padding: .5em 1em;
   border-radius: .25em;
-  font-size: .875rem;
+  font-size: .875em;
 }
 
 .color-modal-btn:focus {
@@ -193,6 +194,7 @@
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
   padding: 1em;
+  font-size: .875rem;
 }
 
 .scheme-modal-img {
@@ -214,9 +216,7 @@
   align-items: center;
   justify-content: space-between;
   gap: .5em;
-  padding: .5em;
-
-  /* border: 1px solid black; */
+  padding: .5em 0 .5em .5em;
 }
 
 .scheme-modal-btn {
@@ -224,7 +224,7 @@
   color: white;
   padding: .5em 1em;
   border-radius: .25em;
-  font-size: .875rem;
+  font-size: .875em;
 }
 
 .scheme-modal-btn:focus {
