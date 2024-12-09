@@ -110,7 +110,6 @@ export function writeNewScheme(uid, schemeObj) {
     const newColorKey = colorObj.hex.clean
 
     // Write the new color's data in the colors list.
-    const updates = {};
     updates[`/colors/${newColorKey}`] = colorObj;
   })
 
