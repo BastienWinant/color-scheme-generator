@@ -126,6 +126,12 @@
 
   /* styling */
   border: none;
+  background-color: transparent;
+}
+
+.color-modal-container {
+  /* styling */
+  background-color: white;
   border-radius: 1em;
 }
 
@@ -133,6 +139,8 @@
   /* sizing */
   width: 100%;
   height: 12em;
+
+  border-radius: 1em 1em 0 0;
 }
 
 .color-modal-body {
@@ -237,16 +245,19 @@
 
 .modal-append {
   width: 100%;
-  margin-top: 1em;
+  margin-top: .5em;
   
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.close-scheme-modal-btn {
+.close-scheme-modal-btn,
+.close-color-modal-btn {
+  font-size: .875rem;
   padding: .5em 1em;
   background-color: black;
   color: white;
-  border-radius: .25em;
+  border-radius: .5em;
+  font-weight: 600;
 }

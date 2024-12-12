@@ -7,6 +7,7 @@ import { openLoginModal, openSignupModal } from 'Components/auth'
 import { showAuthPlaceholder, showNoDataPlaceholder, updateColorModal, openColorModal, closeColorModal } from 'Components/grid'
 
 const colorGrid = document.querySelector('#color-grid')
+const colorModal = document.querySelector('#color-modal')
 
 const renderColorGrid = (userColors) => {
   colorGrid.innerHTML = Object.values(userColors).map(colorObj => {
@@ -49,8 +50,8 @@ colorGrid.addEventListener('click', async e => {
   }
 })
 
-window.addEventListener('click', e => {
-  if (e.target.classList.contains('color-modal')) {
+colorModal.addEventListener('click', e => {
+  if (e.target.classList.contains('color-modal') || e.target.closest('.close-color-modal-btn')) {
     closeColorModal()
   } else if (e.target.classList.contains('color-modal-btn')) {
     navigator.clipboard.writeText(e.target.value)

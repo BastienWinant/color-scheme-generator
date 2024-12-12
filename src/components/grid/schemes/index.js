@@ -8,6 +8,8 @@ import { showAuthPlaceholder, showNoDataPlaceholder, updateColorModal,
   openColorModal, closeColorModal, openSchemeModal, closeSchemeModal, updateSchemeModal } from 'Components/grid'
 
 const schemeGrid = document.querySelector('#scheme-grid')
+const schemeModal = document.querySelector('#scheme-modal')
+const colorModal = document.querySelector('#color-modal')
 
 const renderSchemeGrid = (userSchemes) => {
   let htmlStr = ''
@@ -52,16 +54,22 @@ schemeGrid.addEventListener('click', async e => {
   }
 })
 
-window.addEventListener('click', async e => {
+schemeModal.addEventListener('click', async e => {
   if (e.target.classList.contains('scheme-modal') || e.target.closest('.close-scheme-modal-btn')) {
     closeSchemeModal()
-  } else if (e.target.classList.contains('color-modal')) {
-    closeColorModal()
   } else if (e.target.classList.contains('scheme-modal-btn')) {
     const hex = e.target.value
     await updateColorModal(hex)
     closeSchemeModal()
     openColorModal()
+  }
+})
+
+colorModal.addEventListener('click', e => {
+  if (e.target.classList.contains('color-modal') || e.target.closest('.close-color-modal-btn')) {
+    closeColorModal()
+  } else if (e.target.classList.contains('color-modal-btn')) {
+    navigator.clipboard.writeText(e.target.value)
   }
 })
 
