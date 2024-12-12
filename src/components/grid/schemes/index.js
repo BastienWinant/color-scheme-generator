@@ -53,7 +53,7 @@ schemeGrid.addEventListener('click', async e => {
 })
 
 window.addEventListener('click', async e => {
-  if (e.target.classList.contains('scheme-modal')) {
+  if (e.target.classList.contains('scheme-modal') || e.target.closest('.close-scheme-modal-btn')) {
     closeSchemeModal()
   } else if (e.target.classList.contains('color-modal')) {
     closeColorModal()

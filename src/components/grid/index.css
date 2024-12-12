@@ -185,7 +185,7 @@
 
   /* styling */
   border: none;
-  border-radius: 1em;
+  background-color: transparent;
 }
 
 .scheme-modal-figure {
@@ -194,7 +194,11 @@
   grid-template-columns: 20% 80%;
   grid-template-rows: 1fr;
   padding: 1em;
+
+  /* styling */
   font-size: .875rem;
+  border-radius: 1.25em;
+  background-color: white;
 }
 
 .scheme-modal-img {
@@ -229,4 +233,20 @@
 
 .scheme-modal-btn:focus {
   outline: none;
+}
+
+.modal-append {
+  width: 100%;
+  margin-top: 1em;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-scheme-modal-btn {
+  padding: .5em 1em;
+  background-color: black;
+  color: white;
+  border-radius: .25em;
 }
