@@ -110,13 +110,6 @@ countIncreaseBtn.addEventListener('click', () => {
 })
 
 // expand/collapse the generator form
-// const expandGeneratorForm = () => {
-//   schemeCreatePane.classList.add('pane-displayed')
-
-//   setTimeout(() => {
-//     schemeCreatePane.classList.add('pane-visible')
-//   }, 100)
-// }
 const expandGeneratorForm = () => {
   // display the element in the document
   schemeCreatePane.classList.add('pane-displayed')
@@ -128,13 +121,6 @@ const expandGeneratorForm = () => {
 }
 newSchemeBtn.addEventListener('click', expandGeneratorForm)
 
-// export const collapseGeneratorForm = () => {
-//   schemeCreatePane.classList.remove('pane-visible')
-
-//   setTimeout(() => {
-//     schemeCreatePane.classList.remove('pane-displayed')
-//   }, 300)
-// }
 export const collapseGeneratorForm = () => {
   collapseDropdownList()
   // move the element outside of the window fold
