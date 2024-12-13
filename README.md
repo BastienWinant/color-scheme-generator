@@ -3,7 +3,7 @@
 ![Generator](/screenshots/Screenshot%202024-12-13%20at%2014.13.39.png)
 ![Colors](/screenshots/Screenshot%202024-12-13%20at%2014.15.29.png)
 
-[Demo link](https://firebase.google.com)
+[Demo link](https://color-scheme-generator-8ec07.web.app/)
 
 ShadeMaker is a web application that lets you generate infinite color schemes!
 - Pick a seed color and a scheme mode as the basis for a palette
