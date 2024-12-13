@@ -1,6 +1,7 @@
 # ShadeMaker
 
-[PLACE_FOR_YOUR_IMAGE]
+![Generator](/screenshots/Screenshot%202024-12-13%20at%2014.13.39.png)
+![Colors](/screenshots/Screenshot%202024-12-13%20at%2014.15.29.png)
 
 [Demo link](https://firebase.google.com)
 
