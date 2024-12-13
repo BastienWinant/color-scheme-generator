@@ -41,8 +41,6 @@ dialog {
   /* content layout */
   display: flex;
   flex-direction: column;
-
-  border: 2px solid blue;
 }
 
 main {
@@ -119,8 +117,6 @@ main {
   gap: .5em;
 
   position: relative;
-
-  /* border: 2px solid black; */
 }
 
 .input-label {
