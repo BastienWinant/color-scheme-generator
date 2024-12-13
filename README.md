@@ -10,7 +10,7 @@ ShadeMaker is a web application that lets you generate infinite color schemes!
 - Create an account to save your favorite colors and schemes
 - Easily copy Hex/RGB/HSL color codes to the clipboard
 
-# Technologies in use / Tech Stack / Built with
+# Tech Stack
 
   - The Color API
   - Node.js
