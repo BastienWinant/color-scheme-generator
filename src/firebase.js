@@ -3,7 +3,7 @@ import { getDatabase, connectDatabaseEmulator } from "firebase/database";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
 
 // Firebase configuration
-const firebaseConfig = {
+const firebase = {
 	apiKey: "AIzaSyA_XK8Y4lVPUtWoNHi4nN44tKDhKfmDRwY",
 	authDomain: "shademaker-df234.firebaseapp.com",
 	databaseURL: "https://shademaker-df234-default-rtdb.europe-west1.firebasedatabase.app",
@@ -14,7 +14,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebase);
 export const db = getDatabase(app);
 export const auth = getAuth(app);
 
