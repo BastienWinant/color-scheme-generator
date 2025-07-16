@@ -1,30 +1,33 @@
 import {
 	Box,
-	Button,
-	Dialog,
+	HStack,
+	Button
 } from "@chakra-ui/react";
-import SignupDialog from "@/components/signupDialog/SignupDialog.jsx";
-import SigninDialog from "@/components/signinDialog/SigninDialog.jsx";
+import TriggerDialog from "@/components/buttonDialog/index.jsx";
 
 export default function Header() {
 	return (
-			<Box as="header" borderWidth="medium">
-				<Dialog.Root>
-					<Dialog.Trigger asChild>
-						<Button variant="outline">
-							sign up
-						</Button>
-					</Dialog.Trigger>
-					<SignupDialog />
-				</Dialog.Root>
-				<Dialog.Root>
-					<Dialog.Trigger asChild>
-						<Button variant="outline">
-							sign in
-						</Button>
-					</Dialog.Trigger>
-					<SigninDialog />
-				</Dialog.Root>
-			</Box>
+			<>
+				<Box as="header" borderWidth="medium">
+					<HStack>
+						<TriggerDialog>
+							<TriggerDialog.Trigger>
+								<Button variant="outline">sign in</Button>
+							</TriggerDialog.Trigger>
+							<TriggerDialog.Dialog title="sign in">
+								<p>this is a test</p>
+							</TriggerDialog.Dialog>
+						</TriggerDialog>
+						<TriggerDialog>
+							<TriggerDialog.Trigger>
+								<Button variant="solid">sign up</Button>
+							</TriggerDialog.Trigger>
+							<TriggerDialog.Dialog title="sign up">
+								<p>this is a test</p>
+							</TriggerDialog.Dialog>
+						</TriggerDialog>
+					</HStack>
+				</Box>
+			</>
 	)
 }
