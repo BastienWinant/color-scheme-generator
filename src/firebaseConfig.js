@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+import { getDatabase, connectDatabaseEmulator } from "firebase/database";
+import { getAuth, connectAuthEmulator } from "firebase/auth";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -13,3 +15,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
+export const auth = getAuth(app);
+
+if (location.hostname === "localhost") {
+	connectDatabaseEmulator(db, "localhost", 9000);
+	connectAuthEmulator(auth, "http://localhost:9099");
+	console.log('Looks like we are in development mode!');
+}
