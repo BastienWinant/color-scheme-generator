@@ -25,7 +25,7 @@ export default function AuthMenu() {
 							<Dialog.Title>User account</Dialog.Title>
 						</Dialog.Header>
 						<Dialog.Body>
-							<Tabs.Root defaultValue="members" variant="subtle" fitted>
+							<Tabs.Root defaultValue="members" variant="line" fitted>
 								<Tabs.List>
 									<Tabs.Trigger value="members">
 										<Text fontWeight="semibold">Sign In</Text>
