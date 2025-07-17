@@ -13,7 +13,7 @@ export default function AuthMenu() {
 	return (
 		<Dialog.Root>
 			<Dialog.Trigger asChild>
-				<Button variant="solid" size="sm">
+				<Button variant="solid" size="md">
 					Sign up / Sign in
 				</Button>
 			</Dialog.Trigger>
