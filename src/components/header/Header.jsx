@@ -3,34 +3,13 @@ import {
 	LinkBox,
 	LinkOverlay,
 	Icon,
-	Text,
-	Stack,
-	IconButton,
-	Show
+	Text
 } from "@chakra-ui/react";
 import AuthMenu from "@/components/authMenu/AuthMenu.jsx";
-import { FaPalette, FaBars } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { FaPalette } from "react-icons/fa6";
 import { Link } from "react-router";
 
 export default function Header() {
-	const [navExpanded, setNavExpanded] = useState(false);
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		function trackWindowWidth() {
-			setNavExpanded(false);
-			setWindowWidth(window.innerWidth);
-		}
-		window.addEventListener("resize", trackWindowWidth)
-
-		return () => window.removeEventListener("resize", trackWindowWidth)
-	}, []);
-
-	function toggleNav() {
-		setNavExpanded(prevVal => !prevVal)
-	}
-
 	return (
 		<Flex
 				as="header"
