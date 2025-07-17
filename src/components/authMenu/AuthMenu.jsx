@@ -1,4 +1,13 @@
-import { Button, CloseButton, Dialog, Portal, Tabs } from "@chakra-ui/react";
+import {
+	Button,
+	CloseButton,
+	Dialog,
+	Portal,
+	Tabs,
+	Text
+} from "@chakra-ui/react";
+import SigninForm from "@/components/authForm/SigninForm.jsx";
+import SignupForm from "@/components/authForm/SignupForm.jsx";
 
 export default function AuthMenu() {
 	return (
@@ -11,22 +20,22 @@ export default function AuthMenu() {
 			<Portal>
 				<Dialog.Backdrop />
 				<Dialog.Positioner>
-					<Dialog.Content>
+					<Dialog.Content w="90vw" maxW="xl">
 						<Dialog.Header>
-							<Dialog.Title>Dialog Title</Dialog.Title>
+							<Dialog.Title>User account</Dialog.Title>
 						</Dialog.Header>
 						<Dialog.Body>
-							<Tabs.Root defaultValue="members" variant="subtle" fitted border="2px solid red;">
+							<Tabs.Root defaultValue="members" variant="subtle" fitted>
 								<Tabs.List>
 									<Tabs.Trigger value="members">
-										Sign In
+										<Text fontWeight="semibold">Sign In</Text>
 									</Tabs.Trigger>
 									<Tabs.Trigger value="projects">
-										Sign Up
+										<Text fontWeight="semibold">Sign Up</Text>
 									</Tabs.Trigger>
 								</Tabs.List>
-								<Tabs.Content value="members">sign in form</Tabs.Content>
-								<Tabs.Content value="projects">sign up form</Tabs.Content>
+								<Tabs.Content value="members"><SigninForm /></Tabs.Content>
+								<Tabs.Content value="projects"><SignupForm /></Tabs.Content>
 							</Tabs.Root>
 						</Dialog.Body>
 						<Dialog.CloseTrigger asChild>
