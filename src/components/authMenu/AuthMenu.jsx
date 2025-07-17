@@ -6,7 +6,7 @@ export default function AuthMenu() {
 		<>
 			<TriggerDialog>
 				<TriggerDialog.Trigger>
-					<Button variant="outline">sign in</Button>
+					<Button variant="ghost">sign in</Button>
 				</TriggerDialog.Trigger>
 				<TriggerDialog.Dialog title="sign in">
 					<p>this is a test</p>
