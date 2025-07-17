@@ -7,11 +7,15 @@ export default function Dialog({children, title}) {
 				<ChakraDialog.Positioner>
 					<ChakraDialog.Content>
 						<ChakraDialog.Header>
-							<ChakraDialog.Title textTransform="capitalize">{ title }</ChakraDialog.Title>
+							<ChakraDialog.Title>{title}</ChakraDialog.Title>
 						</ChakraDialog.Header>
-						<ChakraDialog.Body>
-							{ children }
-						</ChakraDialog.Body>
+						<ChakraDialog.Body>{children}</ChakraDialog.Body>
+						<ChakraDialog.Footer>
+							<ChakraDialog.ActionTrigger asChild>
+								<Button variant="outline">Cancel</Button>
+							</ChakraDialog.ActionTrigger>
+							<Button>Save</Button>
+						</ChakraDialog.Footer>
 						<ChakraDialog.CloseTrigger asChild>
 							<CloseButton size="sm" />
 						</ChakraDialog.CloseTrigger>
