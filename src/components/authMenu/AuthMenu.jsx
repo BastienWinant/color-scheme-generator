@@ -1,4 +1,4 @@
-import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
+import { Button, CloseButton, Dialog, Portal, Tabs } from "@chakra-ui/react";
 
 export default function AuthMenu() {
 	return (
@@ -16,10 +16,18 @@ export default function AuthMenu() {
 							<Dialog.Title>Dialog Title</Dialog.Title>
 						</Dialog.Header>
 						<Dialog.Body>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-								eiusmod tempor incididunt ut labore et dolore magna aliqua.
-							</p>
+							<Tabs.Root defaultValue="members" variant="subtle" fitted border="2px solid red;">
+								<Tabs.List>
+									<Tabs.Trigger value="members">
+										Sign In
+									</Tabs.Trigger>
+									<Tabs.Trigger value="projects">
+										Sign Up
+									</Tabs.Trigger>
+								</Tabs.List>
+								<Tabs.Content value="members">sign in form</Tabs.Content>
+								<Tabs.Content value="projects">sign up form</Tabs.Content>
+							</Tabs.Root>
 						</Dialog.Body>
 						<Dialog.CloseTrigger asChild>
 							<CloseButton size="sm" />
