@@ -8,8 +8,11 @@ import {
 import AuthMenu from "@/components/authMenu/AuthMenu.jsx";
 import { FaPalette } from "react-icons/fa6";
 import { Link } from "react-router";
+import { useAuth } from "@/contexts/authContext/authUserContext.js";
 
 export default function Header() {
+	const { authUser } = useAuth();
+
 	return (
 		<Flex
 				as="header"
@@ -33,7 +36,7 @@ export default function Header() {
 					</Link>
 				</LinkOverlay>
 			</LinkBox>
-			<AuthMenu />
+			{authUser ? <p>{authUser.uid}</p> : <AuthMenu />}
 		</Flex>
 	)
 }

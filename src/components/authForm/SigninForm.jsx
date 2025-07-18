@@ -7,7 +7,7 @@ import {
 import { useAuth } from "@/contexts/authContext/authUserContext.js";
 
 export default function SigninForm() {
-	const { signupEmailPassword } = useAuth();
+	const {signinEmailPassword} = useAuth();
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -17,7 +17,7 @@ export default function SigninForm() {
 		const email = formData.get("email");
 		const password = formData.get("password");
 
-		signupEmailPassword(email, password);
+		signinEmailPassword(email, password);
 
 		formEl.reset();
 	}
