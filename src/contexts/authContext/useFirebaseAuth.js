@@ -51,6 +51,7 @@ export default function useFirebaseAuth() {
 		authUser,
 		isLoading,
 		signinEmailPassword,
-		signupEmailPassword
+		signupEmailPassword,
+		signOut
 	};
 }

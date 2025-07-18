@@ -6,6 +6,7 @@ import {
 	Text
 } from "@chakra-ui/react";
 import AuthMenu from "@/components/authMenu/AuthMenu.jsx";
+import UserMenu from "@/components/userMenu/UserMenu.jsx";
 import { FaPalette } from "react-icons/fa6";
 import { Link } from "react-router";
 import { useAuth } from "@/contexts/authContext/authUserContext.js";
@@ -36,7 +37,7 @@ export default function Header() {
 					</Link>
 				</LinkOverlay>
 			</LinkBox>
-			{authUser ? <p>{authUser.uid}</p> : <AuthMenu />}
+			{authUser ? <UserMenu /> : <AuthMenu />}
 		</Flex>
 	)
 }
