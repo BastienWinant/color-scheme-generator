@@ -6,8 +6,20 @@ import {
 } from "@chakra-ui/react";
 
 export default function SignupForm() {
+	function signup(event) {
+		event.preventDefault();
+		const formEl = event.currentTarget;
+		const formData = new FormData(formEl);
+
+		const username = formData.get("username");
+		const email = formData.get("email");
+		const password = formData.get("password");
+
+		formEl.reset();
+	}
+
 	return (
-		<form>
+		<form method="POST" onSubmit={signup}>
 			<Fieldset.Root size="lg">
 				<Fieldset.Content>
 					<Field.Root required>
@@ -15,7 +27,7 @@ export default function SignupForm() {
 							Username
 							<Field.RequiredIndicator />
 						</Field.Label>
-						<Input name="email" type="text" />
+						<Input name="username" type="text" autoFocus />
 					</Field.Root>
 
 					<Field.Root required>

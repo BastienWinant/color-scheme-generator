@@ -6,8 +6,18 @@ import {
 } from "@chakra-ui/react";
 
 export default function SigninForm() {
+	function signin(event) {
+		event.preventDefault();
+		const formEl = event.currentTarget;
+		const formData = new FormData(formEl);
+
+		const email = formData.get("email");
+		const password = formData.get("password");
+		formEl.reset();
+	}
+
 	return (
-		<form>
+		<form method="POST" onSubmit={signin}>
 			<Fieldset.Root size="lg">
 				<Fieldset.Content>
 					<Field.Root required>
@@ -15,7 +25,7 @@ export default function SigninForm() {
 							Email address
 							<Field.RequiredIndicator />
 						</Field.Label>
-						<Input name="email" type="email" />
+						<Input name="email" type="email" autoFocus />
 					</Field.Root>
 
 					<Field.Root>
