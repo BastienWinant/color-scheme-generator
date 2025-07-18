@@ -8,11 +8,15 @@ export default function AuthUserProvider({ children }) {
 	const authObj = useFirebaseAuth();
 
 	const signinEmailPassword = async (loginEmail, loginPassword) => {
-		const userCredential = signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+		signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+				.then(userCredential => console.log(userCredential))
+				.catch(error => console.log(error));
 	}
 
 	const signupEmailPassword = async (signupEmail, signupPassword) => {
-		const userCredential = createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
+		createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
+				.then(userCredential => console.log(userCredential))
+				.catch(error => console.log(error));
 	}
 
 	return (

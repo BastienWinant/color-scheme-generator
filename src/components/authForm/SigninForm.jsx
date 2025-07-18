@@ -4,8 +4,11 @@ import {
 	Fieldset,
 	Input
 } from "@chakra-ui/react";
+import { useAuth } from "@/contexts/authContext/authUserContext.js";
 
 export default function SigninForm() {
+	const { signupEmailPassword } = useAuth();
+
 	function signin(event) {
 		event.preventDefault();
 		const formEl = event.currentTarget;
@@ -13,6 +16,9 @@ export default function SigninForm() {
 
 		const email = formData.get("email");
 		const password = formData.get("password");
+
+		signupEmailPassword(email, password);
+
 		formEl.reset();
 	}
 
