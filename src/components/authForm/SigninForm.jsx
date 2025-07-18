@@ -9,7 +9,7 @@ import { useAuth } from "@/contexts/authContext/authUserContext.js";
 export default function SigninForm() {
 	const { signupEmailPassword } = useAuth();
 
-	function signin(event) {
+	function handleSubmit(event) {
 		event.preventDefault();
 		const formEl = event.currentTarget;
 		const formData = new FormData(formEl);
@@ -23,7 +23,7 @@ export default function SigninForm() {
 	}
 
 	return (
-		<form method="POST" onSubmit={signin}>
+		<form method="POST" onSubmit={handleSubmit}>
 			<Fieldset.Root size="lg">
 				<Fieldset.Content>
 					<Field.Root required>
