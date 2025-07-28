@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import Layout from "@/components/layout/Layout.jsx";
 import AuthRequired from "@/components/authRequired/AuthRequired.jsx";
-import Generator from "@/pages/generator.jsx";
+import Generator from "@/pages/home.jsx";
 import Dashboard from "@/pages/dashboard.jsx";
 
 function App() {
