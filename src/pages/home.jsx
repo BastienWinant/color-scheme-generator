@@ -4,7 +4,9 @@ import Generator from "@/components/generator/index.jsx";
 export default function Home() {
 	return (
 			<Box as="main">
-				<Generator />
+				<Generator>
+					<Generator.Menu />
+				</Generator>
 			</Box>
 	)
 }
