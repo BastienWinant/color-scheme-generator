@@ -1,57 +1,21 @@
-import {
-	Button,
-	CloseButton,
-	Drawer,
-	Portal,
-} from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
-export default function Generator({children}) {
-	const [placement, setPlacement] = useState(window.innerWidth < 768 ? "bottom": "end");
+export default function Generator() {
+	const [colorPalette, setColorPalette] = useState({})
+
+	const getColorPalette = async () => {
+		const url = `https://www.thecolorapi.com/scheme?hex=0047AB&rgb=0,71,171&hsl=215,100%,34%&cmyk=100,58,0,33&format=html&mode=analogic&count=6`
+		const palette = await fetch(url).then(res => res.json()).then(data => data)
+		return palette
+	}
 
 	useEffect(() => {
-		const trackWindowWidth = () => {
-			setPlacement(window.innerWidth < 768 ? "bottom": "end")
-		}
-		window.addEventListener("resize", trackWindowWidth);
-		return () => window.removeEventListener("resize", trackWindowWidth);
+		setColorPalette(getColorPalette())
 	}, []);
 
+	console.log(colorPalette)
 	return (
-			<>
-				<Drawer.Root placement={placement}>
-					<Drawer.Trigger asChild>
-						<Button variant="outline">
-							Open ({placement})
-						</Button>
-					</Drawer.Trigger>
-					<Portal>
-						<Drawer.Backdrop />
-						<Drawer.Positioner>
-							<Drawer.Content
-									roundedTop={placement === "bottom" ? "l3" : undefined}
-							>
-								<Drawer.Header>
-									<Drawer.Title>Drawer Title</Drawer.Title>
-								</Drawer.Header>
-								<Drawer.Body>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-									do eiusmod tempor incididunt ut labore et dolore magna
-									aliqua.
-								</Drawer.Body>
-								<Drawer.Footer>
-									<Drawer.ActionTrigger asChild>
-										<Button variant="outline">Cancel</Button>
-									</Drawer.ActionTrigger>
-									<Button>Save</Button>
-								</Drawer.Footer>
-								<Drawer.CloseTrigger asChild>
-									<CloseButton size="sm" />
-								</Drawer.CloseTrigger>
-							</Drawer.Content>
-						</Drawer.Positioner>
-					</Portal>
-				</Drawer.Root>
-			</>
+		<Box borderWidth="medium">this is the generator</Box>
 	)
 }
