@@ -1,21 +1,42 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Stack, For } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import {nanoid} from "nanoid";
+import data from './colordata.json'
 
 export default function Generator() {
-	const [colorPalette, setColorPalette] = useState({})
+	const [colorScheme, setColorScheme] = useState({})
 
-	const getColorPalette = async () => {
-		const url = `https://www.thecolorapi.com/scheme?hex=0047AB&rgb=0,71,171&hsl=215,100%,34%&cmyk=100,58,0,33&format=html&mode=analogic&count=6`
-		const palette = await fetch(url).then(res => res.json()).then(data => data)
-		return palette
+	const updateColorScheme = (url) => {
+		// fetch(url)
+		// 	.then(res => res.json())
+		// 	.then(data => setColorScheme(data))
+
+		setColorScheme(data)
 	}
 
 	useEffect(() => {
-		setColorPalette(getColorPalette())
+		const url = "https://www.thecolorapi.com/scheme?hex=24B1E0&mode=monochrome&count=5"
+		updateColorScheme(url)
 	}, []);
 
-	console.log(colorPalette)
 	return (
-		<Box borderWidth="medium">this is the generator</Box>
+		<Box borderWidth="medium">
+			<Stack gap="0">
+				{colorScheme &&
+					<For each={colorScheme.colors}>
+						{(colorObj, index) => (
+							<Box
+								key={nanoid()}
+								h="16"
+								bg={colorObj.hex.value}
+								color={colorObj.contrast.value}
+							>
+								{colorObj.name.value}
+							</Box>
+						)}
+					</For>
+				}
+			</Stack>
+		</Box>
 	)
 }
