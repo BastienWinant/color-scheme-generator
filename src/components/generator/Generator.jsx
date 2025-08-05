@@ -1,4 +1,4 @@
-import { Box, Stack, For } from "@chakra-ui/react";
+import { Box, Stack, For, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import {nanoid} from "nanoid";
 import data from './colordata.json'
@@ -24,14 +24,9 @@ export default function Generator() {
 			<Stack gap="0">
 				{colorScheme &&
 					<For each={colorScheme.colors}>
-						{(colorObj, index) => (
-							<Box
-								key={nanoid()}
-								h="16"
-								bg={colorObj.hex.value}
-								color={colorObj.contrast.value}
-							>
-								{colorObj.name.value}
+						{colorObj => (
+							<Box bg={colorObj.hex.value} color={colorObj.contrast.value} key={nanoid()} p="4">
+								<Text fontWeight="bold">{colorObj.name.value}</Text>
 							</Box>
 						)}
 					</For>
