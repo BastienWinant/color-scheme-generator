@@ -1,43 +1,23 @@
-import {
-	Flex,
-	LinkBox,
-	LinkOverlay,
-	Icon,
-	Text
-} from "@chakra-ui/react";
-import AuthMenu from "@/components/authMenu/AuthMenu.jsx";
-import UserMenu from "@/components/userMenu/UserMenu.jsx";
+import { Flex, Heading, LinkBox, LinkOverlay, Stack, Text, Icon } from "@chakra-ui/react";
+import { Link } from "react-router"
 import { FaPalette } from "react-icons/fa6";
-import { Link } from "react-router";
-import { useAuth } from "@/contexts/authContext/authUserContext.js";
 
 export default function Header() {
-	const { authUser } = useAuth();
-
 	return (
 		<Flex
-				as="header"
-				align="center"
-				justify="space-between"
-				borderWidth="medium"
-				h="16"
-				px="4"
+			as="header"
+			align="center"
+			justify="space-between"
+			border="2px solid yellow"
 		>
-			<LinkBox
-				display="flex"
-				alignItems="center"
-				gap="2"
-			>
-				<Icon size="xl">
+			<LinkBox>
+				<Icon size="2xl">
 					<FaPalette />
 				</Icon>
 				<LinkOverlay asChild>
-					<Link to="/">
-						<Text fontWeight="semibold">ShadeMaker</Text>
-					</Link>
+					<Link to="/" />
 				</LinkOverlay>
 			</LinkBox>
-			{authUser ? <UserMenu /> : <AuthMenu />}
 		</Flex>
 	)
 }

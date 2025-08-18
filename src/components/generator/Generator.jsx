@@ -1,16 +1,12 @@
-import { Box, Stack, For, Text } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import {nanoid} from "nanoid";
+import {useEffect, useState} from "react";
+import { Flex, Stack, For, Box } from "@chakra-ui/react";
+import { nanoid } from 'nanoid';
 import data from './colordata.json'
 
 export default function Generator() {
 	const [colorScheme, setColorScheme] = useState({})
 
 	const updateColorScheme = (url) => {
-		// fetch(url)
-		// 	.then(res => res.json())
-		// 	.then(data => setColorScheme(data))
-
 		setColorScheme(data)
 	}
 
@@ -19,19 +15,34 @@ export default function Generator() {
 		updateColorScheme(url)
 	}, []);
 
+	console.log(colorScheme.colors?.map(colorObj => colorObj.hex.clean).join("\n"))
 	return (
-		<Box borderWidth="medium">
-			<Stack gap="0">
+		<Flex
+			direction="column"
+		>
+			<Flex
+				flexGrow="1"
+				direction="column"
+				border="2px solid yellow"
+			>
 				{colorScheme &&
 					<For each={colorScheme.colors}>
-						{colorObj => (
-							<Box bg={colorObj.hex.value} color={colorObj.contrast.value} key={nanoid()} p="4">
-								<Text fontWeight="bold">{colorObj.name.value}</Text>
-							</Box>
+						{(colorObj, index) => (
+							<Flex
+								key={nanoid()}
+								flexGrow="1"
+								align="center"
+								justifyContent="space-between"
+								bg={colorObj.hex.value}
+								color={colorObj.contrast.value}
+							>
+								<p>{colorObj.name.value}</p>
+								<p>{colorObj.hex.clean}</p>
+							</Flex>
 						)}
 					</For>
 				}
-			</Stack>
-		</Box>
+			</Flex>
+		</Flex>
 	)
 }
