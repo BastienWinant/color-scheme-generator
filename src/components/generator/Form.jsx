@@ -12,7 +12,7 @@ export default function Form() {
 	return (
 		<Drawer.Root placement="bottom">
 			<HStack borderWidth="medium">
-				<Drawer.Trigger asChild>
+				<Drawer.Trigger flexGrow="1" asChild>
 					<Button variant="outline" size="xl">
 						New
 					</Button>
