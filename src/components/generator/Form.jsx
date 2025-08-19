@@ -2,19 +2,25 @@ import {
   Button,
   CloseButton,
   Drawer,
-  For,
+  IconButton,
   HStack,
   Portal,
 } from "@chakra-ui/react"
+import { FaHeart } from "react-icons/fa6";
 
 export default function Form() {
 	return (
 		<Drawer.Root placement="bottom">
-			<Drawer.Trigger asChild>
-				<Button variant="outline" size="sm">
-					Open
-				</Button>
-			</Drawer.Trigger>
+			<HStack borderWidth="medium">
+				<Drawer.Trigger asChild>
+					<Button variant="outline" size="xl">
+						New
+					</Button>
+				</Drawer.Trigger>
+				<IconButton aria-label="Save color scheme" size="xl">
+					<FaHeart />
+				</IconButton>
+			</HStack>
 			<Portal>
 				<Drawer.Backdrop />
 				<Drawer.Positioner>

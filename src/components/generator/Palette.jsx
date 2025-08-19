@@ -6,7 +6,7 @@ export default function Palette({colorScheme}) {
 		<>
 			{colorScheme &&
 				<For each={colorScheme.colors}>
-					{(colorObj, index) => (
+					{colorObj => (
 						<Flex
 							key={nanoid()}
 							flexGrow="1"
