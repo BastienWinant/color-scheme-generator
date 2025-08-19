@@ -3,8 +3,11 @@ import HexInput from "@/components/generator/form/HexInput.jsx";
 import ModeInput from "@/components/generator/form/ModeInput.jsx";
 
 export default function Form() {
+	function handleSubmit(formData) {
+		console.log(formData.keys())
+	}
 	return (
-		<form>
+		<form action={handleSubmit}>
 			<VStack
 				direction="column"
 				alignItems="stretch"

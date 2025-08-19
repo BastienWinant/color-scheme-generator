@@ -2,12 +2,12 @@ import { Select, createListCollection } from "@chakra-ui/react"
 
 export default function ModeInput() {
   return (
-    <Select.Root collection={frameworks} size="lg">
+    <Select.Root collection={colorModes} size="md">
       <Select.HiddenSelect />
-      <Select.Label>Select framework</Select.Label>
+      <Select.Label>Select color mode</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
+          <Select.ValueText placeholder="Select color mode" />
         </Select.Trigger>
         <Select.IndicatorGroup>
           <Select.Indicator />
@@ -15,9 +15,9 @@ export default function ModeInput() {
       </Select.Control>
       <Select.Positioner>
         <Select.Content>
-          {frameworks.items.map((framework) => (
-            <Select.Item item={framework} key={framework.value}>
-              {framework.label}
+          {colorModes.items.map(colorMode => (
+            <Select.Item item={colorMode} key={colorMode.value}>
+              {colorMode.label}
               <Select.ItemIndicator />
             </Select.Item>
           ))}
@@ -27,11 +27,14 @@ export default function ModeInput() {
   )
 }
 
-const frameworks = createListCollection({
+const colorModes = createListCollection({
   items: [
-    { label: "React.js", value: "react" },
-    { label: "Vue.js", value: "vue" },
-    { label: "Angular", value: "angular" },
-    { label: "Svelte", value: "svelte" },
+    { label: "Monochrome", value: "monochrome" },
+    { label: "Monochrome-dark", value: "monochrome-dark" },
+    { label: "Monochrome-light", value: "monochrome-light" },
+    { label: "Analogic", value: "analogic" },
+    { label: "Complement", value: "complement" },
+    { label: "Analogic-complement", value: "analogic-complement" },
+    { label: "Triad", value: "triad" }
   ],
 })
