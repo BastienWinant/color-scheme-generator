@@ -7,8 +7,9 @@ import {
   Portal,
 } from "@chakra-ui/react"
 import { FaHeart } from "react-icons/fa6";
+import Form from "./form/Form.jsx";
 
-export default function Form() {
+export default function Dashboard() {
 	return (
 		<Drawer.Root placement="bottom">
 			<HStack borderWidth="medium">
@@ -29,9 +30,7 @@ export default function Form() {
 							<Drawer.Title>Drawer Title</Drawer.Title>
 						</Drawer.Header>
 						<Drawer.Body>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-							do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua.
+							<Form />
 						</Drawer.Body>
 						<Drawer.Footer>
 							<Drawer.ActionTrigger asChild>

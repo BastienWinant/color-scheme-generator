@@ -2,12 +2,12 @@ import { Portal, Select, createListCollection } from "@chakra-ui/react"
 
 export default function ModeInput() {
   return (
-    <Select.Root collection={colorModes} size="sm" width="320px">
+    <Select.Root collection={colorModes} size="sm">
       <Select.HiddenSelect />
-      <Select.Label>Select framework</Select.Label>
+      <Select.Label>Select mode</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
+          <Select.ValueText placeholder="Select mode" />
         </Select.Trigger>
         <Select.IndicatorGroup>
           <Select.Indicator />

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import { Flex } from "@chakra-ui/react";
-import Form from "./Form.jsx";
+import Dashboard from "./Dashboard.jsx";
 import Palette from "./Palette.jsx";
 import data from './colordata.json'
 
@@ -20,7 +20,7 @@ export default function Generator() {
 		<Flex
 			direction="column-reverse"
 		>
-			<Form />
+			<Dashboard />
 			<Flex
 				flexGrow="1"
 				direction="column"
