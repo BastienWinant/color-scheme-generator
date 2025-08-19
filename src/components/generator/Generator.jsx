@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
-import { Flex, Stack, For, Box } from "@chakra-ui/react";
-import { nanoid } from 'nanoid';
+import { Flex } from "@chakra-ui/react";
+import Form from "./Form.jsx";
+import Palette from "./Palette.jsx";
 import data from './colordata.json'
 
 export default function Generator() {
@@ -15,33 +16,17 @@ export default function Generator() {
 		updateColorScheme(url)
 	}, []);
 
-	console.log(colorScheme.colors?.map(colorObj => colorObj.hex.clean).join("\n"))
 	return (
 		<Flex
-			direction="column"
+			direction="column-reverse"
 		>
+			<Form />
 			<Flex
 				flexGrow="1"
 				direction="column"
 				border="2px solid yellow"
 			>
-				{colorScheme &&
-					<For each={colorScheme.colors}>
-						{(colorObj, index) => (
-							<Flex
-								key={nanoid()}
-								flexGrow="1"
-								align="center"
-								justifyContent="space-between"
-								bg={colorObj.hex.value}
-								color={colorObj.contrast.value}
-							>
-								<p>{colorObj.name.value}</p>
-								<p>{colorObj.hex.clean}</p>
-							</Flex>
-						)}
-					</For>
-				}
+				<Palette colorScheme={colorScheme} />
 			</Flex>
 		</Flex>
 	)
