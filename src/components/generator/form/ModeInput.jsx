@@ -2,7 +2,7 @@ import { Select, createListCollection } from "@chakra-ui/react"
 
 export default function ModeInput() {
   return (
-    <Select.Root collection={colorModes} size="md">
+    <Select.Root name="mode" collection={colorModes} size="md">
       <Select.HiddenSelect />
       <Select.Label>Select color mode</Select.Label>
       <Select.Control>

@@ -4,7 +4,11 @@ import ModeInput from "@/components/generator/form/ModeInput.jsx";
 
 export default function Form() {
 	function handleSubmit(formData) {
-		console.log(formData.keys())
+		const hex = formData.get('hex')
+		const mode =  formData.get('mode')
+
+		console.log(hex)
+		console.log(mode)
 	}
 	return (
 		<form action={handleSubmit}>
