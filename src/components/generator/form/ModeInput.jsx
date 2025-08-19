@@ -1,8 +1,8 @@
-import { Portal, Select, createListCollection } from "@chakra-ui/react"
+import { Select, createListCollection } from "@chakra-ui/react"
 
 export default function ModeInput() {
   return (
-    <Select.Root collection={colorModes} size="sm">
+    <Select.Root collection={frameworks} size="sm" width="320px">
       <Select.HiddenSelect />
       <Select.Label>Select framework</Select.Label>
       <Select.Control>
@@ -15,9 +15,10 @@ export default function ModeInput() {
       </Select.Control>
       <Select.Positioner>
         <Select.Content>
-          {colorModes.items.map((item) => (
-            <Select.Item item={item} key={item.value}>
-              {item.label}
+          {frameworks.items.map((framework) => (
+            <Select.Item item={framework} key={framework.value}>
+              {framework.label}
+              <Select.ItemIndicator />
             </Select.Item>
           ))}
         </Select.Content>
@@ -26,11 +27,11 @@ export default function ModeInput() {
   )
 }
 
-const colorModes = createListCollection({
+const frameworks = createListCollection({
   items: [
-    { label: "Monochrome", value: "monochrome" },
-    { label: "Monochrome-dark", value: "monochrome-dark" },
-    { label: "Monochrome-light", value: "monochrome-light" },
-    { label: "Analogic", value: "analogic" },
+    { label: "React.js", value: "react" },
+    { label: "Vue.js", value: "vue" },
+    { label: "Angular", value: "angular" },
+    { label: "Svelte", value: "svelte" },
   ],
 })

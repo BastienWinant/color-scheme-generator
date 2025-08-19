@@ -1,4 +1,4 @@
-import { ColorPicker, HStack, Portal, parseColor } from "@chakra-ui/react"
+import { ColorPicker, HStack, parseColor } from "@chakra-ui/react"
 
 export default function HexInput() {
   return (
