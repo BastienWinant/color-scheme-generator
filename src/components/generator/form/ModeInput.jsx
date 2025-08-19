@@ -2,7 +2,7 @@ import { Select, createListCollection } from "@chakra-ui/react"
 
 export default function ModeInput() {
   return (
-    <Select.Root collection={frameworks} size="sm" width="320px">
+    <Select.Root collection={frameworks} size="lg">
       <Select.HiddenSelect />
       <Select.Label>Select framework</Select.Label>
       <Select.Control>
