@@ -2,7 +2,7 @@ import { ColorPicker, HStack, Portal, parseColor } from "@chakra-ui/react"
 
 export default function HexInput() {
   return (
-    <ColorPicker.Root defaultValue={parseColor("#eb5e41")} maxW="200px">
+    <ColorPicker.Root defaultValue={parseColor("#eb5e41")}>
       <ColorPicker.HiddenInput />
       <ColorPicker.Label>Color</ColorPicker.Label>
       <ColorPicker.Control>
