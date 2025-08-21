@@ -6,7 +6,13 @@ export function ColorSchemeProvider({ children }) {
 	const [colorScheme, setColorScheme] = useState(null)
 
 	useEffect(() => {
-		setColorScheme(data)
+		const prevColorScheme = JSON.parse(localStorage.getItem("color-scheme"))
+
+		if (prevColorScheme) {
+			setColorScheme(prevColorScheme)
+		} else {
+			setColorScheme(data)
+		}
 	}, []);
 
 	return (

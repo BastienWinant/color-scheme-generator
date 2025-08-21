@@ -12,7 +12,10 @@ export default function Form() {
 
 		fetch(`https://www.thecolorapi.com/scheme?rgb=${hex}&mode=${mode}&format=json`)
 			.then(res => res.json())
-			.then(data => setColorScheme(data))
+			.then(data => {
+				localStorage.setItem("color-scheme", JSON.stringify(data));
+				setColorScheme(data)
+			})
 	}
 
 	return (
