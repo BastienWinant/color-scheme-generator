@@ -2,19 +2,10 @@ import {useEffect, useState} from "react";
 import { Flex } from "@chakra-ui/react";
 import Dashboard from "./Dashboard.jsx";
 import Palette from "./Palette.jsx";
-import data from './colordata.json'
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function Generator() {
-	const [colorScheme, setColorScheme] = useState({})
-
-	const updateColorScheme = (url) => {
-		setColorScheme(data)
-	}
-
-	useEffect(() => {
-		const url = "https://www.thecolorapi.com/scheme?hex=24B1E0&mode=monochrome&count=5"
-		updateColorScheme(url)
-	}, []);
+	const { colorScheme } = useColorSchemeContext()
 
 	return (
 		<Flex
