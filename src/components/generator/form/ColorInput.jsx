@@ -1,5 +1,5 @@
-import { ColorPicker, HStack } from "@chakra-ui/react"
-import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
+import { ColorPicker, HStack, parseColor } from "@chakra-ui/react"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function ColorInput() {
 	const { color, setColor } = useColorSchemeContext()
@@ -7,7 +7,7 @@ export default function ColorInput() {
   return (
 		<ColorPicker.Root
 			defaultValue={color}
-			onValueChangeEnd={(e) => setColor(e.color)}
+			onValueChangeEnd={e => setColor(parseColor(e.valueAsString))}
 		>
 			<ColorPicker.HiddenInput />
 			<ColorPicker.Label>Color</ColorPicker.Label>

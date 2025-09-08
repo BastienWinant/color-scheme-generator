@@ -15,7 +15,7 @@ export default function CountInput() {
         borderWidth="thin"
         rounded="sm"
         value={count}
-        onValueChange={(e) => setCount(e.value)}
+        onValueChange={e => setCount(e.value)}
       >
         <HStack gap="2" justifyContent="space-between">
           <NumberInput.DecrementTrigger asChild>
