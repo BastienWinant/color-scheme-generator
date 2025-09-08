@@ -19,6 +19,9 @@ export default function GeneratorFormToggler() {
         <Drawer.Backdrop />
         <Drawer.Positioner>
           <Drawer.Content>
+            <Drawer.Header>
+              <Drawer.Title>Drawer Title</Drawer.Title>
+            </Drawer.Header>
             <Drawer.Context>
               {(store) => (
                 <Drawer.Body pt="6" spaceY="3">
