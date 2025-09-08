@@ -1,17 +1,21 @@
 import { Field, NumberInput, HStack, IconButton } from "@chakra-ui/react"
 import { FaPlus, FaMinus } from "react-icons/fa6"
+import { useState } from "react"
 
 export default function CountInput() {
+  const [count, setCount] = useState("5")
+
   return (
     <Field.Root>
       <Field.Label>Count</Field.Label>
       <NumberInput.Root
-        defaultValue="3"
         unstyled
         spinOnPress={false}
         w="full"
         borderWidth="thin"
         rounded="sm"
+        value={count}
+        onValueChange={(e) => setCount(e.value)}
       >
         <HStack gap="2" justifyContent="space-between">
           <NumberInput.DecrementTrigger asChild>
