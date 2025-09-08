@@ -2,13 +2,12 @@ import { Field, NumberInput } from "@chakra-ui/react"
 
 export default function CountInput() {
   return (
-    <Field.Root invalid>
+    <Field.Root>
       <Field.Label>Enter Number</Field.Label>
-      <NumberInput.Root defaultValue="10" width="200px">
+      <NumberInput.Root defaultValue="5">
         <NumberInput.Control />
         <NumberInput.Input />
       </NumberInput.Root>
-      <Field.ErrorText>The entry is invalid</Field.ErrorText>
     </Field.Root>
   )
 }
