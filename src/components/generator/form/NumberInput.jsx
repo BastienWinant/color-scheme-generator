@@ -4,9 +4,16 @@ import { FaPlus, FaMinus } from "react-icons/fa6"
 export default function CountInput() {
   return (
     <Field.Root>
-      <Field.Label>Enter Number</Field.Label>
-      <NumberInput.Root defaultValue="3" unstyled spinOnPress={false}>
-        <HStack gap="2">
+      <Field.Label>Count</Field.Label>
+      <NumberInput.Root
+        defaultValue="3"
+        unstyled
+        spinOnPress={false}
+        w="full"
+        borderWidth="thin"
+        rounded="md"
+      >
+        <HStack gap="2" justifyContent="space-between">
           <NumberInput.DecrementTrigger asChild>
             <IconButton variant="outline" size="sm">
               <FaMinus />
