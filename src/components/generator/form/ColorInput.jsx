@@ -6,12 +6,12 @@ import {
 import { useState } from "react"
 
 export default function ColorInput() {
-  const [value, setValue] = useState(parseColor("#eb5e41"))
+  const [color, setColor] = useState(parseColor("#eb5e41"))
 
   return (
 		<ColorPicker.Root
-			defaultValue={value}
-			onValueChangeEnd={(e) => setValue(e.value)}
+			defaultValue={color}
+			onValueChangeEnd={(e) => setColor(e.color)}
 		>
 			<ColorPicker.HiddenInput />
 			<ColorPicker.Label>Color</ColorPicker.Label>
