@@ -1,6 +1,6 @@
-import { Portal, Select, createListCollection } from "@chakra-ui/react"
+import { Select, createListCollection } from "@chakra-ui/react"
 
-export default function ModeSelect() {
+export default function ModeInput() {
   return (
     <Select.Root collection={frameworks} size="sm">
       <Select.HiddenSelect />
@@ -13,16 +13,16 @@ export default function ModeSelect() {
           <Select.Indicator />
         </Select.IndicatorGroup>
       </Select.Control>
-			<Select.Positioner>
-				<Select.Content>
-					{frameworks.items.map((framework) => (
-						<Select.Item item={framework} key={framework.value}>
-							{framework.label}
-							<Select.ItemIndicator />
-						</Select.Item>
-					))}
-				</Select.Content>
-			</Select.Positioner>
+      <Select.Positioner>
+        <Select.Content>
+          {frameworks.items.map((framework) => (
+            <Select.Item item={framework} key={framework.value}>
+              {framework.label}
+              <Select.ItemIndicator />
+            </Select.Item>
+          ))}
+        </Select.Content>
+      </Select.Positioner>
     </Select.Root>
   )
 }
