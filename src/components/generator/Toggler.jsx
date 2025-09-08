@@ -3,14 +3,14 @@ import { FaHeart } from "react-icons/fa6"
 
 export default function Toggler() {
   return (
-    <Drawer.Root>
+    <Drawer.Root placement={{ mdDown: "bottom", md: "end" }} size={{ md: "md" }}>
       <ButtonGroup border="2px solid blue">
         <Drawer.Trigger flexGrow="1" asChild>
           <Button variant="outline" size="xl">
             Open Drawer
           </Button>
         </Drawer.Trigger>
-        <IconButton size="xl">
+        <IconButton variant="outline" size="xl">
           <FaHeart />
         </IconButton>
       </ButtonGroup>
