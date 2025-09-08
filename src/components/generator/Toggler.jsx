@@ -1,13 +1,19 @@
-import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react"
+import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal } from "@chakra-ui/react"
+import { FaHeart } from "react-icons/fa6"
 
 export default function Toggler() {
   return (
     <Drawer.Root>
-      <Drawer.Trigger asChild>
-        <Button variant="outline" size="sm">
-          Open Drawer
-        </Button>
-      </Drawer.Trigger>
+      <ButtonGroup border="2px solid blue">
+        <Drawer.Trigger flexGrow="1" asChild>
+          <Button variant="outline" size="xl">
+            Open Drawer
+          </Button>
+        </Drawer.Trigger>
+        <IconButton size="xl">
+          <FaHeart />
+        </IconButton>
+      </ButtonGroup>
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
