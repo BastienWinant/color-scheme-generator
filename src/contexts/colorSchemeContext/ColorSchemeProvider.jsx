@@ -1,22 +1,11 @@
 import { ColorSchemeContext } from "./ColorSchemeContext.js"
-import { useEffect, useState } from "react"
-import data from './colordata.json'
+import ColorSchemeData from "@/contexts/colorSchemeContext/ColorSchemeData.js";
 
 export function ColorSchemeProvider({ children }) {
-	const [colorScheme, setColorScheme] = useState(null)
-
-	useEffect(() => {
-		const prevColorScheme = JSON.parse(localStorage.getItem("color-scheme"))
-
-		if (prevColorScheme) {
-			setColorScheme(prevColorScheme)
-		} else {
-			setColorScheme(data)
-		}
-	}, []);
+	const colorSchemeContext = ColorSchemeData()
 
 	return (
-		<ColorSchemeContext.Provider value={{ colorScheme, setColorScheme }}>
+		<ColorSchemeContext.Provider value={colorSchemeContext}>
 			{ children }
 		</ColorSchemeContext.Provider>)
 }

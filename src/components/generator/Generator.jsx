@@ -1,24 +1,12 @@
-import {useEffect, useState} from "react";
 import { Flex } from "@chakra-ui/react";
-import Dashboard from "./Dashboard.jsx";
-import Palette from "./Palette.jsx";
-import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
+import Toggler from "@/components/generator/Toggler.jsx";
 
 export default function Generator() {
-	const { colorScheme } = useColorSchemeContext()
-
 	return (
 		<Flex
-			direction="column-reverse"
+			direction={{base: "column-reverse"}}
 		>
-			<Dashboard />
-			<Flex
-				flexGrow="1"
-				direction="column"
-				border="2px solid yellow"
-			>
-				<Palette colorScheme={colorScheme} />
-			</Flex>
+			<Toggler />
 		</Flex>
 	)
 }

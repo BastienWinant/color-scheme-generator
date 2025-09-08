@@ -1,4 +1,4 @@
-import Generator from "@/components/generator/index.jsx";
+import Generator from "@/components/generator/Generator.jsx";
 
 export default function Index() {
 	return (
