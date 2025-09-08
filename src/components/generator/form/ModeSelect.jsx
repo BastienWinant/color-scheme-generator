@@ -1,10 +1,22 @@
 import { Select, createListCollection } from "@chakra-ui/react"
+import {useEffect, useState} from "react"
+import { nanoid } from "nanoid"
 
-export default function ModeInput() {
+export default function ModeSelect() {
+  const [mode, setMode] = useState([])
+
+  useEffect(() => {
+    console.log(mode)
+  }, [mode])
+
   return (
-    <Select.Root collection={colorModes} size="sm">
+    <Select.Root
+      collection={modes}
+      value={mode}
+      onValueChange={e => setMode(e.value)}
+    >
       <Select.HiddenSelect />
-      <Select.Label>Mode</Select.Label>
+      <Select.Label>Select mode</Select.Label>
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select mode" />
@@ -15,9 +27,9 @@ export default function ModeInput() {
       </Select.Control>
       <Select.Positioner>
         <Select.Content>
-          {colorModes.items.map(colorMode => (
-            <Select.Item item={colorMode} key={colorMode.value}>
-              {colorMode.label}
+          {modes.items.map(item => (
+            <Select.Item item={item} key={nanoid()}>
+              {item.label}
               <Select.ItemIndicator />
             </Select.Item>
           ))}
@@ -27,7 +39,7 @@ export default function ModeInput() {
   )
 }
 
-const colorModes = createListCollection({
+const modes = createListCollection({
   items: [
     { label: "Monochrome", value: "monochrome" },
     { label: "Monochrome (dark)", value: "monochrome-dark" },
@@ -36,6 +48,6 @@ const colorModes = createListCollection({
     { label: "Complement", value: "complement" },
     { label: "Analogic-complement", value: "analogic-complement" },
     { label: "Triad", value: "triad" },
-    { label: "Quad", value: "quad" },
+    { label: "Quad", value: "quad" }
   ],
 })
