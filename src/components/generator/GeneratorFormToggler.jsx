@@ -5,7 +5,7 @@ import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 export default function GeneratorFormToggler() {
   return (
     <Drawer.Root placement={{ mdDown: "bottom", md: "end" }}>
-      <ButtonGroup justifyContent="flex-end">
+      <ButtonGroup justifyContent="flex-end" p="6" gap="4">
         <Drawer.Trigger asChild flexGrow={{base: 1, md: 0}}>
           <Button variant="outline" size="xl">
             Open Drawer
@@ -26,7 +26,7 @@ export default function GeneratorFormToggler() {
               {store => (
                 <Drawer.Body py="6" spaceY="3">
                   <GeneratorForm />
-                  <button onClick={() => store.setOpen(false)}>Close</button>
+                  {/*<button onClick={() => store.setOpen(false)}>Close</button>*/}
                 </Drawer.Body>
               )}
             </Drawer.Context>

@@ -6,7 +6,7 @@ import CountInput from "@/components/generator/form/NumberInput.jsx";
 export default function GeneratorForm() {
 	return (
 		<form>
-			<Stack>
+			<Stack gap="6">
 				<ColorInput />
 				<ModeSelect />
 				<CountInput />

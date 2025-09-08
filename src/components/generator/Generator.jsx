@@ -3,10 +3,7 @@ import GeneratorFormToggler from "@/components/generator/GeneratorFormToggler.js
 
 export default function Generator() {
 	return (
-		<Flex
-			direction={{base: "column-reverse"}}
-			border="2px solid red"
-		>
+		<Flex direction={{base: "column-reverse"}}>
 			<GeneratorFormToggler />
 		</Flex>
 	)
