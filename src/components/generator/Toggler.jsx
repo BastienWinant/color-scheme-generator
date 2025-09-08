@@ -1,13 +1,20 @@
-import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react"
+import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal } from "@chakra-ui/react"
+import { FaHeart } from "react-icons/fa6"
+import Form from "@/components/generator/Form.jsx"
 
-const Demo = () => {
+export default function Toggler() {
   return (
-    <Drawer.Root>
-      <Drawer.Trigger asChild>
-        <Button variant="outline" size="sm">
-          Open Drawer
-        </Button>
-      </Drawer.Trigger>
+    <Drawer.Root placement={{ mdDown: "bottom", md: "end" }}>
+      <ButtonGroup justifyContent="flex-end">
+        <Drawer.Trigger asChild flexGrow={{base: 1, md: 0}}>
+          <Button variant="outline" size="xl">
+            Open Drawer
+          </Button>
+        </Drawer.Trigger>
+        <IconButton variant="outline" size="xl">
+          <FaHeart />
+        </IconButton>
+      </ButtonGroup>
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
@@ -15,12 +22,7 @@ const Demo = () => {
             <Drawer.Context>
               {(store) => (
                 <Drawer.Body pt="6" spaceY="3">
-                  <p>Drawer is open: {store.open ? "true" : "false"}</p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
+                  <Form />
                   <button onClick={() => store.setOpen(false)}>Close</button>
                 </Drawer.Body>
               )}
