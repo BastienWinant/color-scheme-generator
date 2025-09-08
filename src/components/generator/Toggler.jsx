@@ -1,32 +1,30 @@
-import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal } from "@chakra-ui/react"
-import { FaHeart } from "react-icons/fa6"
+import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react"
 
-export default function Toggler() {
+const Demo = () => {
   return (
-    <Drawer.Root placement={{ mdDown: "bottom", md: "end" }} size={{ md: "md" }}>
-      <ButtonGroup justifyContent="flex-end">
-        <Drawer.Trigger flexGrow={{base: "1", md: "0"}} asChild>
-          <Button variant="outline" size="xl">
-            Open Drawer
-          </Button>
-        </Drawer.Trigger>
-        <IconButton variant="outline" size="xl">
-          <FaHeart />
-        </IconButton>
-      </ButtonGroup>
+    <Drawer.Root>
+      <Drawer.Trigger asChild>
+        <Button variant="outline" size="sm">
+          Open Drawer
+        </Button>
+      </Drawer.Trigger>
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
           <Drawer.Content>
-            <Drawer.Header>
-              <Drawer.Title>Drawer Title</Drawer.Title>
-            </Drawer.Header>
-            <Drawer.Body>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </Drawer.Body>
+            <Drawer.Context>
+              {(store) => (
+                <Drawer.Body pt="6" spaceY="3">
+                  <p>Drawer is open: {store.open ? "true" : "false"}</p>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                  <button onClick={() => store.setOpen(false)}>Close</button>
+                </Drawer.Body>
+              )}
+            </Drawer.Context>
             <Drawer.CloseTrigger asChild>
               <CloseButton size="sm" />
             </Drawer.CloseTrigger>

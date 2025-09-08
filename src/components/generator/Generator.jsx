@@ -5,6 +5,7 @@ export default function Generator() {
 	return (
 		<Flex
 			direction={{base: "column-reverse"}}
+			border="2px solid red"
 		>
 			<Toggler />
 		</Flex>
