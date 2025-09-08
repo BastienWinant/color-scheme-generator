@@ -1,13 +1,9 @@
 import { Select, createListCollection } from "@chakra-ui/react"
-import {useEffect, useState} from "react"
+import { useState } from "react"
 import { nanoid } from "nanoid"
 
 export default function ModeSelect() {
   const [mode, setMode] = useState([])
-
-  useEffect(() => {
-    console.log(mode)
-  }, [mode])
 
   return (
     <Select.Root
