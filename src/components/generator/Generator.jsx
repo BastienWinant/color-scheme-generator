@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import Toggler from "@/components/generator/Toggler.jsx";
+import GeneratorFormToggler from "@/components/generator/GeneratorFormToggler.jsx";
 
 export default function Generator() {
 	return (
@@ -7,7 +7,7 @@ export default function Generator() {
 			direction={{base: "column-reverse"}}
 			border="2px solid red"
 		>
-			<Toggler />
+			<GeneratorFormToggler />
 		</Flex>
 	)
 }
