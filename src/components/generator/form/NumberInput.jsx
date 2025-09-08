@@ -11,17 +11,17 @@ export default function CountInput() {
         spinOnPress={false}
         w="full"
         borderWidth="thin"
-        rounded="md"
+        rounded="sm"
       >
         <HStack gap="2" justifyContent="space-between">
           <NumberInput.DecrementTrigger asChild>
-            <IconButton variant="outline" size="sm">
+            <IconButton variant="plain" size="sm">
               <FaMinus />
             </IconButton>
           </NumberInput.DecrementTrigger>
-          <NumberInput.ValueText textAlign="center" fontSize="lg" minW="3ch" />
+          <NumberInput.ValueText textAlign="center" fontSize="md" minW="3ch" />
           <NumberInput.IncrementTrigger asChild>
-            <IconButton variant="outline" size="sm">
+            <IconButton variant="plain" size="sm">
               <FaPlus />
             </IconButton>
           </NumberInput.IncrementTrigger>

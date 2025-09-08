@@ -4,7 +4,7 @@ export default function ModeInput() {
   return (
     <Select.Root collection={colorModes} size="sm">
       <Select.HiddenSelect />
-      <Select.Label>Color Mode</Select.Label>
+      <Select.Label>Mode</Select.Label>
       <Select.Control>
         <Select.Trigger>
           <Select.ValueText placeholder="Select mode" />
