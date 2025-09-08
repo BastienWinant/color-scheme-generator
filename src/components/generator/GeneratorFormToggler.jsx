@@ -1,5 +1,5 @@
 import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal } from "@chakra-ui/react"
-import { FaHeart } from "react-icons/fa6"
+import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 
 export default function GeneratorFormToggler() {
@@ -12,7 +12,7 @@ export default function GeneratorFormToggler() {
           </Button>
         </Drawer.Trigger>
         <IconButton variant="outline" size="xl">
-          <FaHeart />
+          <FaRegHeart />
         </IconButton>
       </ButtonGroup>
       <Portal>
@@ -26,7 +26,6 @@ export default function GeneratorFormToggler() {
               {store => (
                 <Drawer.Body py="6" spaceY="3">
                   <GeneratorForm closeDrawer={() => store.setOpen(false)} />
-                  {/*<button onClick={() => store.setOpen(false)}>Close</button>*/}
                 </Drawer.Body>
               )}
             </Drawer.Context>
