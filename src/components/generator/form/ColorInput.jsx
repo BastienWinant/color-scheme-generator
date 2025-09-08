@@ -1,12 +1,8 @@
-import {
-  ColorPicker,
-  HStack,
-  parseColor,
-} from "@chakra-ui/react"
-import { useState } from "react"
+import { ColorPicker, HStack } from "@chakra-ui/react"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
 
 export default function ColorInput() {
-  const [color, setColor] = useState(parseColor("#eb5e41"))
+	const { color, setColor } = useColorSchemeContext()
 
   return (
 		<ColorPicker.Root

@@ -1,9 +1,9 @@
 import { Field, NumberInput, HStack, IconButton } from "@chakra-ui/react"
 import { FaPlus, FaMinus } from "react-icons/fa6"
-import { useState } from "react"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function CountInput() {
-  const [count, setCount] = useState("5")
+  const { count, setCount } = useColorSchemeContext()
 
   return (
     <Field.Root>

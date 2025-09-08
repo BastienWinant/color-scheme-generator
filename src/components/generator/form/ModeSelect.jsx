@@ -1,9 +1,9 @@
-import { Select, createListCollection } from "@chakra-ui/react"
-import { useState } from "react"
+import { Select } from "@chakra-ui/react"
 import { nanoid } from "nanoid"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function ModeSelect() {
-  const [mode, setMode] = useState([])
+  const { mode, setMode, modes } = useColorSchemeContext()
 
   return (
     <Select.Root
@@ -34,16 +34,3 @@ export default function ModeSelect() {
     </Select.Root>
   )
 }
-
-const modes = createListCollection({
-  items: [
-    { label: "Monochrome", value: "monochrome" },
-    { label: "Monochrome (dark)", value: "monochrome-dark" },
-    { label: "Monochrome (light)", value: "monochrome-light" },
-    { label: "Analogic", value: "analogic" },
-    { label: "Complement", value: "complement" },
-    { label: "Analogic-complement", value: "analogic-complement" },
-    { label: "Triad", value: "triad" },
-    { label: "Quad", value: "quad" }
-  ],
-})
