@@ -4,7 +4,7 @@ import { FaHeart } from "react-icons/fa6"
 export default function Toggler() {
   return (
     <Drawer.Root placement={{ mdDown: "bottom", md: "end" }} size={{ md: "md" }}>
-      <ButtonGroup justifyContent="flex-end" border="2px solid blue">
+      <ButtonGroup justifyContent="flex-end">
         <Drawer.Trigger flexGrow={{base: "1", md: "0"}} asChild>
           <Button variant="outline" size="xl">
             Open Drawer
@@ -27,10 +27,6 @@ export default function Toggler() {
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
             </Drawer.Body>
-            <Drawer.Footer>
-              <Button variant="outline">Cancel</Button>
-              <Button>Save</Button>
-            </Drawer.Footer>
             <Drawer.CloseTrigger asChild>
               <CloseButton size="sm" />
             </Drawer.CloseTrigger>
