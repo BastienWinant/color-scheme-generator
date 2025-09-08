@@ -24,7 +24,7 @@ export default function GeneratorFormToggler() {
             </Drawer.Header>
             <Drawer.Context>
               {store => (
-                <Drawer.Body py="6" spaceY="3" borderWidth="medium">
+                <Drawer.Body py="6" spaceY="3">
                   <GeneratorForm />
                   <button onClick={() => store.setOpen(false)}>Close</button>
                 </Drawer.Body>

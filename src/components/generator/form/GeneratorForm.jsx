@@ -5,7 +5,7 @@ import ModeSelect from "@/components/generator/form/ModeSelect.jsx";
 export default function GeneratorForm() {
 	return (
 		<form>
-			<Stack borderWidth="thin">
+			<Stack>
 				<ColorInput />
 				<ModeSelect />
 				<Button variant="solid">Submit</Button>
