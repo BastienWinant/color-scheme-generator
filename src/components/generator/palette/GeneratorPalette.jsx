@@ -1,18 +1,22 @@
-import { Grid, Box } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react"
+import ColorCard from "@/components/generator/palette/ColorCard.jsx"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function GeneratorPalette() {
+	const { colorScheme } = useColorSchemeContext()
+
 	return (
-		<Grid
+		<Stack
+			direction={{base: "column", lg: "row"}}
 			flexGrow="1"
-			templateColumns={{base: "1fr", md: "repeat(auto-fit, minmax(150px, 1fr))"}}
-			templateRows={{base: "repeat(auto-fit, minmax(80px, 1fr))", md: "1fr"}}
-			border="2px solid red;"
+			gap="0"
+			border="2px solid orange;"
 		>
-			<Box borderWidth="thin">box 1</Box>
-			<Box borderWidth="thin">box 2</Box>
-			<Box borderWidth="thin">box 3</Box>
-			<Box borderWidth="thin">box 4</Box>
-			<Box border="2px solid blue">box 5</Box>
-		</Grid>
+			<ColorCard />
+			<ColorCard />
+			<ColorCard />
+			<ColorCard />
+			<ColorCard />
+		</Stack>
 	)
 }
