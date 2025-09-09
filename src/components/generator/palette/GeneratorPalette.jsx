@@ -6,8 +6,6 @@ import { nanoid } from "nanoid"
 export default function GeneratorPalette() {
 	const { colorScheme } = useColorSchemeContext()
 
-	console.log(colorScheme)
-
 	const colorCards = colorScheme?.colors.map(color => <ColorCard key={nanoid()} color={color} />)
 
 	return (

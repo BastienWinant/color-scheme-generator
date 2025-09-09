@@ -13,8 +13,14 @@ export default function ColorSchemeData() {
 
 		if (prevColorScheme) {
 			setColorScheme(prevColorScheme)
+			setColor(parseColor(prevColorScheme.seed.hex.value))
+			setMode([prevColorScheme.mode])
+			setCount(prevColorScheme.count)
 		} else {
 			setColorScheme(data)
+			setColor(parseColor(data.seed.hex.value))
+			setMode([data.mode])
+			setCount(data.count)
 		}
 	}, [])
 
