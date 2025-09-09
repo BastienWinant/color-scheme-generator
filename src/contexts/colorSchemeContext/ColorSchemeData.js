@@ -4,7 +4,7 @@ import { createListCollection, parseColor } from "@chakra-ui/react"
 
 export default function ColorSchemeData() {
 	const [color, setColor] = useState(parseColor("#eb5e41"))
-	const [mode, setMode] = useState([])
+	const [mode, setMode] = useState(['monochrome'])
 	const [count, setCount] = useState("5")
 	const [colorScheme, setColorScheme] = useState(null)
 
