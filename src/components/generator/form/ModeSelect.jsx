@@ -1,13 +1,16 @@
-import { Select, createListCollection } from "@chakra-ui/react"
+import { Select } from "@chakra-ui/react"
+import {useColorSchemeContext} from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function ModeSelect() {
+  const { modes } = useColorSchemeContext()
+
   return (
-    <Select.Root collection={frameworks} size="sm">
+    <Select.Root collection={modes}>
       <Select.HiddenSelect />
-      <Select.Label>Select framework</Select.Label>
+      <Select.Label>Select mode</Select.Label>
       <Select.Control>
         <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
+          <Select.ValueText placeholder="Select mode" />
         </Select.Trigger>
         <Select.IndicatorGroup>
           <Select.Indicator />
@@ -15,9 +18,9 @@ export default function ModeSelect() {
       </Select.Control>
       <Select.Positioner>
         <Select.Content>
-          {frameworks.items.map((framework) => (
-            <Select.Item item={framework} key={framework.value}>
-              {framework.label}
+          {modes.items.map(item => (
+            <Select.Item item={item} key={item.value}>
+              {item.label}
               <Select.ItemIndicator />
             </Select.Item>
           ))}
@@ -26,12 +29,3 @@ export default function ModeSelect() {
     </Select.Root>
   )
 }
-
-const frameworks = createListCollection({
-  items: [
-    { label: "React.js", value: "react" },
-    { label: "Vue.js", value: "vue" },
-    { label: "Angular", value: "angular" },
-    { label: "Svelte", value: "svelte" },
-  ],
-})
