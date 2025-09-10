@@ -38,7 +38,12 @@ export default function ColorSchemeData() {
 	})
 
 	const getColorScheme = () => {
-		const url = `https://www.thecolorapi.com/scheme?rgb=${color.replace(" ", "")}&format=json&mode=${mode}&count=${count}`
+		const base_url = "https://www.thecolorapi.com"
+		const endpoint = "scheme"
+		const url_color = color.replace(" ", "")
+
+		const url = `${base_url}/${endpoint}?rgb=${url_color}&format=json&mode=${mode}&count=${count}`
+
 		fetch(url)
 			.then(response => response.json())
 			.then(data => {

@@ -10,7 +10,7 @@ export default function ColorCard({color}) {
 			alignItems={{ base: "center" }}
 			justifyContent={{ base: "space-between" }}
 			gap={{ lg: 4 }}
-			py={{ base: 0, lg: 8 }}
+			py={{ base: 0, lg: 6 }}
 			rounded="0"
 			border="0"
 			bg={color.hex.value}
