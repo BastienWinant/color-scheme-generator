@@ -11,7 +11,7 @@ export default function ModeSelect() {
       <Field.Label>Mode</Field.Label>
       <NativeSelect.Root>
         <NativeSelect.Field
-          placeholder="Select option"
+          placeholder="Select mode"
           value={mode}
           onChange={e => setMode(e.currentTarget.value)}
         >
