@@ -1,16 +1,15 @@
-"use client"
-
 import { NativeSelect } from "@chakra-ui/react"
-import { useState } from "react"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
-export default function SelectMode() {
-  const [value, setValue] = useState("")
+export default function ModeSelect() {
+  const { mode, setMode } = useColorSchemeContext()
+
   return (
-    <NativeSelect.Root size="sm" width="240px">
+    <NativeSelect.Root>
       <NativeSelect.Field
         placeholder="Select option"
-        value={value}
-        onChange={(e) => setValue(e.currentTarget.value)}
+        value={mode}
+        onChange={e => setMode(e.currentTarget.value)}
       >
         <option value="react">React</option>
         <option value="vue">Vue</option>
