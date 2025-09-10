@@ -1,6 +1,5 @@
 import {useEffect, useState} from "react";
 import data from './colordata.json'
-import { createListCollection } from "@chakra-ui/react"
 
 export default function ColorSchemeData() {
 	const [color, setColor] = useState("#eb5e41")
@@ -25,18 +24,16 @@ export default function ColorSchemeData() {
 		}
 	}, [])
 
-	const modes = createListCollection({
-		items: [
-			{ label: "Monochrome", value: "monochrome" },
-			{ label: "Monochrome (dark)", value: "monochrome-dark" },
-			{ label: "Monochrome (light)", value: "monochrome-light" },
-			{ label: "Analogic", value: "analogic" },
-			{ label: "Complement", value: "complement" },
-			{ label: "Analogic-complement", value: "analogic-complement" },
-			{ label: "Triad", value: "triad" },
-			{ label: "Quad", value: "quad" }
-		],
-	})
+	const modes = [
+		{ label: "Monochrome", value: "monochrome" },
+		{ label: "Monochrome (dark)", value: "monochrome-dark" },
+		{ label: "Monochrome (light)", value: "monochrome-light" },
+		{ label: "Analogic", value: "analogic" },
+		{ label: "Complement", value: "complement" },
+		{ label: "Analogic-complement", value: "analogic-complement" },
+		{ label: "Triad", value: "triad" },
+		{ label: "Quad", value: "quad" }
+	]
 
 	const getColorScheme = () => {
 		const base_url = "https://www.thecolorapi.com"

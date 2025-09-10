@@ -2,7 +2,9 @@ import { NativeSelect } from "@chakra-ui/react"
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function ModeSelect() {
-  const { mode, setMode } = useColorSchemeContext()
+  const { mode, modes, setMode } = useColorSchemeContext()
+
+  const options = modes.map(option => <option key={option.value} value={option.value}>{option.label}</option>)
 
   return (
     <NativeSelect.Root>
@@ -11,10 +13,7 @@ export default function ModeSelect() {
         value={mode}
         onChange={e => setMode(e.currentTarget.value)}
       >
-        <option value="react">React</option>
-        <option value="vue">Vue</option>
-        <option value="angular">Angular</option>
-        <option value="svelte">Svelte</option>
+        {options}
       </NativeSelect.Field>
       <NativeSelect.Indicator />
     </NativeSelect.Root>
