@@ -1,4 +1,4 @@
-import { Flex, Heading, LinkBox, LinkOverlay, Stack, Text, Icon } from "@chakra-ui/react";
+import { Flex, LinkBox, LinkOverlay, Icon } from "@chakra-ui/react";
 import { Link } from "react-router"
 import { FaPalette } from "react-icons/fa6";
 
@@ -8,7 +8,8 @@ export default function Header() {
 			as="header"
 			align="center"
 			justify="space-between"
-			border="2px solid yellow"
+			shadow="lg"
+			zIndex="1"
 		>
 			<LinkBox>
 				<Icon size="2xl">
