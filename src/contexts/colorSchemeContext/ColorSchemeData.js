@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 import data from './colordata.json'
-import { createListCollection, parseColor } from "@chakra-ui/react"
+import { createListCollection } from "@chakra-ui/react"
 
 export default function ColorSchemeData() {
-	const [color, setColor] = useState(parseColor("#eb5e41"))
-	const [mode, setMode] = useState(['monochrome'])
+	const [color, setColor] = useState("#eb5e41")
+	const [mode, setMode] = useState('monochrome')
 	const [count, setCount] = useState("5")
 	const [colorScheme, setColorScheme] = useState(null)
 
@@ -13,13 +13,13 @@ export default function ColorSchemeData() {
 
 		if (prevColorScheme) {
 			setColorScheme(prevColorScheme)
-			setColor(parseColor(prevColorScheme.seed.hex.value))
-			setMode([prevColorScheme.mode])
+			setColor(prevColorScheme.seed.rgb.value)
+			setMode(prevColorScheme.mode)
 			setCount(prevColorScheme.count)
 		} else {
 			setColorScheme(data)
-			setColor(parseColor(data.seed.hex.value))
-			setMode([data.mode])
+			setColor(data.seed.rgb.value)
+			setMode(data.mode)
 			setCount(data.count)
 		}
 	}, [])
@@ -37,6 +37,16 @@ export default function ColorSchemeData() {
 		],
 	})
 
+	const getColorScheme = () => {
+		const url = `https://www.thecolorapi.com/scheme?rgb=${color.replace(" ", "")}&format=json&mode=${mode}&count=${count}`
+		fetch(url)
+			.then(response => response.json())
+			.then(data => {
+				setColorScheme(data)
+				localStorage.setItem("color-scheme", data)
+			})
+	}
+
 	return {
 		color,
 		setColor,
@@ -46,6 +56,7 @@ export default function ColorSchemeData() {
 		setCount,
 		colorScheme,
 		setColorScheme,
+		getColorScheme,
 		modes
 	}
 }

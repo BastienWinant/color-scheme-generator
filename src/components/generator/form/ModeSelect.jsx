@@ -8,8 +8,8 @@ export default function ModeSelect() {
   return (
     <Select.Root
       collection={modes}
-      value={mode}
-      onValueChange={e => setMode(e.value)}
+      value={[mode]}
+      onValueChange={e => setMode(e.value[0])}
     >
       <Select.HiddenSelect />
       <Select.Label>Select mode</Select.Label>

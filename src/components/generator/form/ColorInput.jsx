@@ -6,8 +6,8 @@ export default function ColorInput() {
 
   return (
 		<ColorPicker.Root
-			defaultValue={color}
-			onValueChangeEnd={e => setColor(parseColor(e.valueAsString))}
+			defaultValue={parseColor(color)}
+			onValueChangeEnd={e => setColor(e.valueAsString)}
 		>
 			<ColorPicker.HiddenInput />
 			<ColorPicker.Label>Color</ColorPicker.Label>
