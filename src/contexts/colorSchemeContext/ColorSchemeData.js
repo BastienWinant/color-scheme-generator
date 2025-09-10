@@ -21,6 +21,7 @@ export default function ColorSchemeData() {
 			setColor(data.seed.rgb.value)
 			setMode(data.mode)
 			setCount(data.count)
+			localStorage.setItem("color-scheme", JSON.stringify(data))
 		}
 	}, [])
 
@@ -48,7 +49,7 @@ export default function ColorSchemeData() {
 			.then(response => response.json())
 			.then(data => {
 				setColorScheme(data)
-				localStorage.setItem("color-scheme", data)
+				localStorage.setItem("color-scheme", JSON.stringify(data))
 			})
 	}
 
