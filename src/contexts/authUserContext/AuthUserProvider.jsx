@@ -1,8 +1,9 @@
-import {AuthUserContext} from "@/contexts/authUserContext/AuthUserContext.js"
+import { AuthUserContext } from "@/contexts/authUserContext/AuthUserContext.js"
+import AuthUserData from "@/contexts/authUserContext/AuthUserData.js";
 
-export default function AuthUserProvider({children}) {
-	const authUserContext = {}
+export const AuthUserProvider = ({children}) => {
+	const authUserData = AuthUserData()
 	return (
-		<AuthUserContext value={authUserContext}>{children}</AuthUserContext>
+		<AuthUserContext value={authUserData}>{children}</AuthUserContext>
 	)
 }
