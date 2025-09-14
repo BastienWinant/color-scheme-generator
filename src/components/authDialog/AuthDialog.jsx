@@ -3,9 +3,13 @@ import AuthTabs from "@/components/authDialog/AuthTabs.jsx";
 
 export default function AuthDialog() {
   return (
-    <Dialog.Root>
+    <Dialog.Root
+      size="xs"
+      placement="top"
+      motionPreset="slide-in-bottom"
+    >
       <Dialog.Trigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="md">
           Sign Up/Sign In
         </Button>
       </Dialog.Trigger>
