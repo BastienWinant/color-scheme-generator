@@ -1,8 +1,9 @@
-import { Flex, LinkBox, LinkOverlay, Icon } from "@chakra-ui/react";
+import { Flex, LinkBox, LinkOverlay, Icon, HStack } from "@chakra-ui/react";
 import { Link } from "react-router"
 import { FaPalette } from "react-icons/fa6";
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
-import AuthDialog from "@/components/authDialog/AuthDialog.jsx";
+import SignUpDialog from "@/components/auth/signUp/SignUpDialog.jsx";
+import SignInDialog from "@/components/auth/signIn/SignInDialog.jsx";
 
 export default function Header() {
 	const { authUser } = useAuth();
@@ -23,7 +24,13 @@ export default function Header() {
 					<Link to="/" />
 				</LinkOverlay>
 			</LinkBox>
-			{ authUser ? authUser.email : <AuthDialog /> }
+			{ authUser ?
+				authUser.email :
+				<HStack>
+					<SignUpDialog />
+					<SignInDialog />
+				</HStack>
+			}
 		</Flex>
 	)
 }
