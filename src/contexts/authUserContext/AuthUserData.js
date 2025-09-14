@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react"
 import { auth } from "@/firebase.js"
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut as authSignOut } from "firebase/auth";
 
 export default function AuthUserData() {
-	const [authUser, setAuthUser] = useState(null)
-	const [isLoading, setIsLoading] = useState(true)
+	const [authUser, setAuthUser] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 
+	const clear = () => {
+		setAuthUser(null);
+		setIsLoading(false);
+	}
 	const handleAuthStateChanged = async user => {
 		setIsLoading(true)
 
 		if (!user) {
-			setAuthUser(null)
-			setIsLoading(false)
+			clear();
 			return;
 		}
 
@@ -28,8 +31,11 @@ export default function AuthUserData() {
 		return () => unsubscribe()
 	}, []);
 
+	const signOut = () => authSignOut(auth).then(clear);
+
 	return {
 		authUser,
-		isLoading
+		isLoading,
+		signOut
 	}
 }

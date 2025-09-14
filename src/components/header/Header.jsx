@@ -22,6 +22,7 @@ export default function Header() {
 					<Link to="/" />
 				</LinkOverlay>
 			</LinkBox>
+			{authUser?.email}
 		</Flex>
 	)
 }
