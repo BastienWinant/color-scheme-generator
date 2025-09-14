@@ -1,8 +1,9 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
+import SignUpForm from "@/components/auth/signUp/SignUpForm.jsx";
 
 export default function SignUpDialog() {
   return (
-    <Dialog.Root>
+    <Dialog.Root size="sm">
       <Dialog.Trigger asChild>
         <Button variant="solid" size="sm">
           Sign Up
@@ -13,13 +14,10 @@ export default function SignUpDialog() {
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title>Dialog Title</Dialog.Title>
+              <Dialog.Title>Sign Up</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
+              <SignUpForm />
             </Dialog.Body>
             <Dialog.Footer>
               <Dialog.ActionTrigger asChild>
