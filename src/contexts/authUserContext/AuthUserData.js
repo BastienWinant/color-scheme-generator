@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import {auth} from "@/firebase.js"
+import { auth } from "@/firebase.js"
 import { onAuthStateChanged } from "firebase/auth";
 
 export default function AuthUserData() {
@@ -18,7 +18,7 @@ export default function AuthUserData() {
 		setAuthUser({
 			uid: user.id,
 			email: user.email
-		})
+		});
 
 		setIsLoading(false)
 	}
