@@ -1,4 +1,5 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
+import AuthTabs from "@/components/authDialog/AuthTabs.jsx";
 
 export default function AuthDialog() {
   return (
@@ -15,18 +16,15 @@ export default function AuthDialog() {
             <Dialog.Header>
               <Dialog.Title>Dialog Title</Dialog.Title>
             </Dialog.Header>
-            <Dialog.Body>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
+            <Dialog.Body borderWidth="medium">
+              <AuthTabs />
             </Dialog.Body>
-            <Dialog.Footer>
-              <Dialog.ActionTrigger asChild>
-                <Button variant="outline">Cancel</Button>
-              </Dialog.ActionTrigger>
-              <Button>Save</Button>
-            </Dialog.Footer>
+            {/*<Dialog.Footer>*/}
+            {/*  <Dialog.ActionTrigger asChild>*/}
+            {/*    <Button variant="outline">Cancel</Button>*/}
+            {/*  </Dialog.ActionTrigger>*/}
+            {/*  <Button>Save</Button>*/}
+            {/*</Dialog.Footer>*/}
             <Dialog.CloseTrigger asChild>
               <CloseButton size="sm" />
             </Dialog.CloseTrigger>
