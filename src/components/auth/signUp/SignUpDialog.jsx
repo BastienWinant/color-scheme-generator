@@ -5,14 +5,14 @@ export default function SignUpDialog() {
   return (
     <Dialog.Root size="sm">
       <Dialog.Trigger asChild>
-        <Button variant="solid" size="sm">
+        <Button variant="solid" size="md">
           Sign Up
         </Button>
       </Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content>
+          <Dialog.Content maxW="90vw">
             <Dialog.Header>
               <Dialog.Title>Sign Up</Dialog.Title>
             </Dialog.Header>
