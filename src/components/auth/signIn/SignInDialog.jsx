@@ -12,7 +12,7 @@ export default function SignInDialog() {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content maxW="90vw">
+          <Dialog.Content>
             <Dialog.Header>
               <Dialog.Title>Sign In</Dialog.Title>
             </Dialog.Header>

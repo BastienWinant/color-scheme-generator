@@ -10,7 +10,7 @@ import { PasswordInput } from "@/components/ui/password-input"
 export default function SignInForm() {
   return (
 		<form>
-			<Fieldset.Root size="lg" maxW="md">
+			<Fieldset.Root size="lg">
 				<Stack>
 					<Fieldset.Legend>Contact details</Fieldset.Legend>
 					<Fieldset.HelperText>

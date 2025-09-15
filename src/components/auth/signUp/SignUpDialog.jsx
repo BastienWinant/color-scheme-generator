@@ -12,7 +12,7 @@ export default function SignUpDialog() {
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content maxW="90vw">
+          <Dialog.Content>
             <Dialog.Header>
               <Dialog.Title>Sign Up</Dialog.Title>
             </Dialog.Header>
