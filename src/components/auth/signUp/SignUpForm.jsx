@@ -2,15 +2,25 @@ import {
   Button,
   Field,
   Fieldset,
-  For,
   Input,
-  NativeSelect,
   Stack,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
+import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
+import {PasswordInput} from "@/components/ui/password-input.jsx";
 
 export default function SignUpForm() {
+	const { signUp } = useAuth();
+
+	const handleSubmit = formData => {
+		const username = formData.get('username');
+		const email = formData.get('email');
+		const password = formData.get('password');
+
+		signUp(email, password);
+	}
+
   return (
-		<form>
+		<form action={handleSubmit}>
 			<Fieldset.Root size="lg">
 				<Stack>
 					<Fieldset.Legend>Contact details</Fieldset.Legend>
@@ -28,6 +38,11 @@ export default function SignUpForm() {
 					<Field.Root>
 						<Field.Label>Email address</Field.Label>
 						<Input name="email" type="email" />
+					</Field.Root>
+
+					<Field.Root>
+						<Field.Label>Password</Field.Label>
+						<PasswordInput name="password" />
 					</Field.Root>
 
 				</Fieldset.Content>
