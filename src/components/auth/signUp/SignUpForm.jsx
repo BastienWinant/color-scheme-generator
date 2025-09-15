@@ -5,8 +5,8 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react";
+import { PasswordInput } from "@/components/ui/password-input.jsx";
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
-import {PasswordInput} from "@/components/ui/password-input.jsx";
 
 export default function SignUpForm() {
 	const { signUp } = useAuth();
@@ -16,7 +16,7 @@ export default function SignUpForm() {
 		const email = formData.get('email');
 		const password = formData.get('password');
 
-		signUp(email, password);
+		signUp(username, email, password);
 	}
 
   return (

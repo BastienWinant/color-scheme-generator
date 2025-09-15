@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react"
 import { auth } from "@/firebase.js"
-import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut as authSignOut } from "firebase/auth";
+import {
+	onAuthStateChanged,
+	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
+	signOut as authSignOut,
+	updateProfile
+} from "firebase/auth";
 
 export default function AuthUserData() {
 	const [authUser, setAuthUser] = useState(null);
@@ -21,6 +27,7 @@ export default function AuthUserData() {
 
 		setAuthUser({
 			uid: user.id,
+			username: user.email,
 			email: user.email
 		});
 
@@ -32,16 +39,13 @@ export default function AuthUserData() {
 		return () => unsubscribe()
 	}, []);
 
-	const signUp = (email, password) => {
-		createUserWithEmailAndPassword(auth, email, password)
-			.then(userCredential => console.log(userCredential))
-			.catch(error => console.log(error))
+	const signUp = async (username, email, password) => {
+		const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+		await updateProfile(userCredential.user, {displayName: username});
 	};
 
-	const signIn = (email, password) => {
-		signInWithEmailAndPassword(auth, email, password)
-			.then(userCredential => console.log(userCredential))
-			.catch(error => console.log(error))
+	const signIn = async (email, password) => {
+		const userCredential = await signInWithEmailAndPassword(auth, email, password);
 	};
 
 	const signOut = () => authSignOut(auth);
