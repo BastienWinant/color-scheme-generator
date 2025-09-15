@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { auth } from "@/firebase.js"
-import { onAuthStateChanged, signOut as authSignOut } from "firebase/auth";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut as authSignOut } from "firebase/auth";
 
 export default function AuthUserData() {
 	const [authUser, setAuthUser] = useState(null);
@@ -10,6 +10,7 @@ export default function AuthUserData() {
 		setAuthUser(null);
 		setIsLoading(false);
 	}
+
 	const handleAuthStateChanged = async user => {
 		setIsLoading(true)
 
@@ -31,11 +32,25 @@ export default function AuthUserData() {
 		return () => unsubscribe()
 	}, []);
 
-	const signOut = () => authSignOut(auth).then(clear);
+	const signUp = (email, password) => {
+		createUserWithEmailAndPassword(auth, email, password)
+			.then(userCredential => console.log(userCredential))
+			.catch(error => console.log(error))
+	};
+
+	const signIn = (email, password) => {
+		signInWithEmailAndPassword(auth, email, password)
+			.then(userCredential => console.log(userCredential))
+			.catch(error => console.log(error))
+	};
+
+	const signOut = () => authSignOut(auth);
 
 	return {
 		authUser,
 		isLoading,
+		signUp,
+		signIn,
 		signOut
 	}
 }
