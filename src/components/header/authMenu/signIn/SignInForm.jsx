@@ -5,7 +5,7 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react"
-import { PasswordInput } from "@/components/ui/password-input";
+import { PasswordInput } from "@/components/ui/password-input.jsx";
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 
 export default function SignInForm() {

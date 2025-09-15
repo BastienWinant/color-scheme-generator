@@ -1,5 +1,5 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
-import SignInForm from "@/components/auth/signIn/SignInForm.jsx";
+import SignInForm from "@/components/header/authMenu/signIn/SignInForm.jsx";
 
 export default function SignInDialog() {
   return (

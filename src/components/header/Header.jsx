@@ -1,18 +1,19 @@
-import { Flex, LinkBox, LinkOverlay, Icon, HStack, Button } from "@chakra-ui/react";
+import { Container, LinkBox, LinkOverlay, Icon } from "@chakra-ui/react";
 import { Link } from "react-router"
 import { FaPalette } from "react-icons/fa6";
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
-import SignUpDialog from "@/components/auth/signUp/SignUpDialog.jsx";
-import SignInDialog from "@/components/auth/signIn/SignInDialog.jsx";
+import AuthMenu from "@/components/header/authMenu/AuthMenu.jsx";
+import UserMenu from "@/components/header/userMenu/UserMenu.jsx";
 
 export default function Header() {
-	const { authUser, signOut } = useAuth();
+	const { authUser } = useAuth();
 
 	return (
-		<Flex
+		<Container
 			as="header"
-			align="center"
-			justify="space-between"
+			display="flex"
+			alignItems="center"
+			justifyContent="space-between"
 			shadow="sm"
 			zIndex="1"
 		>
@@ -25,12 +26,9 @@ export default function Header() {
 				</LinkOverlay>
 			</LinkBox>
 			{ authUser ?
-				<Button onClick={signOut}>Sign Out</Button> :
-				<HStack>
-					<SignUpDialog />
-					<SignInDialog />
-				</HStack>
+				<UserMenu /> :
+				<AuthMenu />
 			}
-		</Flex>
+		</Container>
 	)
 }
