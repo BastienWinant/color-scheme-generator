@@ -3,15 +3,25 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
-import { writeNewColorScheme } from "@/db_utils.js";
+import { writeNewColorScheme, removeColorScheme } from "@/db_utils.js";
+import {useState} from "react";
 
 export default function GeneratorFormToggler() {
+  const [colorSchemeKey, setColorSchemeKey] = useState(null)
+
   const { authUser} = useAuth();
   const { colorScheme, saved, setSaved } = useColorSchemeContext();
 
   const saveColorScheme = async () => {
-    await writeNewColorScheme(authUser.uid, colorScheme);
+    const key = await writeNewColorScheme(authUser.uid, colorScheme);
+    setColorSchemeKey(key);
     setSaved(true);
+  }
+
+  const unsaveColorScheme = async () => {
+    await removeColorScheme(authUser.uid, colorSchemeKey);
+    setColorSchemeKey(null);
+    setSaved(false);
   }
 
   return (
@@ -23,9 +33,11 @@ export default function GeneratorFormToggler() {
               New Palette
             </Button>
           </Drawer.Trigger>
-          <IconButton variant="outline" size="lg" onClick={saveColorScheme}>
-            {saved ? <FaHeart /> : <FaRegHeart />}
-          </IconButton>
+          {
+            saved ?
+            <IconButton variant="outline" size="lg" onClick={unsaveColorScheme}><FaHeart /></IconButton> :
+            <IconButton variant="outline" size="lg" onClick={saveColorScheme}><FaRegHeart /></IconButton>
+          }
         </ButtonGroup>
       </Container>
       <Portal>
