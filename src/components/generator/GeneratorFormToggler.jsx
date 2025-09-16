@@ -3,14 +3,14 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
-import { writecolorSchemeData } from "@/db_utils.js";
+import { writeNewColorScheme } from "@/db_utils.js";
 
 export default function GeneratorFormToggler() {
   const { authUser} = useAuth();
   const { colorScheme, saved, setSaved } = useColorSchemeContext();
 
   const saveColorScheme = async () => {
-    await writecolorSchemeData(authUser.uid, colorScheme);
+    await writeNewColorScheme(authUser.uid, colorScheme);
     setSaved(true);
   }
 
