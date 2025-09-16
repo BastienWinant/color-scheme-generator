@@ -1,18 +1,13 @@
 import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal, Container } from "@chakra-ui/react"
 import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
-import { ref, set } from "firebase/database"
-import { database } from "@/firebase.js"
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
+import { saveColorScheme } from "@/db_utils.js";
 
 export default function GeneratorFormToggler() {
   const { authUser} = useAuth();
   const { colorScheme } = useColorSchemeContext();
-
-  const saveColorScheme = () => {
-    set(ref(database, 'color-schemes/' + authUser.uid), colorScheme);
-  }
 
   return (
     <Drawer.Root placement={{ mdDown: "bottom", md: "end" }}>
@@ -23,7 +18,7 @@ export default function GeneratorFormToggler() {
               New Palette
             </Button>
           </Drawer.Trigger>
-          <IconButton variant="outline" size="lg" onClick={saveColorScheme}>
+          <IconButton variant="outline" size="lg" onClick={() => saveColorScheme(authUser.uid, colorScheme)}>
             <FaRegHeart />
           </IconButton>
         </ButtonGroup>
