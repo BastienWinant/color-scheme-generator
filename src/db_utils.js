@@ -3,7 +3,7 @@ import { database } from "@/firebase.js";
 
 export const writeNewColorScheme = async (uid, schemeData) => {
   // Get a key for a new ColorScheme.
-  const newColorSchemeKey = push(child(ref(database), 'color-schemes')).key;
+  const newColorSchemeKey = push(child(ref(database), 'user-color-schemes/${uid}')).key;
 
   // Write the new color scheme's data simultaneously in the color-schemes list and the user's color scheme list.
   const updates = {};

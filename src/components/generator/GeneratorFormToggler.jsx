@@ -4,7 +4,7 @@ import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
 import { writeNewColorScheme, removeColorScheme } from "@/db_utils.js";
-import {useState} from "react";
+import { useState } from "react";
 
 export default function GeneratorFormToggler() {
   const [colorSchemeKey, setColorSchemeKey] = useState(null)
@@ -33,11 +33,14 @@ export default function GeneratorFormToggler() {
               New Palette
             </Button>
           </Drawer.Trigger>
-          {
-            saved ?
-            <IconButton variant="outline" size="lg" onClick={unsaveColorScheme}><FaHeart /></IconButton> :
-            <IconButton variant="outline" size="lg" onClick={saveColorScheme}><FaRegHeart /></IconButton>
-          }
+          <IconButton
+            variant="outline"
+            size="lg"
+            onClick={saved ? unsaveColorScheme : saveColorScheme}
+            aria-label={saved ? "Unsave color scheme." : "Save color scheme."}
+          >
+            {saved ? <FaHeart /> : <FaRegHeart />}
+          </IconButton>
         </ButtonGroup>
       </Container>
       <Portal>
