@@ -6,6 +6,7 @@ export default function ColorSchemeData() {
 	const [mode, setMode] = useState('monochrome')
 	const [count, setCount] = useState("5")
 	const [colorScheme, setColorScheme] = useState(null)
+	const [saved, setSaved] = useState(false)
 
 	useEffect(() => {
 		const prevColorScheme = JSON.parse(localStorage.getItem("color-scheme"))
@@ -46,6 +47,7 @@ export default function ColorSchemeData() {
 			.then(response => response.json())
 			.then(data => {
 				setColorScheme(data)
+				setSaved(false)
 				localStorage.setItem("color-scheme", JSON.stringify(data))
 			})
 	}
@@ -60,6 +62,8 @@ export default function ColorSchemeData() {
 		colorScheme,
 		setColorScheme,
 		getColorScheme,
+		saved,
+		setSaved,
 		modes
 	}
 }
