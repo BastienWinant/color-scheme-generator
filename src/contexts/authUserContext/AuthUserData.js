@@ -26,7 +26,7 @@ export default function AuthUserData() {
 		}
 
 		setAuthUser({
-			uid: user.id,
+			uid: user.uid,
 			username: user.email,
 			email: user.email
 		});
