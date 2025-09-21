@@ -1,4 +1,4 @@
-import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
+import { Button, CloseButton, Dialog, Portal, Text } from "@chakra-ui/react"
 import SignUpForm from "@/components/header/authMenu/signUp/SignUpForm.jsx";
 
 export default function SignUpDialog({signupOpen, setSignupOpen, switchAuthType}) {
@@ -25,11 +25,8 @@ export default function SignUpDialog({signupOpen, setSignupOpen, switchAuthType}
               <SignUpForm />
             </Dialog.Body>
             <Dialog.Footer>
-              {/*<Dialog.ActionTrigger asChild>*/}
-              {/*  <Button variant="outline">Cancel</Button>*/}
-              {/*</Dialog.ActionTrigger>*/}
-              Have an account already?
-              <Button variant="plain" px="0" onClick={switchAuthType}>Sign In</Button>
+              <Text textStyle="xs">Have an account already?</Text>
+              <Button size="xs" variant="plain" px="0" onClick={switchAuthType}>Sign In</Button>
             </Dialog.Footer>
             <Dialog.CloseTrigger asChild>
               <CloseButton size="sm" />
