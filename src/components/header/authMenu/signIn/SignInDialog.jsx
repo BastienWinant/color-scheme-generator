@@ -1,7 +1,7 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
 import SignInForm from "@/components/header/authMenu/signIn/SignInForm.jsx";
 
-export default function SignInDialog({loginOpen, setLoginOpen}) {
+export default function SignInDialog({loginOpen, setLoginOpen, switchAuthType}) {
   return (
     <Dialog.Root
       size="sm"
@@ -25,10 +25,8 @@ export default function SignInDialog({loginOpen, setLoginOpen}) {
               <SignInForm />
             </Dialog.Body>
             <Dialog.Footer>
-              <Dialog.ActionTrigger asChild>
-                <Button variant="outline">Cancel</Button>
-              </Dialog.ActionTrigger>
-              <Button>Save</Button>
+              Don't have an account yet?
+              <Button variant="plain" px="0" onClick={switchAuthType}>Sign Up</Button>
             </Dialog.Footer>
             <Dialog.CloseTrigger asChild>
               <CloseButton size="sm" />

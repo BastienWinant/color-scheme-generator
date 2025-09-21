@@ -6,15 +6,23 @@ import {useState} from "react";
 export default function AuthMenu() {
 	const [signupOpen, setSignupOpen] = useState(false)
 	const [loginOpen, setLoginOpen] = useState(false)
+
+	const switchAuthType = () => {
+		setSignupOpen(prevVal => !prevVal)
+		setLoginOpen(prevVal => !prevVal)
+	}
+
 	return (
 		<HStack>
 			<SignUpDialog
 				signupOpen={signupOpen}
 				setSignupOpen={setSignupOpen}
+				switchAuthType={switchAuthType}
 			/>
 			<SignInDialog
 				loginOpen={loginOpen}
 				setLoginOpen={setLoginOpen}
+				switchAuthType={switchAuthType}
 			/>
 		</HStack>
 	)
