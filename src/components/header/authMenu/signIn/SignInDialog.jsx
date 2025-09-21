@@ -1,9 +1,14 @@
 import { Button, CloseButton, Dialog, Portal } from "@chakra-ui/react"
 import SignInForm from "@/components/header/authMenu/signIn/SignInForm.jsx";
 
-export default function SignInDialog() {
+export default function SignInDialog({loginOpen, setLoginOpen}) {
   return (
-    <Dialog.Root size="sm">
+    <Dialog.Root
+      size="sm"
+      lazyMount
+      open={loginOpen}
+      onOpenChange={e => setLoginOpen(e.open)}
+    >
       <Dialog.Trigger asChild>
         <Button variant="outline" size="md">
           Sign In
