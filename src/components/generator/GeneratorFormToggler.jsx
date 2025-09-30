@@ -1,4 +1,5 @@
-import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal, Container } from "@chakra-ui/react"
+import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal, Container } from "@chakra-ui/react";
+import { Toaster, toaster } from "@/components/ui/toaster";
 import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
@@ -16,12 +17,28 @@ export default function GeneratorFormToggler() {
     const key = await writeNewColorScheme(authUser.uid, colorScheme);
     setColorSchemeKey(key);
     setSaved(true);
+    toaster.info({
+      title: "Success!",
+      description: "Color scheme saved successfully",
+      action: {
+        label: "Undo",
+        onClick: unsaveColorScheme,
+      },
+    });
   }
 
   const unsaveColorScheme = async () => {
     await removeColorScheme(authUser.uid, colorSchemeKey);
     setColorSchemeKey(null);
     setSaved(false);
+    toaster.info({
+      title: "Done!",
+      description: "Color scheme unsaved successfully",
+      action: {
+        label: "Undo",
+        onClick: saveColorScheme,
+      },
+    });
   }
 
   return (
@@ -63,6 +80,7 @@ export default function GeneratorFormToggler() {
           </Drawer.Content>
         </Drawer.Positioner>
       </Portal>
+      <Toaster />
     </Drawer.Root>
   )
 }
