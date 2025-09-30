@@ -1,6 +1,6 @@
 import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal, Container } from "@chakra-ui/react";
 import { Toaster, toaster } from "@/components/ui/toaster";
-import { FaHeart, FaRegHeart } from "react-icons/fa6"
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
 import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
@@ -24,6 +24,7 @@ export default function GeneratorFormToggler() {
         label: "Undo",
         onClick: unsaveColorScheme,
       },
+      duration: 3000,
     });
   }
 
@@ -38,6 +39,7 @@ export default function GeneratorFormToggler() {
         label: "Undo",
         onClick: saveColorScheme,
       },
+      duration: 3000,
     });
   }
 
