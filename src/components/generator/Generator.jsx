@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react"
 import GeneratorFormToggler from "@/components/generator/GeneratorFormToggler.jsx"
 import GeneratorPalette from "@/components/generator/palette/GeneratorPalette.jsx"
 

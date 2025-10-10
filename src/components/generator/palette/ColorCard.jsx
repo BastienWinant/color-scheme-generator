@@ -10,13 +10,20 @@ export default function ColorCard({color}) {
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
 
 	const removeColor = () => {
+		// remove the color from the scheme object
 		let colors = colorScheme.colors
 		colors = colors.filter(item => item.hex.clean != color.hex.clean)
 
+		// update the color count
+		const count = colorScheme.count - 1
+
+		// update the context and local storage
 		setColorScheme(prevScheme => ({
 			...prevScheme,
-			colors
+			colors,
+			count
 		}))
+		localStorage.setItem("color-scheme", JSON.stringify(colorScheme))
 	}
 
 	const saveColor = async () => {
@@ -74,7 +81,7 @@ export default function ColorCard({color}) {
 						variant="plain"
 						size="sm"
 						color={ color.contrast.value }
-						onClick={copyColor}
+						onClick={ copyColor }
 					>
 						<FaRegClipboard />
 					</IconButton>
@@ -82,7 +89,7 @@ export default function ColorCard({color}) {
 						variant="plain"
 						size="sm"
 						color={ color.contrast.value }
-						onClick={saveColor}
+						onClick={ saveColor }
 					>
 						<FaRegHeart />
 					</IconButton>
@@ -90,7 +97,8 @@ export default function ColorCard({color}) {
 						variant="plain"
 						size="sm"
 						color={ color.contrast.value }
-						onClick={removeColor}
+						onClick={ removeColor }
+						disabled={ colorScheme.colors.length === 1 }
 					>
 						<FaXmark />
 					</IconButton>
