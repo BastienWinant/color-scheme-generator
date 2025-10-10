@@ -4,6 +4,11 @@
       "$user_id": {
         ".write": "$user_id === auth.uid"
       }
+    },
+    "user-colors": {
+      "$user_id": {
+        ".write": "$user_id === auth.uid"
+      }
     }
   }
 }

@@ -1,8 +1,12 @@
 import { Card, Heading, HStack, IconButton } from "@chakra-ui/react"
+import { toaster } from "@/components/ui/toaster.jsx"
 import { FaRegClipboard, FaHeart, FaRegHeart, FaXmark } from "react-icons/fa6"
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
+import { writeNewColor } from "@/db_utils.js"
+import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js"
 
 export default function ColorCard({color}) {
+	const { authUser } = useAuth()
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
 
 	const removeColor = () => {
@@ -13,6 +17,19 @@ export default function ColorCard({color}) {
 			...prevScheme,
 			colors
 		}))
+	}
+
+	const saveColor = async () => {
+		await writeNewColor(authUser.uid, color)
+		toaster.info({
+      title: "Success!",
+      description: "Color saved successfully",
+      // action: {
+      //   label: "Undo",
+      //   onClick: unsaveColorScheme,
+      // },
+      duration: 3000,
+    })
 	}
 
 	return (
@@ -43,7 +60,12 @@ export default function ColorCard({color}) {
 					<IconButton variant="plain" size="sm" color={ color.contrast.value }>
 						<FaRegClipboard />
 					</IconButton>
-					<IconButton variant="plain" size="sm" color={ color.contrast.value }>
+					<IconButton
+						variant="plain"
+						size="sm"
+						color={ color.contrast.value }
+						onClick={saveColor}
+					>
 						<FaRegHeart />
 					</IconButton>
 					<IconButton
