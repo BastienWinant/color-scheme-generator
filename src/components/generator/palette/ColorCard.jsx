@@ -32,6 +32,19 @@ export default function ColorCard({color}) {
     })
 	}
 
+	const copyColor = () => {
+		navigator.clipboard.writeText(color.hex.clean)
+		toaster.info({
+      title: "Copied!",
+      description: "Color copied to clipboard",
+      // action: {
+      //   label: "Undo",
+      //   onClick: unsaveColorScheme,
+      // },
+      duration: 3000,
+    })
+	}
+
 	return (
     <Card.Root
 			flexShrink="1"
@@ -57,7 +70,12 @@ export default function ColorCard({color}) {
 				justifyContent={{ base: "flex-end" }}
 			>
 				<HStack>
-					<IconButton variant="plain" size="sm" color={ color.contrast.value }>
+					<IconButton
+						variant="plain"
+						size="sm"
+						color={ color.contrast.value }
+						onClick={copyColor}
+					>
 						<FaRegClipboard />
 					</IconButton>
 					<IconButton
