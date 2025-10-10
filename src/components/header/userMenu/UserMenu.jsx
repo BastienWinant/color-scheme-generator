@@ -1,5 +1,6 @@
-import { Button, Menu, Portal } from "@chakra-ui/react"
-import {useAuth} from "@/contexts/authUserContext/AuthUserContext.js";
+import { IconButton, Menu, Portal } from "@chakra-ui/react"
+import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js"
+import { FaUser } from "react-icons/fa6"
 
 export default function UserMenu() {
 	const { signOut } = useAuth()
@@ -7,9 +8,9 @@ export default function UserMenu() {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
-        <Button variant="outline" size="sm">
-          Open
-        </Button>
+        <IconButton variant="plain" size="xl">
+          <FaUser />
+        </IconButton>
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner>

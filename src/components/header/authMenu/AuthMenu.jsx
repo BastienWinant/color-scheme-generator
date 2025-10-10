@@ -1,11 +1,10 @@
-import SignUpDialog from "@/components/header/authMenu/signUp/SignUpDialog.jsx";
-import SignInDialog from "@/components/header/authMenu/signIn/SignInDialog.jsx";
-import { HStack } from "@chakra-ui/react";
-import {useState} from "react";
+import SignUpDialog from "@/components/header/authMenu/signUp/SignUpDialog.jsx"
+import SignInDialog from "@/components/header/authMenu/signIn/SignInDialog.jsx"
+import { HStack } from "@chakra-ui/react"
+import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js"
 
 export default function AuthMenu() {
-	const [signupOpen, setSignupOpen] = useState(false)
-	const [loginOpen, setLoginOpen] = useState(false)
+	const { setSignupOpen, setLoginOpen } = useAuth()
 
 	const switchAuthType = () => {
 		setSignupOpen(prevVal => !prevVal)
@@ -15,13 +14,9 @@ export default function AuthMenu() {
 	return (
 		<HStack>
 			<SignUpDialog
-				signupOpen={signupOpen}
-				setSignupOpen={setSignupOpen}
 				switchAuthType={switchAuthType}
 			/>
 			<SignInDialog
-				loginOpen={loginOpen}
-				setLoginOpen={setLoginOpen}
 				switchAuthType={switchAuthType}
 			/>
 		</HStack>

@@ -1,22 +1,22 @@
-import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal, Container } from "@chakra-ui/react";
-import { Toaster, toaster } from "@/components/ui/toaster";
-import { FaHeart, FaRegHeart } from "react-icons/fa6";
+import { ButtonGroup, Button, IconButton, CloseButton, Drawer, Portal, Container } from "@chakra-ui/react"
+import { Toaster, toaster } from "@/components/ui/toaster"
+import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import GeneratorForm from "@/components/generator/form/GeneratorForm.jsx"
-import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
-import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js";
-import { writeNewColorScheme, removeColorScheme } from "@/db_utils.js";
-import { useState } from "react";
+import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
+import { writeNewColorScheme, removeColorScheme } from "@/db_utils.js"
+import { useState } from "react"
 
 export default function GeneratorFormToggler() {
   const [colorSchemeKey, setColorSchemeKey] = useState(null)
 
-  const { authUser} = useAuth();
-  const { colorScheme, saved, setSaved } = useColorSchemeContext();
+  const { authUser, setLoginOpen } = useAuth()
+  const { colorScheme, saved, setSaved } = useColorSchemeContext()
 
   const saveColorScheme = async () => {
-    const key = await writeNewColorScheme(authUser.uid, colorScheme);
-    setColorSchemeKey(key);
-    setSaved(true);
+    const key = await writeNewColorScheme(authUser.uid, colorScheme)
+    setColorSchemeKey(key)
+    setSaved(true)
     toaster.info({
       title: "Success!",
       description: "Color scheme saved successfully",
@@ -25,7 +25,7 @@ export default function GeneratorFormToggler() {
         onClick: unsaveColorScheme,
       },
       duration: 3000,
-    });
+    })
   }
 
   const unsaveColorScheme = async () => {
@@ -43,6 +43,18 @@ export default function GeneratorFormToggler() {
     });
   }
 
+  const handleClick = () => {
+    if (authUser) {
+      if (saved) {
+        unsaveColorScheme()
+      } else {
+        saveColorScheme()
+      }
+    } else {
+      setLoginOpen(true)
+    }
+  }
+
   return (
     <Drawer.Root placement={{ mdDown: "bottom", md: "end" }}>
       <Container py="4">
@@ -55,7 +67,7 @@ export default function GeneratorFormToggler() {
           <IconButton
             variant="outline"
             size="lg"
-            onClick={saved ? unsaveColorScheme : saveColorScheme}
+            onClick={handleClick}
             aria-label={saved ? "Unsave color scheme." : "Save color scheme."}
           >
             {saved ? <FaHeart /> : <FaRegHeart />}

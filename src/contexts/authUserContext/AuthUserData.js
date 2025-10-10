@@ -9,12 +9,14 @@ import {
 } from "firebase/auth";
 
 export default function AuthUserData() {
-	const [authUser, setAuthUser] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const [authUser, setAuthUser] = useState(null)
+	const [isLoading, setIsLoading] = useState(true)
+	const [signupOpen, setSignupOpen] = useState(false)
+	const [loginOpen, setLoginOpen] = useState(false)
 
 	const clear = () => {
-		setAuthUser(null);
-		setIsLoading(false);
+		setAuthUser(null)
+		setIsLoading(false)
 	}
 
 	const handleAuthStateChanged = async user => {
@@ -63,6 +65,10 @@ export default function AuthUserData() {
 		isLoading,
 		signUp,
 		signIn,
-		signOut
+		signOut,
+		signupOpen,
+		loginOpen,
+		setSignupOpen,
+		setLoginOpen
 	}
 }

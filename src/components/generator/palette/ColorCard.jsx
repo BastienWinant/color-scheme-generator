@@ -1,7 +1,20 @@
 import { Card, Heading, HStack, IconButton } from "@chakra-ui/react"
-import { FaRegClipboard, FaHeart, FaRegHeart, FaXmark } from "react-icons/fa6";
+import { FaRegClipboard, FaHeart, FaRegHeart, FaXmark } from "react-icons/fa6"
+import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 
 export default function ColorCard({color}) {
+	const { colorScheme, setColorScheme } = useColorSchemeContext()
+
+	const removeColor = () => {
+		let colors = colorScheme.colors
+		colors = colors.filter(item => item.hex.clean != color.hex.clean)
+
+		setColorScheme(prevScheme => ({
+			...prevScheme,
+			colors
+		}))
+	}
+
 	return (
     <Card.Root
 			flexShrink="1"
@@ -33,7 +46,12 @@ export default function ColorCard({color}) {
 					<IconButton variant="plain" size="sm" color={ color.contrast.value }>
 						<FaRegHeart />
 					</IconButton>
-					<IconButton variant="plain" size="sm" color={ color.contrast.value }>
+					<IconButton
+						variant="plain"
+						size="sm"
+						color={ color.contrast.value }
+						onClick={removeColor}
+					>
 						<FaXmark />
 					</IconButton>
 				</HStack>

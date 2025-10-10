@@ -1,7 +1,10 @@
 import { Button, CloseButton, Dialog, Portal, Text } from "@chakra-ui/react"
-import SignUpForm from "@/components/header/authMenu/signUp/SignUpForm.jsx";
+import SignUpForm from "@/components/header/authMenu/signUp/SignUpForm.jsx"
+import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js"
 
-export default function SignUpDialog({signupOpen, setSignupOpen, switchAuthType}) {
+export default function SignUpDialog({switchAuthType}) {
+  const { signupOpen, setSignupOpen } = useAuth()
+
   return (
     <Dialog.Root
       size="sm"
