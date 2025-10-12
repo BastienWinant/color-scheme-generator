@@ -54,8 +54,6 @@ export default function ColorCard({color}) {
 
 	return (
     <Card.Root
-			flexShrink="1"
-			flexGrow="1"
 			size="sm"
 			flexDirection={{ base: "row", lg: "column-reverse" }}
 			alignItems={{ base: "center" }}

@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/react"
+import { Grid } from "@chakra-ui/react"
 import ColorCard from "@/components/generator/palette/ColorCard.jsx"
 import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
 import { nanoid } from "nanoid"
@@ -9,12 +9,12 @@ export default function GeneratorPalette() {
 	const colorCards = colorScheme?.colors.map(color => <ColorCard key={nanoid()} color={color} />)
 
 	return (
-		<Stack
-			direction={{base: "column", lg: "row"}}
+		<Grid
 			flexGrow="1"
-			gap="0"
+			templateColumns={{ base: "1fr", lg: "repeat(auto-fit, minmax(160px, 1fr))" }}
+			autoRows="1fr"
 		>
 			{colorCards}
-		</Stack>
+		</Grid>
 	)
 }
