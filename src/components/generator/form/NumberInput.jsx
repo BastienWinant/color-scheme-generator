@@ -16,6 +16,8 @@ export default function CountInput() {
         rounded="sm"
         value={count}
         onValueChange={e => setCount(e.value)}
+				min="4"
+				max="6"
       >
         <HStack gap="2" justifyContent="space-between">
           <NumberInput.DecrementTrigger asChild>
