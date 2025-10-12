@@ -23,6 +23,7 @@ export default function ColorCard({color}) {
 			colors,
 			count
 		}))
+
 		localStorage.setItem("color-scheme", JSON.stringify(colorScheme))
 	}
 
