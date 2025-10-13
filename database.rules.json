@@ -2,12 +2,14 @@
   "rules": {
     "user-color-schemes": {
       "$user_id": {
-        ".write": "$user_id === auth.uid"
+        ".write": "$user_id === auth.uid",
+        ".read": "$user_id === auth.uid"
       }
     },
     "user-colors": {
       "$user_id": {
-        ".write": "$user_id === auth.uid"
+        ".write": "$user_id === auth.uid",
+        ".read": "$user_id === auth.uid"
       }
     }
   }
