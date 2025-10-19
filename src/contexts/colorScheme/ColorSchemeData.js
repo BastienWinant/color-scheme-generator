@@ -19,6 +19,19 @@ export const ColorSchemeData = () => {
 		}
 	}, []);
 
+	const getColorScheme = async () => {
+		const base_url = "https://www.thecolorapi.com"
+		const endpoint = "scheme"
+		const urlColor = seedColor.replaceAll(" ", "")
+		const url = `${base_url}/${endpoint}?rgb=${urlColor}&format=json&mode=${mode}&count=${count}`
+
+		const response = await fetch(url)
+		const data = await response.json()
+
+		setColorScheme(data)
+		localStorage.setItem("color-scheme", JSON.stringify(data))
+	}
+
 	return {
 		colorScheme,
 		setColorScheme,
@@ -27,6 +40,7 @@ export const ColorSchemeData = () => {
 		mode,
 		setMode,
 		seedColor,
-		setSeedColor
+		setSeedColor,
+		getColorScheme
 	}
 }

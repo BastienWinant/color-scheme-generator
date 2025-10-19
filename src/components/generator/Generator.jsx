@@ -34,9 +34,13 @@ export default function Generator() {
 						<Drawer.Header>
 							<Drawer.Title>Drawer Title</Drawer.Title>
 						</Drawer.Header>
-						<Drawer.Body>
-							<GeneratorForm />
-						</Drawer.Body>
+						<Drawer.Context>
+							{store => (
+								<Drawer.Body>
+									<GeneratorForm closeDrawer={() => store.setOpen(false)} />
+								</Drawer.Body>
+							)}
+						</Drawer.Context>
 						<Drawer.CloseTrigger asChild>
 							<CloseButton size="sm" />
 						</Drawer.CloseTrigger>
