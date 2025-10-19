@@ -1,16 +1,17 @@
 {
-  "rules": {
-    "user-color-schemes": {
-      "$user_id": {
-        ".write": "$user_id === auth.uid",
-        ".read": "$user_id === auth.uid"
-      }
-    },
-    "user-colors": {
-      "$user_id": {
-        ".write": "$user_id === auth.uid",
-        ".read": "$user_id === auth.uid"
-      }
-    }
-  }
+	/* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+	"rules": {
+		"color-schemes": {
+			"$uid": {
+				".write": "$uid === auth.uid",
+				".read": "$uid === auth.uid"
+			}
+		},
+		"colors": {
+			"$uid": {
+				".write": "$uid === auth.uid",
+				".read": "$uid === auth.uid"
+			}
+		}
+	}
 }

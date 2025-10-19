@@ -1,16 +1,23 @@
-import { ColorPicker, HStack, parseColor } from "@chakra-ui/react"
-import { useColorSchemeContext } from "@/contexts/colorSchemeContext/ColorSchemeContext.js"
+import {
+	Code,
+	ColorPicker,
+	HStack,
+	Portal,
+	Stack,
+	parseColor,
+} from "@chakra-ui/react"
+import { useState } from "react"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
-export default function ColorInput() {
-	const { color, setColor } = useColorSchemeContext()
+export default function SeedInput() {
+	const { seedColor, setSeedColor } = useColorSchemeContext()
 
-  return (
+	return (
 		<ColorPicker.Root
-			defaultValue={parseColor(color)}
-			onValueChangeEnd={e => setColor(e.valueAsString)}
+			defaultValue={parseColor(seedColor)}
+			onValueChangeEnd={e => setSeedColor(e.valueAsString)}
 		>
 			<ColorPicker.HiddenInput />
-			<ColorPicker.Label>Color</ColorPicker.Label>
 			<ColorPicker.Control>
 				<ColorPicker.Input />
 				<ColorPicker.Trigger />
@@ -25,5 +32,5 @@ export default function ColorInput() {
 				</ColorPicker.Content>
 			</ColorPicker.Positioner>
 		</ColorPicker.Root>
-  )
+	)
 }

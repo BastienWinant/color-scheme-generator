@@ -1,34 +1,27 @@
-import { Container, LinkBox, LinkOverlay, Icon } from "@chakra-ui/react";
-import { Link } from "react-router"
-import { FaPalette } from "react-icons/fa6";
-import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
-import AuthMenu from "@/components/header/authMenu/AuthMenu.jsx";
-import UserMenu from "@/components/header/userMenu/UserMenu.jsx";
+import {Box, Container, HStack, Icon} from "@chakra-ui/react"
+import AuthMenu from "@/components/header/authMenu/AuthMenu.jsx"
+import UserMenu from "@/components/header/userMenu/UserMenu.jsx"
+import { FaPalette } from "react-icons/fa6"
+import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 
 export default function Header() {
-	const { authUser } = useAuth();
+	const { authUser } = useAuth()
 
 	return (
-		<Container
-			as="header"
-			display="flex"
-			alignItems="center"
-			justifyContent="space-between"
-			shadow="sm"
-			zIndex="1"
-		>
-			<LinkBox>
-				<Icon size="2xl">
-					<FaPalette />
-				</Icon>
-				<LinkOverlay asChild>
-					<Link to="/" />
-				</LinkOverlay>
-			</LinkBox>
-			{ authUser ?
-				<UserMenu /> :
-				<AuthMenu />
-			}
-		</Container>
+		<Box as="header">
+			<Container
+				display="flex"
+				alignItems="center"
+				justifyContent="space-between"
+				py="3"
+			>
+				<HStack>
+					<Icon size="2xl">
+						<FaPalette />
+					</Icon>
+				</HStack>
+				{ authUser ? <UserMenu /> : <AuthMenu /> }
+			</Container>
+		</Box>
 	)
 }

@@ -1,25 +1,31 @@
-// Import the functions you need from the SDKs you need
+// Import the functions from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, connectDatabaseEmulator } from "firebase/database";
 import { getAuth, connectAuthEmulator } from "firebase/auth";
+import { getDatabase, connectDatabaseEmulator } from "firebase/database";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDnKEY8-fHUZM0XGtxmJ1tNFdnmIbfa2h4",
-  authDomain: "color-scheme-generator-86e43.firebaseapp.com",
-  databaseURL: "https://color-scheme-generator-86e43-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "color-scheme-generator-86e43",
-  storageBucket: "color-scheme-generator-86e43.firebasestorage.app",
-  messagingSenderId: "562131969387",
-  appId: "1:562131969387:web:1e8c8f685535a8ad43182e"
+	apiKey: "AIzaSyCp95FFuAjWJfRtTBn5FlqmClUFrnGS2nw",
+	authDomain: "color-scheme-generator-6a956.firebaseapp.com",
+	databaseURL: "https://color-scheme-generator-6a956-default-rtdb.europe-west1.firebasedatabase.app",
+	projectId: "color-scheme-generator-6a956",
+	storageBucket: "color-scheme-generator-6a956.firebasestorage.app",
+	messagingSenderId: "122260961769",
+	appId: "1:122260961769:web:8bafd02b83660142d27378"
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const database = getDatabase(app);
+
+// Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 
+// Initialize Realtime Database and get a reference to the service
+export const database = getDatabase(app);
+
 if (location.hostname === "localhost") {
-  connectAuthEmulator(auth, "http://127.0.0.1:9099");
-  connectDatabaseEmulator(database, "127.0.0.1", 9000);
+	// Point to the emulators running on localhost.
+	connectAuthEmulator(auth, "http://127.0.0.1:9099");
+	connectDatabaseEmulator(database, "127.0.0.1", 9000);
+
 }

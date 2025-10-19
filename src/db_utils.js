@@ -1,46 +1,26 @@
-import { ref, child, push, update, remove, get } from "firebase/database"
+import { ref, child, push, update, set } from "firebase/database"
 import { database } from "@/firebase.js"
 
-export const writeNewColorScheme = async (uid, schemeData) => {
-  // Get a key for a new ColorScheme.
-  const newColorSchemeKey = push(child(ref(database), `user-color-schemes/${uid}`)).key;
+export function writeColorSchemeData(uid, colorSchemeData) {
+	// Get a key for a new ColorScheme.
+	const newColorSchemeKey = push(child(ref(database), 'color-schemes')).key;
 
-  // Write the new color scheme's data in the user's color scheme list.
-  const inserts = {};
-  inserts[`/user-color-schemes/${uid}/${newColorSchemeKey}`] = schemeData;
+	// Write the new color scheme's data simultaneously in the color schemes list and the user's color scheme list.
+	const updates = {};
+	updates[`/color-schemes/${newColorSchemeKey}`] = colorSchemeData;
+	updates[`/user-color-schemes/${uid}/${newColorSchemeKey}`] = colorSchemeData;
 
-  await update(ref(database), inserts);
-
-  return newColorSchemeKey
+	return update(ref(database), updates);
 }
 
-export const removeColorScheme = async (uid, schemeKey) => {
-  const schemeRef = child(ref(database), `/user-color-schemes/${uid}/${schemeKey}`)
-  await remove(schemeRef)
-}
+export function writeColorData(uid, colorData) {
+	// Create a key for a new Color.
+	const newColorKey = colorData.hex.value;
 
-export const writeNewColor = async (uid, colorData) => {
-  const newColorKey = colorData.hex.clean
+	// Write the new color's data simultaneously in the color list and the user's color list.
+	const updates = {};
+	updates[`/colors/${newColorKey}`] = colorData;
+	updates[`/user-colors/${uid}/${newColorKey}`] = colorData;
 
-  // Write the new color's data in the user's color list.
-  const inserts = {}
-  inserts[`/user-colors/${uid}/${newColorKey}`] = colorData
-
-  await update(ref(database), inserts)
-}
-
-export const removeColor = async (uid, colorKey) => {
-  const schemeRef = child(ref(database), `/user-colors/${uid}/${colorKey}`)
-  await remove(schemeRef)
-}
-
-export const getUserSchemes = async uid => {
-  try {
-    const snapshot = await get(child(database, `user-color-schemes/${uid}`));
-    if (snapshot.exists()) {
-      return snapshot.val();
-    }
-  } catch (error) {
-    console.log(error);
-  }
+	return update(ref(database), updates);
 }

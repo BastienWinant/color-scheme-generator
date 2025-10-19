@@ -5,4 +5,4 @@ export const AuthUserContext = createContext({
 	isLoading: true
 })
 
-export const useAuth = () => useContext(AuthUserContext);
+export const useAuth = () => useContext(AuthUserContext)

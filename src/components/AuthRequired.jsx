@@ -1,16 +1,16 @@
+import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { useNavigate, Outlet } from "react-router"
 import {useEffect} from "react";
-import { Outlet, useNavigate } from "react-router";
-import { useAuth } from "@/contexts/authUserContext/AuthUserContext.js";
 
 export default function AuthRequired() {
-	const { authUser, isLoading } = useAuth();
-	const navigate = useNavigate();
+	const { authUser, isLoading } = useAuth()
+	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (!authUser && !isLoading) {
-			navigate("/")
+		if (!isLoading && !authUser) {
+			navigate('/')
 		}
 	}, [authUser, isLoading]);
 
-	return authUser ? <Outlet /> : <p>loading...</p>
+	return (!authUser) ? <h1>Loading...</h1> : <Outlet />
 }

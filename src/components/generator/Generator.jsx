@@ -1,12 +1,48 @@
-import { Flex } from "@chakra-ui/react"
-import GeneratorFormToggler from "@/components/generator/GeneratorFormToggler.jsx"
-import GeneratorPalette from "@/components/generator/palette/GeneratorPalette.jsx"
+import { ButtonGroup, Button, CloseButton, Drawer, Portal, IconButton } from "@chakra-ui/react"
+import { FaHeart, FaRegHeart } from "react-icons/fa6"
+import { useState } from "react"
+import GeneratorForm from "@/components/generator/GeneratorForm.jsx"
 
 export default function Generator() {
+	const [saved, setSaved] = useState(false)
+
+	const toggleSaved = () => {
+		setSaved(prevSaved => !prevSaved)
+	}
+
 	return (
-		<Flex direction={{base: "column-reverse"}}>
-			<GeneratorFormToggler />
-			<GeneratorPalette />
-		</Flex>
+		<Drawer.Root placement={{ base: "bottom", md: "end" }} size={{ md: "xs" }}>
+			<ButtonGroup w={{ base: "full", md: "64" }}>
+				<Drawer.Trigger asChild flexGrow="1">
+					<Button variant="outline" size="sm">
+						new color scheme
+					</Button>
+				</Drawer.Trigger>
+				<IconButton
+					variant="outline"
+					size="sm"
+					aria-label={saved ? "Unsave color scheme" : "Save color scheme."}
+					onClick={toggleSaved}
+				>
+					{saved ? <FaHeart /> : <FaRegHeart />}
+				</IconButton>
+			</ButtonGroup>
+			<Portal>
+				<Drawer.Backdrop />
+				<Drawer.Positioner>
+					<Drawer.Content>
+						<Drawer.Header>
+							<Drawer.Title>Drawer Title</Drawer.Title>
+						</Drawer.Header>
+						<Drawer.Body borderWidth="thin">
+							<GeneratorForm />
+						</Drawer.Body>
+						<Drawer.CloseTrigger asChild>
+							<CloseButton size="sm" />
+						</Drawer.CloseTrigger>
+					</Drawer.Content>
+				</Drawer.Positioner>
+			</Portal>
+		</Drawer.Root>
 	)
 }
