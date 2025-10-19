@@ -6,7 +6,6 @@ import {
 	Stack,
 	parseColor,
 } from "@chakra-ui/react"
-import { useState } from "react"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function SeedInput() {
@@ -16,6 +15,8 @@ export default function SeedInput() {
 		<ColorPicker.Root
 			defaultValue={parseColor(seedColor)}
 			onValueChangeEnd={e => setSeedColor(e.valueAsString)}
+			w="full"
+			positioning={{ placement: "left-start" }}
 		>
 			<ColorPicker.HiddenInput />
 			<ColorPicker.Control>

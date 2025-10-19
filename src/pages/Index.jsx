@@ -4,23 +4,7 @@ import ColorCard from "@/components/ColorCard.jsx"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function Index() {
-	const { colorScheme, setColorScheme } = useColorSchemeContext()
-
-	const getColorScheme = async () => {
-		const base_url = "https://www.thecolorapi.com"
-		const endpoint = "scheme"
-		const url_color = "0,71,171"
-		const mode = "analogic"
-		const count = 5
-
-		const url = `${base_url}/${endpoint}?rgb=${url_color}&format=json&mode=${mode}&count=${count}`
-
-		const response = await fetch(url)
-		const data = await response.json()
-
-		localStorage.setItem("color-scheme", JSON.stringify(data))
-		setColorScheme(data)
-	}
+	const { colorScheme } = useColorSchemeContext()
 
 	return (
 		<Stack w="full" gap="0">
@@ -38,7 +22,6 @@ export default function Index() {
 			<Container
 				display="flex"
 				justifyContent="flex-end"
-				border="1px solid red"
 			>
 				<Generator />
 			</Container>

@@ -34,7 +34,7 @@ export default function Generator() {
 						<Drawer.Header>
 							<Drawer.Title>Drawer Title</Drawer.Title>
 						</Drawer.Header>
-						<Drawer.Body borderWidth="thin">
+						<Drawer.Body>
 							<GeneratorForm />
 						</Drawer.Body>
 						<Drawer.CloseTrigger asChild>
