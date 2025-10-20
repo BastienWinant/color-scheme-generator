@@ -2,6 +2,7 @@ import { Stack, Grid, Container, For, GridItem } from "@chakra-ui/react"
 import Generator from "@/components/generator/Generator.jsx"
 import ColorCard from "@/components/ColorCard.jsx"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import { Toaster } from "@/components/ui/toaster"
 
 export default function Index() {
 	const { colorScheme } = useColorSchemeContext()
@@ -22,9 +23,11 @@ export default function Index() {
 			<Container
 				display="flex"
 				justifyContent="flex-end"
+				py="3"
 			>
 				<Generator />
 			</Container>
+			<Toaster />
 		</Stack>
 	)
 }

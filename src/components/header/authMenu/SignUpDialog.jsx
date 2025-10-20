@@ -1,4 +1,4 @@
-import { Button, CloseButton, Dialog, Portal, Fieldset, Field, Input } from "@chakra-ui/react"
+import { Button, CloseButton, Dialog, Portal, Fieldset, Field, Input, Text } from "@chakra-ui/react"
 import { PasswordInput } from "@/components/ui/password-input.jsx"
 import { useState } from "react"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
@@ -52,15 +52,20 @@ export default function SignUpDialog({open, setOpen, switchAuth}) {
 
 									</Fieldset.Content>
 
-									<Button type="submit" alignSelf="flex-start">
+									<Button type="submit">
 										Sign Up
 									</Button>
 								</Fieldset.Root>
 							</form>
 						</Dialog.Body>
 						<Dialog.Footer>
-							Already have an account?
-							<Button variant="plain" p="0" onClick={switchAuth}>Sign in</Button>
+							<Text textStyle="xs">Already have an account?</Text>
+							<Button
+								variant="plain"
+								size="xs"
+								p="0"
+								onClick={switchAuth}
+							>Sign in</Button>
 						</Dialog.Footer>
 						<Dialog.CloseTrigger asChild>
 							<CloseButton size="sm" />

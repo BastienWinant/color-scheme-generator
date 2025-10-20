@@ -6,7 +6,7 @@ import {
 import CountInput from "@/components/generator/CountInput.jsx"
 import ModeInput from "@/components/generator/ModeInput.jsx"
 import SeedInput from "@/components/generator/SeedInput.jsx"
-import {useColorSchemeContext} from "@/contexts/colorScheme/ColorSchemeContext.js"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function GeneratorForm({closeDrawer}) {
 	const { getColorScheme } = useColorSchemeContext()

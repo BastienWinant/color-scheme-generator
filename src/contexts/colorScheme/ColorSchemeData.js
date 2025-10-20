@@ -25,6 +25,8 @@ export const ColorSchemeData = () => {
 		const urlColor = seedColor.replaceAll(" ", "")
 		const url = `${base_url}/${endpoint}?rgb=${urlColor}&format=json&mode=${mode}&count=${count}`
 
+		console.log(url)
+
 		const response = await fetch(url)
 		const data = await response.json()
 

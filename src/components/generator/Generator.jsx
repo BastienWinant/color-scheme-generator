@@ -2,12 +2,27 @@ import { ButtonGroup, Button, CloseButton, Drawer, Portal, IconButton } from "@c
 import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import { useState } from "react"
 import GeneratorForm from "@/components/generator/GeneratorForm.jsx"
+import { toaster } from "@/components/ui/toaster.jsx";
 
 export default function Generator() {
 	const [saved, setSaved] = useState(false)
 
-	const toggleSaved = () => {
-		setSaved(prevSaved => !prevSaved)
+	const saveScheme = () => {
+		setSaved(true)
+		toaster.create({
+			description: "Color scheme saved successfully",
+			type: "success",
+			duration: 1500,
+		})
+	}
+
+	const unsaveScheme = () => {
+		setSaved(false)
+		toaster.create({
+			description: "Color scheme unsaved successfully",
+			type: "warning",
+			duration: 1500,
+		})
 	}
 
 	return (
@@ -22,7 +37,7 @@ export default function Generator() {
 					variant="outline"
 					size="sm"
 					aria-label={saved ? "Unsave color scheme" : "Save color scheme."}
-					onClick={toggleSaved}
+					onClick={saved ? unsaveScheme : saveScheme}
 				>
 					{saved ? <FaHeart /> : <FaRegHeart />}
 				</IconButton>
