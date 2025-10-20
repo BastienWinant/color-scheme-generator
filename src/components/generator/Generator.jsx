@@ -2,12 +2,18 @@ import { ButtonGroup, Button, CloseButton, Drawer, Portal, IconButton } from "@c
 import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import { useState } from "react"
 import GeneratorForm from "@/components/generator/GeneratorForm.jsx"
-import { toaster } from "@/components/ui/toaster.jsx";
+import { toaster } from "@/components/ui/toaster.jsx"
+import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import {writeColorSchemeData} from "@/db_utils.js"
 
 export default function Generator() {
 	const [saved, setSaved] = useState(false)
+	const { authUser } = useAuth()
+	const { colorScheme } = useColorSchemeContext()
 
-	const saveScheme = () => {
+	const saveColorScheme = async () => {
+		await writeColorSchemeData(authUser.uid, colorScheme)
 		setSaved(true)
 		toaster.create({
 			description: "Color scheme saved successfully",
@@ -16,13 +22,23 @@ export default function Generator() {
 		})
 	}
 
-	const unsaveScheme = () => {
-		setSaved(false)
-		toaster.create({
-			description: "Color scheme unsaved successfully",
-			type: "warning",
-			duration: 1500,
-		})
+	const handleClick = () => {
+		if (!authUser) {
+			toaster.create({
+				description: "User must be registered to save color schemes",
+				type: "warning",
+				duration: 2000,
+			})
+		} else if (saved) {
+			setSaved(false)
+			toaster.create({
+				description: "Color scheme unsaved successfully",
+				type: "success",
+				duration: 1500,
+			})
+		} else {
+			saveColorScheme()
+		}
 	}
 
 	return (
@@ -37,7 +53,7 @@ export default function Generator() {
 					variant="outline"
 					size="sm"
 					aria-label={saved ? "Unsave color scheme" : "Save color scheme."}
-					onClick={saved ? unsaveScheme : saveScheme}
+					onClick={handleClick}
 				>
 					{saved ? <FaHeart /> : <FaRegHeart />}
 				</IconButton>

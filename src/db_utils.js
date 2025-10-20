@@ -1,4 +1,4 @@
-import { ref, child, push, update, set } from "firebase/database"
+import { ref, child, push, update } from "firebase/database"
 import { database } from "@/firebase.js"
 
 export function writeColorSchemeData(uid, colorSchemeData) {
