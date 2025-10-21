@@ -1,9 +1,15 @@
 import { GridItem, Heading, ButtonGroup, IconButton } from "@chakra-ui/react"
-import { FaRegHeart, FaCopy, FaXmark } from "react-icons/fa6"
+import { FaHeart, FaRegHeart, FaCopy, FaXmark } from "react-icons/fa6"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { toaster } from "@/components/ui/toaster.jsx"
+import { writeColorData } from "@/db_utils.js"
+import { useState } from "react"
 
 export default function ColorCard({ colorObject}) {
+	const [saved, setSaved] = useState(false)
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
+	const { authUser } = useAuth()
 
 	const deleteColor = () => {
 		setColorScheme(prevScheme => {
@@ -16,8 +22,25 @@ export default function ColorCard({ colorObject}) {
 	};
 
 
-	const copyColor = () => {}
-	const saveColor = () => {}
+	const copyColor = () => {
+		navigator.clipboard.writeText(colorObject.hex.value)
+
+		toaster.create({
+			description: "Color copied to clipboard",
+			type: "info",
+			duration: 1500,
+		})
+	}
+
+	const saveColor = async () => {
+		await writeColorData(authUser.uid, colorObject)
+
+		toaster.create({
+			description: "Color saved successfully",
+			type: "success",
+			duration: 1500,
+		})
+	}
 
 	return (
 		<GridItem
@@ -33,10 +56,18 @@ export default function ColorCard({ colorObject}) {
 		>
 			<Heading size="md">{colorObject.name.value}</Heading>
 			<ButtonGroup size="xs" variant="plain" ms="-1">
-				<IconButton aria-label="Copy color" color={colorObject.contrast.value}>
+				<IconButton
+					aria-label="Copy color"
+					color={colorObject.contrast.value}
+					onClick={ copyColor }
+				>
 					<FaCopy />
 				</IconButton>
-				<IconButton aria-label="Save color" color={colorObject.contrast.value}>
+				<IconButton
+					aria-label="Save color"
+					color={colorObject.contrast.value}
+					onClick={ saveColor }
+				>
 					<FaRegHeart />
 				</IconButton>
 				<IconButton

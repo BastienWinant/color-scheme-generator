@@ -5,18 +5,30 @@ import GeneratorForm from "@/components/generator/GeneratorForm.jsx"
 import { toaster } from "@/components/ui/toaster.jsx"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
-import {writeColorSchemeData} from "@/db_utils.js"
+import { writeColorSchemeData, deleteColorSchemeData } from "@/db_utils.js"
 
 export default function Generator() {
 	const [saved, setSaved] = useState(false)
+	const [key, setKey] = useState("")
 	const { authUser } = useAuth()
 	const { colorScheme } = useColorSchemeContext()
 
 	const saveColorScheme = async () => {
-		await writeColorSchemeData(authUser.uid, colorScheme)
+		const dbKey = await writeColorSchemeData(authUser.uid, colorScheme)
+		setKey(dbKey)
 		setSaved(true)
 		toaster.create({
 			description: "Color scheme saved successfully",
+			type: "success",
+			duration: 1500,
+		})
+	}
+
+	const unsaveColorScheme = async () => {
+		await deleteColorSchemeData(authUser.uid, key)
+		setSaved(false)
+		toaster.create({
+			description: "Color scheme unsaved successfully",
 			type: "success",
 			duration: 1500,
 		})
@@ -30,12 +42,7 @@ export default function Generator() {
 				duration: 2000,
 			})
 		} else if (saved) {
-			setSaved(false)
-			toaster.create({
-				description: "Color scheme unsaved successfully",
-				type: "success",
-				duration: 1500,
-			})
+			unsaveColorScheme()
 		} else {
 			saveColorScheme()
 		}

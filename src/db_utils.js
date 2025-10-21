@@ -1,7 +1,7 @@
-import { ref, child, push, update } from "firebase/database"
+import { ref, child, push, update, remove } from "firebase/database"
 import { database } from "@/firebase.js"
 
-export function writeColorSchemeData(uid, colorSchemeData) {
+export const writeColorSchemeData = async (uid, colorSchemeData) => {
 	// Get a key for a new ColorScheme.
 	const newColorSchemeKey = push(child(ref(database), 'color-schemes')).key;
 
@@ -10,12 +10,14 @@ export function writeColorSchemeData(uid, colorSchemeData) {
 	updates[`/color-schemes/${newColorSchemeKey}`] = colorSchemeData;
 	updates[`/user-color-schemes/${uid}/${newColorSchemeKey}`] = colorSchemeData;
 
-	return update(ref(database), updates);
+	await update(ref(database), updates);
+
+	return newColorSchemeKey
 }
 
-export function writeColorData(uid, colorData) {
+export const writeColorData = async (uid, colorData) => {
 	// Create a key for a new Color.
-	const newColorKey = colorData.hex.value;
+	const newColorKey = colorData.hex.clean;
 
 	// Write the new color's data simultaneously in the color list and the user's color list.
 	const updates = {};
@@ -23,4 +25,14 @@ export function writeColorData(uid, colorData) {
 	updates[`/user-colors/${uid}/${newColorKey}`] = colorData;
 
 	return update(ref(database), updates);
+}
+
+export const deleteColorSchemeData = async (uid, colorSchemeKey) => {
+	const schemeRef = ref(database, `/user-color-schemes/${uid}/${colorSchemeKey}`)
+	return remove(schemeRef)
+}
+
+export const deleteColorData = async (uid, color) => {
+	const schemeRef = ref(database, `/user-colors/${uid}/${color}`)
+	return remove(schemeRef)
 }
