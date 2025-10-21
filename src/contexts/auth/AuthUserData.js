@@ -42,7 +42,8 @@ export const AuthUserData = () => {
 
 		setAuthUser({
 			uid: user.uid,
-			email: user.email
+			email: user.email,
+			username: user.displayName
 		})
 
 		setIsLoading(false)

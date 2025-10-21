@@ -1,13 +1,17 @@
 import { Button, Menu, Portal } from "@chakra-ui/react"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { FaCircleUser } from "react-icons/fa6"
 
 export default function UserMenu() {
-	const { signOut } = useAuth()
+	const { authUser, signOut } = useAuth()
 
 	return (
 		<Menu.Root>
 			<Menu.Trigger asChild>
-				<Button variant="outline" _focus={{ outline: 0}}>Edit</Button>
+				<Button variant="plain" _focus={{ outline: 0}}>
+					<FaCircleUser />
+					{ authUser.username }
+				</Button>
 			</Menu.Trigger>
 			<Portal>
 				<Menu.Positioner>

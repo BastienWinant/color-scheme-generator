@@ -17,11 +17,15 @@ export default function Index() {
 		if (authUser) {
 			const starCountRef = ref(database, `/user-colors/${authUser.uid}`);
 			const unsubscribe = onValue(starCountRef, snapshot => {
-				const data = snapshot.val();
-				setUserColors(data)
+				if (snapshot.exists()) {
+					const data = snapshot.val();
+					setUserColors(data);
+				}
 			});
 
 			return () => unsubscribe()
+		} else {
+			setUserColors({})
 		}
 	}, [authUser]);
 
