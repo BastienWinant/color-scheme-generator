@@ -4,10 +4,8 @@ import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { toaster } from "@/components/ui/toaster.jsx"
 import { writeColorData, deleteColorData } from "@/db_utils.js"
-import { useState } from "react"
 
-export default function ColorCard({ colorObject}) {
-	const [saved, setSaved] = useState(false)
+export default function ColorCard({ colorObject, saved }) {
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
 	const { authUser } = useAuth()
 
@@ -34,7 +32,6 @@ export default function ColorCard({ colorObject}) {
 
 	const saveColor = async () => {
 		await writeColorData(authUser.uid, colorObject)
-		setSaved(true)
 
 		toaster.create({
 			description: "Color saved successfully",
@@ -45,7 +42,6 @@ export default function ColorCard({ colorObject}) {
 
 	const unsaveColor = async () => {
 		await deleteColorData(authUser.uid, colorObject.hex.clean)
-		setSaved(false)
 
 		toaster.create({
 			description: "Color unsaved successfully",
