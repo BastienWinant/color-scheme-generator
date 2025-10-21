@@ -3,7 +3,7 @@ import { FaHeart, FaRegHeart, FaCopy, FaXmark } from "react-icons/fa6"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { toaster } from "@/components/ui/toaster.jsx"
-import { writeColorData } from "@/db_utils.js"
+import { writeColorData, deleteColorData } from "@/db_utils.js"
 import { useState } from "react"
 
 export default function ColorCard({ colorObject}) {
@@ -34,12 +34,38 @@ export default function ColorCard({ colorObject}) {
 
 	const saveColor = async () => {
 		await writeColorData(authUser.uid, colorObject)
+		setSaved(true)
 
 		toaster.create({
 			description: "Color saved successfully",
 			type: "success",
 			duration: 1500,
 		})
+	}
+
+	const unsaveColor = async () => {
+		await deleteColorData(authUser.uid, colorObject.hex.clean)
+		setSaved(false)
+
+		toaster.create({
+			description: "Color unsaved successfully",
+			type: "success",
+			duration: 1500,
+		})
+	}
+
+	const toggleSave = async () => {
+		if (!authUser) {
+			toaster.create({
+				description: "User must be registered to save colors",
+				type: "warning",
+				duration: 2000,
+			})
+		} else if (saved) {
+			unsaveColor()
+		} else {
+			saveColor()
+		}
 	}
 
 	return (
@@ -66,9 +92,9 @@ export default function ColorCard({ colorObject}) {
 				<IconButton
 					aria-label="Save color"
 					color={colorObject.contrast.value}
-					onClick={ saveColor }
+					onClick={ toggleSave }
 				>
-					<FaRegHeart />
+					{ saved ? <FaHeart /> : <FaRegHeart /> }
 				</IconButton>
 				<IconButton
 					aria-label="Remove color"
