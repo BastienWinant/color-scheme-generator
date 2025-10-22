@@ -110,7 +110,12 @@ export default function SaveSchemeDialog({ saved, setSaved }) {
 	}
 
 	return (
-		<Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)}>
+		<Dialog.Root
+			lazyMount
+			open={open}
+			onOpenChange={e => setOpen(e.open)}
+			size="xs"
+		>
 			{ (saved || !authUser) ?
 				<IconButton
 					variant="outline"
@@ -132,13 +137,13 @@ export default function SaveSchemeDialog({ saved, setSaved }) {
 			}
 			<Portal>
 				<Dialog.Backdrop />
-				<Dialog.Positioner>
+				<Dialog.Positioner px="4">
 					<Dialog.Content>
 						<Dialog.Header>
 							<Dialog.Title>Name your color scheme</Dialog.Title>
 						</Dialog.Header>
 						<Dialog.Body>
-							<Stack gap="6">
+							<Stack>
 								<SchemeNameEdit setName={ updateSchemeName } />
 								<SchemeSummaryCard colorScheme={colorScheme} />
 								<Button alignSelf="flex-end" onClick={saveColorScheme}>Save</Button>

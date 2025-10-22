@@ -9,6 +9,7 @@ export default function SchemeNameEdit({ name, setName }) {
 			borderWidth="thin"
 			rounded="sm"
 			size="lg"
+			mb="4"
 		>
 			<Editable.Preview w="full" />
 			<Editable.Input />
