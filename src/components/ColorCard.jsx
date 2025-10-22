@@ -9,51 +9,91 @@ export default function ColorCard({ colorObject, saved }) {
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
 	const { authUser } = useAuth()
 
+	/**
+	 * Removes a color from the local state's color scheme
+	 */
 	const deleteColor = () => {
 		setColorScheme(prevScheme => {
 			const colors = prevScheme.colors.filter(
 				color => color.hex.clean !== colorObject.hex.clean
-			);
-			const count = prevScheme.count - 1;
+			); // Filter the color scheme's color array
+
+			const count = prevScheme.count - 1; // update the color count
+
 			return { ...prevScheme, colors, count };
 		});
 	};
 
-
+	/**
+	 * Copies the color's HEX value to the clipboard and
+	 * displays a success notification to the user.
+	 */
 	const copyColor = () => {
 		navigator.clipboard.writeText(colorObject.hex.value)
 
 		toaster.create({
-			description: "Color copied to clipboard",
+			description: "Color copied to clipboard", // User feedback message
 			type: "info",
 			duration: 1500,
 		})
 	}
 
+	/**
+	 * Saves the current color for the authenticated user.
+	 *
+	 * 1. Writes the user's color data to the database.
+	 * 2. Displays a success notification to the user.
+	 */
 	const saveColor = async () => {
-		await writeColorData(authUser.uid, colorObject)
+		try {
+			await writeColorData(authUser.uid, colorObject) // Save color in DB with HEX code as key
 
-		toaster.create({
-			description: "Color saved successfully",
-			type: "success",
-			duration: 1500,
-		})
+			toaster.create({
+				description: "Color saved successfully", // User feedback message
+				type: "success",
+				duration: 1500,
+			})
+		} catch {
+			toaster.create({
+				description: "The color could not be saved.", // User feedback message
+				type: "error",
+				duration: 1500,
+			})
+		}
 	}
 
+	/**
+	 * Unsaves the current color for the authenticated user.
+	 *
+	 * 1. Deletes the user's color data from the database.
+	 * 2. Displays a success notification to the user.
+	 */
 	const unsaveColor = async () => {
-		await deleteColorData(authUser.uid, colorObject.hex.clean)
+		try {
+			await deleteColorData(authUser.uid, colorObject.hex.clean) // Delete color in DB using HEX value
 
-		toaster.create({
-			description: "Color unsaved successfully",
-			type: "success",
-			duration: 1500,
-		})
+			toaster.create({
+				description: "Color unsaved successfully", // User feedback message
+				type: "success",
+				duration: 1500,
+			})
+		} catch {
+			toaster.create({
+				description: "The color could not be unsaved.", // User feedback message
+				type: "error",
+				duration: 1500,
+			})
+		}
 	}
 
+	/**
+	 * Dispatch function calls depending on user auth status
+	 * and local state.
+	 */
 	const toggleSave = async () => {
 		if (!authUser) {
 			toaster.create({
-				description: "User must be registered to save colors",
+				description: "User must be registered to save colors", // User feedback message
 				type: "warning",
 				duration: 2000,
 			})
@@ -96,7 +136,7 @@ export default function ColorCard({ colorObject, saved }) {
 					aria-label="Remove color"
 					color={colorObject.contrast.value}
 					onClick={ deleteColor }
-					disabled={ colorScheme.colors.length == 1 }
+					disabled={ parseInt(colorScheme.colors.length) === 1 }
 				>
 					<FaXmark />
 				</IconButton>

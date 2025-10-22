@@ -1,9 +1,6 @@
 import {
-	Code,
 	ColorPicker,
 	HStack,
-	Portal,
-	Stack,
 	parseColor,
 } from "@chakra-ui/react"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"

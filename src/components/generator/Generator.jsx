@@ -13,27 +13,64 @@ export default function Generator() {
 	const { authUser } = useAuth()
 	const { colorScheme } = useColorSchemeContext()
 
+	/**
+	 * Saves the current color scheme for the authenticated user.
+	 *
+	 * 1. Writes the user's color scheme data to the database.
+	 * 2. Stores the generated database key in local state.
+	 * 3. Marks the color scheme as successfully saved.
+	 * 4. Displays a success notification to the user.
+	 */
 	const saveColorScheme = async () => {
-		const dbKey = await writeColorSchemeData(authUser.uid, colorScheme)
-		setKey(dbKey)
-		setSaved(true)
-		toaster.create({
-			description: "Color scheme saved successfully",
-			type: "success",
-			duration: 1500,
-		})
+		try {
+			const dbKey = await writeColorSchemeData(authUser.uid, colorScheme) // Save color scheme in DB and get its key
+			setKey(dbKey) // Update local state with the DB key
+			setSaved(true) // Flag the scheme as saved
+
+			toaster.create({
+				description: "Color scheme saved successfully", // User feedback message
+				type: "success",
+				duration: 1500,
+			})
+		} catch {
+			toaster.create({
+				description: "The color scheme could not be saved.", // User feedback message
+				type: "error",
+				duration: 1500,
+			})
+		}
 	}
 
+	/**
+	 * Unsaves the current color scheme for the authenticated user
+	 *
+	 * 1. Deletes the user's color scheme data from the database.
+	 * 2. Updates the status in the local state.
+	 * 3. Displays a success notification to the user.
+	 */
 	const unsaveColorScheme = async () => {
-		await deleteColorSchemeData(authUser.uid, key)
-		setSaved(false)
-		toaster.create({
-			description: "Color scheme unsaved successfully",
-			type: "success",
-			duration: 1500,
-		})
+		try {
+			await deleteColorSchemeData(authUser.uid, key) // Delete color scheme from DB using its key
+			setSaved(false) // Flag the scheme as unsaved
+
+			toaster.create({
+				description: "Color scheme unsaved successfully", // User feedback message
+				type: "success",
+				duration: 1500,
+			})
+		} catch {
+			toaster.create({
+				description: "The color scheme could not be unsaved.", // User feedback message
+				type: "error",
+				duration: 1500,
+			})
+		}
 	}
 
+	/**
+	 * Dispatches the click event depending on user authentication status
+	 * and local saved state.
+	 */
 	const handleClick = () => {
 		if (!authUser) {
 			toaster.create({

@@ -7,6 +7,9 @@ export default function AuthMenu() {
 	const [signinOpen, setSigninOpen] = useState(false)
 	const [signupOpen, setSignupOpen] = useState(false)
 
+	/**
+	 * Opens one auth dialog and closes the other
+	 */
 	const switchAuth = () => {
 		setSigninOpen(prevVal => !prevVal)
 		setSignupOpen(prevVal => !prevVal)

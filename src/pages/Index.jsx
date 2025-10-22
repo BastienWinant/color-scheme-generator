@@ -15,8 +15,9 @@ export default function Index() {
 
 	useEffect(() => {
 		if (authUser) {
-			const starCountRef = ref(database, `/user-colors/${authUser.uid}`);
-			const unsubscribe = onValue(starCountRef, snapshot => {
+			// retrieve the user's saved colors from the database
+			const useColorsRef = ref(database, `/user-colors/${authUser.uid}`);
+			const unsubscribe = onValue(useColorsRef, snapshot => {
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					setUserColors(data);
@@ -38,7 +39,13 @@ export default function Index() {
 			>
 				<For each={colorScheme?.colors}>
 					{(item, index) => {
-						return <ColorCard key={index} colorObject={item} saved={item.hex.clean in userColors} />
+						return (
+							<ColorCard
+								key={index}
+								colorObject={item}
+								saved={item.hex.clean in userColors}
+							/>
+						)
 					}}
 				</For>
 			</Grid>
