@@ -8,10 +8,11 @@ import ModeInput from "@/components/generator/ModeInput.jsx"
 import SeedInput from "@/components/generator/SeedInput.jsx"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
-export default function GeneratorForm({closeDrawer}) {
+export default function GeneratorForm({ resetSaveStatus, closeDrawer }) {
 	const { getColorScheme } = useColorSchemeContext()
 
 	const handleSubmit = () => {
+		resetSaveStatus()
 		getColorScheme()
 		closeDrawer()
 	}

@@ -112,7 +112,9 @@ export default function Generator() {
 						<Drawer.Context>
 							{store => (
 								<Drawer.Body>
-									<GeneratorForm closeDrawer={() => store.setOpen(false)} />
+									<GeneratorForm
+										resetSaveStatus={() => setSaved(false)}
+										closeDrawer={() => store.setOpen(false)} />
 								</Drawer.Body>
 							)}
 						</Drawer.Context>
