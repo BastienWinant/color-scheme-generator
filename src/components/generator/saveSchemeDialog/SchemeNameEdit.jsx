@@ -10,7 +10,7 @@ export default function SchemeNameEdit({ name, setName }) {
 			rounded="sm"
 			size="lg"
 		>
-			<Editable.Preview />
+			<Editable.Preview w="full" />
 			<Editable.Input />
 		</Editable.Root>
 	)
