@@ -14,6 +14,7 @@ export default function Header() {
 				alignItems="center"
 				justifyContent="space-between"
 				py="3"
+				shadow="md"
 			>
 				<HStack>
 					<Icon size="2xl">
