@@ -73,7 +73,7 @@ export default function Generator() {
 	 * Dispatches the click event depending on user authentication status
 	 * and local saved state.
 	 */
-	const handleClick = () => {
+	const toggleSave = () => {
 		if (!authUser) {
 			toaster.create({
 				description: "User must be registered to save color schemes",
@@ -99,7 +99,7 @@ export default function Generator() {
 					variant="outline"
 					size="sm"
 					aria-label={saved ? "Unsave color scheme" : "Save color scheme."}
-					onClick={handleClick}
+					onClick={toggleSave}
 				>
 					{saved ? <FaHeart /> : <FaRegHeart />}
 				</IconButton>
