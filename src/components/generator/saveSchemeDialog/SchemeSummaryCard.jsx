@@ -1,7 +1,6 @@
 import { Card, DataList, Text, Avatar, AvatarGroup } from "@chakra-ui/react"
 
 export default function SchemeSummaryCard({ colorScheme }) {
-	console.log(colorScheme)
 	return (
 		<Card.Root overflow="hidden" border="0">
 			<AvatarGroup size="xl" stacking="last-on-top">

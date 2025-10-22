@@ -11,7 +11,7 @@ import { database } from "@/firebase.js"
 export default function Index() {
 	const [userColors, setUserColors] = useState({})
 	const { authUser } = useAuth()
-	const { colorScheme } = useColorSchemeContext()
+	const { colorScheme, setSaved } = useColorSchemeContext()
 
 	useEffect(() => {
 		if (authUser) {
@@ -27,6 +27,8 @@ export default function Index() {
 			return () => unsubscribe()
 		} else {
 			setUserColors({})
+			setSaved(false)
+			localStorage.removeItem("color-scheme-saved")
 		}
 	}, [authUser]);
 

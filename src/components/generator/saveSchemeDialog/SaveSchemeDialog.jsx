@@ -77,7 +77,7 @@ export default function SaveSchemeDialog({ saved, setSaved }) {
 		try {
 			await deleteColorSchemeData(authUser.uid, key) // Delete color scheme from DB using its key
 			setSaved(false) // Flag the scheme as unsaved
-			localStorage.setItem("color-scheme-saved", JSON.stringify(false))
+			localStorage.removeItem("color-scheme-saved")
 
 			toaster.create({
 				description: "Color scheme unsaved successfully", // User feedback message

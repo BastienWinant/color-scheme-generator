@@ -1,10 +1,10 @@
 import { ButtonGroup, Button, CloseButton, Drawer, Portal } from "@chakra-ui/react"
-import { useState } from "react"
 import GeneratorForm from "@/components/generator/generatorForm/GeneratorForm.jsx"
 import SaveSchemeDialog from "@/components/generator/saveSchemeDialog/SaveSchemeDialog.jsx"
+import {useColorSchemeContext} from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function Generator() {
-	const [saved, setSaved] = useState(JSON.parse(localStorage.getItem("color-scheme-saved")) || false)
+	const { saved, setSaved } = useColorSchemeContext()
 
 	return (
 		<Drawer.Root placement={{ base: "bottom", md: "end" }} size={{ md: "xs" }}>
