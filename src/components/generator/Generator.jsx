@@ -8,7 +8,7 @@ import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext
 import { writeColorSchemeData, deleteColorSchemeData } from "@/db_utils.js"
 
 export default function Generator() {
-	const [saved, setSaved] = useState(false)
+	const [saved, setSaved] = useState(JSON.parse(localStorage.getItem("color-scheme-saved")) || false)
 	const [key, setKey] = useState("")
 	const { authUser } = useAuth()
 	const { colorScheme } = useColorSchemeContext()
@@ -26,6 +26,7 @@ export default function Generator() {
 			const dbKey = await writeColorSchemeData(authUser.uid, colorScheme) // Save color scheme in DB and get its key
 			setKey(dbKey) // Update local state with the DB key
 			setSaved(true) // Flag the scheme as saved
+			localStorage.setItem("color-scheme-saved", JSON.stringify(true))
 
 			toaster.create({
 				description: "Color scheme saved successfully", // User feedback message
@@ -52,6 +53,7 @@ export default function Generator() {
 		try {
 			await deleteColorSchemeData(authUser.uid, key) // Delete color scheme from DB using its key
 			setSaved(false) // Flag the scheme as unsaved
+			localStorage.setItem("color-scheme-saved", JSON.stringify(false))
 
 			toaster.create({
 				description: "Color scheme unsaved successfully", // User feedback message

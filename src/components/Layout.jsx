@@ -1,5 +1,5 @@
 import { Outlet } from "react-router"
-import { Stack, Box, Flex } from "@chakra-ui/react"
+import { Stack, Flex } from "@chakra-ui/react"
 import Header from "@/components/header/Header.jsx"
 
 export default function Layout() {
