@@ -16,6 +16,7 @@ import { toaster } from "@/components/ui/toaster.jsx"
 import { writeColorSchemeData, deleteColorSchemeData } from "@/db_utils.js"
 
 export default function SaveSchemeDialog({ saved, setSaved }) {
+	const [open, setOpen] = useState(false)
 	const [key, setKey] = useState("")
 	const { authUser } = useAuth()
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
@@ -33,7 +34,8 @@ export default function SaveSchemeDialog({ saved, setSaved }) {
 	 * 4. Displays a success notification to the user.
 	 */
 	const saveColorScheme = async () => {
-		if (!('name' in colorScheme)) {
+		// Verify that a valid name has been provided
+		if (!colorScheme.name || colorScheme.name === "") {
 			toaster.create({
 				description: "Invalid color scheme name", // User feedback message
 				type: "error",
@@ -47,6 +49,7 @@ export default function SaveSchemeDialog({ saved, setSaved }) {
 			const dbKey = await writeColorSchemeData(authUser.uid, colorScheme) // Save color scheme in DB and get its key
 			setKey(dbKey) // Update local state with the DB key
 			setSaved(true) // Flag the scheme as saved
+			setOpen(false)
 			localStorage.setItem("color-scheme-saved", JSON.stringify(true))
 
 			toaster.create({
@@ -107,7 +110,7 @@ export default function SaveSchemeDialog({ saved, setSaved }) {
 	}
 
 	return (
-		<Dialog.Root>
+		<Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)}>
 			{ (saved || !authUser) ?
 				<IconButton
 					variant="outline"
