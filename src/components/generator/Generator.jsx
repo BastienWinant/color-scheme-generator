@@ -1,7 +1,7 @@
 import { ButtonGroup, Button, CloseButton, Drawer, Portal, IconButton } from "@chakra-ui/react"
 import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import { useState } from "react"
-import GeneratorForm from "@/components/generator/GeneratorForm.jsx"
+import GeneratorForm from "@/components/generator/generatorForm/GeneratorForm.jsx"
 import { toaster } from "@/components/ui/toaster.jsx"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"

@@ -102,8 +102,8 @@ export default function ColorCard({ colorObject, saved }) {
 			bgColor={colorObject.hex.value}
 			color={colorObject.contrast.value}
 		>
-			<Heading size="md">{colorObject.name.value}</Heading>
-			<ButtonGroup size="xs" variant="plain" ms="-1">
+			<Heading size={{ base: "lg", md: "md", lg: "lg" }}>{colorObject.name.value}</Heading>
+			<ButtonGroup size={{ base: "sm", md: "xs", lg: "sm", xl: "md" }} variant="plain" ms="-2">
 				<Clipboard.Root value={colorObject.hex.value}>
 					<Clipboard.Trigger asChild>
 						<IconButton color={colorObject.contrast.value}>
