@@ -1,6 +1,6 @@
 import { Stack, Grid, Container, For } from "@chakra-ui/react"
 import Generator from "@/components/generator/Generator.jsx"
-import ColorCard from "@/components/ColorCard.jsx"
+import ColorCard from "@/components/generator/ColorCard.jsx"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 import { Toaster } from "@/components/ui/toaster"

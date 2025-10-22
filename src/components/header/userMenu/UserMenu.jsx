@@ -20,8 +20,8 @@ export default function UserMenu() {
 					<Menu.Content>
 						<Menu.ItemGroup>
 							<Menu.Item value="generator" onClick={() => navigate("/")}>generator</Menu.Item>
-							<Menu.Item value="schemes" onClick={() => navigate("protected")}>schemes</Menu.Item>
-							<Menu.Item value="colors" onClick={() => navigate("protected")}>colors</Menu.Item>
+							<Menu.Item value="schemes" onClick={() => navigate("schemes")}>schemes</Menu.Item>
+							<Menu.Item value="colors" onClick={() => navigate("colors")}>colors</Menu.Item>
 						</Menu.ItemGroup>
 						<Menu.Separator />
 						<Menu.ItemGroup>

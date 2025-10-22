@@ -107,7 +107,7 @@ export default function Generator() {
 				<Drawer.Positioner>
 					<Drawer.Content>
 						<Drawer.Header>
-							<Drawer.Title>Drawer Title</Drawer.Title>
+							<Drawer.Title>New Scheme</Drawer.Title>
 						</Drawer.Header>
 						<Drawer.Context>
 							{store => (

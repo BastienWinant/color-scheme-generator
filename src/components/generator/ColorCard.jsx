@@ -1,5 +1,5 @@
-import { GridItem, Heading, ButtonGroup, IconButton } from "@chakra-ui/react"
-import { FaHeart, FaRegHeart, FaCopy, FaXmark } from "react-icons/fa6"
+import { GridItem, Heading, ButtonGroup, IconButton, Clipboard } from "@chakra-ui/react"
+import { FaHeart, FaRegHeart, FaXmark } from "react-icons/fa6"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { toaster } from "@/components/ui/toaster.jsx"
@@ -23,20 +23,6 @@ export default function ColorCard({ colorObject, saved }) {
 			return { ...prevScheme, colors, count };
 		});
 	};
-
-	/**
-	 * Copies the color's HEX value to the clipboard and
-	 * displays a success notification to the user.
-	 */
-	const copyColor = () => {
-		navigator.clipboard.writeText(colorObject.hex.value)
-
-		toaster.create({
-			description: "Color copied to clipboard", // User feedback message
-			type: "info",
-			duration: 1500,
-		})
-	}
 
 	/**
 	 * Saves the current color for the authenticated user.
@@ -118,13 +104,13 @@ export default function ColorCard({ colorObject, saved }) {
 		>
 			<Heading size="md">{colorObject.name.value}</Heading>
 			<ButtonGroup size="xs" variant="plain" ms="-1">
-				<IconButton
-					aria-label="Copy color"
-					color={colorObject.contrast.value}
-					onClick={ copyColor }
-				>
-					<FaCopy />
-				</IconButton>
+				<Clipboard.Root value={colorObject.hex.value}>
+					<Clipboard.Trigger asChild>
+						<IconButton color={colorObject.contrast.value}>
+							<Clipboard.Indicator />
+						</IconButton>
+					</Clipboard.Trigger>
+				</Clipboard.Root>
 				<IconButton
 					aria-label="Save color"
 					color={colorObject.contrast.value}

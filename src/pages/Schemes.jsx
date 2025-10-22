@@ -1,7 +1,10 @@
-import { Heading } from "@chakra-ui/react"
+import { Grid, Flex } from "@chakra-ui/react"
 
 export default function Schemes() {
+
 	return (
-		<Heading>this is the schemes page</Heading>
+		<Grid w="full" borderWidth="medium">
+			this is the schemes grid
+		</Grid>
 	)
 }
