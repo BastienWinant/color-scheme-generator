@@ -1,6 +1,21 @@
 import { useEffect, useState } from "react"
 
 export const ColorSchemeData = () => {
+	const getRandomHex = () => {
+		const r = Math.floor(Math.random() * 256) // 0-255
+		const g = Math.floor(Math.random() * 256) // 0-255
+		const b = Math.floor(Math.random() * 256) // 0-255
+
+		return `${r},${g},${b}`
+	}
+
+	const getRandomMode = () => {
+		const modes = ["default", "monochrome", "analogic", "triad", "quad"]
+		return modes[Math.floor(Math.random() * modes.length)]
+	}
+
+	const getRandomCount = () => Math.floor(Math.random() * 3) + 4 // 4–6 colors
+
 	/**
 	 * Initialize color scheme from localStorage or random values
 	 */
@@ -20,21 +35,6 @@ export const ColorSchemeData = () => {
 	const [count, setCount] = useState(colorScheme.count || 0)
 	const [mode, setMode] = useState(colorScheme.mode || "default")
 	const [saved, setSaved] = useState(JSON.parse(localStorage.getItem("color-scheme-saved")) || false)
-
-	const getRandomHex = () => {
-		const r = Math.floor(Math.random() * 256) // 0-255
-		const g = Math.floor(Math.random() * 256) // 0-255
-		const b = Math.floor(Math.random() * 256) // 0-255
-
-		return `${r},${g},${b}`
-	}
-
-	const getRandomMode = () => {
-		const modes = ["default", "monochrome", "analogic", "triad", "quad"]
-		return modes[Math.floor(Math.random() * modes.length)]
-	}
-
-	const getRandomCount = () => Math.floor(Math.random() * 3) + 4 // 4–6 colors
 
 	/**
 	 * Fetches a new color scheme for the Colors API
