@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router"
 import Layout from "@/components/Layout.jsx"
-import Index from "@/pages/index.jsx"
+import Index from "@/pages/Index.jsx"
 import Schemes from "@/pages/Schemes.jsx"
 import Colors from "@/pages/Colors.jsx"
 import AuthRequired from "@/components/AuthRequired.jsx"
