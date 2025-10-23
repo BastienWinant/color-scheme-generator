@@ -1,6 +1,6 @@
 import { Outlet } from "react-router"
 import { Stack, Flex } from "@chakra-ui/react"
-import Header from "@/components/header/Header.jsx"
+import Header from "src/components/header/Header.jsx"
 
 export default function Layout() {
 	return (

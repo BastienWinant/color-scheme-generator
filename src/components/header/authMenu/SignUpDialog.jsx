@@ -1,7 +1,7 @@
 import { Button, CloseButton, Dialog, Portal, Fieldset, Field, Input, Text } from "@chakra-ui/react"
-import { PasswordInput } from "@/components/ui/password-input.jsx"
+import { PasswordInput } from "src/components/ui/password-input.jsx"
 import { useState } from "react"
-import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { useAuth } from "src/contexts/auth/AuthUserContext.js"
 
 export default function SignUpDialog({open, setOpen, switchAuth}) {
 	const [username, setUsername] = useState("")

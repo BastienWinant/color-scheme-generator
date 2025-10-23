@@ -1,5 +1,5 @@
 import { Button, Menu, Portal } from "@chakra-ui/react"
-import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { useAuth } from "src/contexts/auth/AuthUserContext.js"
 import { FaCircleUser } from "react-icons/fa6"
 import { useNavigate } from "react-router"
 

@@ -6,14 +6,14 @@ import {
 	Portal,
 	Stack
 } from "@chakra-ui/react"
-import SchemeNameEdit from "@/components/generator/saveSchemeDialog/SchemeNameEdit.jsx"
-import SchemeSummaryCard from "@/components/generator/saveSchemeDialog/SchemeSummaryCard.jsx"
-import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import SchemeNameEdit from "src/components/generator/saveSchemeDialog/SchemeNameEdit.jsx"
+import SchemeSummaryCard from "src/components/generator/saveSchemeDialog/SchemeSummaryCard.jsx"
+import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
 import { FaHeart, FaRegHeart } from "react-icons/fa6"
 import { useState } from "react"
-import { useAuth } from "@/contexts/auth/AuthUserContext.js"
-import { toaster } from "@/components/ui/toaster.jsx"
-import { writeColorSchemeData, deleteColorSchemeData } from "@/db_utils.js"
+import { useAuth } from "src/contexts/auth/AuthUserContext.js"
+import { toaster } from "src/components/ui/toaster.jsx"
+import { writeColorSchemeData, deleteColorSchemeData } from "src/db_utils.js"
 
 export default function SaveSchemeDialog({ saved, setSaved }) {
 	const [open, setOpen] = useState(false)

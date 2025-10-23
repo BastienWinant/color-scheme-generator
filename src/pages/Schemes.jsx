@@ -1,10 +1,10 @@
 import { Box } from "@chakra-ui/react"
-import RedirectPrompt from "@/components/schemeGrid/RedirectPrompt.jsx"
+import RedirectPrompt from "src/components/schemeGrid/RedirectPrompt.jsx"
 import { useEffect, useState } from "react";
 import { onValue, ref } from "firebase/database";
-import { database } from "@/firebase.js";
-import { useAuth } from "@/contexts/auth/AuthUserContext.js";
-import SchemeGrid from "@/components/schemeGrid/SchemeGrid.jsx"
+import { database } from "src/firebase.js";
+import { useAuth } from "src/contexts/auth/AuthUserContext.js";
+import SchemeGrid from "src/components/schemeGrid/SchemeGrid.jsx"
 
 export default function Schemes() {
 	const [userColorSchemes, setUserColorSchemes] = useState(null)

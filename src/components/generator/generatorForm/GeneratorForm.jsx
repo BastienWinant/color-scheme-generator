@@ -3,10 +3,10 @@ import {
 	Field,
 	Fieldset
 } from "@chakra-ui/react"
-import CountInput from "@/components/generator/generatorForm/CountInput.jsx"
-import ModeInput from "@/components/generator/generatorForm/ModeInput.jsx"
-import SeedInput from "@/components/generator/generatorForm/SeedInput.jsx"
-import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import CountInput from "src/components/generator/generatorForm/CountInput.jsx"
+import ModeInput from "src/components/generator/generatorForm/ModeInput.jsx"
+import SeedInput from "src/components/generator/generatorForm/SeedInput.jsx"
+import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function GeneratorForm({ resetSaveStatus, closeDrawer }) {
 	const { getColorScheme } = useColorSchemeContext()

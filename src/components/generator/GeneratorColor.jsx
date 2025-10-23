@@ -1,9 +1,9 @@
 import { GridItem, Heading, ButtonGroup, IconButton, Clipboard } from "@chakra-ui/react"
 import { FaHeart, FaRegHeart, FaXmark } from "react-icons/fa6"
-import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
-import { useAuth } from "@/contexts/auth/AuthUserContext.js"
-import { toaster } from "@/components/ui/toaster.jsx"
-import { writeColorData, deleteColorData } from "@/db_utils.js"
+import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
+import { useAuth } from "src/contexts/auth/AuthUserContext.js"
+import { toaster } from "src/components/ui/toaster.jsx"
+import { writeColorData, deleteColorData } from "src/db_utils.js"
 
 export default function GeneratorColor({ colorObject, saved }) {
 	const { colorScheme, setColorScheme } = useColorSchemeContext()

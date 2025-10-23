@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router"
-import Layout from "@/components/Layout.jsx"
-import Index from "@/pages/index.jsx"
-import Schemes from "@/pages/Schemes.jsx"
-import Colors from "@/pages/Colors.jsx"
-import AuthRequired from "@/components/AuthRequired.jsx"
+import Layout from "src/components/Layout.jsx"
+import Index from "src/pages/index.jsx"
+import Schemes from "src/pages/Schemes.jsx"
+import Colors from "src/pages/Colors.jsx"
+import AuthRequired from "src/components/AuthRequired.jsx"
 
 function App() {
   return (

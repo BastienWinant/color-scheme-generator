@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { auth } from "@/firebase.js"
+import { auth } from "src/firebase.js"
 import {
 	onAuthStateChanged,
 	signInWithEmailAndPassword,

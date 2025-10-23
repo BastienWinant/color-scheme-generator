@@ -1,7 +1,7 @@
 import { Box, IconButton, Card, Image, DataList } from "@chakra-ui/react"
 import { FaRegTrashCan } from "react-icons/fa6"
-import { useAuth } from "@/contexts/auth/AuthUserContext.js"
-import { deleteColorData } from "@/db_utils.js"
+import { useAuth } from "src/contexts/auth/AuthUserContext.js"
+import { deleteColorData } from "src/db_utils.js"
 
 export default function ColorCard({colorObject}) {
 	const { authUser } = useAuth()
