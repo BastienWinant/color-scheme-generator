@@ -5,7 +5,7 @@ import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { toaster } from "@/components/ui/toaster.jsx"
 import { writeColorData, deleteColorData } from "@/db_utils.js"
 
-export default function ColorCard({ colorObject, saved }) {
+export default function GeneratorColor({ colorObject, saved }) {
 	const { colorScheme, setColorScheme } = useColorSchemeContext()
 	const { authUser } = useAuth()
 

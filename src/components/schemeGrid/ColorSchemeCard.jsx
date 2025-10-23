@@ -11,9 +11,9 @@ export default function ColorSchemeCard({ databaseKey, schemeObject }) {
 	const navigate = useNavigate();
 
 	const stats = [
-		{ label: "Seed Color", value: schemeObject.seed.hex.value, diff: -12, helpText: "Till date" },
-		{ label: "Count", value: schemeObject.count, diff: 12, helpText: "Last 30 days" },
-		{ label: "Mode", value: schemeObject.mode, diff: 4.5, helpText: "Last 30 days" },
+		{ label: "Seed Color", value: schemeObject.seed.hex.value, diff: -12 },
+		{ label: "Count", value: schemeObject.count, diff: 12 },
+		{ label: "Mode", value: schemeObject.mode, diff: 4.5 },
 	]
 
 	const deleteColorScheme = () => {

@@ -13,8 +13,8 @@ export default function Schemes() {
 	useEffect(() => {
 		if (authUser) {
 			// retrieve the user's saved colors from the database
-			const useColorsRef = ref(database, `/user-color-schemes/${authUser.uid}`);
-			const unsubscribe = onValue(useColorsRef, snapshot => {
+			const userSchemesRef = ref(database, `/user-color-schemes/${authUser.uid}`);
+			const unsubscribe = onValue(userSchemesRef, snapshot => {
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					setUserColorSchemes(data);

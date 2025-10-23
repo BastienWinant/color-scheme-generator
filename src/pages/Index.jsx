@@ -1,6 +1,6 @@
 import { Stack, Grid, Container, For } from "@chakra-ui/react"
 import Generator from "@/components/generator/Generator.jsx"
-import ColorCard from "@/components/generator/ColorCard.jsx"
+import GeneratorColor from "@/components/generator/GeneratorColor.jsx"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 import { Toaster } from "@/components/ui/toaster"
@@ -16,8 +16,8 @@ export default function Index() {
 	useEffect(() => {
 		if (authUser) {
 			// retrieve the user's saved colors from the database
-			const useColorsRef = ref(database, `/user-colors/${authUser.uid}`);
-			const unsubscribe = onValue(useColorsRef, snapshot => {
+			const userColorsRef = ref(database, `/user-colors/${authUser.uid}`);
+			const unsubscribe = onValue(userColorsRef, snapshot => {
 				if (snapshot.exists()) {
 					const data = snapshot.val();
 					setUserColors(data);
@@ -42,7 +42,7 @@ export default function Index() {
 				<For each={colorScheme?.colors}>
 					{(item, index) => {
 						return (
-							<ColorCard
+							<GeneratorColor
 								key={index}
 								colorObject={item}
 								saved={item.hex.clean in userColors}
