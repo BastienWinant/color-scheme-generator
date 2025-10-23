@@ -17,14 +17,14 @@ export default function ColorCard({colorObject}) {
 	}
 
 	return (
-		<Card.Root flexDirection="row" overflow="hidden" maxW="xl">
+		<Card.Root flexDirection="row" overflow="hidden">
 			<Image
 				objectFit="cover"
 				maxW="200px"
 				src={colorObject.image.bare}
 				alt="Caffe Latte"
 			/>
-			<Box>
+			<Box w="full">
 				<Card.Header>
 					<Card.Title mb="2">{colorObject.name.value}</Card.Title>
 				</Card.Header>

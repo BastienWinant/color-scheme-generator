@@ -28,7 +28,7 @@ export default function Schemes() {
 	}, [authUser]);
 
 	return (
-		<Box position="relative" w="full" bg="bg.muted" border="2px solid yellow">
+		<Box position="relative" w="full" bg="bg.muted">
 			{
 				userColorSchemes ?
 					<SchemeGrid colorSchemes={userColorSchemes} /> :
