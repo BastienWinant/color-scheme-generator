@@ -1,5 +1,5 @@
-import { AuthUserContext } from "src/contexts/auth/AuthUserContext.js"
-import { AuthUserData } from "src/contexts/auth/AuthUserData.js"
+import { AuthUserContext } from "@/contexts/auth/AuthUserContext.js"
+import { AuthUserData } from "@/contexts/auth/AuthUserData.js"
 
 export function AuthUserProvider({ children }) {
 	const auth = AuthUserData()

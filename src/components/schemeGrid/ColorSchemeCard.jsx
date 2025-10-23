@@ -1,8 +1,8 @@
 import { Card, Heading, Avatar, AvatarGroup, For, Stack, DataList, Text, Button, IconButton } from "@chakra-ui/react"
 import { FaRegTrashCan } from "react-icons/fa6"
-import { useAuth } from "src/contexts/auth/AuthUserContext.js"
-import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
-import { deleteColorSchemeData } from "src/db_utils.js"
+import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import { deleteColorSchemeData } from "@/db_utils.js"
 import { useNavigate } from "react-router"
 
 export default function ColorSchemeCard({ databaseKey, schemeObject }) {

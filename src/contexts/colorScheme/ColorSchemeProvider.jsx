@@ -1,5 +1,5 @@
-import { ColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
-import {ColorSchemeData} from "src/contexts/colorScheme/ColorSchemeData.js"
+import { ColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import {ColorSchemeData} from "@/contexts/colorScheme/ColorSchemeData.js"
 
 export function ColorSchemeProvider({ children }) {
 	const schemeData = ColorSchemeData()

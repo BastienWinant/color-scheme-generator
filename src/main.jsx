@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
-import { Provider as ChakraProvider } from "src/components/ui/provider.jsx"
-import { AuthUserProvider } from "src/contexts/auth/AuthUserProvider.jsx"
-import { ColorSchemeProvider } from "src/contexts/colorScheme/ColorSchemeProvider.jsx"
+import { Provider as ChakraProvider } from "@/components/ui/provider.jsx"
+import { AuthUserProvider } from "@/contexts/auth/AuthUserProvider.jsx"
+import { ColorSchemeProvider } from "@/contexts/colorScheme/ColorSchemeProvider.jsx"
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 

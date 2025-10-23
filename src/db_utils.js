@@ -1,5 +1,5 @@
 import { ref, child, push, update, remove } from "firebase/database"
-import { database } from "src/firebase.js"
+import { database } from "@/firebase.js"
 
 export const writeColorSchemeData = async (uid, colorSchemeData) => {
 	// Get a key for a new ColorScheme.

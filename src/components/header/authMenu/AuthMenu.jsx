@@ -1,6 +1,6 @@
 import { Group } from "@chakra-ui/react"
-import SignInDialog from "src/components/header/authMenu/SignInDialog.jsx"
-import SignUpDialog from "src/components/header/authMenu/SignUpDialog.jsx"
+import SignInDialog from "@/components/header/authMenu/SignInDialog.jsx"
+import SignUpDialog from "@/components/header/authMenu/SignUpDialog.jsx"
 import { useState } from "react";
 
 export default function AuthMenu() {

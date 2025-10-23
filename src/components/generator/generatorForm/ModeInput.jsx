@@ -1,5 +1,5 @@
 import { NativeSelect } from "@chakra-ui/react"
-import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function ModeInput() {
 	const { mode, setMode } = useColorSchemeContext()

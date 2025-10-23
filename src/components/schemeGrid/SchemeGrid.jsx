@@ -1,5 +1,5 @@
 import { ScrollArea, Container, Grid, For } from "@chakra-ui/react"
-import ColorSchemeCard from "src/components/schemeGrid/ColorSchemeCard.jsx"
+import ColorSchemeCard from "@/components/schemeGrid/ColorSchemeCard.jsx"
 
 export default function SchemeGrid({ colorSchemes }) {
 	return (

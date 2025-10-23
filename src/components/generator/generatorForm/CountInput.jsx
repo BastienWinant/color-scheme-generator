@@ -1,6 +1,6 @@
 import { HStack, IconButton, NumberInput } from "@chakra-ui/react"
 import { LuMinus, LuPlus } from "react-icons/lu"
-import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function CountInput() {
 	const { count, setCount } = useColorSchemeContext()

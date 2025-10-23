@@ -1,5 +1,5 @@
 import { ScrollArea, Container, Grid, For } from "@chakra-ui/react"
-import ColorCard from "src/components/colorGrid/ColorCard.jsx";
+import ColorCard from "@/components/colorGrid/ColorCard.jsx";
 
 export default function ColorGrid({ colors }) {
 	return (

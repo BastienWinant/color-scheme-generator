@@ -1,7 +1,7 @@
 import { ButtonGroup, Button, CloseButton, Drawer, Portal } from "@chakra-ui/react"
-import GeneratorForm from "src/components/generator/generatorForm/GeneratorForm.jsx"
-import SaveSchemeDialog from "src/components/generator/saveSchemeDialog/SaveSchemeDialog.jsx"
-import {useColorSchemeContext} from "src/contexts/colorScheme/ColorSchemeContext.js"
+import GeneratorForm from "@/components/generator/generatorForm/GeneratorForm.jsx"
+import SaveSchemeDialog from "@/components/generator/saveSchemeDialog/SaveSchemeDialog.jsx"
+import {useColorSchemeContext} from "@/contexts/colorScheme/ColorSchemeContext.js"
 
 export default function Generator() {
 	const { saved, setSaved } = useColorSchemeContext()

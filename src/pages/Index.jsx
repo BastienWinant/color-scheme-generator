@@ -1,12 +1,12 @@
 import { Stack, Grid, Container, For } from "@chakra-ui/react"
-import Generator from "src/components/generator/Generator.jsx"
-import GeneratorColor from "src/components/generator/GeneratorColor.jsx"
-import { useAuth } from "src/contexts/auth/AuthUserContext.js"
-import { useColorSchemeContext } from "src/contexts/colorScheme/ColorSchemeContext.js"
-import { Toaster } from "src/components/ui/toaster"
+import Generator from "@/components/generator/Generator.jsx"
+import GeneratorColor from "@/components/generator/GeneratorColor.jsx"
+import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import { useColorSchemeContext } from "@/contexts/colorScheme/ColorSchemeContext.js"
+import { Toaster } from "@/components/ui/toaster"
 import { useState, useEffect } from "react"
 import { ref, onValue } from "firebase/database"
-import { database } from "src/firebase.js"
+import { database } from "@/firebase.js"
 
 export default function Index() {
 	const [userColors, setUserColors] = useState({})
