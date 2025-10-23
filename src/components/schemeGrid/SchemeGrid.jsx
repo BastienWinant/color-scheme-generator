@@ -1,0 +1,29 @@
+import { ScrollArea, Container, Grid, For } from "@chakra-ui/react"
+import ColorSchemeCard from "@/components/schemeGrid/ColorSchemeCard.jsx"
+
+export default function SchemeGrid({ colorSchemes }) {
+	console.log(Object.entries(colorSchemes))
+	return (
+		<ScrollArea.Root height="90vh" variant="hover">
+			<ScrollArea.Viewport>
+				<ScrollArea.Content paddingEnd="3">
+					<Container py="10">
+						<Grid
+							autoRows="1fr"
+							// templateColumns="repeat(auto-fit, minmax(360px, 1fr))"
+							templateColumns="repeat(auto-fit, 360px)"
+							gap="8"
+						>
+							<For each={Object.entries(colorSchemes)}>
+								{(item, index) => {
+									return <ColorSchemeCard key={index} databaseKey={item[0]} schemeObject={item[1]} />
+								}}
+							</For>
+						</Grid>
+					</Container>
+				</ScrollArea.Content>
+			</ScrollArea.Viewport>
+			<ScrollArea.Scrollbar />
+		</ScrollArea.Root>
+	)
+}

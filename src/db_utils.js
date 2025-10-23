@@ -1,4 +1,4 @@
-import { ref, child, push, update, remove, get } from "firebase/database"
+import { ref, child, push, update, remove } from "firebase/database"
 import { database } from "@/firebase.js"
 
 export const writeColorSchemeData = async (uid, colorSchemeData) => {
@@ -35,19 +35,4 @@ export const deleteColorSchemeData = async (uid, colorSchemeKey) => {
 export const deleteColorData = async (uid, color) => {
 	const schemeRef = ref(database, `/user-colors/${uid}/${color}`)
 	return remove(schemeRef)
-}
-
-export const getUserColors = async (uid) => {
-	const dbRef = ref(database);
-	try {
-		const snapshot = await get(child(dbRef, `user-colors/${uid}`));
-		if (snapshot.exists()) {
-			return snapshot.val();
-		} else {
-			return {};
-		}
-	} catch (error) {
-		console.log(error);
-		return {};
-	}
 }
