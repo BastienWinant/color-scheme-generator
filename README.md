@@ -1,16 +1,30 @@
-# React + Vite
+# Color Scheme Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Screenshot 1](/img/screenshot_1.png)
+![Screenshot 2](/img/screenshot_2.png)
 
-Currently, two official plugins are available:
+  Color Scheme Generator is a web application to create endless color palettes! 
+  - Specify a seed color, color count, and mode.
+  - Adjust a given color scheme by removing unwanted colors.
+  - Save entire schemes or individual colors.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the [live web app](https://color-scheme-generator-6a956.web.app/).
 
-## React Compiler
+# Technologies in use / Tech Stack / Built with
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  - React
+  - Chakra UI
+  - Firebase Realtime Database
+  - Firebase Authentication
+  - The Color API
 
-## Expanding the ESLint configuration
+# What I have learned
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The focus of this project was the use of hooks and context providers in React. I learned how to use the Context API
+for managing user authentication and minimizing prop drilling.
+
+# What issues have I faced and how I resolved them
+
+When I first tried to implement authentication in my application, I had trouble dealing with asynchronous calls to
+the authentication service and how to properly redirect users. By following [this tutorial](https://www.youtube.com/watch?v=q2RZOiUD5E0),
+I learned how to combine useEffect and useState hooks to get a working authentication flow.
