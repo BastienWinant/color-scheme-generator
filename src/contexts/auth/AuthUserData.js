@@ -18,8 +18,13 @@ export const AuthUserData = () => {
 			const userCredential = await createUserWithEmailAndPassword(auth, email, password)
 			await updateProfile(userCredential.user, { displayName: username })
 		} catch (e) {
-			console.log(e.code)
-			console.log(e.message)
+			if (e.code === 'auth/email-already-in-use') {
+				setAuthError({field: "email", message: "An account with that address already exists."})
+			} else if (e.code === "auth/weak-password") {
+				setAuthError({field: "password", message: "Password should be at least 6 characters."})
+			} else {
+				setAuthError({message: "An error occurred. Please try again."})
+			}
 		}
 	}
 
