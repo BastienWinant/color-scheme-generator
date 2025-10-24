@@ -1,13 +1,19 @@
 import { Button, CloseButton, Dialog, Portal, Fieldset, Field, Input, Text } from "@chakra-ui/react"
 import { PasswordInput } from "@/components/ui/password-input.jsx"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
 
 export default function SignInDialog({open, setOpen, switchAuth}) {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
-	const { signIn } = useAuth()
+	const { signIn, authUser, authError, setAuthError } = useAuth()
+
+	useEffect(() => {
+		setEmail("")
+		setPassword("")
+		setAuthError(null)
+	}, [authUser, open]);
 
 	const handleSubmit = () => {
 		signIn(email, password)
@@ -32,17 +38,33 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 						</Dialog.Header>
 						<Dialog.Body>
 							<form action={handleSubmit}>
-								<Fieldset.Root size="lg">
-									<Fieldset.Content>
+								<Fieldset.Root>
+									<Fieldset.Content gap="2">
 
-										<Field.Root>
-											<Field.Label>Email address</Field.Label>
+										<Field.Root
+											required
+											invalid={authError?.field === "email"}
+											pb="5"
+											position="relative"
+										>
+											<Field.Label>
+												Email address <Field.RequiredIndicator />
+											</Field.Label>
 											<Input name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
+											<Field.ErrorText position="absolute" bottom="0">{authError?.message}</Field.ErrorText>
 										</Field.Root>
 
-										<Field.Root>
-											<Field.Label>Password</Field.Label>
+										<Field.Root
+											required
+											invalid={authError?.field === "password"}
+											pb="5"
+											position="relative"
+										>
+											<Field.Label>
+												Password <Field.RequiredIndicator />
+											</Field.Label>
 											<PasswordInput value={password} onChange={e => setPassword(e.target.value)} />
+											<Field.ErrorText position="absolute" bottom="0">{authError?.message}</Field.ErrorText>
 										</Field.Root>
 
 									</Fieldset.Content>
