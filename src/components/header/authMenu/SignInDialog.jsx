@@ -7,7 +7,7 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
-	const { signIn, authUser, authError, setAuthError } = useAuth()
+	const { signIn, authUser, authError, setAuthError, resetPassword } = useAuth()
 
 	useEffect(() => {
 		setEmail("")
@@ -17,6 +17,10 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 
 	const handleSubmit = () => {
 		signIn(email, password)
+	}
+
+	const sendPasswordResetEmail = () => {
+		resetPassword(email)
 	}
 
 	return (
@@ -70,7 +74,7 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 									</Fieldset.Content>
 
 									<Button type="submit">Sign In</Button>
-									<Button variant="plain">forgot password?</Button>
+									<Button variant="plain" onClick={sendPasswordResetEmail}>forgot password?</Button>
 								</Fieldset.Root>
 							</form>
 						</Dialog.Body>

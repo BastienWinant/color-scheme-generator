@@ -5,7 +5,8 @@ import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 	updateProfile,
-	signOut as authSignOut
+	signOut as authSignOut,
+	sendPasswordResetEmail
 } from "firebase/auth"
 
 export const AuthUserData = () => {
@@ -44,6 +45,14 @@ export const AuthUserData = () => {
 
 	const signOut = async () => await authSignOut(auth)
 
+	const resetPassword = async (email) => {
+		try {
+			await sendPasswordResetEmail(auth, email)
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
 	const handleAuthStateChange = async (user) => {
 		setIsLoading(true)
 
@@ -74,6 +83,7 @@ export const AuthUserData = () => {
 		signIn,
 		signOut,
 		authError,
-		setAuthError
+		setAuthError,
+		resetPassword
 	}
 }
