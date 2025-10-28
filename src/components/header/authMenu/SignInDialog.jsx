@@ -69,9 +69,8 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 
 									</Fieldset.Content>
 
-									<Button type="submit">
-										Sign In
-									</Button>
+									<Button type="submit">Sign In</Button>
+									<Button variant="plain">forgot password?</Button>
 								</Fieldset.Root>
 							</form>
 						</Dialog.Body>
