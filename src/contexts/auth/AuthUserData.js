@@ -48,10 +48,8 @@ export const AuthUserData = () => {
 	const resetPassword = async (email) => {
 		try {
 			await sendPasswordResetEmail(auth, email)
+			return true
 		} catch (e) {
-			console.log(e.code)
-			console.log(e.message)
-
 			if (e.code === "auth/user-not-found") {
 				setAuthError({field: "email", message: "User not found."})
 			}

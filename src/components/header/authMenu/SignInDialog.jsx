@@ -7,6 +7,7 @@ import PasswordResetDialog from "@/components/header/authMenu/PasswordResetDialo
 export default function SignInDialog({open, setOpen, switchAuth}) {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const [resetOpen, setResetOpen] = useState(false)
 
 	const { signIn, authUser, authError, setAuthError } = useAuth()
 
@@ -67,7 +68,7 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 									</Fieldset.Content>
 
 									<Button type="submit">Sign In</Button>
-									<PasswordResetDialog />
+									<PasswordResetDialog open={resetOpen} setOpen={setResetOpen} />
 								</Fieldset.Root>
 							</form>
 						</Dialog.Body>

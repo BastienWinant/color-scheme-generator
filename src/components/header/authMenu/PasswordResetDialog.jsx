@@ -12,14 +12,36 @@ import { useState } from "react";
 import { useAuth } from "@/contexts/auth/AuthUserContext.js";
 
 
-export default function PasswordResetDialog() {
+export default function PasswordResetDialog({ open, setOpen }) {
 	const [email, setEmail] = useState("")
-	const { resetPassword, authError } = useAuth()
+	const [success, setSuccess] = useState(false)
+	const { resetPassword, authError, setAuthError } = useAuth()
+
+	const handleSubmit = async () => {
+		setAuthError(false)
+		const reset = await resetPassword(email)
+
+		if (reset) {
+			setSuccess(true)
+		}
+	}
+
+	const clearForm = e => {
+		setAuthError(false)
+		setEmail("")
+		setSuccess(false)
+		setOpen(e.open)
+	}
 
 	return (
-		<Dialog.Root lazyMount size="xs">
+		<Dialog.Root
+			lazyMount
+			open={open}
+			onOpenChange={clearForm}
+			size="xs"
+		>
 			<Dialog.Trigger asChild>
-				<Button variant="plain" size="sm">
+				<Button variant="plain" size="xs">
 					forgot password?
 				</Button>
 			</Dialog.Trigger>
@@ -49,6 +71,7 @@ export default function PasswordResetDialog() {
 											Email address <Field.RequiredIndicator />
 										</Field.Label>
 										<Input name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
+										{success && <Field.HelperText position="absolute" bottom="0">Password reset email sent!</Field.HelperText>}
 										<Field.ErrorText position="absolute" bottom="0">{authError?.message}</Field.ErrorText>
 									</Field.Root>
 								</Fieldset.Content>
@@ -56,9 +79,9 @@ export default function PasswordResetDialog() {
 						</Dialog.Body>
 						<Dialog.Footer>
 							<Dialog.ActionTrigger asChild>
-								<Button variant="outline">Cancel</Button>
+								<Button variant="outline">{success ? 'Close' : 'Cancel' }</Button>
 							</Dialog.ActionTrigger>
-							<Button onClick={() => resetPassword(email)}>Reset password</Button>
+							{!success && <Button onClick={handleSubmit}>Reset password</Button>}
 						</Dialog.Footer>
 						<Dialog.CloseTrigger asChild>
 							<CloseButton size="sm" />
