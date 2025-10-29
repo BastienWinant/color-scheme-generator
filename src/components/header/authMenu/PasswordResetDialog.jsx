@@ -8,9 +8,14 @@ import {
 	Input,
 	Stack
 } from "@chakra-ui/react"
+import { useState } from "react";
+import { useAuth } from "@/contexts/auth/AuthUserContext.js";
 
 
 export default function PasswordResetDialog() {
+	const [email, setEmail] = useState("")
+	const { resetPassword, authError } = useAuth()
+
 	return (
 		<Dialog.Root lazyMount size="xs">
 			<Dialog.Trigger asChild>
@@ -34,9 +39,17 @@ export default function PasswordResetDialog() {
 								</Stack>
 
 								<Fieldset.Content gap="2">
-									<Field.Root>
-										<Field.Label>Email address</Field.Label>
-										<Input name="email" type="email" />
+									<Field.Root
+										required
+										invalid={authError?.field === "email"}
+										pb="5"
+										position="relative"
+									>
+										<Field.Label>
+											Email address <Field.RequiredIndicator />
+										</Field.Label>
+										<Input name="email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
+										<Field.ErrorText position="absolute" bottom="0">{authError?.message}</Field.ErrorText>
 									</Field.Root>
 								</Fieldset.Content>
 							</Fieldset.Root>
@@ -45,7 +58,7 @@ export default function PasswordResetDialog() {
 							<Dialog.ActionTrigger asChild>
 								<Button variant="outline">Cancel</Button>
 							</Dialog.ActionTrigger>
-							<Button>Save</Button>
+							<Button onClick={() => resetPassword(email)}>Reset password</Button>
 						</Dialog.Footer>
 						<Dialog.CloseTrigger asChild>
 							<CloseButton size="sm" />
