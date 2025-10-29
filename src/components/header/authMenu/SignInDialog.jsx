@@ -2,26 +2,19 @@ import { Button, CloseButton, Dialog, Portal, Fieldset, Field, Input, Text } fro
 import { PasswordInput } from "@/components/ui/password-input.jsx"
 import { useEffect, useState } from "react"
 import { useAuth } from "@/contexts/auth/AuthUserContext.js"
+import PasswordResetDialog from "@/components/header/authMenu/PasswordResetDialog.jsx"
 
 export default function SignInDialog({open, setOpen, switchAuth}) {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
-	const { signIn, authUser, authError, setAuthError, resetPassword } = useAuth()
+	const { signIn, authUser, authError, setAuthError } = useAuth()
 
 	useEffect(() => {
 		setEmail("")
 		setPassword("")
 		setAuthError(null)
 	}, [authUser, open]);
-
-	const handleSubmit = () => {
-		signIn(email, password)
-	}
-
-	const sendPasswordResetEmail = () => {
-		resetPassword(email)
-	}
 
 	return (
 		<Dialog.Root
@@ -41,7 +34,7 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 							<Dialog.Title>Sign In</Dialog.Title>
 						</Dialog.Header>
 						<Dialog.Body>
-							<form action={handleSubmit}>
+							<form action={() => signIn(email, password)}>
 								<Fieldset.Root>
 									<Fieldset.Content gap="2">
 
@@ -74,7 +67,7 @@ export default function SignInDialog({open, setOpen, switchAuth}) {
 									</Fieldset.Content>
 
 									<Button type="submit">Sign In</Button>
-									<Button variant="plain" onClick={sendPasswordResetEmail}>forgot password?</Button>
+									<PasswordResetDialog />
 								</Fieldset.Root>
 							</form>
 						</Dialog.Body>
